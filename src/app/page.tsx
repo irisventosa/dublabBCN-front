@@ -1,9 +1,13 @@
 import Image from "next/image";
+import { text } from "stream/consumers";
+import Header from "./components/Header/Header";
+import TextBackgorund from "./components/TextBackground/TextBackground";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      holi
+    <main className="h-screen">
+      <Header />
+      <TextBackgorund />
     </main>
   );
 }
