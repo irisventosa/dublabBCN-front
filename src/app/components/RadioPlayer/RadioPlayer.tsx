@@ -21,14 +21,7 @@ const RadioPlayer = (): ReactElement => {
         <span className="ml-[19px]">10:00 Persona (R) - ARTIST NAME</span>{" "}
       </li>
       <li>
-        <span className="w-40 hover:invisible">VOLUME</span>
-        <input
-          type="range"
-          min="0"
-          max="100"
-          step="1"
-          className=" w-40transparent h-4 w-full appearance-none border-transparent bg-zinc-500 accent-white  "
-        />
+        <span className="w-40 hover:invisible">VOLUME</span>{" "}
       </li>
       <li>
         <Button>PAUSE</Button>

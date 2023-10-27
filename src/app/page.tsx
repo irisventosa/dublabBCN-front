@@ -6,7 +6,6 @@ import TextBackgorund from "./components/TextBackground/TextBackground";
 export default function Home() {
   return (
     <main className="h-screen">
-      <Header />
       <TextBackgorund />
     </main>
   );
