@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { text } from "stream/consumers";
-import Header from "./components/Header/Header";
-import TextBackgorund from "./components/TextBackground/TextBackground";
-import PrivacyDisclaimer from "./components/PrivacyDisclaimer/PrivacyDisclaimer";
+import Header from "./components/Header";
+import TextBackgorund from "./components/TextBackground";
+import PrivacyDisclaimer from "./components/PrivacyDisclaimer";
 import Marquee from "react-fast-marquee";
-import ShowCard from "./components/ShowCard/ShowCard";
+import ShowCard from "./components/ShowCard";
 
 export default function Home() {
   return (

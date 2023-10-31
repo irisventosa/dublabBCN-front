@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Button from "../Button/Button";
+import Button from "./Button";
 
 const PrivacyDisclaimer = (): React.ReactElement => {
   const [isHidden, setIsHidden] = useState(false);

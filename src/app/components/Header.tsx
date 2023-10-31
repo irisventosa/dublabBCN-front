@@ -1,5 +1,5 @@
 import Image from "next/image";
-import NavBar from "../NavBar/NavBar";
+import NavBar from "./NavBar";
 
 const Header = (): React.ReactElement => {
   return (
