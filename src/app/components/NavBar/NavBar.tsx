@@ -7,7 +7,7 @@ const links = [
   { label: "Arxiu", route: "/arxiu" },
   { label: "Programes", route: "/programes" },
   { label: "Sisters", route: "/sisters" },
-  { label: "Merc", route: "/merch" },
+  { label: "Merch", route: "/merch" },
   { label: "Info", route: "/info" },
 ];
 
