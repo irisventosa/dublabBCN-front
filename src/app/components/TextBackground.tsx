@@ -27,7 +27,7 @@ const TextBackgorund = (): React.ReactElement => {
   };
 
   return (
-    <div className="z-1">
+    <div className="z-0">
       <svg
         width="100%"
         height="100%"

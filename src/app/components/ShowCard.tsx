@@ -3,7 +3,7 @@ import React from "react";
 
 const ShowCard = (): React.ReactElement => {
   return (
-    <article className=" top-10 w-[352px] h-[385px] relative bg-sky-800 leading-[120%]">
+    <article className="w-[352px] h-[385px] relative bg-sky-800 leading-[120%]">
       <Image src="/assets/test.png" alt={""} height="353" width="353" />
       <ul className="flex flex-col absolute pl-4 pb-[11px] bottom-8 text-white ">
         <li>
