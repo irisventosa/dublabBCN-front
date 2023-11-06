@@ -12,7 +12,7 @@ const PrivacyDisclaimer = (): React.ReactElement => {
 
   return (
     <div className={` ${isHidden ? "hidden" : ""}`}>
-      <article className="w-[718px] h-[100px] flex flex-row gap-32 bg-[#ECECEC] z-10 absolute right-0 bottom-0 p-8 items-center rounded-md mr-8">
+      <article className="w-[718px] h-[100px] flex flex-row gap-32 bg-[#ECECEC] z-10 fixed right-0 bottom-8 p-8 items-center rounded-md mr-8">
         <p className="text-xs w-[420px] h-[68px] ">
           YOUR PRIVACY MATTERS. We use cookies technologies to make your visit
           on our website as pleasant as possible. All data collected on your

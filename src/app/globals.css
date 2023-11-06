@@ -21,6 +21,10 @@
   font-style: light;
 }
 
+input {
+  cursor: pointer;
+}
+
 body {
   text-transform: uppercase;
   font-family: "Favorit_Regular";
