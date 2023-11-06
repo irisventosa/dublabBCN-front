@@ -9,7 +9,7 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        Favorit: ["Favorit", "system-ui"],
+        favorit: ["var(--font-favorit)", "system-ui"],
       },
       visibility: ["group-hover"],
       keyframes: {
