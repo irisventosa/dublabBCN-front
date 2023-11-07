@@ -3,9 +3,18 @@ const Newsletter = () => {
     <div className="flex flex-col ">
       <span>Newsletter</span>
       <br />
-      <span>forma part d'una comunitat culturalment activa i inquieta.</span>
-      <label htmlFor="email" className=""></label>
-      <input type="text" name="email" id="email" />
+      <span className="h-8">
+        forma part d'una comunitat culturalment activa i inquieta.
+      </span>
+      <label htmlFor="email">
+        <input
+          className="w-[537px] h-[42px] rounded-md pl-4 mt-1 "
+          placeholder="ENTER EMAIL"
+          type="text"
+          name="email"
+          id="email"
+        />
+      </label>
     </div>
   );
 };

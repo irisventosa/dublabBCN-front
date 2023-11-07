@@ -1,17 +1,27 @@
 import Link from "next/link";
 import React from "react";
 
+const socials = [
+  {
+    network: "Instagram",
+    link: "https://www.instagram.com/dublab.es/",
+  },
+  {
+    network: "Twitter",
+    link: "https://twitter.com/dublabes",
+  },
+];
+
 const SocialLinks = (): React.ReactElement => {
   return (
     <div>
       <span>Social</span>
       <ul className="mt-[26px]">
-        <li>
-          <Link href={"https://www.instagram.com/dublab.es/"}>Instagram</Link>
-        </li>
-        <li>
-          <Link href={"https://twitter.com/dublabes"}>Twitter</Link>
-        </li>
+        {socials.map((social) => (
+          <li className="h-8">
+            <Link href={social.link}>{social.network}</Link>
+          </li>
+        ))}
       </ul>
     </div>
   );

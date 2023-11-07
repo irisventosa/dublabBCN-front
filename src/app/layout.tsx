@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const favorit = localfont({
-  src: "./fonts/Favorit_Regular.ttf",
+  src: "./fonts/Favorit_Regular_Mono.ttf",
   variable: "--font-favorit",
 });
 
