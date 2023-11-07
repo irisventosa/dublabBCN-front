@@ -4,7 +4,7 @@ import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import DigitalClock from "./Clock";
 import AudioPlayer from "./AudioPlayer";
-import getLiveRadioData from "../lib/radioDataFetching";
+import getLiveRadioData from "../../lib/radioDataFetching";
 
 const RadioBar = async () => {
   const {

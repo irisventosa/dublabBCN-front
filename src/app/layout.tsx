@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
 import "./globals.css";
-import RadioBar from "./components/RadioBar";
+import RadioBar from "./components/RadioBar/RadioBar";
 import localfont from "next/font/local";
 
 export const metadata: Metadata = {

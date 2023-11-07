@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import Button from "./Button";
+import Button from "../Button";
 
 const streamingSource = "https://dublabbcn.out.airtime.pro/dublabbcn_a";
 
