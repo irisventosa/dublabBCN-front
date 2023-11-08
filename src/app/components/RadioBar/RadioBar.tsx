@@ -22,7 +22,7 @@ const RadioBar = async () => {
       </li>
       <li className="flex gap-[9px]  ">
         <Image
-          className="animate-pulse animate-infinite animate-duration-[2000ms] animate-ease-in-out animate-normal"
+          className="animate-pulse animate-infinite animate-duration-[2000ms] animate-ease-in-out animate-normal mb-[5px]"
           src={"/assets/Ellipse.svg"}
           alt={"Elipse"}
           width={10}
