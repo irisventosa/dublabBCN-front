@@ -3,8 +3,8 @@ import Image from "next/image";
 
 const Credits = (): React.ReactElement => {
   return (
-    <div className="flex items-end flex-row  gap-[7.6rem]  px-[33px] pt-[183px]">
-      <ul className="flex flex-row items-end  ">
+    <div className="flex items-end flex-row place-content-evenly  gap-[345px]  px-[33px] pt-[183px]">
+      <ul className="flex flex-row items-end mr-[54px] ">
         <li>
           <Image
             className=""
