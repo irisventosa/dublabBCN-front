@@ -5,24 +5,28 @@ import React from "react";
 interface ShowCardProps {
   show: RadioApiShow;
   listPosition?: number;
+  height: string;
 }
 
 const ShowCard = ({
   show: { slug, mixcloud_url, tags, host },
   listPosition,
+  height,
 }: ShowCardProps): React.ReactElement => {
   const showName = slug.replace(/-/g, " ");
   const styledShowName = showName.replace(/\d/g, "");
-
   const showDate = slug.match(/\d+/g)?.join(" ");
 
   return (
-    <article className="w-[352px] h-[385px] relative leading-[120%]">
+    <article
+      className={`w-[352px] h-${height} relative overflow-hidden leading-[120%]`}
+    >
       <Image
         src="/assets/test.png"
         alt={`Imatge del programa ${styledShowName}`}
         height="353"
         width="353"
+        className="overflow-hidden"
       />
       <ul className="flex flex-col absolute pl-4 pb-[16px] bottom-6 text-white ">
         <li className="mb-3 h-[14px]">
