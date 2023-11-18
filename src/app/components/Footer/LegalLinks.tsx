@@ -18,7 +18,7 @@ const LegalLinks = (): React.ReactElement => {
       <span>Legal</span>
       <ul className="mt-[26px]">
         {legalLinks.map((link) => (
-          <li className="h-8" key={link.label}>
+          <li className="h-8 w-max " key={link.label}>
             <Link href={link.href}>{link.label}</Link>
           </li>
         ))}

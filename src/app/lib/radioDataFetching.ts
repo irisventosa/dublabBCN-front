@@ -2,7 +2,7 @@ import axios from "axios";
 import { ApiProfileShow, LatestShowsData, LiveRadioData } from "../types";
 
 const streamingData = "https://dublabbcn.airtime.pro/api/live-info";
-const latestShowsData = "https://api.dublab.es/api/shows";
+const latestShowsData = "http://127.0.0.1:8000/api/shows/";
 const profileData = "https://api.dublab.es/api/profiles/";
 
 export const getLiveRadioData = async () => {
