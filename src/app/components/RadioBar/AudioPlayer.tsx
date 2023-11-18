@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { ChangeEvent, ReactNode, Ref, useRef, useState } from "react";
 import Button from "../Button";
 
 const streamingSource = "https://dublabbcn.out.airtime.pro/dublabbcn_a";
@@ -17,8 +17,8 @@ const AudioPlayer = () => {
     setIsPlaying(!isPlaying);
   };
 
-  const changeVolume = (e) => {
-    const volume = e.target.value;
+  const changeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const volume = +e.target.value;
     if (audioRef.current) {
       audioRef.current.volume = volume;
     }
@@ -28,7 +28,7 @@ const AudioPlayer = () => {
     <div className="min-w-fit flex gap-[200px] group ">
       <audio src={streamingSource} ref={audioRef}></audio>
       <div className="group z-40 relative ml-6 ">
-        <span className=" visible group-hover:invisible z-40 min-w-[100px] min-h[30px] absolute">
+        <span className="visible group-hover:invisible z-40 min-w-[100px] min-h[30px] absolute">
           Volume
         </span>
         <input

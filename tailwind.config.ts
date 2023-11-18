@@ -26,6 +26,11 @@ const config = {
         marquee: "marquee 25s linear infinite",
         marquee2: "marquee2 25s linear infinite",
       },
+      height: {
+        small: "225px",
+        medium: "335px",
+        large: "385px",
+      },
     },
   },
   plugins: [require("tailwindcss-animated")],

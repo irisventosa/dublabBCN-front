@@ -1,11 +1,11 @@
 import HeroSection from "./components/HeroSection";
-import LatestShows from "./components/LatestShows/LatestShows";
+import LatestShowsFixedHeight from "./components/LatestShows/LatestShowsFixedHeight";
 
 export default function Home() {
   return (
     <main className="flex flex-col">
       <HeroSection />
-      <LatestShows />
+      <LatestShowsFixedHeight />
     </main>
   );
 }
