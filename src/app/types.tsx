@@ -16,7 +16,7 @@ export interface RadioApiShow {
   slug: string;
   tracklist?: string;
   mixcloud_url: string;
-  picture: string;
+  profile_picture: string;
 }
 
 export interface RadioShow {
