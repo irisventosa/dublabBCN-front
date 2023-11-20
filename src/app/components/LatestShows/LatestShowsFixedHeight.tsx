@@ -1,12 +1,20 @@
-import React from "react";
-import fakeShows from "../../../../fakeData";
+"use client";
+import { useState } from "react";
 import ShowCard from "./ShowCard";
-import { getLatestShowsData } from "@/app/lib/radioDataFetching";
+import { RadioApiShow } from "@/app/types";
 
-const LatestShowsFixedHeight = async () => {
-  const { results } = await getLatestShowsData();
+interface LatestShowsFixedHeightProps {
+  latestShows: RadioApiShow[];
+}
 
-  const latestShows = results.slice(0, 7);
+const LatestShowsFixedHeight = ({
+  latestShows,
+}: LatestShowsFixedHeightProps) => {
+  const [iFrameShow, setIFrameShow] = useState("");
+
+  const handleCardShow = (showFromCard: string) => {
+    setIFrameShow(showFromCard);
+  };
 
   return (
     <section className="py-[65px]">
@@ -17,16 +25,22 @@ const LatestShowsFixedHeight = async () => {
             className=" className={`w-[353px] h-[385px] relative overflow-hidden leading-[120%]`}
     >"
           >
-            <ShowCard show={show} height={"385"} />
+            <ShowCard
+              show={show}
+              height={"385"}
+              onClickPlayback={handleCardShow}
+            />
           </li>
         ))}
       </ul>
-      <iframe
-        className="w-screen"
-        height="60"
-        allow="autoplay"
-        src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&amp;mini=1&amp;light=1&amp;autoplay=1&amp;feed=/dublabes/anxiety-suitcase-140423/"
-      ></iframe>
+      {iFrameShow && (
+        <iframe
+          className="w-[800px] fixed bottom-0 left-0"
+          height="60"
+          allow="autoplay"
+          src={`https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=/${iFrameShow}`}
+        ></iframe>
+      )}
     </section>
   );
 };

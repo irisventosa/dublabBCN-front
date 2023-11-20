@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from "react";
 
 interface ButtonProps extends PropsWithChildren {
   className?: string;
-  actionOnClick?: () => void;
+  actionOnClick?: (parameter: any) => void;
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
 }
