@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Credits = (): React.ReactElement => {
   return (
-    <div className="flex items-end flex-row place-content-evenly  gap-[345px]  px-[33px] pt-[183px]">
+    <div className="flex items-end flex-row pl-[33px] pt-[163px]">
       <ul className="flex flex-row items-end mr-[54px] ">
         <li>
           <Image
@@ -14,10 +14,10 @@ const Credits = (): React.ReactElement => {
             height={28}
           />
         </li>
-        <li className="ml-[206px]">Credits</li>
-        <li className="min-w-fit ml-[206px] ">Ⓒ 2023 Dublab Barcelona</li>
+        <li className="ml-[173px]">Credits</li>
+        <li className="min-w-fit ml-[143px] ">Ⓒ 2023 Dublab Barcelona</li>
       </ul>
-      <span className="text-[1.5rem] font-thin">
+      <span className="text-[1.5rem] font-thin min-w-fit ml-[90px] ">
         dublab barcelona és una ràdio online <br /> comunitària sense ànim de
         lucre.
       </span>
