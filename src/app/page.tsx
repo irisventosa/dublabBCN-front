@@ -5,7 +5,7 @@ import { getLatestShowsData } from "./lib/radioDataFetching";
 const Home = async () => {
   const { results } = await getLatestShowsData();
 
-  const latestShows = results.slice(0, 7);
+  const latestShows = results.slice(0, 8);
 
   return (
     <>

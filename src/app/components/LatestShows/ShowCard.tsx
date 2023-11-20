@@ -41,7 +41,7 @@ const ShowCard = ({
           className="overflow-hidden h-[353px] w-[353px] relative "
         />
         <Button
-          className="absolute bottom-52 left-36 text-zinc-200"
+          className="absolute bottom-52 left-50 text-zinc-200"
           actionOnClick={handleShowPlayback}
         >
           {`https://api.mixcloud.com/${showUrl}embed-html/ `}
