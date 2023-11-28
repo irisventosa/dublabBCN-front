@@ -1,18 +1,19 @@
+import useAirtimeApi from "@/app/lib/hooks/useAirtimeApi";
 import { LiveRadioData } from "@/app/types";
-import axios from "axios";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
-import DigitalClock from "./Clock";
 import AudioPlayer from "./AudioPlayer";
-import { getLiveRadioData } from "../../lib/radioDataFetching";
+import DigitalClock from "./DigitalClock";
 
 const RadioBar = async () => {
+  const { getLiveRadioData } = useAirtimeApi();
+
   const {
     currentShow: [liveShow],
     nextShow: [nextLiveShow],
   }: LiveRadioData = await getLiveRadioData();
 
-  //const nextShowStartTime = nextLiveShow.starts.split(" ")[1].slice(0, 5);
+  const nextShowStartTime = nextLiveShow.starts.split(" ")[1].slice(0, 5);
   //{liveShow.name} - {liveShow.description}
 
   return (
@@ -31,13 +32,13 @@ const RadioBar = async () => {
         <span className="min-w-fit">En directe:</span>
         <Marquee className="max-w-[200px]"></Marquee>
       </li>
-      <li className="text-white/60 z-20 ">
+      <li className="text-white/60 z-20 flex">
         PRÒXIM:
         {nextLiveShow ? (
           <div>
             <span className="ml-[19px]">{nextShowStartTime}</span>
             <span className="ml-[19px]">{nextLiveShow.name}</span>
-            <span className="ml-[19px]">{nextLiveShow.description}</span>
+            <span className="ml-[19px]">{nextLiveShow.url}</span>
           </div>
         ) : (
           <span>Holi</span>

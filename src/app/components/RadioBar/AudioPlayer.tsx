@@ -37,7 +37,7 @@ const AudioPlayer = () => {
           max="1"
           step="0.01"
           onChange={changeVolume}
-          className="group-hover:visible invisible z-40 absolute mt-1 mr-10 appearance-none bg-white overflow-hidden "
+          className="group-hover:visible invisible z-40 absolute mt-1 mr-10 appearance-none bg-white overflow-hidden"
         />
       </div>
       <Button
