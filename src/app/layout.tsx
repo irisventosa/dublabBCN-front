@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localfont from "next/font/local";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import "./globals.css";
 import RadioBar from "./components/RadioBar/RadioBar";
-import localfont from "next/font/local";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "dublab BCN",
@@ -16,11 +15,7 @@ const favorit = localfont({
   variable: "--font-favorit",
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body className={`${favorit.variable} font-favorit antialiased`}>
@@ -31,4 +26,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

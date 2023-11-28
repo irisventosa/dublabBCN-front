@@ -1,6 +1,7 @@
 export interface RadioLiveShow {
   name: string;
   starts: string;
+  url: string;
   ends: string;
   description: string;
 }
@@ -31,10 +32,41 @@ export interface RadioShow {
 export interface ApiProfileShow {
   host: string;
   description: string;
+  tags: String[];
   picture: string;
   links: string[];
 }
 
 export interface LatestShowsData {
   results: RadioApiShow[];
+}
+
+export interface AirtimeShow {
+  start_timestamp: string;
+  end_timestamp: string;
+  name: string;
+  description: string;
+  id: number;
+  instance_id: number;
+  instance_description: string;
+  url: string;
+  starts: string;
+  ends: string;
+}
+
+export interface WeekInfo {
+  monday: AirtimeShow[];
+  tuesday: AirtimeShow[];
+  wednesday: AirtimeShow[];
+  thursday: AirtimeShow[];
+  friday: AirtimeShow[];
+  saturday: AirtimeShow[];
+  sunday: AirtimeShow[];
+  nextmonday: AirtimeShow[];
+  nexttuesday: AirtimeShow[];
+  nextwednesday: AirtimeShow[];
+  nextthursday: AirtimeShow[];
+  nextfriday: AirtimeShow[];
+  nextsaturday: AirtimeShow[];
+  nextsunday: AirtimeShow[];
 }

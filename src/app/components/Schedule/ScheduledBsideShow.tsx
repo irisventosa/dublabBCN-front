@@ -6,43 +6,32 @@ import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
 
-interface ScheduledShowProps {
+interface ScheduledBsideShow {
   airtimeShow: AirtimeShow;
   listPosition: number;
 }
 
-const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
-  const { getProfileData } = useDublabApi();
-
-  const { data: profileData } = useSWR<ApiProfileShow>(
-    airtimeShow.name,
-    getProfileData
-  );
-
-  const isListPositionLessThanOne = listPosition < 1;
-
-  const {
-    onAirStyles = isListPositionLessThanOne
-      ? "flex flex-row h-[212px] w-full bg-black text-white"
-      : "flex flex-row h-[212px] w-full",
-    firstSeparatorLine = isListPositionLessThanOne,
-    borderColor = isListPositionLessThanOne
-      ? "border border-white rounded-md pt-[5px] px-2 pb-[3px]"
-      : "border border-black rounded-md pt-[5px] px-2 pb-[3px]",
-  } = {};
-
-  const broadcastTime: string = extractAndFormatShowDate(
+const ScheduledBsideShow = ({
+  airtimeShow,
+  listPosition,
+}: ScheduledBsideShow) => {
+  const broadcastingTime = extractAndFormatShowDate(
     airtimeShow.start_timestamp
   );
 
-  if (!profileData) return <div>Loading...</div>;
+  const firstLine = listPosition < 1;
+
+  const onAir =
+    listPosition < 1
+      ? "flex flex-row h-[212px] w-full bg-black text-white"
+      : "flex flex-row h-[212px] w-full";
 
   return (
     <>
-      {firstSeparatorLine && <hr className="w-full border-black" />}
-      <div className={onAirStyles}>
+      {firstLine && <hr className="w-full border-black" />}
+      <div className={onAir}>
         <Image
-          src={profileData.picture}
+          src={"/assets/b-sides.png"}
           alt={""}
           width={263}
           height={150}
@@ -50,16 +39,8 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
         />
         <ul className="flex flex-col pl-[101px]">
           <li className="text-[32px] h-[47px] mt-[21px]">{airtimeShow.name}</li>
-          <li className="text-[22px] h-[28px] ">{profileData.host}</li>
-          <li className="pt-[59px]">
-            <ul className="flex flex-row gap-[10px] text-[11px]">
-              {profileData.tags.map((tag, index) => (
-                <li key={index} className={borderColor}>
-                  {tag}
-                </li>
-              ))}
-            </ul>
-          </li>
+          <li className="text-[22px] h-[28px] ">{airtimeShow.url}</li>
+          <li className="pt-[59px]"></li>
         </ul>
         <ul className="flex flex-col gap-[117px] items-end absolute right-0 p-[30px] ">
           <li>
@@ -72,7 +53,7 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
                 height={18}
               />
             ) : (
-              broadcastTime
+              broadcastingTime
             )}
           </li>
           <li>
@@ -86,4 +67,4 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
   );
 };
 
-export default ScheduledShow;
+export default ScheduledBsideShow;

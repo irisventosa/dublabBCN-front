@@ -1,8 +1,12 @@
 import DayOfTheMonth from "../components/Date/DayOfTheMonth";
 import DaySelector from "../components/Date/DaySelector";
-import ScheduledShowsList from "../components/Schedule/ScheduledShowsList";
+import useAirtimeApi from "../lib/hooks/useAirtimeApi";
 
-const Calendari = (): React.ReactElement => {
+const Calendar = async () => {
+  const { getWeekInfo } = useAirtimeApi();
+
+  const weekSchedule = await getWeekInfo();
+
   return (
     <main className="flex flex-col">
       <section className="mt-[219px] ">
@@ -20,11 +24,10 @@ const Calendari = (): React.ReactElement => {
           </li>
         </ul>
         <DayOfTheMonth />
-        <DaySelector />
-        <ScheduledShowsList />
+        {weekSchedule && <DaySelector scheduledShows={weekSchedule} />}
       </section>
     </main>
   );
 };
 
-export default Calendari;
+export default Calendar;

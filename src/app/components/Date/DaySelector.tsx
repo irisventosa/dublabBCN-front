@@ -1,16 +1,48 @@
-import React from "react";
+"use client";
+import findActualDay from "@/app/lib/findActualDay";
+import getAirtimeWeeks from "@/app/lib/getFormattedCalendar";
+import { AirtimeShow, WeekInfo } from "@/app/types";
+import { useEffect, useState } from "react";
+import ScheduledShowsList from "../Schedule/ScheduledShowsList";
 
-const DaySelector = (): React.ReactElement => {
+interface DaySelectorProps {
+  scheduledShows: WeekInfo;
+  children?: React.ReactNode;
+}
+
+const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
+  const actualDay = findActualDay(scheduledShows);
+  const [shownSchedule, setShownSchedule] = useState(actualDay);
+
+  useEffect(() => {
+    setShownSchedule(actualDay);
+  }, [scheduledShows]);
+
+  const twoAirtimeWeeks = getAirtimeWeeks();
+  const wholeWeekFormatted = twoAirtimeWeeks.slice(0, 7);
+
+  const handleClick = (dayName: string) => {
+    const weekSchedule = scheduledShows[dayName as keyof WeekInfo];
+
+    setShownSchedule(weekSchedule);
+  };
+
   return (
-    <ul className="flex flex-row gap-28 text-xl justify-between pt-14 pb-6 px-8 ">
-      <li>MON 30/01</li>
-      <li>TUE 31/01</li>
-      <li>WED 01/02</li>
-      <li>THU 02/02</li>
-      <li>FRI 03/02</li>
-      <li>SAT 04/02</li>
-      <li>SUN 05/02</li>
-    </ul>
+    <>
+      <ul className="flex flex-row gap-28 text-xl justify-between pt-14 pb-6 px-8 weekdays">
+        {wholeWeekFormatted.map((day, index) => (
+          <li
+            key={index}
+            data-day={day.dayName}
+            onClick={() => handleClick(day.dayName)}
+            className="cursor-pointer w-min hover:animate-pulse hover:animate-duration-500 hover:animate-ease-in-out opacity-40 active:opacity-100"
+          >
+            {day.formattedDay}
+          </li>
+        ))}
+      </ul>
+      <ScheduledShowsList schedule={shownSchedule} />
+    </>
   );
 };
 

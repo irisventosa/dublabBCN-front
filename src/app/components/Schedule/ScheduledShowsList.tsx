@@ -1,11 +1,41 @@
+"use client";
+import { AirtimeShow } from "@/app/types";
+import React from "react";
 import ScheduledShow from "./ScheduledShow";
+import ScheduledBsideShow from "./ScheduledBsideShow";
+import extractAndFormatShowDate from "@/app/lib/extractAndFormatShowDate";
+import { currentHour } from "@/app/lib/getDateInCatalan";
 
-const ScheduledShowsList = (): React.ReactElement => {
+interface ScheduledShowsListProps {
+  schedule: AirtimeShow[];
+  children?: React.ReactNode;
+}
+
+const ScheduledShowsList = ({
+  schedule,
+}: ScheduledShowsListProps): React.ReactElement => {
+  const scheduleByHours = schedule.filter(
+    (show) =>
+      parseInt(extractAndFormatShowDate(show.end_timestamp)) > currentHour
+  );
+
   return (
     <ul>
-      <li>
-        <ScheduledShow />
-      </li>
+      {scheduleByHours.map((show, listPosition) => (
+        <>
+          <li key={show.name} className="text">
+            {show.name.startsWith("b-sid") ? (
+              <ScheduledBsideShow
+                airtimeShow={show}
+                listPosition={listPosition}
+              />
+            ) : (
+              <ScheduledShow airtimeShow={show} listPosition={listPosition} />
+            )}
+          </li>
+          <hr className="w-full border-black" />
+        </>
+      ))}
     </ul>
   );
 };
