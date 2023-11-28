@@ -1,12 +1,12 @@
 import {
-  getDayName,
+  getDayNameInCatalan,
   getDayNumberAndMonth,
   year,
 } from "@/app/lib/getDateInCatalan";
 
 const DayOfTheMonth = () => {
   const dateInCatalan = getDayNumberAndMonth();
-  const weekDay = getDayName();
+  const weekDay = getDayNameInCatalan();
 
   return (
     <time
