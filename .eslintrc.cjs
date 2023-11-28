@@ -13,7 +13,7 @@ module.exports = {
   ignorePatterns: ["*.js", "*.cjs"],
   parser: "@typescript-eslint/parser",
   parserOptions: { ecmaVersion: "latest", sourceType: "module" },
-  plugins: ["react-refresh", "jsx-a11y", "react-hooks"],
+  plugins: ["react-refresh", "jsx-a11y", "react-hooks", "typescript-eslint"],
   rules: {
     "react-refresh/only-export-components": [
       "warn",
