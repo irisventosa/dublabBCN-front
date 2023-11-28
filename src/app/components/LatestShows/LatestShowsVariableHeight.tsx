@@ -1,10 +1,17 @@
-import React from "react";
-import fakeShows from "../../../../fakeData";
-import ShowCard from "./ShowCard";
+"use client";
 import { getLatestShowsData } from "@/app/lib/radioDataFetching";
+import ShowCard from "./ShowCard";
+import { useState } from "react";
+import { RadioApiShow } from "@/app/types";
 
-const LatestShowsVariableHeight = async () => {
-  const { results } = await getLatestShowsData();
+interface LatestShowsVariableHeightProps {
+  latestShows: RadioApiShow[];
+}
+
+const LatestShowsVariableHeight = ({
+  latestShows,
+}: LatestShowsVariableHeightProps) => {
+  const [iFrameShow, setIFrameShow] = useState("");
 
   const heights = ["small", "medium", "large"];
 
@@ -13,15 +20,31 @@ const LatestShowsVariableHeight = async () => {
     return heights[randomIndex];
   };
 
+  const handleCardShow = (showFromCard: string) => {
+    setIFrameShow(showFromCard);
+  };
+
   return (
     <section className="py-[65px] px-[31px]">
       <ul className="grid grid-cols-4 gap-x-3 gap-y-14 pt-[206px] ">
-        {results.map((show) => (
+        {latestShows.map((show) => (
           <li key={show.slug}>
-            <ShowCard show={show} height={getRandomHeight()} />
+            <ShowCard
+              show={show}
+              height={getRandomHeight()}
+              onClickPlayback={handleCardShow}
+            />
           </li>
         ))}
       </ul>
+      {iFrameShow && (
+        <iframe
+          className="w-[800px] fixed bottom-0 left-0"
+          height="60"
+          allow="autoplay"
+          src={`https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=/${iFrameShow}`}
+        ></iframe>
+      )}
     </section>
   );
 };
