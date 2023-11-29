@@ -13,7 +13,7 @@ export interface LiveRadioData {
 
 export interface RadioApiShow {
   host?: string;
-  tags: String[];
+  tags: string[];
   slug: string;
   tracklist?: string;
   mixcloud_url: string;
@@ -22,7 +22,7 @@ export interface RadioApiShow {
 
 export interface RadioShow {
   host?: string;
-  tags: String[];
+  tags: string[];
   data: string;
   name: string;
   tracklist?: string;
@@ -32,7 +32,7 @@ export interface RadioShow {
 export interface ApiProfileShow {
   host: string;
   description: string;
-  tags: String[];
+  tags: string[];
   picture: string;
   links: string[];
 }

@@ -10,9 +10,11 @@ const HeroSection = (): React.ReactElement => (
     <div className="bottom-0 absolute w-full h-[42px] bg-black flex">
       <Marquee>
         <span className=" text-white tracking-[3.8px] flex whitespace-nowrap justify-center ">
-          /// LATEST /// LATEST /// LATEST /// LATEST /// LATEST /// LATEST ///
-          LATEST /// LATEST /// LATEST /// LATEST /// LATEST /// LATEST ///
-          LATEST /// LATEST /// LATEST /// LATEST /// LATEST /// LATEST
+          {
+            "/// LATEST /// LATEST /// LATEST /// LATEST /// LATEST /// LATEST ///"
+          }
+          {"LATEST /// LATEST /// LATEST /// LATEST /// LATEST /// LATEST ///"}
+          {"LATEST /// LATEST /// LATEST /// LATEST /// LATEST /// LATEST"}
         </span>
       </Marquee>
       r

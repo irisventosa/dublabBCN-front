@@ -9,11 +9,12 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
     "next/core-web-vitals",
+    "prettier",
   ],
   ignorePatterns: ["*.js", "*.cjs"],
   parser: "@typescript-eslint/parser",
-  parserOptions: { ecmaVersion: "latest", sourceType: "module" },
-  plugins: ["react-refresh", "jsx-a11y", "react-hooks", "typescript-eslint"],
+  parserOptions: { ecmaVersion: "2020", sourceType: "module" },
+  plugins: ["react-refresh", "react-hooks"],
   rules: {
     "react-refresh/only-export-components": [
       "warn",

@@ -1,9 +1,10 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
-import { ApiProfileShow, RadioApiShow, RadioShow } from "@/app/types";
+import extractUrlForEmbedPlayer from "@/app/lib/extractUrlForEmbedPlayer";
+import { RadioApiShow } from "@/app/types";
 import Image from "next/image";
 import React from "react";
 import Button from "../Button";
-import extractUrlForEmbedPlayer from "@/app/lib/extractUrlForEmbedPlayer";
 
 interface ShowCardProps {
   show: RadioApiShow;
@@ -14,8 +15,6 @@ interface ShowCardProps {
 
 const ShowCard = ({
   show: { slug, mixcloud_url, tags, host, profile_picture },
-  listPosition,
-  height,
   onClickPlayback,
 }: ShowCardProps): React.ReactElement => {
   const showName = slug.replace(/-/g, " ");

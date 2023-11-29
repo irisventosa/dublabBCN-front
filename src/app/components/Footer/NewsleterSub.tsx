@@ -4,17 +4,18 @@ const Newsletter = () => {
       <span>Newsletter</span>
       <br />
       <span className="h-8">
-        forma part d'una comunitat culturalment activa i inquieta.
+        forma part d&apos;una comunitat culturalment activa i inquieta.
       </span>
-      <label htmlFor="email">
-        <input
-          className="w-[537px] h-[42px] rounded-md pl-4 mt-1 "
-          placeholder="ENTER EMAIL"
-          type="text"
-          name="email"
-          id="email"
-        />
+      <label className="text-transparent" htmlFor="email">
+        email
       </label>
+      <input
+        className="w-[537px] h-[42px] rounded-md pl-4 mt-1 cursor-text text-black "
+        placeholder="ENTER EMAIL"
+        type="text"
+        name="email"
+        id="email"
+      />
     </div>
   );
 };

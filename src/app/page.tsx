@@ -9,10 +9,6 @@ const Home = async () => {
 
   return (
     <>
-      <script
-        src="//widget.mixcloud.com/media/js/widgetApi.js"
-        type="text/javascript"
-      />
       <main className="flex flex-col">
         <HeroSection />
         <LatestShowsFixedHeight latestShows={latestShows} />
