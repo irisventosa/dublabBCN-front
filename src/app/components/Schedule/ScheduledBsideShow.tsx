@@ -1,10 +1,8 @@
 "use client";
 import extractAndFormatShowDate from "@/app/lib/extractAndFormatShowDate";
-import useDublabApi from "@/app/lib/hooks/useDublabApi";
-import { AirtimeShow, ApiProfileShow } from "@/app/types";
+import { AirtimeShow } from "@/app/types";
 import Image from "next/image";
 import Link from "next/link";
-import useSWR from "swr";
 
 interface ScheduledBsideShow {
   airtimeShow: AirtimeShow;

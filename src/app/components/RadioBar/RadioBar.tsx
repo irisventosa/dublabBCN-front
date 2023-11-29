@@ -9,6 +9,7 @@ const RadioBar = async () => {
   const { getLiveRadioData } = useAirtimeApi();
 
   const {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     currentShow: [liveShow],
     nextShow: [nextLiveShow],
   }: LiveRadioData = await getLiveRadioData();

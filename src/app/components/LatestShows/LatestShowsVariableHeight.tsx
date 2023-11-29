@@ -1,8 +1,7 @@
 "use client";
-import { getLatestShowsData } from "@/app/lib/radioDataFetching";
-import ShowCard from "./ShowCard";
-import { useState } from "react";
 import { RadioApiShow } from "@/app/types";
+import { useState } from "react";
+import ShowCard from "./ShowCard";
 
 interface LatestShowsVariableHeightProps {
   latestShows: RadioApiShow[];
@@ -39,6 +38,7 @@ const LatestShowsVariableHeight = ({
       </ul>
       {iFrameShow && (
         <iframe
+          title="Programa de radio seleccionat"
           className="w-[800px] fixed bottom-0 left-0"
           height="60"
           allow="autoplay"

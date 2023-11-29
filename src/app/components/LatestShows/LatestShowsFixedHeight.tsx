@@ -35,6 +35,7 @@ const LatestShowsFixedHeight = ({
       </ul>
       {iFrameShow && (
         <iframe
+          title="Programa de radio seleccionat"
           className="w-[800px] fixed bottom-0 left-0"
           height="60"
           allow="autoplay"

@@ -6,8 +6,6 @@ const extractUrlForEmbedPlayer = (mixcloudUrl: string) => {
   if (startIndex !== -1) {
     const pathStartingFromDublabes = showUrl.slice(startIndex);
     return pathStartingFromDublabes;
-  } else {
-    console.log("The specified string was not found in the URL.");
   }
 };
 

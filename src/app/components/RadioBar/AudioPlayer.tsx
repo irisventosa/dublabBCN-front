@@ -1,5 +1,6 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 "use client";
-import { ChangeEvent, ReactNode, Ref, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Button from "../Button";
 
 const streamingSource = "https://dublabbcn.out.airtime.pro/dublabbcn_a";

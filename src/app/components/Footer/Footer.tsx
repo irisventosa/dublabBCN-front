@@ -1,10 +1,9 @@
-import Link from "next/link";
 import React from "react";
-import SocialLinks from "./SocialLinks";
 import Contact from "./Contact";
+import Credits from "./Credits";
 import LegalLinks from "./LegalLinks";
 import Newsletter from "./NewsleterSub";
-import Credits from "./Credits";
+import SocialLinks from "./SocialLinks";
 
 const Footer = (): React.ReactElement => {
   return (

@@ -9,7 +9,7 @@ const Contact = () => {
           Envia un mail
         </Link>
         <Link href={"https://maps.app.goo.gl/po31DRus98exm34MA"}>
-          visita'ns
+          visita&apos;ns
         </Link>
       </address>
     </div>
