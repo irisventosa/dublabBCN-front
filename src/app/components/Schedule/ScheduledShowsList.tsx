@@ -14,7 +14,7 @@ interface ScheduledShowsListProps {
 const ScheduledShowsList = ({
   schedule,
 }: ScheduledShowsListProps): React.ReactElement => {
-  const scheduleByHours = schedule.filter(
+  const scheduleByHours: AirtimeShow[] = schedule.filter(
     (show) =>
       parseInt(extractAndFormatShowDate(show.end_timestamp)) > currentHour
   );

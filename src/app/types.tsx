@@ -29,12 +29,19 @@ export interface RadioShow {
   mixcloud_url: string;
 }
 
-export interface ApiProfileShow {
+export interface ApiProfile {
+  id: number;
   host: string;
+  slug: string;
   description: string;
   tags: string[];
   picture: string;
   links: string[];
+  shows?: RadioApiShow[];
+}
+
+export interface ApiProfilesList {
+  results: ApiProfile[];
 }
 
 export interface LatestShowsData {
