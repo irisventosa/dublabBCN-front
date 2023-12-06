@@ -1,18 +1,21 @@
 import { ApiProfile, ApiProfilesList } from "@/app/types";
 import axios from "axios";
 
-const profileData = "https://api.dublab.es/api/profiles/";
+const profileDataUrl = "https://api.dublab.es/api/profiles/";
+const profileListUrl = "https://api.dublab.es/api/profiles/?page=";
 
 const useDublabApi = () => {
-  const getProfiles = async () => {
-    const { data: profiles } = await axios.get<ApiProfilesList>(profileData);
+  const getProfiles = async (page: string | number) => {
+    const { data: profiles } = await axios.get<ApiProfilesList>(
+      `${profileListUrl}${page}`
+    );
     return profiles;
   };
 
   const getProfileData = async (showName: string) => {
     const formatedShowName = showName.toLowerCase().replace(/ /g, "-");
     const { data: profile } = await axios.get<ApiProfile>(
-      `${profileData}${formatedShowName}`
+      `${profileDataUrl}${formatedShowName}`
     );
     return profile;
   };
