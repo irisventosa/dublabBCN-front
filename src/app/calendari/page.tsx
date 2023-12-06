@@ -1,5 +1,6 @@
 import DayOfTheMonth from "../components/Date/DayOfTheMonth";
 import DaySelector from "../components/Date/DaySelector";
+import SearchAndFilters from "../components/SearchAndFilters";
 import useAirtimeApi from "../lib/hooks/useAirtimeApi";
 
 const Calendar = async () => {
@@ -17,10 +18,7 @@ const Calendar = async () => {
             </span>
           </li>
           <li>
-            <ul className="flex flex-row gap-[182px] ">
-              <li className="tracking-[0.3rem]">Search</li>
-              <li>Filters</li>
-            </ul>
+            <SearchAndFilters />
           </li>
         </ul>
         <DayOfTheMonth />
