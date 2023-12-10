@@ -5,6 +5,7 @@ import { RadioApiShow } from "@/app/types";
 import Image from "next/image";
 import React from "react";
 import Button from "../Button";
+import processSlug from "@/app/lib/processSlug";
 
 interface ShowCardProps {
   show: RadioApiShow;
@@ -17,9 +18,7 @@ const ShowCard = ({
   show: { slug, mixcloud_url, tags, host, profile_picture },
   onClickPlayback,
 }: ShowCardProps): React.ReactElement => {
-  const showName = slug.replace(/-/g, " ");
-  const styledShowName = showName.replace(/\d/g, "");
-  const showDate = slug.match(/\d+/g)?.join(" ");
+  const { showName, showDate } = processSlug(slug);
 
   const showUrl = extractUrlForEmbedPlayer(mixcloud_url);
 
@@ -34,7 +33,7 @@ const ShowCard = ({
       <div>
         <Image
           src={`https://api.dublab.es${profile_picture}`}
-          alt={`Imatge del programa ${styledShowName}`}
+          alt={`Imatge del programa ${showName}`}
           height={353}
           width={353}
           className="overflow-hidden h-[353px] w-[353px] relative "
@@ -51,7 +50,7 @@ const ShowCard = ({
           <time className="text-[12px]">{showDate}</time>
         </li>
         <li>
-          <h2 className="text-[1.375rem] h-5">{styledShowName}</h2>
+          <h2 className="text-[1.375rem] h-5">{showName}</h2>
         </li>
         <li className="h-[17px]">
           <span className="text-sm ">Hosted by {host}</span>
