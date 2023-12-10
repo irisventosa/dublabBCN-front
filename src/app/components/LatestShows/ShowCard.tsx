@@ -18,7 +18,7 @@ const ShowCard = ({
   show: { slug, mixcloud_url, tags, host, profile_picture },
   onClickPlayback,
 }: ShowCardProps): React.ReactElement => {
-  const { showName, showDate } = processSlug(slug);
+  const { showName, showDateforCard } = processSlug(slug);
 
   const showUrl = extractUrlForEmbedPlayer(mixcloud_url);
 
@@ -47,7 +47,7 @@ const ShowCard = ({
       </div>
       <ul className="flex flex-col absolute p-4 bottom-6 text-white">
         <li className="mb-3 h-[14px]">
-          <time className="text-[12px]">{showDate}</time>
+          <time className="text-[12px]">{showDateforCard}</time>
         </li>
         <li>
           <h2 className="text-[1.375rem] h-5">{showName}</h2>
