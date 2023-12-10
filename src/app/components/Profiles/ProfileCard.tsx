@@ -18,7 +18,7 @@ const ProfileCard = ({
     <article
       className={`w-[353px] h-[385px] relative overflow-hidden leading-[120%]`}
     >
-      <Link href={`http://localhost:3000/shows/${slug}`}>
+      <Link href={`/shows/${slug}`}>
         <div>
           <Image
             src={picture}

@@ -37,7 +37,7 @@ export interface ApiProfile {
   tags: string[];
   picture: string;
   links: string[];
-  shows?: RadioApiShow[];
+  shows: RadioApiShow[];
 }
 
 export interface ApiProfilesList {

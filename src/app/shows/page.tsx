@@ -2,8 +2,8 @@
 
 import useSWR from "swr";
 import SearchAndFilters from "../components/SearchAndFilters";
-import LoadMore from "../components/ShowsProfiles/LoadMoreProfiles";
-import ProfilesList from "../components/ShowsProfiles/ProfilesList";
+import LoadMore from "../components/Profiles/LoadMoreProfiles";
+import ProfilesList from "../components/Profiles/ProfilesList";
 import useDublabApi from "../lib/hooks/useDublabApi";
 
 const ShowProfilesList = () => {
