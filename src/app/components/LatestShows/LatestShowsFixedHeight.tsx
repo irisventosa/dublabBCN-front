@@ -22,8 +22,7 @@ const LatestShowsFixedHeight = ({
         {latestShows.map((show) => (
           <li
             key={show.slug}
-            className=" className={`w-[353px] h-[385px] relative overflow-hidden leading-[120%]`}
-    >"
+            className="maxw-[353px] h-[385px] relative overflow-hidden leading-[120%]"
           >
             <ShowCard
               show={show}

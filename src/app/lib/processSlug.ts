@@ -1,15 +1,48 @@
-const processSlug = (slug: string) => {
-  const showName = slug.replace(/-/g, " ");
-  const styledShowName = showName.replace(/\d/g, "");
-  const showDateforShowList = slug.match(/\d+/g)?.join(".");
-  const showDateforUrl = slug.match(/\d+/g)?.join("-");
-  const showDateforCard = slug.match(/\d+/g)?.join("/");
+import { RadioApiShow } from "../types";
 
-  return {
-    showName: styledShowName,
-    showDateforLists: showDateforShowList,
-    showDateforUrl,
-    showDateforCard,
-  };
+export const formatSlugToGetShowName = (slug: string): string => {
+  if (slug.substring(0, 4) === "6474") {
+    const showIsNumeric = "6474";
+    return showIsNumeric;
+  }
+
+  if (slug.substring(0, 8) === "5wuguan5") {
+    const showIs5wuguan5 = "5wuguan5";
+    return showIs5wuguan5;
+  }
+
+  const showName = slug.replace(/-/g, " ").replace(/\d/g, "");
+  return showName;
 };
-export default processSlug;
+
+export const extractDatesForShowList = (slug: string): string => {
+  const dates = slug.match(/\d+/g);
+  return dates ? dates.join(".") : "";
+};
+
+export const extractDatesForUrl = (slug: string): string => {
+  const dates = slug.match(/\d+/g);
+  return dates ? dates.join("-") : "";
+};
+
+export const extractDatesForCard = (slug: string): string => {
+  const dates = slug.match(/\d+/g);
+  return dates ? dates.join("/") : "";
+};
+
+export const formatRelatedShowsInfo = (shows: RadioApiShow[]) =>
+  shows.map(({ slug, tags }) => {
+    const showName = formatSlugToGetShowName(slug);
+    const showDateForShowList = extractDatesForShowList(slug);
+    const showDateForUrl = extractDatesForUrl(slug);
+    const showDateForList = extractDatesForCard(slug);
+    const showTags = tags;
+
+    return {
+      showName,
+      showDateForShowList,
+      showTags,
+      showDateForUrl,
+      showDateForList,
+    };
+  });

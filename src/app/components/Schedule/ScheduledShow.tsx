@@ -76,7 +76,10 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
             )}
           </li>
           <li>
-            <Link className="underline underline-offset-2" href={""}>
+            <Link
+              className="underline underline-offset-2"
+              href={`/shows/${airtimeShow.name}`}
+            >
               View show
             </Link>
           </li>

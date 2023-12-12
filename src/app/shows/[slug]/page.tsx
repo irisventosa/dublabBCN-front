@@ -22,14 +22,15 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
   if (!profileData) return <div>Loading...</div>;
 
   return (
-    <main className="mt-[317px] w-[720px] gap-[50px] flex ">
+    <main className="mt-[255px] w-[720px] gap-[50px] flex ">
       <Image
         src={profileData.picture}
         alt={""}
         width={660}
         height={327}
+        className="h-[727px]"
       ></Image>
-      <section className="">
+      <section className="max-h-[700px] min-w-[720px] overflow-scroll scrollbar-hide">
         <div className="flex justify-between items-end">
           <ul className="flex">
             <li>Listen</li>
@@ -58,7 +59,7 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
           </p>
         </section>
         <section className="flex-col items-end">
-          <div className="text-2xl flex justify-between mt-[102px] mb-[17px]">
+          <div className="text-2xl flex justify-between mt-[58px] mb-[17px]">
             <h3 className="h-[29px]">Shows Relacionats</h3>
             <span>2023</span>
           </div>

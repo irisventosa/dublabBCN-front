@@ -13,10 +13,13 @@ const useDublabApi = () => {
   };
 
   const getProfileData = async (showName: string) => {
-    const formatedShowName = showName.toLowerCase().replace(/ /g, "-");
+    const trimmedName = showName.toLowerCase().replace(/\s+$/, "");
+    const formatedShowName = trimmedName.replace(/\s+/g, "-");
+
     const { data: profile } = await axios.get<ApiProfile>(
       `${profileDataUrl}${formatedShowName}`
     );
+
     return profile;
   };
 
