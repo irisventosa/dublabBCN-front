@@ -1,18 +1,15 @@
-import useAirtimeApi from "@/app/lib/hooks/useAirtimeApi";
-import { LiveRadioData } from "@/app/types";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import AudioPlayer from "./AudioPlayer";
 import DigitalClock from "./DigitalClock";
 
-const RadioBar = async () => {
-  const { getLiveRadioData } = useAirtimeApi();
-
-  const {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    currentShow: [liveShow],
-    nextShow: [nextLiveShow],
-  }: LiveRadioData = await getLiveRadioData();
+const RadioBar = () => {
+  const currentShow = "Abundance";
+  const nextLiveShow = {
+    name: "Esto es un programa",
+    starts: "2023-12-13 21:00:00",
+    url: "Leonora",
+  };
 
   const nextShowStartTime = nextLiveShow.starts.split(" ")[1].slice(0, 5);
   //{liveShow.name} - {liveShow.description}
@@ -30,8 +27,8 @@ const RadioBar = async () => {
           width={10}
           height={10}
         />
-        <span className="min-w-fit">En directe:</span>
-        <Marquee className="max-w-[200px]"></Marquee>
+        <span className="min-w-fit"></span>
+        <Marquee className="max-w-[200px]">En directe:{currentShow}</Marquee>
       </li>
       <li className="text-white/60 z-20 flex">
         PRÒXIM:
@@ -39,7 +36,7 @@ const RadioBar = async () => {
           <div>
             <span className="ml-[19px]">{nextShowStartTime}</span>
             <span className="ml-[19px]">{nextLiveShow.name}</span>
-            <span className="ml-[19px]">{nextLiveShow.url}</span>
+            <span className="ml-[19px]">- {nextLiveShow.url}</span>
           </div>
         ) : (
           <span>Holi</span>

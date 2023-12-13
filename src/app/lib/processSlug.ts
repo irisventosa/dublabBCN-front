@@ -6,12 +6,17 @@ export const formatSlugToGetShowName = (slug: string): string => {
     return showIsNumeric;
   }
 
+  if (slug.substring(0, 12) === "macguffin-20") {
+    const showIsNeus = "macGuffin-20";
+    return showIsNeus;
+  }
+
   if (slug.substring(0, 8) === "5wuguan5") {
     const showIs5wuguan5 = "5wuguan5";
     return showIs5wuguan5;
   }
 
-  const showName = slug.replace(/-/g, " ").replace(/\d/g, "");
+  const showName = slug.replace(/-/g, " ").replace(/\d/g, "").replace(/'/g, "");
   return showName;
 };
 

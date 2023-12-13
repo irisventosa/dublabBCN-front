@@ -1,19 +1,19 @@
 "use client";
 import useSWR from "swr";
 import SearchAndFilters from "../components/SearchAndFilters";
-import LoadMore from "../components/Profiles/LoadMoreProfiles";
-import ProfilesList from "../components/Profiles/ProfilesList";
 import useDublabApi from "../lib/hooks/useDublabApi";
+import ProfilesList from "../components/Profiles/ProfilesList";
+import LoadMore from "../components/Profiles/LoadMoreProfiles";
 
-const ShowProfilesList = () => {
-  const { getProfiles } = useDublabApi();
+const BSidesList = () => {
+  const { getBsidesData } = useDublabApi();
 
-  const { data: apiProfilesList } = useSWR("1", getProfiles);
+  const { data: bSidesList } = useSWR("1", getBsidesData);
 
-  if (!apiProfilesList) return <div>Loading...</div>;
+  if (!bSidesList) return <div>Loading...</div>;
 
   return (
-    <main className="flex flex-col mt-[219px]">
+    <main className="flex flex-col mt-[219px] bg-black text-white">
       <ul className="flex flex-row gap-[376px]">
         <li>
           <span className="h-[22px] px-8 ">COMING UP /// TODAY & TOMORROW</span>
@@ -23,13 +23,13 @@ const ShowProfilesList = () => {
         </li>
       </ul>
       <div className="flex text-[72px] gap-[140px] pt-[62px] ml-8 ">
-        <span>AAA</span>
-        <h2> SHOWS</h2>
+        <span>bbb</span>
+        <h2> b-sides</h2>
       </div>
-      <ProfilesList firstPageOfProfiles={apiProfilesList.results} />
+      <ProfilesList firstPageOfProfiles={bSidesList.results} />
       <LoadMore />
     </main>
   );
 };
 
-export default ShowProfilesList;
+export default BSidesList;

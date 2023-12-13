@@ -17,8 +17,11 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
 
   const { data: profileData } = useSWR<ApiProfile>(params.slug, getProfileData);
 
-  const ProfileShowName = params.slug.replace(/-/g, " ");
+  let ProfileShowName = params.slug.replace(/-/g, " ");
 
+  if (ProfileShowName === "macguffin 20") {
+    ProfileShowName = "macguffin 2.0";
+  }
   if (!profileData) return <div>Loading...</div>;
 
   return (

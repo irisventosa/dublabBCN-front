@@ -30,9 +30,17 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
           <>
             <div className="flex justify-between mt-[17px]">
               <Link href={`/shows/${showDateForUrl}`}>
-                <span>{showName}</span>
+                <span>
+                  <span>
+                    {showName === "macGuffin-20" ? "Macguffin 2.0" : showName}
+                  </span>
+                </span>
               </Link>
-              <time>{showDateForList}</time>
+              <time>
+                {showDateForList.length === 11
+                  ? showDateForList.substring(3)
+                  : showDateForList}
+              </time>
             </div>
             <ul className="flex text-xs pt-[3px] pb-[17px] ">
               {(showTags || (profileData && profileData.tags)).map(
