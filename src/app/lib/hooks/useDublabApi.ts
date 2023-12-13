@@ -1,8 +1,9 @@
-import { ApiProfile, ApiProfilesList } from "@/app/types";
+import { ApiBsidesList, ApiProfile, ApiProfilesList } from "@/app/types";
 import axios from "axios";
 
 const profileDataUrl = "https://api.dublab.es/api/profiles/";
 const profileListUrl = "https://api.dublab.es/api/profiles/?page=";
+const bSidesListUrl = "https://api.dublab.es/api/b-sides/?page=";
 
 const useDublabApi = () => {
   const getProfiles = async (page: string | number) => {
@@ -13,14 +14,24 @@ const useDublabApi = () => {
   };
 
   const getProfileData = async (showName: string) => {
-    const formatedShowName = showName.toLowerCase().replace(/ /g, "-");
+    const trimmedName = showName.toLowerCase().replace(/\s+$/, "");
+    const formatedShowName = trimmedName.replace(/\s+/g, "-");
+
     const { data: profile } = await axios.get<ApiProfile>(
       `${profileDataUrl}${formatedShowName}`
     );
+
     return profile;
   };
 
-  return { getProfileData, getProfiles };
+  const getBsidesData = async (page: string | number) => {
+    const { data: bSides } = await axios.get<ApiBsidesList>(
+      `${bSidesListUrl}${page}`
+    );
+    return bSides;
+  };
+
+  return { getProfileData, getProfiles, getBsidesData };
 };
 
 export default useDublabApi;

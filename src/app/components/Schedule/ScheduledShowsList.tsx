@@ -24,7 +24,7 @@ const ScheduledShowsList = ({
       {scheduleByHours.map((show, listPosition) => (
         <>
           <li key={show.name} className="text">
-            {show.name.startsWith("b-sid") ? (
+            {show.name.startsWith("b-side") ? (
               <ScheduledBsideShow
                 airtimeShow={show}
                 listPosition={listPosition}

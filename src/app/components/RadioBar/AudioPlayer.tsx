@@ -3,7 +3,8 @@
 import { useRef, useState } from "react";
 import Button from "../Button";
 
-const streamingSource = "https://dublabbcn.out.airtime.pro/dublabbcn_a";
+const streamingSource =
+  "https://stream-relay-geo.ntslive.net/stream?client=NTSWebApp&t=1702486346755";
 
 const AudioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);

@@ -26,13 +26,13 @@ const LoadMore = () => {
   }, [inView, loadMoreProfiles]);
 
   return (
-    <>
+    <div className="mt-[61px]">
       <ProfilesList firstPageOfProfiles={profiles} />
       <div
         className="flex justify-center items-center p-4 col-span-1 sm:col-span-2 md:col-span-3"
         ref={ref}
       ></div>
-    </>
+    </div>
   );
 };
 

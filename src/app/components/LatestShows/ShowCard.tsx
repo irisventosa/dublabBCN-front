@@ -1,11 +1,16 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
 import extractUrlForEmbedPlayer from "@/app/lib/extractUrlForEmbedPlayer";
-import { RadioApiShow } from "@/app/types";
+import { ApiProfile, RadioApiShow } from "@/app/types";
 import Image from "next/image";
 import React from "react";
 import Button from "../Button";
-import processSlug from "@/app/lib/processSlug";
+import useDublabApi from "@/app/lib/hooks/useDublabApi";
+import useSWR from "swr";
+import {
+  extractDatesForCard,
+  formatSlugToGetShowName,
+} from "@/app/lib/processSlug";
 
 interface ShowCardProps {
   show: RadioApiShow;
@@ -14,11 +19,19 @@ interface ShowCardProps {
   onClickPlayback: (show: string) => void;
 }
 
+const dublabApi = "https://api.dublab.es";
+const mixcloudEmbedUrl = "https://api.mixcloud.com/";
+
 const ShowCard = ({
   show: { slug, mixcloud_url, tags, host, profile_picture },
   onClickPlayback,
 }: ShowCardProps): React.ReactElement => {
-  const { showName, showDateforCard } = processSlug(slug);
+  const { getProfileData } = useDublabApi();
+
+  const showName = formatSlugToGetShowName(slug);
+  const showDateforCard = extractDatesForCard(slug);
+
+  const { data: profile } = useSWR<ApiProfile>(showName, getProfileData);
 
   const showUrl = extractUrlForEmbedPlayer(mixcloud_url);
 
@@ -26,13 +39,17 @@ const ShowCard = ({
     onClickPlayback(showUrl!);
   };
 
+  if (host === undefined || host === null) {
+    host = profile?.host;
+  }
+
   return (
     <article
       className={`w-[353px] h-[385px] relative overflow-hidden leading-[120%]`}
     >
       <div>
         <Image
-          src={`https://api.dublab.es${profile_picture}`}
+          src={`${dublabApi}${profile_picture}`}
           alt={`Imatge del programa ${showName}`}
           height={353}
           width={353}
@@ -42,7 +59,7 @@ const ShowCard = ({
           className="absolute bottom-52 left-50 text-zinc-200"
           actionOnClick={handleShowPlayback}
         >
-          {`https://api.mixcloud.com/${showUrl}embed-html/ `}
+          {`${mixcloudEmbedUrl}${showUrl}embed-html/`}
         </Button>
       </div>
       <ul className="flex flex-col absolute p-4 bottom-6 text-white">

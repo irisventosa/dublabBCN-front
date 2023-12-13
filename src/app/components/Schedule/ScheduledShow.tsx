@@ -27,8 +27,8 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
       : "flex flex-row h-[212px] w-full",
     firstSeparatorLine = isListPositionLessThanOne,
     borderColor = isListPositionLessThanOne
-      ? "border border-white rounded-md pt-[5px] px-2 pb-[3px]"
-      : "border border-black rounded-md pt-[5px] px-2 pb-[3px]",
+      ? "border border-white rounded-md pt-[5px] px-2 pb-[1px]"
+      : "border border-black rounded-md pt-[5px] px-2 pb-[1px]",
   } = {};
 
   const broadcastTime: string = extractAndFormatShowDate(
@@ -76,7 +76,10 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
             )}
           </li>
           <li>
-            <Link className="underline underline-offset-2" href={""}>
+            <Link
+              className="underline underline-offset-2"
+              href={`/shows/${airtimeShow.name}`}
+            >
               View show
             </Link>
           </li>

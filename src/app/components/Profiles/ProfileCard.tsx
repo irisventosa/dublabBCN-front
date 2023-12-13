@@ -1,12 +1,19 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
-import { ApiProfile } from "@/app/types";
+import { formatSlugToGetShowName } from "@/app/lib/processSlug";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+interface Profile {
+  host?: string;
+  picture: string;
+  tags: string[];
+  slug: string;
+}
+
 interface ProfileCardProps {
-  profile: ApiProfile;
+  profile: Profile;
   listPosition?: number;
   height: string;
 }
@@ -14,6 +21,8 @@ interface ProfileCardProps {
 const ProfileCard = ({
   profile: { host, picture, tags, slug },
 }: ProfileCardProps): React.ReactElement => {
+  const showName = formatSlugToGetShowName(slug);
+
   return (
     <article
       className={`w-[353px] h-[385px] relative overflow-hidden leading-[120%]`}
@@ -30,10 +39,10 @@ const ProfileCard = ({
         </div>
         <ul className="flex flex-col absolute p-4 bottom-6 text-white">
           <li>
-            <h2 className="text-[1.375rem] h-5">{slug}</h2>
+            <h2 className="text-[1.375rem]">{showName}</h2>
           </li>
           <li className="h-[17px]">
-            <span className="text-sm ">Hosted by {host}</span>
+            {host && <span className="text-sm ">Hosted by {host}</span>}
           </li>
         </ul>
         <ul className="h-4 flex gap-[10px] text-[11px] flex-row p-4 absolute text">

@@ -29,6 +29,17 @@ export interface RadioShow {
   mixcloud_url: string;
 }
 
+export interface BSide {
+  name: string;
+  date: string;
+  slug: string;
+  tags: string[];
+  description: string;
+  picture: string;
+  mixcloud_url: string;
+  tracklist: string;
+}
+
 export interface ApiProfile {
   id: number;
   host: string;
@@ -38,6 +49,10 @@ export interface ApiProfile {
   picture: string;
   links: string[];
   shows: RadioApiShow[];
+}
+
+export interface ApiBsidesList {
+  results: BSide[];
 }
 
 export interface ApiProfilesList {

@@ -2,7 +2,6 @@
 import extractAndFormatShowDate from "@/app/lib/extractAndFormatShowDate";
 import { AirtimeShow } from "@/app/types";
 import Image from "next/image";
-import Link from "next/link";
 
 interface ScheduledBsideShow {
   airtimeShow: AirtimeShow;
@@ -53,11 +52,6 @@ const ScheduledBsideShow = ({
             ) : (
               broadcastingTime
             )}
-          </li>
-          <li>
-            <Link className="underline underline-offset-2" href={""}>
-              View show
-            </Link>
           </li>
         </ul>
       </div>

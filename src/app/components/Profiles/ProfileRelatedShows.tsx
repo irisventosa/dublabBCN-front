@@ -1,42 +1,56 @@
+"use client";
+import useDublabApi from "@/app/lib/hooks/useDublabApi";
+import { formatRelatedShowsInfo } from "@/app/lib/processSlug";
 /* eslint-disable react/jsx-no-comment-textnodes */
-import processSlug from "@/app/lib/processSlug";
-import { RadioApiShow } from "@/app/types";
+import { ApiProfile, RadioApiShow } from "@/app/types";
 import Link from "next/link";
 import React from "react";
+import useSWR from "swr";
 
 interface RelatedShowsProps {
   shows: RadioApiShow[];
 }
 
 const RelatedShows = ({ shows }: RelatedShowsProps) => {
-  const formattedShows = shows.map((show) => {
-    const processedSlug = processSlug(show.slug);
-    const showTags = show.tags;
+  const { getProfileData } = useDublabApi();
 
-    return { processedSlug, showTags };
-  });
+  const formattedShows = formatRelatedShowsInfo(shows);
+
+  const { data: profileData } = useSWR<ApiProfile>(
+    formattedShows[0].showName,
+    getProfileData
+  );
+
+  if (!profileData) return <div>Loading...</div>;
 
   return (
     <article>
       {formattedShows.map(
-        ({
-          processedSlug: { showName, showDateforLists, showDateforUrl },
-          showTags,
-        }) => (
+        ({ showName, showDateForList, showDateForUrl, showTags }) => (
           <>
             <div className="flex justify-between mt-[17px]">
-              <Link href={`/shows/${showDateforUrl}`}>
-                <span>{showName}</span>
+              <Link href={`/shows/${showDateForUrl}`}>
+                <span>
+                  <span>
+                    {showName === "macGuffin-20" ? "Macguffin 2.0" : showName}
+                  </span>
+                </span>
               </Link>
-              <time>{showDateforLists}</time>
+              <time>
+                {showDateForList.length === 11
+                  ? showDateForList.substring(3)
+                  : showDateForList}
+              </time>
             </div>
             <ul className="flex text-xs pt-[3px] pb-[17px] ">
-              {showTags.map((tag, index) => (
-                <React.Fragment key={index}>
-                  <li>{tag}</li>
-                  {index !== showTags.length - 1 && <li>&nbsp;///&nbsp;</li>}
-                </React.Fragment>
-              ))}
+              {(showTags || (profileData && profileData.tags)).map(
+                (tag, index, array) => (
+                  <React.Fragment key={index}>
+                    <li>{tag}</li>
+                    {index !== array.length - 1 && <li>&nbsp;///&nbsp;</li>}
+                  </React.Fragment>
+                )
+              )}
             </ul>
             <hr className="border-black w-[719px] " />
           </>

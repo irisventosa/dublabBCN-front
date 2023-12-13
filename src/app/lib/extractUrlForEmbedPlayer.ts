@@ -3,10 +3,8 @@ const extractUrlForEmbedPlayer = (mixcloudUrl: string) => {
 
   const startIndex = showUrl.indexOf("dublabes");
 
-  if (startIndex !== -1) {
-    const pathStartingFromDublabes = showUrl.slice(startIndex);
-    return pathStartingFromDublabes;
-  }
+  const pathStartingFromDublabes = showUrl.slice(startIndex);
+  return pathStartingFromDublabes;
 };
 
 export default extractUrlForEmbedPlayer;
