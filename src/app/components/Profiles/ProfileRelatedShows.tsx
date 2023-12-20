@@ -31,9 +31,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
             <div className="flex justify-between mt-[17px]">
               <Link href={`/shows/${showDateForUrl}`}>
                 <span>
-                  <span>
-                    {showName === "macGuffin-20" ? "Macguffin 2.0" : showName}
-                  </span>
+                  {showName === "macGuffin-20" ? "Macguffin 2.0" : showName}
                 </span>
               </Link>
               <time>
@@ -45,10 +43,10 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
             <ul className="flex text-xs pt-[3px] pb-[17px] ">
               {(showTags || (profileData && profileData.tags)).map(
                 (tag, index, array) => (
-                  <React.Fragment key={index}>
+                  <>
                     <li>{tag}</li>
                     {index !== array.length - 1 && <li>&nbsp;///&nbsp;</li>}
-                  </React.Fragment>
+                  </>
                 )
               )}
             </ul>

@@ -22,6 +22,7 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
   if (ProfileShowName === "macguffin 20") {
     ProfileShowName = "macguffin 2.0";
   }
+
   if (!profileData) return <div>Loading...</div>;
 
   return (

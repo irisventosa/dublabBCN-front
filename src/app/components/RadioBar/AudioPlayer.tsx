@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Button from "../Button";
 
-const streamingSource =
+export const streamingSource =
   "https://stream-relay-geo.ntslive.net/stream?client=NTSWebApp&t=1702486346755";
 
 const AudioPlayer = () => {
