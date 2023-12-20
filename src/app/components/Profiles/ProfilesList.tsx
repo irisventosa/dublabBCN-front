@@ -1,8 +1,8 @@
-import { ApiProfile, BSide } from "../../types";
+import { ApiProfile, Bside } from "../../types";
 import ProfileCard from "./ProfileCard";
 
 interface ProfilesListProps {
-  firstPageOfProfiles: ApiProfile[] | BSide[];
+  firstPageOfProfiles: ApiProfile[] | Bside[];
 }
 
 const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {

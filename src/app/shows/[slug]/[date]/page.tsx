@@ -1,11 +1,11 @@
-interface ShowRelatedToProfileProps {
+interface ShowByDateProps {
   params: {
     date: string;
   };
 }
 
-const ShowRelatedToProfile = ({ params }: ShowRelatedToProfileProps) => {
+const ShowByDate = ({ params }: ShowByDateProps) => {
   return <p>{params.date}</p>;
 };
 
-export default ShowRelatedToProfile;
+export default ShowByDate;

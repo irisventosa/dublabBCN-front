@@ -29,7 +29,7 @@ export interface RadioShow {
   mixcloud_url: string;
 }
 
-export interface BSide {
+export interface Bside {
   name: string;
   date: string;
   slug: string;
@@ -52,7 +52,7 @@ export interface ApiProfile {
 }
 
 export interface ApiBsidesList {
-  results: BSide[];
+  results: Bside[];
 }
 
 export interface ApiProfilesList {
