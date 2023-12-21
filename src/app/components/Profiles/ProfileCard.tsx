@@ -47,7 +47,7 @@ const ProfileCard = ({
               alt={`Imatge del programa ${slug}`}
               height={353}
               width={353}
-              className="overflow-hidden h-[353px] w-[353px] relative transition duration-300 ease-in-out group-hover:opacity-0"
+              className="overflow-hidden h-[353px] w-[353px] relative transition duration-300 ease-in-out group-hover:opacity-0 object-cover"
             />
           )}
           <div

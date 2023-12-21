@@ -12,7 +12,7 @@ const Sisters = () => {
               key={route}
               className="h-6 px-3 py-3 flex items-center self-center "
             >
-              <Link className="py-4 mt-[1px] " href={route}>
+              <Link className="py-4 mt-[1px]" target="_blank" href={route}>
                 {label}
               </Link>
             </li>

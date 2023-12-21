@@ -1,5 +1,4 @@
 "use client";
-
 import Tracklist from "@/app/components/Tracklist";
 import useDublabApi from "@/app/lib/hooks/useDublabApi";
 import { Bside } from "@/app/types";
@@ -23,7 +22,7 @@ const BsideDetails = ({ params }: BSideDetailsProps) => {
   };
 
   return (
-    <main className="mt-[219px] w-[720px] gap-[50px] flex  bg-black text-white ">
+    <main className="mt-[219px]  gap-[50px] flex  bg-black text-white ">
       <Image
         src={bside.picture}
         alt={""}
@@ -38,7 +37,7 @@ const BsideDetails = ({ params }: BSideDetailsProps) => {
             <span className="loader"></span>
           </ul>
           {bside.tags && (
-            <ul className="flex gap-[10px] opacity-40">
+            <ul className="flex gap-[10px] opacity-40 mr-8">
               {bside.tags.map((tag, index) => (
                 <li
                   key={index}
