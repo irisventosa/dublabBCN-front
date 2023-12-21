@@ -13,7 +13,7 @@ const AudioPlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    setAudio(audioRef.current);
+    setAudio(audioRef.current!);
   }, [setAudio]);
 
   const togglePlay = () => {
