@@ -1,28 +1,34 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "../Button";
+import { useAudio } from "@/app/contexts/AudioContext";
 
 export const streamingSource =
   "https://stream-relay-geo.ntslive.net/stream?client=NTSWebApp&t=1702486346755";
 
 const AudioPlayer = () => {
+  const { audio, setAudio } = useAudio();
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    setAudio(audioRef.current);
+  }, [setAudio]);
 
   const togglePlay = () => {
     if (isPlaying) {
-      audioRef.current?.pause();
+      audio?.pause();
     } else {
-      audioRef.current?.play();
+      audio?.play();
     }
     setIsPlaying(!isPlaying);
   };
 
   const changeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
     const volume = +e.target.value;
-    if (audioRef.current) {
-      audioRef.current.volume = volume;
+    if (audio) {
+      audio.volume = volume;
     }
   };
 
@@ -39,7 +45,7 @@ const AudioPlayer = () => {
           max="1"
           step="0.01"
           onChange={changeVolume}
-          className="group-hover:visible invisible z-40 absolute mt-1 mr-10 appearance-none bg-white overflow-hidden"
+          className="group-hover:visible invisible z-40 absolute mt-2 mr-10 appearance-none bg-white w-[180px] h-[7px] overflow-hidden"
         />
       </div>
       <Button

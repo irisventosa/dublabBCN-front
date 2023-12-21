@@ -14,12 +14,12 @@ input {
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 5px; /* Adjust the width of the thumb */
-  height: 10px; /* Adjust the height of the thumb */
-  background: #0073e6; /* Thumb background color */
-  border-radius: 0; /* Make it a circle */
+  width: 1px; /* Adjust the width of the thumb */
+  height: 8px;
+  background: #c3c8cd;
+  border-radius: 0;
   cursor: pointer;
-  box-shadow: -407px 0 0 407px blue;
+  box-shadow: -407px 0 0 407px #c3c8cd;
 }
 
 body {

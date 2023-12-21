@@ -6,6 +6,7 @@ import RadioBar from "./components/RadioBar/RadioBar";
 import "./globals.css";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { SlideOverProvider } from "./contexts/SlideOverContext";
 
 const favorit = localfont({
   src: "./fonts/Favorit_Regular_Mono.ttf",
@@ -30,9 +31,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         ) : (
           ""
         )}
-        <Header backgroundColor={backgroundColor} />
-        {children}
-        <Footer />
+        <SlideOverProvider>
+          <Header backgroundColor={backgroundColor} />
+          {children}
+          <Footer />
+        </SlideOverProvider>
       </body>
     </html>
   );

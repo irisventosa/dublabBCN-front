@@ -1,5 +1,5 @@
 import DayOfTheMonth from "../components/Date/DayOfTheMonth";
-import DaySelector from "../components/Date/DaySelector";
+import DaySelector from "../components/Schedule/DaySelector";
 import SearchAndFilters from "../components/SearchAndFilters";
 import useAirtimeApi from "../lib/hooks/useAirtimeApi";
 

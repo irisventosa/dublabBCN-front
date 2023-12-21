@@ -2,6 +2,7 @@ import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import AudioPlayer from "./AudioPlayer";
 import DigitalClock from "./DigitalClock";
+import AudioProvider from "@/app/contexts/AudioContext";
 
 const RadioBar = () => {
   const currentShow = "Abundance";
@@ -15,7 +16,7 @@ const RadioBar = () => {
   //{liveShow.name} - {liveShow.description}
 
   return (
-    <ul className="h-[42px] min-w-full flex gap-[91px] justify-between items-center py-2 px-[31px] flex-row bg-black text-white font-Favorit text-sm font-light uppercase ">
+    <ul className="h-[42px] sticky min-w-full flex gap-[91px] justify-between items-center py-2 px-[31px] flex-row bg-black text-white font-Favorit text-sm font-light uppercase ">
       <li>
         <DigitalClock />
       </li>
@@ -43,7 +44,9 @@ const RadioBar = () => {
         )}
       </li>
       <li>
-        <AudioPlayer />
+        <AudioProvider>
+          <AudioPlayer />
+        </AudioProvider>
       </li>
     </ul>
   );

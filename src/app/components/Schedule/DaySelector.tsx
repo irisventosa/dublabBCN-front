@@ -3,7 +3,7 @@ import findActualDay from "@/app/lib/findActualDay";
 import getAirtimeWeeks from "@/app/lib/getFormattedCalendar";
 import { WeekInfo } from "@/app/types";
 import { KeyboardEvent, useCallback, useEffect, useState } from "react";
-import ScheduledShowsList from "../Schedule/ScheduledShowsList";
+import ScheduledShowsList from "./ScheduledShowsList";
 
 interface DaySelectorProps {
   scheduledShows: WeekInfo;
@@ -13,6 +13,7 @@ interface DaySelectorProps {
 const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
   const actualDay = findActualDay(scheduledShows);
   const [shownSchedule, setShownSchedule] = useState(actualDay);
+  const [selectedDay, setSelectedDay] = useState<string | null>(null);
 
   useEffect(() => {
     setShownSchedule(actualDay);
@@ -26,6 +27,7 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
       const weekSchedule = scheduledShows[dayName as keyof WeekInfo];
 
       setShownSchedule(weekSchedule);
+      setSelectedDay(dayName);
     },
     [scheduledShows]
   );
@@ -50,7 +52,11 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
             data-day={day.dayName}
             onClick={() => handleClick(day.dayName)}
             onKeyDown={(e) => handleKeyDown(e, day.dayName)}
-            className="cursor-pointer w-min hover:animate-pulse hover:animate-duration-500 hover:animate-ease-in-out opacity-40 active:opacity-100"
+            className={`cursor-pointer w-min hover:animate-pulse hover:animate-duration-500 hover:animate-ease-in-out ${
+              selectedDay === day.dayName
+                ? "text-black"
+                : "opacity-40 active:opacity-100"
+            }`}
           >
             {day.formattedDay}
           </li>
