@@ -16,7 +16,7 @@ const RadioBar = () => {
   //{liveShow.name} - {liveShow.description}
 
   return (
-    <ul className="h-[42px] sticky min-w-full flex gap-[91px] justify-between items-center py-2 px-[31px] flex-row bg-black text-white font-Favorit text-sm font-light uppercase ">
+    <ul className="h-[42px] min-w-full sticky z-50 top-0 flex gap-[91px] justify-between items-center py-2 px-[31px] flex-row bg-black text-white font-Favorit text-sm font-light uppercase ">
       <li>
         <DigitalClock />
       </li>

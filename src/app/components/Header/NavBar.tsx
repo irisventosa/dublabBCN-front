@@ -13,14 +13,14 @@ const NavBar = (): React.ReactElement => {
         <nav className="bg-[#ECECEC] min-w-[719px] h-[42px] flex justify-center rounded-md font-Favorit text-sm font-normal uppercase">
           <ul className="flex items-center flex-row justify-between gap-[49px]">
             {firstNavLabels.map(({ label, route }) => (
-              <li key={route}>
+              <li key={route} className="pt-[2px]">
                 <Link href={route}>{label}</Link>
               </li>
             ))}
             <Programes />
             <Sisters />
             {lastNavLabels.map(({ label, route }) => (
-              <li key={route}>
+              <li key={route} className="pt-[2px]">
                 <Link href={route}>{label}</Link>
               </li>
             ))}
