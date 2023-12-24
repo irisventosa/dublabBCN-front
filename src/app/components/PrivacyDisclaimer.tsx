@@ -1,5 +1,5 @@
 "use client";
-
+import { setCookie } from "cookies-next";
 import { useState } from "react";
 import Button from "./Button";
 
@@ -8,6 +8,11 @@ const PrivacyDisclaimer = (): React.ReactElement => {
 
   const toggleHidden = () => {
     setIsHidden(!isHidden);
+
+    setCookie("disclaimerClosed", "true", {
+      maxAge: 30 * 24 * 60 * 60,
+      path: "/",
+    });
   };
 
   return (

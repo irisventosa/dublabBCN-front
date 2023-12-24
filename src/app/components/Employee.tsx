@@ -4,7 +4,7 @@ interface EmployeeProps {
 }
 const Employee = ({ charge, name }: EmployeeProps) => {
   return (
-    <ul>
+    <ul className="">
       <li className="ml-[30px]">{name}</li>
       <li className="ml-[124px]">{charge}</li>
     </ul>

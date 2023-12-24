@@ -53,7 +53,7 @@ const ShowCard = ({
           alt={`Imatge del programa ${showName}`}
           height={353}
           width={353}
-          className="overflow-hidden h-[353px] w-[353px] relative "
+          className="overflow-hidden h-[353px] w-[353px] relative object-cover "
         />
         <Button
           className="absolute bottom-52 left-50 text-zinc-200"
