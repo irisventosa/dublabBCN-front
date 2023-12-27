@@ -19,7 +19,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const changeBackgroundPath = "/b-sides";
 
   useEffect(() => {
-    setBackgroundColor(pathname.includes(changeBackgroundPath) ? "black" : "");
+    setBackgroundColor(
+      pathname.includes(changeBackgroundPath) ? "black" : "transparent"
+    );
   }, [pathname]);
 
   return (

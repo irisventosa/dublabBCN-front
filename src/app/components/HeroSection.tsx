@@ -24,7 +24,6 @@ const HeroSection = (): React.ReactElement => {
             {"LATEST /// LATEST /// LATEST /// LATEST /// LATEST /// LATEST"}
           </span>
         </Marquee>
-        r
       </div>
     </section>
   );

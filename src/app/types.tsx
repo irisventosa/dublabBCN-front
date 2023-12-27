@@ -12,12 +12,14 @@ export interface LiveRadioData {
 }
 
 export interface RadioApiShow {
+  date: string | number | Date;
   host?: string;
   tags: string[];
   slug: string;
   tracklist?: string;
   mixcloud_url: string;
-  profile_picture: string;
+  profile_picture?: string;
+  picture?: string;
 }
 
 export interface RadioShow {
@@ -31,7 +33,7 @@ export interface RadioShow {
 
 export interface Bside {
   name: string;
-  date: string;
+  date: string | Date;
   slug: string;
   tags: string[];
   description: string;

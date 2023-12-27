@@ -18,7 +18,7 @@ const ImageChanger = () => {
     <div>
       <Image
         src={imageSources[currentImage]}
-        className="object-cover h-[553px] w-[719] "
+        className="object-cover h-[553px] w-[719px]"
         alt="Changing Image"
         width={719}
         height={553}

@@ -1,8 +1,8 @@
+import AudioProvider from "@/app/contexts/AudioContext";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import AudioPlayer from "./AudioPlayer";
 import DigitalClock from "./DigitalClock";
-import AudioProvider from "@/app/contexts/AudioContext";
 
 const RadioBar = () => {
   const currentShow = "Abundance";
