@@ -4,7 +4,7 @@ import Image from "next/image";
 const Adress = () => {
   return (
     <div>
-      <div className="w-[1045px] flex gap-8 pt-[75px]">
+      <div className="w-[1045px] h-auto flex gap-8 pt-[75px]">
         <Image
           src={"/assets/collserola.jpeg"}
           alt="Antena del collserola"

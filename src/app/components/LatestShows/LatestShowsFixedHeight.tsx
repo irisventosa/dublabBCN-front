@@ -1,10 +1,11 @@
 "use client";
 import { useState } from "react";
 import ShowCard from "./ShowCard";
-import { RadioApiShow } from "@/app/types";
+import { Bside, RadioApiShow } from "@/app/types";
+import BsideCard from "./BsideCard";
 
 interface LatestShowsFixedHeightProps {
-  latestShows: RadioApiShow[];
+  latestShows: RadioApiShow[] | Bside[];
 }
 
 const LatestShowsFixedHeight = ({
@@ -24,11 +25,19 @@ const LatestShowsFixedHeight = ({
             key={show.slug}
             className="maxw-[353px] h-[385px] relative overflow-hidden leading-[120%]"
           >
-            <ShowCard
-              show={show}
-              height={"385"}
-              onClickPlayback={handleCardShow}
-            />
+            {Object.prototype.hasOwnProperty.call(show, "host") ? (
+              <ShowCard
+                show={show}
+                height={"385"}
+                onClickPlayback={handleCardShow}
+              />
+            ) : (
+              <BsideCard
+                bside={show as Bside}
+                height={"385"}
+                onClickPlayback={handleCardShow}
+              />
+            )}
           </li>
         ))}
       </ul>
