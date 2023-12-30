@@ -39,7 +39,12 @@ const useDublabApi = () => {
     return bSide;
   };
 
-  return { getProfileData, getProfiles, getBsides, getBsideData };
+  return {
+    getProfileData,
+    getProfiles,
+    getBsides,
+    getBsideData,
+  };
 };
 
 export default useDublabApi;

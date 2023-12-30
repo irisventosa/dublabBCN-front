@@ -17,11 +17,11 @@ const ProfileLinks = ({ links }: ProfileLinksProps) => {
     if (link.includes("mixcloud.com")) {
       return "mixcloud";
     }
-    if (link.includes("soundcloud.com")) {
-      return "mixcloud";
+    if (link.includes("twitter")) {
+      return "Twitter";
     }
-    if (link.includes("mixcloud.com")) {
-      return "mixcloud";
+    if (link.includes("soundcloud.com")) {
+      return "soundcloud";
     } else return "website";
   };
 

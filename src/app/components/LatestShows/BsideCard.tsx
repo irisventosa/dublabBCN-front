@@ -6,6 +6,7 @@ import { Bside } from "@/app/types";
 import Image from "next/image";
 import React from "react";
 import Button from "../Button";
+import Link from "next/link";
 
 interface ShowCardProps {
   bside: Bside;
@@ -17,7 +18,7 @@ interface ShowCardProps {
 const mixcloudEmbedUrl = "https://api.mixcloud.com/";
 
 const BsideCard = ({
-  bside: { name, mixcloud_url, tags, picture, date },
+  bside: { name, mixcloud_url, tags, picture, date, slug },
   onClickPlayback,
 }: ShowCardProps): React.ReactElement => {
   const showDateforCard = formatBsideDate(date);
@@ -54,13 +55,18 @@ const BsideCard = ({
           <time className="text-[12px]">{showDateforCard}</time>
         </li>
         <li>
-          <h2 className={`text-${nameFontSize} h-5`}>{name}</h2>
+          <Link href={`/b-sides/${slug}`}>
+            <h2 className={`text-${nameFontSize} h-5`}>{name}</h2>
+          </Link>
         </li>
       </ul>
-      <ul className="h-4 flex gap-[10px] text-[11px] flex-row p-4 absolute text">
-        <li>{tags[0]} ///</li>
-        <li>{tags[1]} ///</li>
-        <li>{tags[2]} </li>
+      <ul className="h-4 flex gap-[10px] text-[11px] flex-row py-4 absolute text">
+        {tags.map((tag, index, array) => (
+          <>
+            <li>{tag}</li>
+            {index !== array.length - 1 && <li>&nbsp;///&nbsp;</li>}
+          </>
+        ))}
       </ul>
     </article>
   );

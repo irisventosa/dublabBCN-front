@@ -23,6 +23,7 @@ interface ProfileCardProps {
 
 const ProfileCard = ({
   profile: { host, picture, tags, slug, description },
+  height,
 }: ProfileCardProps): React.ReactElement => {
   const pathname = usePathname();
   const dynamicPath = pathname === "/b-sides" ? "b-sides" : "shows";
@@ -37,17 +38,19 @@ const ProfileCard = ({
     setBackgroundColor(pathname === changeBackgroundPath ? "black" : "");
   }, [pathname]);
 
+  const transformedHeight = parseInt(height, 10);
+
   return (
-    <article className="w-[353px] h-[385px] relative overflow-hidden leading-[120%]">
+    <article className={`w-[353px] h-[${height}px] relative  leading-[120%]`}>
       <div className="block group relative">
         <div className="group relative">
           {picture && (
             <Image
               src={picture}
               alt={`Imatge del programa ${slug}`}
-              height={353}
-              width={353}
-              className="overflow-hidden h-[353px] w-[353px] relative transition duration-300 ease-in-out group-hover:opacity-0 object-cover"
+              height={transformedHeight}
+              width={253}
+              className="overflow-hidden w-[353px] relative transition duration-300 ease-in-out group-hover:opacity-0 object-cover"
             />
           )}
           <div
@@ -67,7 +70,7 @@ const ProfileCard = ({
         </div>
       </div>
       {tags && (
-        <ul className="h-4 flex gap-[10px] text-[11px] flex-row p-4 absolute text">
+        <ul className="h-4 flex gap-[10px] text-[11px] flex-row py-4 absolute text text-black">
           <li>{tags[0]} ///</li>
           <li>{tags[1]} ///</li>
           <li>{tags[2]} </li>

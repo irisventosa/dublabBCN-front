@@ -11,6 +11,7 @@ import {
   extractDatesForCard,
   formatSlugToGetShowName,
 } from "@/app/lib/processSlug";
+import Link from "next/link";
 
 interface ShowCardProps {
   show: RadioApiShow;
@@ -44,9 +45,7 @@ const ShowCard = ({
   }
 
   return (
-    <article
-      className={`w-[353px] h-[385px] relative overflow-hidden leading-[120%]`}
-    >
+    <article className={` h-[385px] relative overflow-hidden leading-[120%]`}>
       <div>
         <Image
           src={`${dublabApi}${profile_picture}`}
@@ -67,16 +66,21 @@ const ShowCard = ({
           <time className="text-[12px]">{showDateforCard}</time>
         </li>
         <li>
-          <h2 className="text-[1.375rem] h-5">{showName}</h2>
+          <Link href={`/shows/${showName}`}>
+            <h2 className="text-[1.375rem] h-5 max-w-[300px]">{showName}</h2>
+          </Link>
         </li>
         <li className="h-[17px]">
           <span className="text-sm ">Hosted by {host}</span>
         </li>
       </ul>
-      <ul className="h-4 flex gap-[10px] text-[11px] flex-row p-4 absolute text">
-        <li>{tags[0]} ///</li>
-        <li>{tags[1]} ///</li>
-        <li>{tags[2]} </li>
+      <ul className="h-4 flex gap-[10px] text-[11px] flex-row py-4 absolute text">
+        {tags.map((tag, index, array) => (
+          <>
+            <li>{tag}</li>
+            {index !== array.length - 1 && <li>&nbsp;///&nbsp;</li>}
+          </>
+        ))}
       </ul>
     </article>
   );
