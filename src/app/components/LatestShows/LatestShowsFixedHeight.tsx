@@ -23,7 +23,7 @@ const LatestShowsFixedHeight = ({
         {latestShows.map((show) => (
           <li
             key={show.slug}
-            className="maxw-[353px] h-[385px] relative overflow-hidden leading-[120%]"
+            className="max-w-[353px] h-[385px] relative overflow-hidden leading-[120%]"
           >
             {Object.prototype.hasOwnProperty.call(show, "host") ? (
               <ShowCard
