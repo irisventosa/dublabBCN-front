@@ -14,9 +14,9 @@ const Header = ({ backgroundColor }: HeaderProps): React.ReactElement => {
   const variableWidth = isOpen ? "2/4" : "screen";
 
   return (
-    <div className="flex  justify-start bg-black ">
+    <div className="flex justify-start bg-black ">
       <header
-        className={`flex absolute w-${variableWidth} h-[219px] z-10 p-8 pt-[42px] gap-[32px] bg-${backgroundColor} `}
+        className={`sm:flex sm:p-8 absolute w-${variableWidth} h-[219px] z-10 p-4 pt-[42px] gap-[32px] bg-${backgroundColor} `}
       >
         <Link href="/">
           <Image

@@ -35,8 +35,8 @@ const AudioPlayer = () => {
   return (
     <div className="min-w-fit flex gap-[200px] group ">
       <audio src={streamingSource} ref={audioRef}></audio>
-      <div className="group z-40 relative ml-6 ">
-        <span className="visible group-hover:invisible z-40 min-w-[100px] min-h[30px] absolute">
+      <div className="group z-40 relative ml-6 hidden sm:block">
+        <span className="visible group-hover:invisible z-40 min-w-[100px] min-h[30px] absolute ">
           Volume
         </span>
         <input
@@ -50,7 +50,7 @@ const AudioPlayer = () => {
       </div>
       <Button
         actionOnClick={togglePlay}
-        className="uppercase z-20 min-w-[42px]"
+        className="uppercase z-20 min-w-[42px] text-sm"
       >
         {isPlaying ? "Pause" : "Play"}
       </Button>
