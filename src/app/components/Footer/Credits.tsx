@@ -6,7 +6,7 @@ import CreditsSlideOver from "../CreditsSlide";
 const Credits = (): React.ReactElement => {
   return (
     <>
-      <div className="flex items-end flex-row pl-[33px] pt-[163px]">
+      <div className="items-end flex-row pl-[33px] pt-[63px] hidden sm:flex ">
         <ul className="flex flex-row items-end mr-[54px] ">
           <li>
             <Image
@@ -22,7 +22,7 @@ const Credits = (): React.ReactElement => {
           </li>
           <li className="min-w-fit ml-[143px] ">Ⓒ 2023 Dublab Barcelona</li>
         </ul>
-        <span className="text-[1.5rem] font-thin min-w-fit ml-[90px] ">
+        <span className="hidden sm:block text-[1.5rem] font-thin min-w-fit ml-[90px] ">
           dublab barcelona és una ràdio online <br /> comunitària sense ànim de
           lucre.
         </span>

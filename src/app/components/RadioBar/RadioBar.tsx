@@ -13,14 +13,13 @@ const RadioBar = () => {
   };
 
   const nextShowStartTime = nextLiveShow.starts.split(" ")[1].slice(0, 5);
-  //{liveShow.name} - {liveShow.description}
 
   return (
-    <ul className="h-[42px] min-w-full sticky z-50 top-0 flex gap-[91px] justify-between items-center py-2 px-[31px] flex-row bg-black text-white font-Favorit text-sm font-light uppercase ">
-      <li>
+    <ul className="h-[42px] min-w-full sticky z-50 top-0 flex sm:gap-[91px] justify-between items-center py-2  sm:px-8 px-4 flex-row bg-black text-white font-Favorit text-sm font-light uppercase ">
+      <li className="hidden sm:block">
         <DigitalClock />
       </li>
-      <li className="flex gap-[9px]  ">
+      <li className="flex gap-[9px]">
         <Image
           className="animate-pulse animate-infinite animate-duration-[2000ms] animate-ease-in-out animate-normal mb-[5px]"
           src={"/assets/Ellipse.svg"}
@@ -29,9 +28,9 @@ const RadioBar = () => {
           height={10}
         />
         <span className="min-w-fit"></span>
-        <Marquee className="max-w-[200px]">En directe:{currentShow}</Marquee>
+        <Marquee className="max-w-[200px]">En directe: {currentShow}</Marquee>
       </li>
-      <li className="text-white/60 z-20 flex">
+      <li className="text-white/60 z-20 hidden sm:flex ">
         PRÒXIM:
         {nextLiveShow ? (
           <div>
@@ -40,7 +39,7 @@ const RadioBar = () => {
             <span className="ml-[19px]">- {nextLiveShow.url}</span>
           </div>
         ) : (
-          <span>Holi</span>
+          <span>Carregant...</span>
         )}
       </li>
       <li>

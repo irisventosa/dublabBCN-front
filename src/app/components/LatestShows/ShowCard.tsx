@@ -25,10 +25,10 @@ const mixcloudEmbedUrl = "https://api.mixcloud.com/";
 
 const ShowCard = ({
   show: { slug, mixcloud_url, tags, host, profile_picture },
+  height,
   onClickPlayback,
 }: ShowCardProps): React.ReactElement => {
   const { getProfileData } = useDublabApi();
-
   const showName = formatSlugToGetShowName(slug);
   const showDateforCard = extractDatesForCard(slug);
 
@@ -44,15 +44,17 @@ const ShowCard = ({
     host = profile?.host;
   }
 
+  const transformedHeight = parseInt(height, 10);
+
   return (
-    <article className={` h-[385px] relative overflow-hidden leading-[120%]`}>
-      <div>
+    <article className={`h-[${height}px] relative leading-[120%]`}>
+      <div className={`h-[${height}]`}>
         <Image
           src={`${dublabApi}${profile_picture}`}
-          alt={`Imatge del programa ${showName}`}
-          height={353}
+          alt={`Imatge del b-side de ${showName}`}
+          height={transformedHeight}
           width={353}
-          className="overflow-hidden h-[353px] w-[353px] relative object-cover "
+          className={`overflow-hidden h-[${height}px] w-[353px] relative object-cover brightness-50 hover:brightness-100 `}
         />
         <Button
           className="absolute bottom-52 left-50 text-zinc-200"
@@ -61,7 +63,7 @@ const ShowCard = ({
           {`${mixcloudEmbedUrl}${showUrl}embed-html/`}
         </Button>
       </div>
-      <ul className="flex flex-col absolute p-4 bottom-6 text-white">
+      <ul className="flex flex-col absolute p-4 bottom-3 text-white">
         <li className="mb-3 h-[14px]">
           <time className="text-[12px]">{showDateforCard}</time>
         </li>
@@ -71,7 +73,7 @@ const ShowCard = ({
           </Link>
         </li>
         <li className="h-[17px]">
-          <span className="text-sm ">Hosted by {host}</span>
+          <span className={`text-sm`}>Hosted by {host}</span>
         </li>
       </ul>
       <ul className="h-4 flex gap-[10px] text-[11px] flex-row py-4 absolute text">

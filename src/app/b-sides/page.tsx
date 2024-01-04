@@ -16,15 +16,15 @@ const BsidesList = () => {
     <main className="flex flex-col mt-[219px] bg-black text-white">
       <ul className="flex flex-row gap-[376px]">
         <li>
-          <span className="h-[22px] px-8 ">COMING UP /// TODAY & TOMORROW</span>
+          <span className="h-[22px] px-8">COMING UP /// TODAY & TOMORROW</span>
         </li>
         <li>
           <SearchAndFilters />
         </li>
       </ul>
-      <div className="flex text-[72px] gap-[140px] pt-[62px] ml-8 ">
+      <div className="flex text-[72px] gap-[140px] pt-[62px] ml-8">
         <span>bbb</span>
-        <h2> b-sides</h2>
+        <h2>b-sides</h2>
       </div>
       <ProfilesList firstPageOfProfiles={bSidesList.results} />
       <LoadMoreBsides />
