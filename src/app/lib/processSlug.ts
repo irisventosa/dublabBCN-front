@@ -11,6 +11,11 @@ export const formatSlugToGetShowName = (slug: string): string => {
     return showIsNeus;
   }
 
+  if (slug.substring(0, 14) === "whenplantssing") {
+    const showIsPlants = "When...Plants...Sing";
+    return showIsPlants;
+  }
+
   if (slug.substring(0, 8) === "5wuguan5") {
     const showIs5wuguan5 = "5wuguan5";
     return showIs5wuguan5;

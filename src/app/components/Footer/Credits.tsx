@@ -6,7 +6,7 @@ import CreditsSlideOver from "../CreditsSlide";
 const Credits = (): React.ReactElement => {
   return (
     <>
-      <div className="items-end flex-row pl-[33px] pt-[163px] hidden sm:flex ">
+      <div className="items-end flex-row pl-[33px] pt-[63px] hidden sm:flex ">
         <ul className="flex flex-row items-end mr-[54px] ">
           <li>
             <Image

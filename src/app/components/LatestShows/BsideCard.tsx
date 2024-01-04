@@ -19,10 +19,10 @@ const mixcloudEmbedUrl = "https://api.mixcloud.com/";
 
 const BsideCard = ({
   bside: { name, mixcloud_url, tags, picture, date, slug },
+  height,
   onClickPlayback,
 }: ShowCardProps): React.ReactElement => {
   const showDateforCard = formatBsideDate(date);
-
   const showUrl = extractUrlForEmbedPlayer(mixcloud_url);
 
   const handleShowPlayback = () => {
@@ -31,17 +31,17 @@ const BsideCard = ({
 
   const nameFontSize = name.length >= 45 ? "[1rem]" : "[1.375rem]";
 
+  const transformedHeight = parseInt(height, 10);
+
   return (
-    <article
-      className={`w-[353px] h-[385px] relative overflow-hidden leading-[120%]`}
-    >
+    <article className={`h-[${height}px] relative leading-[120%]`}>
       <div>
         <Image
           src={picture}
           alt={`Imatge del programa ${name}`}
-          height={353}
+          height={transformedHeight}
           width={353}
-          className="overflow-hidden h-[353px] w-[353px] relative object-cover "
+          className={`h-[${height}px] w-[353px] relative object-cover brightness-50 hover:brightness-100 `}
         />
         <Button
           className="absolute bottom-52 left-50 text-zinc-200"
@@ -50,13 +50,15 @@ const BsideCard = ({
           {`${mixcloudEmbedUrl}${showUrl}embed-html/`}
         </Button>
       </div>
-      <ul className="flex flex-col absolute p-4 bottom-16 text-white">
+      <ul className="flex flex-col absolute p-4 bottom-7 text-white">
         <li className="mb-3 h-[14px]">
           <time className="text-[12px]">{showDateforCard}</time>
         </li>
         <li>
           <Link href={`/b-sides/${slug}`}>
-            <h2 className={`text-${nameFontSize} h-5`}>{name}</h2>
+            <h2 className={`text-${nameFontSize} h-5 max-w-[300px] `}>
+              {name}
+            </h2>
           </Link>
         </li>
       </ul>

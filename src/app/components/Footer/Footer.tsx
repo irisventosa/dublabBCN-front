@@ -14,7 +14,7 @@ const Footer = (): React.ReactElement => {
         width={68.48}
         height={27.93}
         alt={"D-B"}
-        className="pt-[66px] pl-4 "
+        className="pt-[66px] pl-4 sm:hidden"
       ></Image>
       <div className="pt-[42px] pl-4 ">
         <span className="sm:hidden text-[1.5rem] w-[314px] h-[116px] font-thin ">

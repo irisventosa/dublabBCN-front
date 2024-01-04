@@ -5,11 +5,11 @@ import mergeBsidesWithShows from "./lib/mergeBsidesWithShows";
 import { getLatestShowsData } from "./lib/radioDataFetching";
 
 const Home = async () => {
-  const bsidesPageToGet = 1;
+  const pageToGet = 1;
   const { getBsides } = useDublabApi();
 
-  const { results: latestShows } = await getLatestShowsData();
-  const { results: bSides } = await getBsides(bsidesPageToGet);
+  const { results: latestShows } = await getLatestShowsData(pageToGet);
+  const { results: bSides } = await getBsides(pageToGet);
 
   const latestPodcasts = mergeBsidesWithShows(latestShows, bSides);
   const trimmedShows = latestPodcasts.slice(0, 8);

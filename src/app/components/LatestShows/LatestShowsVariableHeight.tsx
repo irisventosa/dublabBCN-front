@@ -1,22 +1,25 @@
 "use client";
-import { RadioApiShow } from "@/app/types";
+import { Bside, RadioApiShow } from "@/app/types";
 import { useState } from "react";
 import ShowCard from "./ShowCard";
+import BsideCard from "./BsideCard";
 
 interface LatestShowsVariableHeightProps {
-  latestShows: RadioApiShow[];
+  latestPodcasts: RadioApiShow[] | Bside[];
+  paddingTop: string;
 }
 
 const LatestShowsVariableHeight = ({
-  latestShows,
+  latestPodcasts,
+  paddingTop,
 }: LatestShowsVariableHeightProps) => {
   const [iFrameShow, setIFrameShow] = useState("");
 
-  const heights = ["small", "medium", "large"];
-
   const getRandomHeight = () => {
+    const heights = [150, 200, 300];
     const randomIndex = Math.floor(Math.random() * heights.length);
-    return heights[randomIndex];
+    const selectedHeight = heights[randomIndex];
+    return `${selectedHeight}px`;
   };
 
   const handleCardShow = (showFromCard: string) => {
@@ -25,14 +28,26 @@ const LatestShowsVariableHeight = ({
 
   return (
     <section className="py-[65px] px-[31px]">
-      <ul className="grid grid-cols-4 gap-x-3 gap-y-14 pt-[206px] ">
-        {latestShows.map((show) => (
-          <li key={show.slug}>
-            <ShowCard
-              show={show}
-              height={getRandomHeight()}
-              onClickPlayback={handleCardShow}
-            />
+      <ul className={`grid grid-cols-4 gap-x-3 gap-y-14 pt-[${paddingTop}]`}>
+        {latestPodcasts.map((show) => (
+          <li
+            key={show.slug}
+            className="max-w-[353px] relative leading-[120%]"
+            style={{ maxHeight: "100%" }}
+          >
+            {Object.prototype.hasOwnProperty.call(show, "host") ? (
+              <ShowCard
+                show={show}
+                height={getRandomHeight()}
+                onClickPlayback={handleCardShow}
+              />
+            ) : (
+              <BsideCard
+                bside={show as Bside}
+                height={getRandomHeight()}
+                onClickPlayback={handleCardShow}
+              />
+            )}
           </li>
         ))}
       </ul>

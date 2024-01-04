@@ -1,11 +1,11 @@
 import axios from "axios";
 import { LatestShowsData } from "../types";
 
-const latestShowsData = process.env.DB_HOST!;
+const latestShowsData = "https://api.dublab.es/api";
 
-export const getLatestShowsData = async () => {
+export const getLatestShowsData = async (page: number) => {
   const { data: latestShows } = await axios.get<LatestShowsData>(
-    `${latestShowsData}/shows`
+    `${latestShowsData}/shows/?page=${page}`
   );
   return latestShows;
 };

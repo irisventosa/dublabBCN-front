@@ -1,20 +1,16 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
-import { usePathname } from "next/navigation";
 import ProfilesList from "../components/Profiles/ProfilesList";
 import SearchAndFilters from "../components/SearchAndFilters";
-import useGetShowsOrBsides from "../lib/getShowsOrBsides";
+import getShowsOrBsides from "../lib/getShowsOrBsides";
 import useDublabApi from "../lib/hooks/useDublabApi";
 
 const ShowProfiles = () => {
   const { getProfiles } = useDublabApi();
-  const { getBsides } = useDublabApi();
-  const pathname = usePathname();
 
-  const fetchedContent = pathname === "/shows" ? getProfiles : getBsides;
-  const apiContent = useGetShowsOrBsides(fetchedContent);
+  const onAirProfiles = getShowsOrBsides(getProfiles);
 
-  const isAllDataLoaded = apiContent.every((apiProfiles) => apiProfiles);
+  const isAllDataLoaded = onAirProfiles.every((apiProfiles) => apiProfiles);
 
   if (!isAllDataLoaded) return <div>Loading...</div>;
 
@@ -32,9 +28,11 @@ const ShowProfiles = () => {
         <span>AAA</span>
         <h2>SHOWS</h2>
       </div>
-      {apiContent.map((profiles, index) => (
-        <ProfilesList key={index} firstPageOfProfiles={profiles!.results} />
-      ))}
+      <section>
+        {onAirProfiles.map((profiles, index) => (
+          <ProfilesList key={index} firstPageOfProfiles={profiles!.results} />
+        ))}
+      </section>
     </main>
   );
 };
