@@ -1,17 +1,17 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
 import extractUrlForEmbedPlayer from "@/app/lib/extractUrlForEmbedPlayer";
-import { ApiProfile, RadioApiShow } from "@/app/types";
-import Image from "next/image";
-import React from "react";
-import Button from "../Button";
 import useDublabApi from "@/app/lib/hooks/useDublabApi";
-import useSWR from "swr";
 import {
   extractDatesForCard,
   formatSlugToGetShowName,
 } from "@/app/lib/processSlug";
+import { ApiProfile, RadioApiShow } from "@/app/types";
+import Image from "next/image";
 import Link from "next/link";
+import React, { useState } from "react";
+import useSWR from "swr";
+import Button from "../Button";
 
 interface ShowCardProps {
   show: RadioApiShow;
@@ -21,7 +21,6 @@ interface ShowCardProps {
 }
 
 const dublabApi = "https://api.dublab.es";
-const mixcloudEmbedUrl = "https://api.mixcloud.com/";
 
 const ShowCard = ({
   show: { slug, mixcloud_url, tags, host, profile_picture },
@@ -30,6 +29,15 @@ const ShowCard = ({
 }: ShowCardProps): React.ReactElement => {
   const { getProfileData } = useDublabApi();
   const showName = formatSlugToGetShowName(slug);
+
+  const formatslugToGetPathName = (slug: string) => {
+    const formattedSlug = slug.replace(/[0-9]/g, "").replace(/-+$/, "");
+
+    return formattedSlug;
+  };
+
+  const showNamePath = formatslugToGetPathName(slug);
+
   const showDateforCard = extractDatesForCard(slug);
 
   const { data: profile } = useSWR<ApiProfile>(showName, getProfileData);
@@ -44,31 +52,45 @@ const ShowCard = ({
     host = profile?.host;
   }
 
+  const [isHovered, setIsHovered] = useState(false);
+
   const transformedHeight = parseInt(height, 10);
 
   return (
-    <article className={`h-[${height}px] relative leading-[120%]`}>
-      <div className={`h-[${height}]`}>
+    <article className={`h-[${height}px] relative leading-[120%] `}>
+      <div
+        className="relative brightness-50 hover:brightness-90  "
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <Image
           src={`${dublabApi}${profile_picture}`}
           alt={`Imatge del b-side de ${showName}`}
           height={transformedHeight}
           width={353}
-          className={`overflow-hidden h-[${height}px] w-[353px] relative object-cover brightness-50 hover:brightness-100 `}
+          className={`overflow-hidden h-[${height}px] w-[353px] relative object-cover b`}
+          onClick={handleShowPlayback}
         />
-        <Button
-          className="absolute bottom-52 left-50 text-zinc-200"
-          actionOnClick={handleShowPlayback}
-        >
-          {`${mixcloudEmbedUrl}${showUrl}embed-html/`}
-        </Button>
+        {isHovered && (
+          <Button
+            actionOnClick={handleShowPlayback}
+            className="absolute inset-0 flex items-center justify-center  "
+          >
+            <Image
+              src={"/assets/playwhite.svg"}
+              width={50}
+              height={50}
+              alt={""}
+            />
+          </Button>
+        )}
       </div>
-      <ul className="flex flex-col absolute p-4 bottom-3 text-white">
+      <ul className="flex flex-col absolute p-4 bottom-3 text-white ">
         <li className="mb-3 h-[14px]">
           <time className="text-[12px]">{showDateforCard}</time>
         </li>
         <li>
-          <Link href={`/shows/${showName}`}>
+          <Link href={`/shows/${showNamePath}`}>
             <h2 className="text-[1.375rem] h-5 max-w-[300px]">{showName}</h2>
           </Link>
         </li>

@@ -1,4 +1,3 @@
-import AudioProvider from "@/app/contexts/AudioContext";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import AudioPlayer from "./AudioPlayer";
@@ -43,9 +42,7 @@ const RadioBar = () => {
         )}
       </li>
       <li>
-        <AudioProvider>
-          <AudioPlayer />
-        </AudioProvider>
+        <AudioPlayer />
       </li>
     </ul>
   );
