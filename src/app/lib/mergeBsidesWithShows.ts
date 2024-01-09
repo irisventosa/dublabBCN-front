@@ -1,15 +1,20 @@
 import { Bside, RadioApiShow } from "../types";
 
+const formatDateToStandard = (dateString: string | Date) => {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+};
+
 const mergeBsidesWithShows = (latestShows: RadioApiShow[], bSides: Bside[]) => {
-  const formattedResults = bSides.map((item) => {
-    const formattedDate = new Date(item.date).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
+  const formattedResults = bSides.map((bSide) => {
+    const formattedDate = formatDateToStandard(bSide.date); // Use the function to format date
 
     return {
-      ...item,
+      ...bSide,
       date: formattedDate,
     };
   });
@@ -17,10 +22,10 @@ const mergeBsidesWithShows = (latestShows: RadioApiShow[], bSides: Bside[]) => {
   const latestPodcasts = latestShows.concat(formattedResults);
 
   latestPodcasts.sort((a, b) => {
-    const dateA = new Date(a.date).getTime();
-    const dateB = new Date(b.date).getTime();
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
 
-    return dateB - dateA;
+    return dateB.getTime() - dateA.getTime();
   });
 
   return latestPodcasts;

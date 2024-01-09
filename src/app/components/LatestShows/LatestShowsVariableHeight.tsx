@@ -1,8 +1,8 @@
 "use client";
 import { Bside, RadioApiShow } from "@/app/types";
 import { useState } from "react";
-import ShowCard from "./ShowCard";
 import BsideCard from "./BsideCard";
+import ShowCard from "./ShowCard";
 
 interface LatestShowsVariableHeightProps {
   latestPodcasts: RadioApiShow[] | Bside[];
@@ -28,7 +28,9 @@ const LatestShowsVariableHeight = ({
 
   return (
     <section className="py-[65px] px-[31px]">
-      <ul className={`grid grid-cols-4 gap-x-3 gap-y-14 pt-[${paddingTop}]`}>
+      <ul
+        className={`grid grid-cols-4  gap-x-3 gap-y-14 pt-[${paddingTop}] sm:place-items-center `}
+      >
         {latestPodcasts.map((show) => (
           <li
             key={show.slug}

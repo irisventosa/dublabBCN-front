@@ -1,3 +1,4 @@
+"use client";
 import { ApiProfile, Bside } from "../../types";
 import useMousePosition from "../ShowGrid/useMousePosition";
 import ProfileCard from "./ProfileCard";
@@ -27,32 +28,21 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
 
   // Calculate the offset based on mouse position for horizontal movement
   const calculateHorizontalOffset = (index: number) => {
-    const columnWidth = 50; // Replace this with your column width or use dynamic calculation
     const mouseX = mousePosition.x;
-    let offset = (mouseX / columnWidth) * index; // Adjust the multiplier for smoother movement
+    let offset = (mouseX / 200) * index; // Adjust the multiplier for smoother movement
 
     // Calculate the maximum offset based on the screen's middle for columns 1 and 2
-    if (index === 1 || index === 2) {
-      const maxOffset = window.innerWidth / 2;
-      offset = Math.max(-maxOffset, Math.min(maxOffset, offset));
-    } else {
-      // Calculate the maximum offset based on the other column for columns 0 and 3
-      const oppositeColumnIndex = index === 0 ? 3 : 0;
-      const oppositeColumnOffset = (mouseX / columnWidth) * oppositeColumnIndex;
-      offset = Math.max(
-        -oppositeColumnOffset,
-        Math.min(oppositeColumnOffset, offset)
-      );
-    }
+    const maxOffset = window.innerWidth / 2;
+    offset = Math.max(-maxOffset, Math.min(maxOffset, offset));
 
     return `${offset}px`;
   };
 
   const calculateVerticalTranslate = (profileIndex: number) => {
     const mouseY = mousePosition.y;
-    const translate = (mouseY / 900) * -5; // Adjust the multiplier for smoother movement
+    const translate = (mouseY / 900) * 8; // Adjust the multiplier for smoother movement
     const verticalOffset = (Math.random() - 0.5) * 1; // Randomize between -5 and 5 for vertical movement
-    const yOffset = 5; // Define the fixed yOffset
+    const yOffset = 1.2; // Define the fixed yOffset
 
     // Calculate the direction based on mouse movement
     const direction = mouseY - window.innerHeight / 2;
@@ -86,10 +76,11 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
   };
 
   return (
-    <div className="grid grid-cols-4 px-[31px] gap-x-3 gap-y-14 mt-16 max-w-[100vw]">
+    <div className="grid grid-cols-4 px-[31px] gap-x-3 gap-y-14 mt-16 max-w-[100vw] sm:place-items-center ">
       {columns.map((column, columnIndex) => (
         <ul
           key={columnIndex}
+          className=""
           style={{
             marginLeft: calculateHorizontalOffset(columnIndex),
             transform: calculateVerticalTranslate(columnIndex),
@@ -100,9 +91,7 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
             <li
               key={profile.slug}
               style={{
-                marginLeft: `${profileIndex * 20}px`,
-                marginRight: randomizePosition(),
-                marginBottom: "70px",
+                marginBottom: "400px",
                 transform: calculateVerticalTranslate(profileIndex),
                 marginTop: calculateVerticalTranslate(profileIndex),
                 position: "relative",

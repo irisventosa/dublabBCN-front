@@ -1,13 +1,14 @@
 "use client";
 import useDublabApi from "@/app/lib/hooks/useDublabApi";
 import mergeBsidesWithShows from "@/app/lib/mergeBsidesWithShows";
-import { getLatestShowsData } from "@/app/lib/radioDataFetching";
+
 import { Bside, RadioApiShow } from "@/app/types";
 import { useCallback, useState } from "react";
 import LatestShowsVariableHeight from "./LatestShowsVariableHeight";
+import Button from "../Button";
 
 const LoadAndMergeMorePodcasts = () => {
-  const { getBsides } = useDublabApi();
+  const { getBsides, getLatestShowsData } = useDublabApi();
   const [bsides, setBsides] = useState<Bside[]>([]);
   const [shows, setShows] = useState<RadioApiShow[]>([]);
   const [page, setPage] = useState(1);
@@ -20,7 +21,7 @@ const LoadAndMergeMorePodcasts = () => {
     setPage(nextPage);
     setBsides((prevProfiles: Bside[]) => [...prevProfiles, ...latestBsides]);
     setShows((prevShows: RadioApiShow[]) => [...prevShows, ...latestShows]);
-  }, [getBsides, page]);
+  }, [getBsides, getLatestShowsData, page]);
 
   const mergedContent = mergeBsidesWithShows(shows, bsides);
 
@@ -34,7 +35,14 @@ const LoadAndMergeMorePodcasts = () => {
         paddingTop="0px"
         latestPodcasts={mergedContent}
       />
-      <button onClick={loadMoreContent}>Load More</button>
+      <div className="flex justify-center py-14 ">
+        <Button
+          actionOnClick={loadMoreContent}
+          className=" bg-black text-white text-sm h-[42px] w-[120px] rounded-md uppercase "
+        >
+          Load More
+        </Button>
+      </div>
     </div>
   );
 };

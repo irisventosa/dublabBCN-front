@@ -2,11 +2,10 @@ import LatestShowsVariableHeight from "../components/LatestShows/LatestShowsVari
 import LoadMoreLatest from "../components/LatestShows/LoadMoreLatest";
 import useDublabApi from "../lib/hooks/useDublabApi";
 import mergeBsidesWithShows from "../lib/mergeBsidesWithShows";
-import { getLatestShowsData } from "../lib/radioDataFetching";
 
 const Latest = async () => {
   const pageToGet = 1;
-  const { getBsides } = useDublabApi();
+  const { getBsides, getLatestShowsData } = useDublabApi();
 
   const { results: latestShows } = await getLatestShowsData(pageToGet);
   const { results: bSides } = await getBsides(pageToGet);
@@ -14,7 +13,7 @@ const Latest = async () => {
   const latestPodcasts = mergeBsidesWithShows(latestShows, bSides);
 
   return (
-    <main className="flex flex-col">
+    <main className="flex flex-col pt-[219px] ">
       <LatestShowsVariableHeight
         paddingTop="206px"
         latestPodcasts={latestPodcasts}

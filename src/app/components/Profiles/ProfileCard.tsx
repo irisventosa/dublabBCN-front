@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import Tags from "./Tag";
 
 interface Profile {
   host?: string;
@@ -27,17 +28,16 @@ const ProfileCard = ({
 }: ProfileCardProps): React.ReactElement => {
   const pathname = usePathname();
   const dynamicPath = pathname === "/b-sides" ? "b-sides" : "shows";
+  const isShows = dynamicPath === "shows";
 
   const showName = formatSlugToGetShowName(slug);
   const formatedDescription = descriptionFormatting(description);
 
   const [backgroundColor, setBackgroundColor] = useState("white");
-  const [tagsColor, setTagsColor] = useState("black");
   const changeBackgroundPath = "/b-sides";
 
   useEffect(() => {
     setBackgroundColor(pathname === changeBackgroundPath ? "black" : "white");
-    setTagsColor(pathname === changeBackgroundPath ? "white" : "black");
   }, [pathname]);
 
   return (
@@ -69,15 +69,7 @@ const ProfileCard = ({
           {host && <span className="text-sm">Hosted by {host}</span>}
         </div>
       </div>
-      {tags && (
-        <ul
-          className={`h-4 flex gap-[10px] text-[11px] flex-row py-4 absolute text text-${tagsColor}`}
-        >
-          <li>{tags[0]} ///</li>
-          <li>{tags[1]} ///</li>
-          <li>{tags[2]} </li>
-        </ul>
-      )}
+      <Tags tags={tags} isShows={isShows} />
     </article>
   );
 };

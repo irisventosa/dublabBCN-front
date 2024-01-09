@@ -7,6 +7,7 @@ import "./globals.css";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SlideOverProvider } from "./contexts/SlideOverContext";
+import AudioProvider from "./contexts/AudioContext";
 
 const favorit = localfont({
   src: "./fonts/Favorit_Regular_Mono.ttf",
@@ -26,19 +27,21 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <html lang="en">
-      <body className={`${favorit.variable} font-favorit antialiased`}>
-        <RadioBar />
-        {backgroundColor === "black" ? (
-          <hr className="border-white w-full" />
-        ) : (
-          ""
-        )}
-        <SlideOverProvider>
-          <Header backgroundColor={backgroundColor} />
-          {children}
-          <Footer />
-        </SlideOverProvider>
-      </body>
+      <AudioProvider>
+        <body className={`${favorit.variable} font-favorit antialiased`}>
+          <RadioBar />
+          {backgroundColor === "black" ? (
+            <hr className="border-white w-full" />
+          ) : (
+            ""
+          )}
+          <SlideOverProvider>
+            <Header backgroundColor={backgroundColor} />
+            {children}
+            <Footer />
+          </SlideOverProvider>
+        </body>
+      </AudioProvider>
     </html>
   );
 };

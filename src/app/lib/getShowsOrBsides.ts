@@ -7,8 +7,8 @@ const getShowsOrBsides = (fetchCallback: CallableFunction) => {
   );
 
   const apiProfilesOrBsides = apiRequestPages.map((page: string) => {
-    const { data: apiProfiles } = useSWR(page, () => fetchCallback(page));
-    return apiProfiles;
+    const { data: apiPodcasts } = useSWR(page, () => fetchCallback(page));
+    return apiPodcasts;
   });
 
   return apiProfilesOrBsides;

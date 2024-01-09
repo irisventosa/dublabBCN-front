@@ -4,7 +4,7 @@ import extractUrlForEmbedPlayer from "@/app/lib/extractUrlForEmbedPlayer";
 import formatBsideDate from "@/app/lib/formatBsideDate";
 import { Bside } from "@/app/types";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Button";
 import Link from "next/link";
 
@@ -14,8 +14,6 @@ interface ShowCardProps {
   height: string;
   onClickPlayback: (show: string) => void;
 }
-
-const mixcloudEmbedUrl = "https://api.mixcloud.com/";
 
 const BsideCard = ({
   bside: { name, mixcloud_url, tags, picture, date, slug },
@@ -29,13 +27,19 @@ const BsideCard = ({
     onClickPlayback(showUrl!);
   };
 
-  const nameFontSize = name.length >= 45 ? "[1rem]" : "[1.375rem]";
+  const nameFontSize = name.length >= 45 ? "[0.8rem]" : "[1.375rem]";
+  const bottomClass = name.length > 15 ? "bottom-7" : "bottom-0";
 
+  const [isHovered, setIsHovered] = useState(false);
   const transformedHeight = parseInt(height, 10);
 
   return (
     <article className={`h-[${height}px] relative leading-[120%]`}>
-      <div>
+      <div
+        className="relative brightness-50 hover:brightness-90  "
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <Image
           src={picture}
           alt={`Imatge del programa ${name}`}
@@ -43,14 +47,21 @@ const BsideCard = ({
           width={353}
           className={`h-[${height}px] w-[353px] relative object-cover brightness-50 hover:brightness-100 `}
         />
-        <Button
-          className="absolute bottom-52 left-50 text-zinc-200"
-          actionOnClick={handleShowPlayback}
-        >
-          {`${mixcloudEmbedUrl}${showUrl}embed-html/`}
-        </Button>
+        {isHovered && (
+          <Button
+            actionOnClick={handleShowPlayback}
+            className="absolute inset-0 flex items-center justify-center  "
+          >
+            <Image
+              src={"/assets/playwhite.svg"}
+              width={50}
+              height={50}
+              alt={""}
+            />
+          </Button>
+        )}
       </div>
-      <ul className="flex flex-col absolute p-4 bottom-7 text-white">
+      <ul className={`flex flex-col absolute p-4 text-white ${bottomClass}`}>
         <li className="mb-3 h-[14px]">
           <time className="text-[12px]">{showDateforCard}</time>
         </li>

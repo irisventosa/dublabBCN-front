@@ -17,16 +17,16 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
 
   const { data: profileData } = useSWR<ApiProfile>(params.slug, getProfileData);
 
-  let ProfileShowName = params.slug.replace(/-/g, " ");
+  let profileShowName = params.slug.replace(/-/g, " ");
 
-  if (ProfileShowName === "macguffin 20") {
-    ProfileShowName = "macguffin 2.0";
+  if (profileShowName === "macguffin 20") {
+    profileShowName = "macguffin 2.0";
   }
 
   if (!profileData) return <div>Loading...</div>;
 
   return (
-    <main className="mt-[255px] w-[720px] gap-[50px] flex ">
+    <main className="mt-[255px] gap-[50px] flex justify-between">
       <Image
         src={profileData.picture}
         alt={""}
@@ -34,7 +34,7 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
         height={327}
         className="h-[727px] object-cover"
       />
-      <section className="max-h-[700px] min-w-[720px] overflow-scroll scrollbar-hide">
+      <section className="max-h-[700px] min-w-[720px] overflow-scroll scrollbar-hide sm:pr-16">
         <div className="flex justify-between items-end">
           <ul className="flex">
             <li>Listen</li>
@@ -51,7 +51,7 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
             ))}
           </ul>
         </div>
-        <h2 className="text-5xl h-[58px] mt-[56px]">{ProfileShowName}</h2>
+        <h2 className="text-5xl h-[58px] mt-[56px]">{profileShowName}</h2>
         <ul className="flex gap-[194px] text-[32px] mt-[50px] ">
           <li>With</li>
           <li>{profileData.host} </li>

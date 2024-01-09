@@ -40,8 +40,8 @@ export const extractDatesForCard = (slug: string): string => {
   return dates ? dates.join("/") : "";
 };
 
-export const formatRelatedShowsInfo = (shows: RadioApiShow[]) =>
-  shows.map(({ slug, tags }) => {
+export const formatAndSortRelatedShowsInfo = (shows: RadioApiShow[]) => {
+  const formattedShows = shows.map(({ slug, tags }) => {
     const showName = formatSlugToGetShowName(slug);
     const showDateForShowList = extractDatesForShowList(slug);
     const showDateForUrl = extractDatesForUrl(slug);
@@ -56,3 +56,23 @@ export const formatRelatedShowsInfo = (shows: RadioApiShow[]) =>
       showDateForList,
     };
   });
+
+  formattedShows.sort((a, b) => {
+    const dateA = new Date(
+      `20${a.showDateForList.slice(-2)}-${a.showDateForList.slice(
+        3,
+        5
+      )}-${a.showDateForList.slice(0, 2)}`
+    ).getTime();
+    const dateB = new Date(
+      `20${b.showDateForList.slice(-2)}-${b.showDateForList.slice(
+        3,
+        5
+      )}-${b.showDateForList.slice(0, 2)}`
+    ).getTime();
+
+    return dateB - dateA;
+  });
+
+  return formattedShows;
+};
