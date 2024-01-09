@@ -1,6 +1,6 @@
 "use client";
 import useDublabApi from "@/app/lib/hooks/useDublabApi";
-import { formatRelatedShowsInfo } from "@/app/lib/processSlug";
+import { formatAndSortRelatedShowsInfo } from "@/app/lib/processSlug";
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { ApiProfile, RadioApiShow } from "@/app/types";
 import Link from "next/link";
@@ -14,7 +14,7 @@ interface RelatedShowsProps {
 const RelatedShows = ({ shows }: RelatedShowsProps) => {
   const { getProfileData } = useDublabApi();
 
-  const formattedShows = formatRelatedShowsInfo(shows);
+  const formattedShows = formatAndSortRelatedShowsInfo(shows);
 
   const { data: profileData } = useSWR<ApiProfile>(
     formattedShows[0].showName,

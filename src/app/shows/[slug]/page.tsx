@@ -26,7 +26,7 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
   if (!profileData) return <div>Loading...</div>;
 
   return (
-    <main className="mt-[255px] gap-[50px] flex">
+    <main className="mt-[255px] gap-[50px] flex justify-between">
       <Image
         src={profileData.picture}
         alt={""}
@@ -34,7 +34,7 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
         height={327}
         className="h-[727px] object-cover"
       />
-      <section className="max-h-[700px] min-w-[720px] overflow-scroll scrollbar-hide pr-8">
+      <section className="max-h-[700px] min-w-[720px] overflow-scroll scrollbar-hide sm:pr-16">
         <div className="flex justify-between items-end">
           <ul className="flex">
             <li>Listen</li>

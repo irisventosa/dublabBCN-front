@@ -62,11 +62,11 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
     return `translateY(${itemTranslate}px)`; // Apply individual item's vertical movement offset
   };
 
-  const randomizePosition = () => {
+  /*  const randomizePosition = () => {
     const randomOffset =
       Math.random() > 1.5 ? Math.random() * 15 + 10 : -Math.random() * 15 - 2;
     return `${randomOffset}px`;
-  };
+  }; */
 
   const getRandomHeight = () => {
     const heights = [150, 200, 300];
@@ -76,7 +76,7 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
   };
 
   return (
-    <div className="grid grid-cols-4 px-[31px] gap-x-3 gap-y-14 mt-16 max-w-[100vw] ">
+    <div className="grid grid-cols-4 px-[31px] gap-x-3 gap-y-14 mt-16 max-w-[100vw] sm:place-items-center ">
       {columns.map((column, columnIndex) => (
         <ul
           key={columnIndex}
