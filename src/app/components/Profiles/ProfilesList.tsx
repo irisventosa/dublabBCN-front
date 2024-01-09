@@ -76,7 +76,7 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
   };
 
   return (
-    <div className="grid grid-cols-4 px-[31px] gap-x-3 gap-y-14 mt-16 max-w-[100vw] ">
+    <div className="grid grid-cols-4 px-[31px] gap-x-3 gap-y-14 mt-16 max-w-[100vw] sm:place-items-center ">
       {columns.map((column, columnIndex) => (
         <ul
           key={columnIndex}

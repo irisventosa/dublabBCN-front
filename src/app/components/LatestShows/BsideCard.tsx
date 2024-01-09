@@ -27,7 +27,9 @@ const BsideCard = ({
     onClickPlayback(showUrl!);
   };
 
-  const nameFontSize = name.length >= 45 ? "[1rem]" : "[1.375rem]";
+  const nameFontSize = name.length >= 45 ? "[0.8rem]" : "[1.375rem]";
+  const bottomClass = name.length > 15 ? "bottom-7" : "bottom-0";
+
   const [isHovered, setIsHovered] = useState(false);
   const transformedHeight = parseInt(height, 10);
 
@@ -59,7 +61,7 @@ const BsideCard = ({
           </Button>
         )}
       </div>
-      <ul className="flex flex-col absolute p-4 bottom-7 text-white">
+      <ul className={`flex flex-col absolute p-4 text-white ${bottomClass}`}>
         <li className="mb-3 h-[14px]">
           <time className="text-[12px]">{showDateforCard}</time>
         </li>

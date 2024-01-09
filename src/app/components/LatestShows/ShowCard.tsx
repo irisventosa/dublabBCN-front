@@ -52,6 +52,8 @@ const ShowCard = ({
     host = profile?.host;
   }
 
+  const hostFontSize = host && host!.length >= 25 ? "[12px]" : "sm";
+
   const [isHovered, setIsHovered] = useState(false);
 
   const transformedHeight = parseInt(height, 10);
@@ -85,7 +87,7 @@ const ShowCard = ({
           </Button>
         )}
       </div>
-      <ul className="flex flex-col absolute p-4 bottom-3 text-white ">
+      <ul className="flex flex-col absolute p-4 bottom-1 text-white ">
         <li className="mb-3 h-[14px]">
           <time className="text-[12px]">{showDateforCard}</time>
         </li>
@@ -95,7 +97,9 @@ const ShowCard = ({
           </Link>
         </li>
         <li className="h-[17px]">
-          <span className={`text-sm`}>Hosted by {host}</span>
+          <span className={`text-${hostFontSize} leading-5`}>
+            Hosted by {host}
+          </span>
         </li>
       </ul>
       <ul className="h-4 flex gap-[10px] text-[11px] flex-row py-4 absolute text">
