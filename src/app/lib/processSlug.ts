@@ -37,7 +37,9 @@ export const extractDatesForUrl = (slug: string): string => {
 
 export const extractDatesForCard = (slug: string): string => {
   const dates = slug.match(/\d+/g);
-  return dates ? dates.join("/") : "";
+  const formattedDates = dates ? dates.join("/") : "";
+
+  return formattedDates;
 };
 
 export const formatAndSortRelatedShowsInfo = (shows: RadioApiShow[]) => {

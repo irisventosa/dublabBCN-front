@@ -34,7 +34,7 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
         height={327}
         className="h-[727px] object-cover"
       />
-      <section className="max-h-[700px] min-w-[720px] overflow-scroll scrollbar-hide sm:pr-16">
+      <section className="max-h-[700px] min-w-[720px] overflow-scroll scrollbar-hide sm:pr-[10rem]">
         <div className="flex justify-between items-end">
           <ul className="flex">
             <li>Listen</li>

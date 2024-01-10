@@ -15,7 +15,7 @@ const Tags = ({ tags, isShows }: TagProps) => {
           {tags.map((tag) => (
             <>
               <li
-                className={`bg-${backgroundColor} border-solid border-[1px] border-slate-100 rounded-md h-6 w-fit flex items-center pt-[1px] px-3`}
+                className={`bg-${backgroundColor} border-solid border-[1px] border-slate-100 rounded-md h-6 min-w-fit flex items-center pt-[1px] px-3`}
                 key={tag}
               >
                 {tag}

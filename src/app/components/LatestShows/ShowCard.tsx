@@ -52,7 +52,7 @@ const ShowCard = ({
     host = profile?.host;
   }
 
-  const hostFontSize = host && host!.length >= 25 ? "[12px]" : "sm";
+  const hostFontSize = host && host!.length >= 25 ? "[11px]" : "sm";
 
   const [isHovered, setIsHovered] = useState(false);
 
