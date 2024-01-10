@@ -1,8 +1,11 @@
 "use client";
+import Button from "@/app/components/Button";
 import Tracklist from "@/app/components/Tracklist";
+import extractUrlForEmbedPlayer from "@/app/lib/extractUrlForEmbedPlayer";
 import useDublabApi from "@/app/lib/hooks/useDublabApi";
 import { Bside } from "@/app/types";
 import Image from "next/image";
+import { useState } from "react";
 import useSWR from "swr";
 
 interface BSideDetailsProps {
@@ -12,11 +15,17 @@ interface BSideDetailsProps {
 }
 
 const BsideDetails = ({ params }: BSideDetailsProps) => {
+  const [iFrameShow, setIFrameShow] = useState("");
   const { getBsideData } = useDublabApi();
   const { data: bside } = useSWR<Bside>(params.slug, getBsideData);
 
   if (!bside) return <div>Loading...</div>;
 
+  const handleCardShow = (showFromCard: string) => {
+    setIFrameShow(showFromCard);
+  };
+
+  const showUrl = extractUrlForEmbedPlayer(bside.mixcloud_url);
   const description = {
     __html: bside.description,
   };
@@ -33,7 +42,14 @@ const BsideDetails = ({ params }: BSideDetailsProps) => {
       <section className="max-h-[750px] min-w-[720px] overflow-scroll scrollbar-hide  bg-black">
         <div className="flex justify-between items-end">
           <ul className="flex">
-            <li>Listen</li>
+            <li>
+              <Button
+                className="uppercase"
+                actionOnClick={() => handleCardShow(showUrl)}
+              >
+                Listen
+              </Button>
+            </li>
             <span className="loader"></span>
           </ul>
           {bside.tags && (
@@ -60,6 +76,15 @@ const BsideDetails = ({ params }: BSideDetailsProps) => {
           {bside.tracklist && <Tracklist tracklist={bside.tracklist} />}
         </section>
       </section>
+      {iFrameShow && (
+        <iframe
+          title="Programa de radio seleccionat"
+          className="sm:w-screen w-screen  fixed bottom-0 left-0"
+          height="60"
+          allow="autoplay"
+          src={`https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=/${iFrameShow}`}
+        ></iframe>
+      )}
     </main>
   );
 };
