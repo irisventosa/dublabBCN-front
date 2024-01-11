@@ -21,7 +21,12 @@ export const formatSlugToGetShowName = (slug: string): string => {
     return showIs5wuguan5;
   }
 
-  const showName = slug.replace(/-/g, " ").replace(/\d/g, "").replace(/'/g, "");
+  const showName = slug
+    .replace(/-/g, " ")
+    .replace(/\d/g, "")
+    .replace(/'/g, "")
+    .trim();
+
   return showName;
 };
 

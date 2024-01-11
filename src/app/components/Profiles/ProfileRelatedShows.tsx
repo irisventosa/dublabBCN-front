@@ -29,7 +29,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
         ({ showName, showDateForList, showDateForUrl, showTags }) => (
           <>
             <div className="flex justify-between mt-[17px]">
-              <Link href={`/shows/${showDateForUrl}`}>
+              <Link href={`/shows/${showName}/${showDateForUrl}`}>
                 <span>
                   {showName === "macGuffin-20" ? "Macguffin 2.0" : showName}
                 </span>
