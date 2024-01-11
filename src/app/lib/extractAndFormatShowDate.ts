@@ -3,7 +3,7 @@ const extractAndFormatShowDate = (timestamp: string) => {
   const hours = date.getHours();
   const minutes = date.getMinutes();
 
-  const formattedTime = `${hours}:${minutes < 10 ? "0" : ""}${minutes}`; // Formats minutes to include leading zero if necessary
+  const formattedTime = `${hours}:${minutes < 10 ? "0" : ""}${minutes}`;
 
   return formattedTime;
 };
