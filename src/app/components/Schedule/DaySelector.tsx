@@ -11,6 +11,7 @@ interface DaySelectorProps {
 }
 
 const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
+  debugger;
   const actualDay = findActualDay(scheduledShows);
   const [shownSchedule, setShownSchedule] = useState(actualDay);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);

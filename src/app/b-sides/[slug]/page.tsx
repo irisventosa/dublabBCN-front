@@ -21,8 +21,8 @@ const BsideDetails = ({ params }: BSideDetailsProps) => {
 
   if (!bside) return <div>Loading...</div>;
 
-  const handleCardShow = (showFromCard: string) => {
-    setIFrameShow(showFromCard);
+  const listenToBside = (bsideLink: string) => {
+    setIFrameShow(bsideLink);
   };
 
   const showUrl = extractUrlForEmbedPlayer(bside.mixcloud_url);
@@ -45,7 +45,7 @@ const BsideDetails = ({ params }: BSideDetailsProps) => {
             <li>
               <Button
                 className="uppercase"
-                actionOnClick={() => handleCardShow(showUrl)}
+                actionOnClick={() => listenToBside(showUrl)}
               >
                 Listen
               </Button>

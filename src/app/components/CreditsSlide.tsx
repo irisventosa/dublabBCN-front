@@ -45,7 +45,7 @@ const CreditsSlideOver = () => {
           <div className="p-4 text-black">
             <section>
               <div className="mt-[192px] flex justify-between">
-                <ul className="slide relative left-[-1024px] flex flex-col gap-[53px] text-[48px] leading-[56px] mt-[42px] ">
+                <ul className="slide relative left-[-1024px] flex flex-col gap-[53px] text-[38px] leading-[56px] mt-[42px] ">
                   <li>
                     <Employee
                       charge="Direcció de continguts 001"
@@ -75,12 +75,12 @@ const CreditsSlideOver = () => {
                   <ImageChanger />
 
                   <div className="flex mt-[18px] justify-between">
-                    <ul className="text-[22px] leading-[26.4px]">
+                    <ul className="text-[16px] leading-[26.4px]">
                       <li className="w-max">Neus Abellan 001</li>
                       <li className="w-max">Jota Cassone 002</li>
                       <li className="w-max">Paca Ribalta 003</li>
                     </ul>
-                    <ul className="text-[22px] leading-[26.4px]">
+                    <ul className="text-[16px] leading-[26.4px]">
                       <li className="w-max">Direcció de continguts 001</li>
                       <li className="w-max">Direcció tècnica 002</li>
                       <li className="w-max">Comunicació + producció 003</li>
@@ -88,7 +88,7 @@ const CreditsSlideOver = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-between px-8 mt-[93px] text-[28px] leading-[26.4px] mb-[23px] ">
+              <div className="flex justify-between px-8 mt-[21px] text-[28px] leading-[26.4px] mb-[23px] ">
                 <ul className="slide relative left-[-1024px] ">
                   <li className="w-max">
                     Neus &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;

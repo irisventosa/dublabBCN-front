@@ -1,10 +1,9 @@
+import Image from "next/image";
 import React from "react";
 import Contact from "./Contact";
 import Credits from "./Credits";
 import LegalLinks from "./LegalLinks";
-import Newsletter from "./NewsleterSub";
 import SocialLinks from "./SocialLinks";
-import Image from "next/image";
 
 const Footer = (): React.ReactElement => {
   return (

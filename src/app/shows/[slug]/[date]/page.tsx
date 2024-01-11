@@ -1,9 +1,12 @@
 "use client";
+import Button from "@/app/components/Button";
 import ProfileLinks from "@/app/components/Profiles/ProfileLinks";
 import Tracklist from "@/app/components/Tracklist";
+import extractUrlForEmbedPlayer from "@/app/lib/extractUrlForEmbedPlayer";
 import useDublabApi from "@/app/lib/hooks/useDublabApi";
 import { ApiProfile, RadioShow } from "@/app/types";
 import Image from "next/image";
+import { useState } from "react";
 import useSWR from "swr";
 
 interface ShowByDateProps {
@@ -15,6 +18,7 @@ interface ShowByDateProps {
 
 const ShowByDate = ({ params }: ShowByDateProps) => {
   const { getProfileData, getSingleShowData } = useDublabApi();
+  const [iFrameShow, setIFrameShow] = useState("");
 
   const endpoint = `${params.slug}-${params.date} `;
 
@@ -27,9 +31,14 @@ const ShowByDate = ({ params }: ShowByDateProps) => {
     profileShowName = "macguffin 2.0";
   }
 
-  if (!profileData) return <div>Loading...</div>;
+  const listenShow = (showLink: string) => {
+    setIFrameShow(showLink);
+  };
 
+  if (!profileData) return <div>Loading...</div>;
   if (!showData) return "tracklsit not provided";
+
+  const showUrl = extractUrlForEmbedPlayer(showData.mixcloud_url);
 
   return (
     <main className="mt-[255px] gap-[50px] flex justify-between">
@@ -43,7 +52,14 @@ const ShowByDate = ({ params }: ShowByDateProps) => {
       <section className="max-h-[700px] min-w-[720px] overflow-scroll scrollbar-hide sm:pr-[10rem]">
         <div className="flex justify-between items-end">
           <ul className="flex">
-            <li>Listen</li>
+            <li>
+              <Button
+                className="uppercase"
+                actionOnClick={() => listenShow(showUrl)}
+              >
+                Listen
+              </Button>
+            </li>
             <span className="loader"></span>
           </ul>
           <ul className="flex gap-[10px] opacity-40">
@@ -72,6 +88,15 @@ const ShowByDate = ({ params }: ShowByDateProps) => {
           <Tracklist tracklist={showData.tracklist!}></Tracklist>
         </section>
       </section>
+      {iFrameShow && (
+        <iframe
+          title="Programa de radio seleccionat"
+          className=" w-screen fixed bottom-0 left-0"
+          height="60"
+          allow="autoplay"
+          src={`https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=/${iFrameShow}`}
+        ></iframe>
+      )}
     </main>
   );
 };
