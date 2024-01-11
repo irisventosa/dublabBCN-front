@@ -91,7 +91,7 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
             <li
               key={profile.slug}
               style={{
-                marginBottom: "400px",
+                marginBottom: "200px",
                 transform: calculateVerticalTranslate(profileIndex),
                 marginTop: calculateVerticalTranslate(profileIndex),
                 position: "relative",

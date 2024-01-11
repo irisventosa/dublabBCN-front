@@ -28,7 +28,7 @@ const ShowProfiles = () => {
         <span>AAA</span>
         <h2>SHOWS</h2>
       </div>
-      <section>
+      <section className="mb-80">
         {onAirProfiles.map((profiles, index) => (
           <ProfilesList key={index} firstPageOfProfiles={profiles!.results} />
         ))}

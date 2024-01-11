@@ -3,7 +3,7 @@ const About = () => {
     <section className="w-[1085px] mt-[233px] ml-[171px]">
       <div className="w-[958px]">
         <p className="text-7xl">
-          Es una ràdio online comunitària sense <br /> ànim de lucre.
+          és una ràdio online comunitària sense <br /> ànim de lucre.
         </p>
       </div>
       <div className="w-[806px] h-[66px] ml-[260px] mt-[71px]">

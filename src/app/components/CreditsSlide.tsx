@@ -34,7 +34,7 @@ const CreditsSlideOver = () => {
         onClick={toggleSlideover}
         className="cursor-pointer uppercase text-white"
       >
-        Credits
+        Crèdits
       </button>
       <div className={`w-full  fixed inset-0 ${isOpen ? "" : "invisible"}`}>
         <div

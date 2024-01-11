@@ -21,7 +21,12 @@ export const formatSlugToGetShowName = (slug: string): string => {
     return showIs5wuguan5;
   }
 
-  const showName = slug.replace(/-/g, " ").replace(/\d/g, "").replace(/'/g, "");
+  const showName = slug
+    .replace(/-/g, " ")
+    .replace(/\d/g, "")
+    .replace(/'/g, "")
+    .trim();
+
   return showName;
 };
 
@@ -37,7 +42,9 @@ export const extractDatesForUrl = (slug: string): string => {
 
 export const extractDatesForCard = (slug: string): string => {
   const dates = slug.match(/\d+/g);
-  return dates ? dates.join("/") : "";
+  const formattedDates = dates ? dates.join("/") : "";
+
+  return formattedDates;
 };
 
 export const formatAndSortRelatedShowsInfo = (shows: RadioApiShow[]) => {

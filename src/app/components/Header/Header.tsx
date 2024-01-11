@@ -11,7 +11,7 @@ interface HeaderProps {
 const Header = ({ backgroundColor }: HeaderProps): React.ReactElement => {
   const { isOpen } = useSlideOver();
 
-  const variableWidth = isOpen ? "2/4" : "screen";
+  const variableWidth = isOpen ? "2/4" : "full";
 
   return (
     <div className="flex justify-start bg-black ">

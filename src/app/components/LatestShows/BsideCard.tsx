@@ -28,7 +28,7 @@ const BsideCard = ({
   };
 
   const nameFontSize = name.length >= 45 ? "[0.8rem]" : "[1.375rem]";
-  const bottomClass = name.length > 15 ? "bottom-7" : "bottom-0";
+  const bottomClass = name.length > 15 ? "bottom-8" : "bottom-0";
 
   const [isHovered, setIsHovered] = useState(false);
   const transformedHeight = parseInt(height, 10);
