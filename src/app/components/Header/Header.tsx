@@ -9,16 +9,20 @@ interface HeaderProps {
 }
 
 const Header = ({ backgroundColor }: HeaderProps): React.ReactElement => {
-  const { isOpen } = useSlideOver();
+  const { isOpen, setIsOpen } = useSlideOver();
 
   const variableWidth = isOpen ? "2/4" : "full";
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
 
   return (
     <div className="flex justify-start bg-black ">
       <header
         className={`sm:flex sm:p-8 absolute w-${variableWidth} max-w-[100vw] h-[219px] z-10 p-4 pt-[42px] gap-[32px] bg-${backgroundColor} `}
       >
-        <Link href="/">
+        <Link onClick={handleLinkClick} href="/">
           <Image
             src="/assets/Logo_dublabBCN2024.png"
             alt="dublab Barcelona logo"

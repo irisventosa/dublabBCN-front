@@ -5,9 +5,9 @@ import mergeBsidesWithShows from "../lib/mergeBsidesWithShows";
 
 const Latest = async () => {
   const pageToGet = 1;
-  const { getBsides, getLatestShowsData } = useDublabApi();
+  const { getBsides, getLatestsShowsData } = useDublabApi();
 
-  const { results: latestShows } = await getLatestShowsData(pageToGet);
+  const { results: latestShows } = await getLatestsShowsData(pageToGet);
   const { results: bSides } = await getBsides(pageToGet);
 
   const latestPodcasts = mergeBsidesWithShows(latestShows, bSides);

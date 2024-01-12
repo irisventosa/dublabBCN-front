@@ -2,13 +2,13 @@
 "use client";
 import ProfilesList from "../components/Profiles/ProfilesList";
 import SearchAndFilters from "../components/SearchAndFilters";
-import getShowsOrBsides from "../lib/getShowsOrBsides";
+import getProfilesOrBsides from "../lib/getShowsOrBsides";
 import useDublabApi from "../lib/hooks/useDublabApi";
 
 const ShowProfiles = () => {
   const { getProfiles } = useDublabApi();
 
-  const onAirProfiles = getShowsOrBsides(getProfiles);
+  const onAirProfiles = getProfilesOrBsides(getProfiles);
 
   const isAllDataLoaded = onAirProfiles.every((apiProfiles) => apiProfiles);
 

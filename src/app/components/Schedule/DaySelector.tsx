@@ -11,7 +11,6 @@ interface DaySelectorProps {
 }
 
 const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
-  debugger;
   const actualDay = findActualDay(scheduledShows);
   const [shownSchedule, setShownSchedule] = useState(actualDay);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
@@ -21,6 +20,7 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
   }, [actualDay, scheduledShows]);
 
   const twoAirtimeWeeks = getAirtimeWeeks();
+
   const wholeWeekFormatted = twoAirtimeWeeks.slice(0, 7);
 
   const handleClick = useCallback(

@@ -72,7 +72,7 @@ const CreditsSlideOver = () => {
                       CREDITOS
                     </Marquee>
                   </div>
-                  <ImageChanger />
+                  {isOpen && <ImageChanger />}
 
                   <div className="flex mt-[18px] justify-between">
                     <ul className="text-[16px] leading-[26.4px]">

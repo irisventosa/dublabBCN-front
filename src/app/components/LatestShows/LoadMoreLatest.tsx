@@ -8,7 +8,7 @@ import LatestShowsVariableHeight from "./LatestShowsVariableHeight";
 import Button from "../Button";
 
 const LoadAndMergeMorePodcasts = () => {
-  const { getBsides, getLatestShowsData } = useDublabApi();
+  const { getBsides, getLatestsShowsData } = useDublabApi();
   const [bsides, setBsides] = useState<Bside[]>([]);
   const [shows, setShows] = useState<RadioApiShow[]>([]);
   const [page, setPage] = useState(1);
@@ -16,12 +16,13 @@ const LoadAndMergeMorePodcasts = () => {
   const loadMoreContent = useCallback(async () => {
     const nextPage = page + 1;
     const { results: latestBsides } = (await getBsides(nextPage)) ?? [];
-    const { results: latestShows } = (await getLatestShowsData(nextPage)) ?? [];
+    const { results: latestShows } =
+      (await getLatestsShowsData(nextPage)) ?? [];
 
     setPage(nextPage);
     setBsides((prevProfiles: Bside[]) => [...prevProfiles, ...latestBsides]);
     setShows((prevShows: RadioApiShow[]) => [...prevShows, ...latestShows]);
-  }, [getBsides, getLatestShowsData, page]);
+  }, [getBsides, getLatestsShowsData, page]);
 
   const mergedContent = mergeBsidesWithShows(shows, bsides);
 
