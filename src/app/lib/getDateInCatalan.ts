@@ -2,7 +2,7 @@ export const date = new Date();
 export const year = date.getFullYear();
 export const currentHour = date.getHours();
 
-export const getDayNameInCatalan = () => {
+export const getDayNameInCatalan = (currentDate: Date) => {
   const weekdaysInCatalan = [
     "Diumenge",
     "Dilluns",
@@ -13,13 +13,13 @@ export const getDayNameInCatalan = () => {
     "Dissabte",
   ];
 
-  const dayPosition = date.getDay();
+  const dayPosition = currentDate.getDay();
   const weekDay = weekdaysInCatalan[dayPosition];
 
   return weekDay;
 };
 
-export const getDayNumberAndMonth = () => {
+export const getDayNumberAndMonth = (currentDate: Date) => {
   const months = [
     "Gener",
     "Febrer",
@@ -35,9 +35,9 @@ export const getDayNumberAndMonth = () => {
     "Desembre",
   ];
 
-  const monthPosition = date.getMonth();
+  const monthPosition = currentDate.getMonth();
 
-  const day = date.getDate();
+  const day = currentDate.getDate();
   const month = months[monthPosition];
 
   const catalanDate = `/ ${day} de ${month} `;
@@ -45,7 +45,7 @@ export const getDayNumberAndMonth = () => {
   return catalanDate;
 };
 
-export const getDayName = () => {
+export const getDayName = (currentDate: Date) => {
   const weekdays = [
     "sunday",
     "monday",
@@ -55,7 +55,7 @@ export const getDayName = () => {
     "friday",
     "saturday",
   ];
-  const dayPosition = date.getDay();
+  const dayPosition = currentDate.getDay();
   const weekDay = weekdays[dayPosition];
 
   return weekDay;

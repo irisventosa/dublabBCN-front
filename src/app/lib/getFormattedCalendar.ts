@@ -20,7 +20,10 @@ const getAirtimeWeeks = (): { dayName: string; formattedDay: string }[] => {
 
       const formatter = new Intl.DateTimeFormat("en-US", options);
 
-      const formattedDay: string = formatter.format(date).replace(/,/g, " ");
+      const formattedDay: string = formatter
+        .format(date)
+        .replace(/(\d{2})\/(\d{2})/, "$2/$1")
+        .replace(/,/g, "");
 
       const dayName: string = new Intl.DateTimeFormat("en-US", {
         weekday: "long",
