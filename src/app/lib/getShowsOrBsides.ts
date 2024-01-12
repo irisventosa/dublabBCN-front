@@ -1,8 +1,14 @@
 import useSWR from "swr";
 
-const getShowsOrBsides = (fetchCallback: CallableFunction) => {
+interface FetchCallback<T> {
+  (page: string): Promise<T>;
+}
+
+const getProfilesOrBsides = <T>(fetchCallback: FetchCallback<T>) => {
+  const numberOfPages = fetchCallback.name === "getProfiles" ? 7 : 18;
+
   const apiRequestPages = Array.from(
-    { length: 7 },
+    { length: numberOfPages },
     (_, index) => `${index + 1}`
   );
 
@@ -14,4 +20,4 @@ const getShowsOrBsides = (fetchCallback: CallableFunction) => {
   return apiProfilesOrBsides;
 };
 
-export default getShowsOrBsides;
+export default getProfilesOrBsides;

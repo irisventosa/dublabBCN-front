@@ -20,6 +20,7 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
   }, [actualDay, scheduledShows]);
 
   const twoAirtimeWeeks = getAirtimeWeeks();
+
   const wholeWeekFormatted = twoAirtimeWeeks.slice(0, 7);
 
   const handleClick = useCallback(

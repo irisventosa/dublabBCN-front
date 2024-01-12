@@ -4,7 +4,6 @@ import { formatAndSortRelatedShowsInfo } from "@/app/lib/processSlug";
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { ApiProfile, RadioApiShow } from "@/app/types";
 import Link from "next/link";
-import React from "react";
 import useSWR from "swr";
 
 interface RelatedShowsProps {
@@ -26,10 +25,16 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
   return (
     <article>
       {formattedShows.map(
-        ({ showName, showDateForList, showDateForUrl, showTags }) => (
+        ({
+          showName,
+          showDateForList,
+          showDateForUrl,
+          showTags,
+          slugToUrl,
+        }) => (
           <>
             <div className="flex justify-between mt-[17px]">
-              <Link href={`/shows/${showName}/${showDateForUrl}`}>
+              <Link href={`/shows/${slugToUrl}/${showDateForUrl}`}>
                 <span>
                   {showName === "macGuffin-20" ? "Macguffin 2.0" : showName}
                 </span>

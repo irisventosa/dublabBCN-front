@@ -1,10 +1,9 @@
+import Image from "next/image";
 import React from "react";
 import Contact from "./Contact";
 import Credits from "./Credits";
 import LegalLinks from "./LegalLinks";
-import Newsletter from "./NewsleterSub";
 import SocialLinks from "./SocialLinks";
-import Image from "next/image";
 
 const Footer = (): React.ReactElement => {
   return (
@@ -22,7 +21,7 @@ const Footer = (): React.ReactElement => {
           ànim de lucre.
         </span>
       </div>
-      <ul className="flex flex-col sm:flex-row place-content-evenly px-4 sm:px-8 pt-[57px] text-sm font-normal gap-[74px]  ">
+      <ul className="flex flex-col sm:flex-row  px-4 sm:px-8 pt-[57px] text-sm font-normal gap-[74px]  ">
         <li className="w-[197px]">
           <SocialLinks />
         </li>
@@ -31,9 +30,6 @@ const Footer = (): React.ReactElement => {
         </li>
         <li className="w-[197px]">
           <LegalLinks />
-        </li>
-        <li className=" sm:ml-[92px]">
-          <Newsletter />
         </li>
         <li className="min-w-fit mt-[2px] mb-16 sm:hidden  ">
           Ⓒ 2023 Dublab Barcelona

@@ -21,8 +21,8 @@ const BsideDetails = ({ params }: BSideDetailsProps) => {
 
   if (!bside) return <div>Loading...</div>;
 
-  const handleCardShow = (showFromCard: string) => {
-    setIFrameShow(showFromCard);
+  const listenToBside = (bsideLink: string) => {
+    setIFrameShow(bsideLink);
   };
 
   const showUrl = extractUrlForEmbedPlayer(bside.mixcloud_url);
@@ -37,7 +37,7 @@ const BsideDetails = ({ params }: BSideDetailsProps) => {
         alt={""}
         width={660}
         height={327}
-        className="h-[727px]"
+        className="h-[727px] object-cover"
       ></Image>
       <section className="max-h-[750px] min-w-[720px] overflow-scroll scrollbar-hide  bg-black">
         <div className="flex justify-between items-end">
@@ -45,7 +45,7 @@ const BsideDetails = ({ params }: BSideDetailsProps) => {
             <li>
               <Button
                 className="uppercase"
-                actionOnClick={() => handleCardShow(showUrl)}
+                actionOnClick={() => listenToBside(showUrl)}
               >
                 Listen
               </Button>

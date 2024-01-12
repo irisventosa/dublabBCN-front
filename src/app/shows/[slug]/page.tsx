@@ -36,10 +36,6 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
       />
       <section className="max-h-[700px] min-w-[720px] overflow-scroll scrollbar-hide sm:pr-[10rem]">
         <div className="flex justify-between items-end">
-          <ul className="flex">
-            <li>Listen</li>
-            <span className="loader"></span>
-          </ul>
           <ul className="flex gap-[10px] opacity-40">
             {profileData.tags.map((tag, index) => (
               <li
