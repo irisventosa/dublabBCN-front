@@ -1,12 +1,14 @@
 import {
   getDayNameInCatalan,
   getDayNumberAndMonth,
-  year,
 } from "@/app/lib/getDateInCatalan";
 
 const DayOfTheMonth = () => {
-  const dateInCatalan = getDayNumberAndMonth();
-  const weekDay = getDayNameInCatalan();
+  const currentDate = new Date();
+  const dateInCatalan = getDayNumberAndMonth(currentDate);
+  const weekDay = getDayNameInCatalan(currentDate);
+
+  const year = currentDate.getFullYear();
 
   return (
     <time
