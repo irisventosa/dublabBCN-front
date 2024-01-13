@@ -10,7 +10,6 @@ interface ProfilesListProps {
 const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
   const mousePosition = useMousePosition();
 
-  // Splitting the profiles into columns
   const columnsCount = 4;
   const profilesPerColumn = Math.ceil(
     firstPageOfProfiles.length / columnsCount
@@ -40,8 +39,8 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
 
   const calculateVerticalTranslate = (profileIndex: number) => {
     const mouseY = mousePosition.y;
-    const translate = (mouseY / 1200) * 8; // Adjust the multiplier for smoother movement
-    const verticalOffset = (Math.random() - 0.5) * 1; // Randomize between -5 and 5 for vertical movement
+    const translate = (mouseY / 5000) * 1.125; // Adjust the multiplier for smoother movement
+    const verticalOffset = (Math.random() - 0.5) * 2; // Randomize between -5 and 5 for vertical movement
     const yOffset = 1.2; // Define the fixed yOffset
 
     // Calculate the direction based on mouse movement

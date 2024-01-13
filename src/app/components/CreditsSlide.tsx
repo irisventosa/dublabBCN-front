@@ -3,9 +3,10 @@
 import gsap from "gsap";
 import { useEffect } from "react";
 import Marquee from "react-fast-marquee";
-import { useSlideOver } from "../contexts/SlideOverContext";
+
 import Employee from "./Employee";
 import ImageChanger from "./ImageChanger";
+import { useSlideOver } from "../contexts/useContexts";
 
 const CreditsSlideOver = () => {
   const { isOpen, setIsOpen } = useSlideOver();

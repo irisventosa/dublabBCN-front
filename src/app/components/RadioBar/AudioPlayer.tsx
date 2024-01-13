@@ -2,7 +2,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Button from "../Button";
-import { useAudio } from "@/app/contexts/AudioContext";
+import { useAudio } from "@/app/contexts/useContexts";
 
 export const streamingSource =
   "https://stream-relay-geo.ntslive.net/stream?client=NTSWebApp&t=1702486346755";

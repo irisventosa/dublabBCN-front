@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import NavBar from "./NavBar";
-import { useSlideOver } from "@/app/contexts/SlideOverContext";
+import { useSlideOver } from "@/app/contexts/useContexts";
 
 interface HeaderProps {
   backgroundColor: string;

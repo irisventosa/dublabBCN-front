@@ -2,7 +2,7 @@
 import useAirtimeApi from "@/app/lib/hooks/useAirtimeApi";
 import { RadioLiveShow } from "@/app/types";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Marquee from "react-fast-marquee";
 import AudioPlayer from "./AudioPlayer";
 import DigitalClock from "./DigitalClock";
@@ -13,19 +13,19 @@ const RadioBar = () => {
   const [{ name, url: hostedBy, starts }, setNextLiveShow] =
     useState<RadioLiveShow>({} as RadioLiveShow);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const { currentShow, nextShow } = await getLiveRadioData();
+  const fetchData = async () => {
+    const { currentShow, nextShow } = await getLiveRadioData();
 
-        currentShow && currentShow[0] ? setLiveShow(currentShow[0]) : null;
-        nextShow && nextShow[0] ? setNextLiveShow(nextShow[0]) : null;
-      } catch (error: unknown) {
-        const message = "Show not programmed";
-        throw new Error(message);
+    if (currentShow && currentShow[0]) {
+      setLiveShow(currentShow[0]);
+
+      if (nextShow && nextShow[0]) {
+        setNextLiveShow(nextShow[0]);
       }
-    })();
-  }, [getLiveRadioData]);
+    }
+  };
+
+  fetchData();
 
   return (
     <ul className="h-[42px] min-w-full sticky z-50 top-0 flex sm:gap-[91px] justify-between items-center py-2  sm:px-8 px-4 flex-row bg-black text-white font-Favorit text-sm font-light uppercase ">

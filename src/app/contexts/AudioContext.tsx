@@ -1,5 +1,5 @@
 // audioContext.tsx
-import { createContext, useContext, useState, ReactNode } from "react";
+import { ReactNode, createContext, useState } from "react";
 
 interface AudioContextProps {
   children: ReactNode;
@@ -23,11 +23,3 @@ const AudioProvider = ({ children }: AudioContextProps) => {
 };
 
 export default AudioProvider;
-
-export const useAudio = () => {
-  const context = useContext(AudioContext);
-  if (!context) {
-    throw new Error("useAudio must be used within an AudioProvider");
-  }
-  return context;
-};

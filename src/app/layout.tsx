@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SlideOverProvider } from "./contexts/SlideOverContext";
 import AudioProvider from "./contexts/AudioContext";
+import { SpinnerProvider } from "./contexts/SpinnerContext";
 
 const favorit = localfont({
   src: "./fonts/Favorit_Regular_Mono.ttf",
@@ -28,19 +29,21 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <AudioProvider>
-        <body className={`${favorit.variable} font-favorit antialiased`}>
-          <RadioBar />
-          {backgroundColor === "black" ? (
-            <hr className="border-white w-full" />
-          ) : (
-            ""
-          )}
-          <SlideOverProvider>
-            <Header backgroundColor={backgroundColor} />
-            {children}
-            <Footer />
-          </SlideOverProvider>
-        </body>
+        <SpinnerProvider>
+          <body className={`${favorit.variable} font-favorit antialiased`}>
+            <RadioBar />
+            {backgroundColor === "black" ? (
+              <hr className="border-white w-full" />
+            ) : (
+              ""
+            )}
+            <SlideOverProvider>
+              <Header backgroundColor={backgroundColor} />
+              {children}
+              <Footer />
+            </SlideOverProvider>
+          </body>
+        </SpinnerProvider>
       </AudioProvider>
     </html>
   );

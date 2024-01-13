@@ -2,7 +2,7 @@ import { firstNavLabels, lastNavLabels } from "@/app/paths";
 import Link from "next/link";
 import Programes from "./Programes";
 import Sisters from "./Sisters";
-import { useSlideOver } from "@/app/contexts/SlideOverContext";
+import { useSlideOver } from "@/app/contexts/useContexts";
 
 const NavBar = (): React.ReactElement => {
   const { isOpen } = useSlideOver();
