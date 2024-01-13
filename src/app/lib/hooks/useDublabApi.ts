@@ -24,14 +24,19 @@ const useDublabApi = () => {
   };
 
   const getProfileData = async (showName: string) => {
-    const trimmedName = showName.toLowerCase().replace(/\s+$/, "");
-    const formatedShowName = trimmedName.replace(/\s+/g, "-");
+    try {
+      const trimmedName = showName.toLowerCase().replace(/\s+$/, "");
+      const formatedShowName = trimmedName.replace(/\s+/g, "-");
 
-    const { data: profile } = await axios.get<ApiProfile>(
-      `${profileDataUrl}${formatedShowName}`
-    );
+      const { data: profile } = await axios.get<ApiProfile>(
+        `${profileDataUrl}${formatedShowName}`
+      );
 
-    return profile;
+      return profile;
+    } catch (error: unknown) {
+      const message = "profile is not currently online";
+      throw new Error(message);
+    }
   };
 
   const getSingleShowData = async (slug: string) => {

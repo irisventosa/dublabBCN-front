@@ -37,11 +37,8 @@ const ShowCard = ({
   };
 
   const showNamePath = formatslugToGetPathName(slug);
-
   const showDateforCard = extractDatesForCard(slug);
-
   const { data: profile } = useSWR<ApiProfile>(showName, getProfileData);
-
   const showUrl = extractUrlForEmbedPlayer(mixcloud_url);
 
   const handleShowPlayback = () => {
@@ -52,7 +49,7 @@ const ShowCard = ({
     host = profile?.host;
   }
 
-  const hostFontSize = host && host!.length >= 25 ? "[11px]" : "sm";
+  const hostFontSize = host && host.length >= 25 ? "[11px]" : "sm";
 
   const [isHovered, setIsHovered] = useState(false);
 

@@ -3,7 +3,7 @@ import DaySelector from "../components/Schedule/DaySelector";
 import SearchAndFilters from "../components/SearchAndFilters";
 import useAirtimeApi from "../lib/hooks/useAirtimeApi";
 
-const Calendar = async () => {
+const Calendari = async () => {
   const { getWeekInfo } = useAirtimeApi();
 
   const weekSchedule = await getWeekInfo();
@@ -28,4 +28,4 @@ const Calendar = async () => {
   );
 };
 
-export default Calendar;
+export default Calendari;
