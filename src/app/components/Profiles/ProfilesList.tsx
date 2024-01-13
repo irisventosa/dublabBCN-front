@@ -29,7 +29,7 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
   // Calculate the offset based on mouse position for horizontal movement
   const calculateHorizontalOffset = (index: number) => {
     const mouseX = mousePosition.x;
-    let offset = (mouseX / 200) * index; // Adjust the multiplier for smoother movement
+    let offset = (mouseX / 400) * index; // Adjust the multiplier for smoother movement
 
     // Calculate the maximum offset based on the screen's middle for columns 1 and 2
     const maxOffset = window.innerWidth / 2;
@@ -40,7 +40,7 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
 
   const calculateVerticalTranslate = (profileIndex: number) => {
     const mouseY = mousePosition.y;
-    const translate = (mouseY / 900) * 8; // Adjust the multiplier for smoother movement
+    const translate = (mouseY / 1200) * 8; // Adjust the multiplier for smoother movement
     const verticalOffset = (Math.random() - 0.5) * 1; // Randomize between -5 and 5 for vertical movement
     const yOffset = 1.2; // Define the fixed yOffset
 

@@ -15,10 +15,15 @@ const RadioBar = () => {
 
   useEffect(() => {
     (async () => {
-      const { currentShow, nextShow } = await getLiveRadioData();
+      try {
+        const { currentShow, nextShow } = await getLiveRadioData();
 
-      setLiveShow(currentShow[0]);
-      setNextLiveShow(nextShow[0]);
+        currentShow && currentShow[0] ? setLiveShow(currentShow[0]) : null;
+        nextShow && nextShow[0] ? setNextLiveShow(nextShow[0]) : null;
+      } catch (error: unknown) {
+        const message = "Show not programmed";
+        throw new Error(message);
+      }
     })();
   }, [getLiveRadioData]);
 

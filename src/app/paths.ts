@@ -1,13 +1,9 @@
 export const firstNavLabels = [
   { label: "Latest", route: "/latest" },
   { label: "Calendari", route: "/calendari" },
-  { label: "Arxiu", route: "/arxiu" },
 ];
 
-export const lastNavLabels = [
-  { label: "Merch", route: "/merch" },
-  { label: "Info", route: "/info" },
-];
+export const lastNavLabels = [{ label: "Info", route: "/info" }];
 
 export const programesDropDown = [
   { label: "shows", route: "/shows" },
