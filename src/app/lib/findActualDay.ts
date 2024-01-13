@@ -1,20 +1,18 @@
-import { WeekInfo } from "../types";
+import { AirtimeShow, WeekInfo } from "../types";
 import { date } from "./getDateInCatalan";
 
-const findActualDay = (schedule: WeekInfo) => {
+const findActualDaySchedule = (schedule: WeekInfo) => {
   const dayPosition = date.getDay();
   const airtimeDays = Object.values(schedule);
-  let actualDayIndex = airtimeDays.findIndex(
+  const actualDayIndex = airtimeDays.findIndex(
     (day, index) => index === dayPosition
   );
 
-  if (dayPosition === 0) {
-    actualDayIndex = 7;
-  }
+  const isSecondWeek = actualDayIndex >= 7 ? true : false;
 
-  const actualDay = airtimeDays[actualDayIndex - 1];
+  const actualDay: AirtimeShow[] = airtimeDays[actualDayIndex - 1];
 
-  return actualDay;
+  return { actualDay, isSecondWeek };
 };
 
-export default findActualDay;
+export default findActualDaySchedule;

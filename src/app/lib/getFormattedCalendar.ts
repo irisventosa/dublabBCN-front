@@ -1,4 +1,4 @@
-const getAirtimeWeeks = (): { dayName: string; formattedDay: string }[] => {
+const createWeekDays = (): { dayName: string; formattedDay: string }[] => {
   const today = new Date();
   const startOfWeek = new Date(today);
 
@@ -7,7 +7,7 @@ const getAirtimeWeeks = (): { dayName: string; formattedDay: string }[] => {
 
   const weekFormatted: { dayName: string; formattedDay: string }[] = [];
 
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 17; i++) {
     const date = new Date(startOfWeek);
     date.setDate(startOfWeek.getDate() + i);
 
@@ -38,4 +38,4 @@ const getAirtimeWeeks = (): { dayName: string; formattedDay: string }[] => {
   return weekFormatted;
 };
 
-export default getAirtimeWeeks;
+export default createWeekDays;

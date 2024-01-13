@@ -1,10 +1,19 @@
+"use client";
 import {
   getDayNameInCatalan,
   getDayNumberAndMonth,
 } from "@/app/lib/getDateInCatalan";
+import { useEffect, useState } from "react";
 
 const DayOfTheMonth = () => {
-  const currentDate = new Date();
+  const todayDate = new Date();
+  const [currentDate, setCurrentDate] = useState(todayDate);
+
+  useEffect(() => {
+    const updatedDate = new Date();
+    setCurrentDate(updatedDate);
+  }, []);
+
   const dateInCatalan = getDayNumberAndMonth(currentDate);
   const weekDay = getDayNameInCatalan(currentDate);
 

@@ -1,6 +1,6 @@
 "use client";
-import findActualDay from "@/app/lib/findActualDay";
-import getAirtimeWeeks from "@/app/lib/getFormattedCalendar";
+import findActualDaySchedule from "@/app/lib/findActualDay";
+import createWeekDays from "@/app/lib/getFormattedCalendar";
 import { WeekInfo } from "@/app/types";
 import { KeyboardEvent, useCallback, useEffect, useState } from "react";
 import ScheduledShowsList from "./ScheduledShowsList";
@@ -11,7 +11,7 @@ interface DaySelectorProps {
 }
 
 const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
-  const actualDay = findActualDay(scheduledShows);
+  const { actualDay, isSecondWeek } = findActualDaySchedule(scheduledShows);
   const [shownSchedule, setShownSchedule] = useState(actualDay);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
 
@@ -19,18 +19,20 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
     setShownSchedule(actualDay);
   }, [actualDay, scheduledShows]);
 
-  const twoAirtimeWeeks = getAirtimeWeeks();
+  const twoAirtimeWeeks = createWeekDays();
 
   const wholeWeekFormatted = twoAirtimeWeeks.slice(0, 7);
 
   const handleClick = useCallback(
     (dayName: string) => {
-      const weekSchedule = scheduledShows[dayName as keyof WeekInfo];
+      const actualDay = isSecondWeek ? `next${dayName}` : dayName;
+
+      const weekSchedule = scheduledShows[actualDay as keyof WeekInfo];
 
       setShownSchedule(weekSchedule);
-      setSelectedDay(dayName);
+      setSelectedDay(actualDay);
     },
-    [scheduledShows]
+    [isSecondWeek, scheduledShows]
   );
 
   const handleKeyDown = useCallback(
@@ -50,7 +52,6 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
             role="menuitem"
             tabIndex={0}
             key={index}
-            data-day={day.dayName}
             onClick={() => handleClick(day.dayName)}
             onKeyDown={(e) => handleKeyDown(e, day.dayName)}
             className={`cursor-pointer w-min hover:animate-pulse hover:animate-duration-500 hover:animate-ease-in-out ${
