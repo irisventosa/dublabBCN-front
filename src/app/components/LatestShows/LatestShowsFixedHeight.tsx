@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
-import ShowCard from "./ShowCard";
 import { Bside, RadioApiShow } from "@/app/types";
+import { useState } from "react";
 import BsideCard from "./BsideCard";
+import ShowCard from "./ShowCard";
 
 interface LatestShowsFixedHeightProps {
   latestShows: RadioApiShow[] | Bside[];

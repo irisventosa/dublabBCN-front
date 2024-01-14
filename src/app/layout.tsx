@@ -1,14 +1,15 @@
 "use client";
 import localfont from "next/font/local";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import RadioBar from "./components/RadioBar/RadioBar";
-import "./globals.css";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { SlideOverProvider } from "./contexts/SlideOverContext";
 import AudioProvider from "./contexts/AudioContext";
+import { SlideOverProvider } from "./contexts/SlideOverContext";
 import { SpinnerProvider } from "./contexts/SpinnerContext";
+import "./globals.css";
+import { RadioDataProvider } from "./contexts/RadioDataContext";
 
 const favorit = localfont({
   src: "./fonts/Favorit_Regular_Mono.ttf",
@@ -30,19 +31,21 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="en">
       <AudioProvider>
         <SpinnerProvider>
-          <body className={`${favorit.variable} font-favorit antialiased`}>
-            <RadioBar />
-            {backgroundColor === "black" ? (
-              <hr className="border-white w-full" />
-            ) : (
-              ""
-            )}
-            <SlideOverProvider>
-              <Header backgroundColor={backgroundColor} />
-              {children}
-              <Footer />
-            </SlideOverProvider>
-          </body>
+          <RadioDataProvider>
+            <body className={`${favorit.variable} font-favorit antialiased`}>
+              <RadioBar />
+              {backgroundColor === "black" ? (
+                <hr className="border-white w-full" />
+              ) : (
+                ""
+              )}
+              <SlideOverProvider>
+                <Header backgroundColor={backgroundColor} />
+                {children}
+                <Footer />
+              </SlideOverProvider>
+            </body>
+          </RadioDataProvider>
         </SpinnerProvider>
       </AudioProvider>
     </html>

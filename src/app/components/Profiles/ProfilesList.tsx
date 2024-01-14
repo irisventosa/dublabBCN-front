@@ -81,8 +81,6 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
           key={columnIndex}
           className=""
           style={{
-            marginLeft: calculateHorizontalOffset(columnIndex),
-            transform: calculateVerticalTranslate(columnIndex),
             marginRight: columnIndex === 3 ? "16px" : undefined,
           }}
         >
@@ -91,8 +89,7 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
               key={profile.slug}
               style={{
                 marginBottom: "200px",
-                transform: calculateVerticalTranslate(profileIndex),
-                marginTop: calculateVerticalTranslate(profileIndex),
+
                 position: "relative",
                 zIndex: profileIndex % 2 === 0 ? 1 : 0,
               }}
