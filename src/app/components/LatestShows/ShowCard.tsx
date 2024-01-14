@@ -64,7 +64,7 @@ const ShowCard = ({
       >
         <Image
           src={`${dublabApi}${profile_picture}`}
-          alt={`Imatge del b-side de ${showName}`}
+          alt={`Imatge del programa ${showName}`}
           height={transformedHeight}
           width={353}
           className={`overflow-hidden h-[${height}px] w-[353px] relative object-cover b`}

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, { ReactNode, createContext, useState } from "react";
 
 interface SlideOverContextType {
   isOpen: boolean;
@@ -21,12 +21,4 @@ export const SlideOverProvider = ({ children }: SlideOverProviderProps) => {
       {children}
     </SlideOverContext.Provider>
   );
-};
-
-export const useSlideOver = () => {
-  const context = useContext(SlideOverContext);
-  if (!context) {
-    throw new Error("useSlideOver must be used within a SlideOverProvider");
-  }
-  return context;
 };

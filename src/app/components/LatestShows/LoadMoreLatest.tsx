@@ -9,6 +9,7 @@ import Button from "../Button";
 
 const LoadAndMergeMorePodcasts = () => {
   const { getBsides, getLatestsShowsData } = useDublabApi();
+
   const [bsides, setBsides] = useState<Bside[]>([]);
   const [shows, setShows] = useState<RadioApiShow[]>([]);
   const [page, setPage] = useState(1);

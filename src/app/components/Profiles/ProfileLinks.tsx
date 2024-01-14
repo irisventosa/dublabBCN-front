@@ -3,7 +3,6 @@ import Link from "next/link";
 interface ProfileLinksProps {
   links: string[];
 }
-// 68 de alto 133 ancho
 
 const ProfileLinks = ({ links }: ProfileLinksProps) => {
   if (links === null) {

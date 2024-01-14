@@ -11,8 +11,15 @@ const useAirtimeApi = () => {
   };
 
   const getLiveRadioData = async () => {
-    const { data: onAirRadio } = await axios.get<LiveRadioData>(streamingData);
-    return onAirRadio;
+    try {
+      const { data: onAirRadio } = await axios.get<LiveRadioData>(
+        streamingData
+      );
+      return onAirRadio;
+    } catch (error: unknown) {
+      const message = "show not programmed";
+      throw new Error(message);
+    }
   };
 
   return { getWeekInfo, getLiveRadioData };
