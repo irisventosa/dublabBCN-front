@@ -25,12 +25,12 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
 
   const handleClick = useCallback(
     (dayName: string) => {
-      const actualDay = isSecondWeek ? `next${dayName}` : dayName;
+      const actualDayName = isSecondWeek ? `next${dayName}` : dayName;
 
-      const weekSchedule = scheduledShows[actualDay as keyof WeekInfo];
+      const weekSchedule = scheduledShows[actualDayName as keyof WeekInfo];
 
       setShownSchedule(weekSchedule);
-      setSelectedDay(actualDay);
+      setSelectedDay(dayName);
     },
     [isSecondWeek, scheduledShows]
   );

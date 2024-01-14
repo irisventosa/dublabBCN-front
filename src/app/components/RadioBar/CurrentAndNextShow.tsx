@@ -8,6 +8,11 @@ interface CurrentAndNextShowProps {
 }
 
 const CurrentAndNextShow = ({ liveData }: CurrentAndNextShowProps) => {
+  const currentShowName = liveData?.currentShow[0]?.name || null;
+  const nextShowStarts = liveData?.nextShow[0]?.starts || null;
+  const nextShowName = liveData?.nextShow[0]?.name || null;
+  const nextShowUrl = liveData?.nextShow[0]?.url || null;
+
   return (
     <>
       <li className="flex gap-[9px]">
@@ -19,31 +24,30 @@ const CurrentAndNextShow = ({ liveData }: CurrentAndNextShowProps) => {
           height={10}
         />
         <span className="min-w-fit"></span>
-        {liveData?.currentShow[0].name ? (
+        {currentShowName ? (
           <Marquee className="max-w-[200px]">
-            En directe:&nbsp; {liveData?.currentShow[0].name}&nbsp;
+            En directe:&nbsp; {currentShowName}&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </Marquee>
         ) : (
-          <span>Carregant...</span>
+          <Marquee className="max-w-[200px]">
+            Informació no disponible
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </Marquee>
         )}
       </li>
       <li className="text-white/60 z-20 hidden sm:flex ">
         PRÒXIM:
-        {liveData?.nextShow[0].starts ? (
+        {nextShowStarts ? (
           <div>
-            <span className="ml-[19px]">
-              {liveData?.nextShow[0].starts.slice(11, 16)}
-            </span>
-            <span className="ml-[19px]">{liveData?.nextShow[0].name}</span>
-            {liveData?.nextShow[0].url && (
-              <span className="ml-[19px]">
-                -&nbsp; {liveData?.nextShow[0].url}
-              </span>
+            <span className="ml-[19px]">{nextShowStarts.slice(11, 16)}</span>
+            <span className="ml-[19px]">{nextShowName}</span>
+            {nextShowUrl && (
+              <span className="ml-[19px]">-&nbsp; {nextShowUrl}</span>
             )}
           </div>
         ) : (
-          <span>Carregant...</span>
+          <span>Informació no disponible...</span>
         )}
       </li>
     </>

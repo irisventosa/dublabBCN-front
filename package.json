@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
+    "@types/he": "^1.2.3",
     "next": "^14.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -32,6 +33,7 @@
     "eslint-plugin-react-refresh": "^0.4.4",
     "framer-motion": "^10.16.11",
     "gsap": "^3.12.3",
+    "he": "^1.2.0",
     "i": "^0.3.7",
     "imagesloaded": "^5.0.0",
     "npm": "^10.2.4",

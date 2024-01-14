@@ -1,10 +1,8 @@
 "use client";
 import { AirtimeShow } from "@/app/types";
 import React from "react";
-import ScheduledShow from "./ScheduledShow";
 import ScheduledBsideShow from "./ScheduledBsideShow";
-import extractAndFormatShowDate from "@/app/lib/extractAndFormatShowDate";
-import { currentHour } from "@/app/lib/getDateInCatalan";
+import ScheduledShow from "./ScheduledShow";
 
 interface ScheduledShowsListProps {
   schedule: AirtimeShow[];
@@ -14,14 +12,16 @@ interface ScheduledShowsListProps {
 const ScheduledShowsList = ({
   schedule,
 }: ScheduledShowsListProps): React.ReactElement => {
-  const scheduleByHours: AirtimeShow[] = schedule.filter(
-    (show) =>
-      parseInt(extractAndFormatShowDate(show.end_timestamp)) > currentHour
-  );
+  // const scheduleByHours: AirtimeShow[] =
+  //   schedule &&
+  //   schedule.filter(
+  //     (show) =>
+  //       parseInt(extractAndFormatShowDate(show.end_timestamp)) > currentHour
+  //   );
 
   return (
     <ul>
-      {scheduleByHours.map((show, listPosition) => (
+      {schedule.map((show, listPosition) => (
         <>
           <li key={show.name} className="text">
             {show.name.startsWith("b-side") ? (
