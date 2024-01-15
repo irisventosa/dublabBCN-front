@@ -11,7 +11,7 @@ const Credits = (): React.ReactElement => {
           <li>
             <Image
               className=""
-              src="/assets/dblogo.svg"
+              src={"/assets/D-B_vector.svg"}
               alt="dublab Barcelona logo"
               width={67}
               height={28}

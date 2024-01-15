@@ -9,7 +9,7 @@ const HeroSection = (): React.ReactElement => {
   const disclaimerClosed = cookiesStore.get("disclaimerClosed");
 
   return (
-    <section className="h-[802px] sm:h-[574px] relative ">
+    <section className="h-[348px] relative ">
       <TextBackgorund />
       {!disclaimerClosed && <PrivacyDisclaimer />}
       <div className="bottom-0 absolute w-full h-[42px] bg-black flex">

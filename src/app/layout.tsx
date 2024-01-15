@@ -6,10 +6,10 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import RadioBar from "./components/RadioBar/RadioBar";
 import AudioProvider from "./contexts/AudioContext";
+import { RadioDataProvider } from "./contexts/RadioDataContext";
 import { SlideOverProvider } from "./contexts/SlideOverContext";
 import { SpinnerProvider } from "./contexts/SpinnerContext";
 import "./globals.css";
-import { RadioDataProvider } from "./contexts/RadioDataContext";
 
 const favorit = localfont({
   src: "./fonts/Favorit_Regular_Mono.ttf",
