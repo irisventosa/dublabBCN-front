@@ -11,7 +11,7 @@ interface DaySelectorProps {
 }
 
 const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
-  const { actualDay, isSecondWeek } = findActualDaySchedule(scheduledShows);
+  const { actualDay } = findActualDaySchedule(scheduledShows);
   const [shownSchedule, setShownSchedule] = useState(actualDay);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
 
@@ -20,19 +20,16 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
   }, [actualDay, scheduledShows]);
 
   const twoAirtimeWeeks = createWeekDays();
-
   const wholeWeekFormatted = twoAirtimeWeeks.slice(0, 7);
 
   const handleClick = useCallback(
     (dayName: string) => {
-      const actualDayName = isSecondWeek ? `next${dayName}` : dayName;
-
-      const weekSchedule = scheduledShows[actualDayName as keyof WeekInfo];
+      const weekSchedule = scheduledShows[dayName as keyof WeekInfo];
 
       setShownSchedule(weekSchedule);
       setSelectedDay(dayName);
     },
-    [isSecondWeek, scheduledShows]
+    [scheduledShows]
   );
 
   const handleKeyDown = useCallback(
@@ -46,7 +43,7 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
 
   return (
     <>
-      <ul className="flex flex-row gap-28 text-xl justify-between pt-14 pb-6 px-8 weekdays">
+      <ul className="flex flex-row  text-xl justify-between pt-14 pb-6 px-8 weekdays">
         {wholeWeekFormatted.map((day, index) => (
           <li
             role="menuitem"
@@ -54,7 +51,7 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
             key={index}
             onClick={() => handleClick(day.dayName)}
             onKeyDown={(e) => handleKeyDown(e, day.dayName)}
-            className={`cursor-pointer w-min hover:animate-pulse hover:animate-duration-500 hover:animate-ease-in-out ${
+            className={`cursor-pointer w-min animate-pulse hover:animate-duration-500 hover:animate-ease-in-out ${
               selectedDay === day.dayName
                 ? "text-black"
                 : "opacity-40 active:opacity-100"

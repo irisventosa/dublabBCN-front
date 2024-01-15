@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Sisters = () => {
   return (
-    <li className="group flex flex-col items-center dropdown dropdown-6 cursor-pointer pt-[2px]">
+    <li className="group flex flex-col sm:items-center dropdown dropdown-6 cursor-pointer pt-[2px]">
       Sisters
       <div className="mt-5 dropdown_menu dropdown_menu--animated dropdown_menu-6 bg-[#ECECEC] rounded-b-lg pb-2">
         <ul className="flex flex-col items-center">

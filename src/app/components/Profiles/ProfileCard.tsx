@@ -43,7 +43,7 @@ const ProfileCard = ({
   return (
     <article className={`w-[353px] h-[${height}px] relative leading-[120%]`}>
       <div className="block group relative">
-        <div className="group relative">
+        <div className="group relative brightness-75 hover:brightness-100  ">
           {picture && (
             <Image
               src={picture}
@@ -51,6 +51,8 @@ const ProfileCard = ({
               height={300}
               width={253}
               className="overflow-hidden w-[353px] relative transition duration-300 ease-in-out group-hover:opacity-0 object-cover"
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMM971fDwAEigIECrXFHQAAAABJRU5ErkJggg=="
             />
           )}
           <div

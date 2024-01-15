@@ -21,6 +21,16 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
       return showIsPlants;
     }
 
+    if (airtimeShowName === "house-of-spunk-") {
+      const showIsSpunk = "house-of-spunk";
+      return showIsSpunk;
+    }
+
+    if (airtimeShowName === "SoWhat") {
+      const showIsJazz = "so-what";
+      return showIsJazz;
+    }
+
     const decodedName = he.decode(airtimeShowName);
 
     const decodeAndFixShowName = decodedName
@@ -54,7 +64,8 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
       ? "flex flex-row h-[212px] w-full bg-black text-white"
       : "flex flex-row h-[212px] w-full",
     firstSeparatorLine = isListPositionLessThanOne,
-    borderColor = isListPositionLessThanOne
+    borderColor = isListPositionLessThanOne &&
+    currentDayOfWeek === dayOfAppCalendar
       ? "border border-white rounded-md pt-[5px] px-2 pb-[1px]"
       : "border border-black rounded-md pt-[5px] px-2 pb-[1px]",
   } = {};
@@ -63,7 +74,7 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
     airtimeShow.start_timestamp
   );
 
-  if (!profileData) return <div>Loading...</div>;
+  if (!profileData) return <div>Informació del programa no disponible.</div>;
 
   return (
     <>
@@ -74,7 +85,7 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
           alt={""}
           width={263}
           height={150}
-          className="py-[31px] pl-8"
+          className="py-[31px] pl-8 object-cover"
         />
         <ul className="flex flex-col pl-[101px]">
           <li className="text-[32px] h-[47px] mt-[21px]">
@@ -108,7 +119,7 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
           <li>
             <Link
               className="underline underline-offset-2"
-              href={`/shows/${airtimeShow.name}`}
+              href={`/shows/${formattedShowName}`}
             >
               View show
             </Link>
