@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import ProfilesList from "../components/Profiles/ProfilesList";
-import SearchAndFilters from "../components/SearchAndFilters";
 import getProfilesOrBsides from "../lib/getShowsOrBsides";
 import useDublabApi from "../lib/hooks/useDublabApi";
 
@@ -20,15 +19,12 @@ const ShowProfiles = () => {
         <li>
           <span className="h-[22px] px-8 ">COMING UP /// TODAY & TOMORROW</span>
         </li>
-        <li>
-          <SearchAndFilters />
-        </li>
       </ul>
       <div className="flex text-[72px] gap-[140px] pt-[62px] ml-8 ">
         <span>AAA</span>
         <h2>SHOWS</h2>
       </div>
-      <section className="mb-80">
+      <section>
         {onAirProfiles.map((profiles, index) => (
           <ProfilesList key={index} firstPageOfProfiles={profiles!.results} />
         ))}

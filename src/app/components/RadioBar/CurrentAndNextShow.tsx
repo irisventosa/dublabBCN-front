@@ -42,9 +42,7 @@ const CurrentAndNextShow = ({ liveData }: CurrentAndNextShowProps) => {
           <div>
             <span className="ml-[19px]">{nextShowStarts.slice(11, 16)}</span>
             <span className="ml-[19px]">{nextShowName}</span>
-            {nextShowUrl && (
-              <span className="ml-[19px]">-&nbsp; {nextShowUrl}</span>
-            )}
+            {nextShowUrl && <span>&nbsp;-&nbsp;{nextShowUrl}</span>}
           </div>
         ) : (
           <span>Informació no disponible...</span>

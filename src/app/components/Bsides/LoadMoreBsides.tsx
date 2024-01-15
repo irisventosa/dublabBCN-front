@@ -10,7 +10,7 @@ import Spinner from "../ui/Spinner";
 const LoadMoreBsides = () => {
   const { getBsides } = useDublabApi();
   const [bsides, setBsides] = useState<Bside[]>([]);
-  const [bsides2, setBsides2] = useState<Bside[]>([]);
+
   const [page, setPage] = useState(1);
   const { ref, inView } = useInView();
 
@@ -25,13 +25,8 @@ const LoadMoreBsides = () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       const { results: firstResults } = (await getBsides(nextPage)) ?? [];
-      const { results: secondResults } = (await getBsides(nextPage + 1)) ?? [];
 
       setBsides((prevProfiles: Bside[]) => [...prevProfiles, ...firstResults]);
-      setBsides2((prevProfiles: Bside[]) => [
-        ...prevProfiles,
-        ...secondResults,
-      ]);
 
       setPage(nextPage);
     } catch (error: unknown) {
@@ -50,7 +45,6 @@ const LoadMoreBsides = () => {
   return (
     <div className="mt-[61px] max-w-[100vw] ">
       <ProfilesList firstPageOfProfiles={bsides} />
-      <ProfilesList firstPageOfProfiles={bsides2} />
       <div ref={ref}></div>
       {isLoading && <Spinner />}
     </div>

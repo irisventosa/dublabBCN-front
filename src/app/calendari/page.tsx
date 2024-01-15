@@ -1,6 +1,5 @@
 import DayOfTheMonth from "../components/Date/DayOfTheMonth";
 import DaySelector from "../components/Schedule/DaySelector";
-import SearchAndFilters from "../components/SearchAndFilters";
 import useAirtimeApi from "../lib/hooks/useAirtimeApi";
 
 const Calendari = async () => {
@@ -16,9 +15,6 @@ const Calendari = async () => {
             <span className="h-[22px] px-8 ">
               COMING UP /// TODAY & TOMORROW
             </span>
-          </li>
-          <li>
-            <SearchAndFilters />
           </li>
         </ul>
         <DayOfTheMonth />

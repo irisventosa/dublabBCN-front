@@ -2,7 +2,6 @@
 import useSWR from "swr";
 import LoadMoreBsides from "../components/Bsides/LoadMoreBsides";
 import ProfilesList from "../components/Profiles/ProfilesList";
-import SearchAndFilters from "../components/SearchAndFilters";
 import useDublabApi from "../lib/hooks/useDublabApi";
 
 const BsidesList = () => {
@@ -17,9 +16,6 @@ const BsidesList = () => {
       <ul className="flex flex-row gap-[376px]">
         <li>
           <span className="h-[22px] px-8">COMING UP /// TODAY & TOMORROW</span>
-        </li>
-        <li>
-          <SearchAndFilters />
         </li>
       </ul>
       <div className="flex text-[72px] gap-[140px] pt-[62px] ml-8">
