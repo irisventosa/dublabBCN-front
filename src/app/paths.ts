@@ -4,11 +4,13 @@ export interface DropdownItem {
 }
 
 export const firstNavLabels = [
-  { label: "Latest", route: "/latest" },
+  //{ label: "Latest", route: "/latest" },
   { label: "Calendari", route: "/calendari" },
 ];
 
-export const lastNavLabels = [{ label: "Info", route: "/info" }];
+export const lastNavLabels: DropdownItem[] = [
+  { label: "Info", route: "/info" },
+];
 
 export const programesDropDown: DropdownItem[] = [
   { label: "shows", route: "/shows" },
