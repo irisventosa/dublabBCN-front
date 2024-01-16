@@ -26,17 +26,17 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
   if (!profileData) return <div>Loading...</div>;
 
   return (
-    <main className="mt-[255px] gap-[50px] flex justify-between">
+    <main className="mt-[155px] gap-[50px] flex sm:flex-row flex-col justify-between">
       <Image
         src={profileData.picture}
         alt={""}
         width={660}
         height={327}
-        className="h-[727px] object-cover"
+        className="sm:h-[727px] h-[358px] w-auto object-cover sm:p-0 p-4 "
       />
-      <section className="max-h-[700px] min-w-[720px] overflow-scroll scrollbar-hide sm:pr-[10rem]">
+      <section className="max-h-[700px] pl-4 sm:min-w-[720px] overflow-scroll scrollbar-hide sm:pr-[10rem]">
         <div className="flex justify-between items-end">
-          <ul className="flex gap-[10px] opacity-40">
+          <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-40">
             {profileData.tags.map((tag, index) => (
               <li
                 key={index}
@@ -47,23 +47,27 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
             ))}
           </ul>
         </div>
-        <h2 className="text-5xl h-[58px] mt-[56px]">{profileShowName}</h2>
-        <ul className="flex gap-[194px] text-[32px] mt-[50px] ">
-          <li>With</li>
-          <li>{profileData.host} </li>
-        </ul>
-        <section className="flex gap-[140px]">
+        <div className="w-fit">
+          <h2 className="text-5xl h-[58px] mt-[56px]">{profileShowName}</h2>
+          <ul className="flex gap-9 sm:gap-[194px] text-[32px]  mt-[20px] sm:mt-[50px]">
+            <li>With</li>
+            <li className="max-w-[304px] sm:max-w-none">{profileData.host} </li>
+          </ul>
+        </div>
+        <section className="flex flex-col-reverse gap-[35px] sm:gap-[140px] max-w-fit">
           <ProfileLinks links={profileData.links}></ProfileLinks>
-          <p className="text-sm w-[445px] mt-[50px]">
-            {profileData.description}
-          </p>
+          <div className="w-fit sm:max-w-none mt-8 ">
+            <p className="text-sm sm:w-[445px] sm:pr-0 pr-4 ">
+              {profileData.description}
+            </p>
+          </div>
         </section>
         <section className="flex-col items-end">
-          <div className="text-2xl flex justify-between mt-[58px] mb-[17px]">
+          <div className="text-2xl flex justify-between mt-[58px] w-full mb-[17px]">
             <h3 className="h-[29px]">Shows Relacionats</h3>
-            <span>2023</span>
+            <span>2024</span>
           </div>
-          <hr className="border-black w-[719px] " />
+          <hr className="border-black sm:w-[719px] w-full " />
           <RelatedShows shows={profileData.shows} />
         </section>
       </section>

@@ -27,7 +27,7 @@ const ProfileLinks = ({ links }: ProfileLinksProps) => {
   return (
     <>
       {links.length > 0 && (
-        <ul className="mt-[50px]">
+        <ul className="mt-[20px] sm:mt-[50px] text-xs sm:text-base ">
           {links.map((link, index) => {
             const formattedUrl = formatLinkText(link);
             return (

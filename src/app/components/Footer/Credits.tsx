@@ -22,7 +22,7 @@ const Credits = (): React.ReactElement => {
           </li>
           <li className="min-w-fit ml-[172px] ">Ⓒ 2023 Dublab Barcelona</li>
         </ul>
-        <span className="hidden sm:block text-[1.5rem] font-thin min-w-fit ml-[173px] ">
+        <span className="hidden sm:block text-[1.5rem] font-thin w-fit ml-[173px] ">
           dublab barcelona és una ràdio online <br /> comunitària sense ànim de
           lucre.
         </span>

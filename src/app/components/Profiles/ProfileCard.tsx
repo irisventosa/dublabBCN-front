@@ -50,7 +50,7 @@ const ProfileCard = ({
               alt={`Imatge del programa ${slug}`}
               height={300}
               width={253}
-              className="overflow-hidden w-[353px] relative transition duration-300 ease-in-out group-hover:opacity-0 object-cover"
+              className="overflow-hidden sm:h-auto h-[280px]  w-[353px] relative transition duration-300 ease-in-out group-hover:opacity-0 object-cover"
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMM971fDwAEigIECrXFHQAAAABJRU5ErkJggg=="
             />

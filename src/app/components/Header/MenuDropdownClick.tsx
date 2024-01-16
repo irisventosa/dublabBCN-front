@@ -24,7 +24,7 @@ const MenuDropdownClick = ({ title, items }: DropdownClickProps) => {
           <ul className="flex flex-col gap-4 items-start">
             {items.map(({ label, route }) => (
               <li key={route} className="h-6 py-3 flex items-center text-lg">
-                <Link className="mt-[1px]" target="_blank" href={route}>
+                <Link className="mt-[1px]" href={route}>
                   {label}
                 </Link>
               </li>

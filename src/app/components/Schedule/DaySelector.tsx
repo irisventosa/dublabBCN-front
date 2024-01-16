@@ -14,12 +14,16 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
   const { actualDay } = findActualDaySchedule(scheduledShows);
   const [shownSchedule, setShownSchedule] = useState(actualDay);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
+  const mobileBreakPoint = 640;
+  const isMobile =
+    typeof window !== "undefined" && window.innerWidth < mobileBreakPoint;
 
   useEffect(() => {
     setShownSchedule(actualDay);
   }, [actualDay, scheduledShows]);
 
   const twoAirtimeWeeks = createWeekDays();
+
   const wholeWeekFormatted = twoAirtimeWeeks.slice(0, 7);
 
   const handleClick = useCallback(
@@ -57,7 +61,7 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
                 : "opacity-40 active:opacity-100"
             }`}
           >
-            {day.formattedDay}
+            {isMobile ? day.dayName.slice(0, 3) : day.formattedDay}
           </li>
         ))}
       </ul>

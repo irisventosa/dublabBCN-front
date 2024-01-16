@@ -12,7 +12,10 @@ interface ScheduledShowProps {
   listPosition: number;
 }
 
-const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
+const ScheduledShowDesktop = ({
+  airtimeShow,
+  listPosition,
+}: ScheduledShowProps) => {
   const { getProfileData } = useDublabApi();
 
   const formatString = (airtimeShowName: string) => {
@@ -102,7 +105,7 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
             </ul>
           </li>
         </ul>
-        <ul className="flex flex-col gap-[117px] items-end absolute right-0 p-[30px] ">
+        <ul className="flex flex-col gap-[108px] items-end absolute right-0 p-[30px] ">
           <li>
             {listPosition < 1 ? (
               <Image
@@ -130,4 +133,4 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
   );
 };
 
-export default ScheduledShow;
+export default ScheduledShowDesktop;
