@@ -23,7 +23,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
   if (!profileData) return <div>Loading...</div>;
 
   return (
-    <article>
+    <section className="pr-2">
       {formattedShows.map(
         ({
           showName,
@@ -32,7 +32,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
           showTags,
           slugToUrl,
         }) => (
-          <>
+          <article className="" key={showName}>
             <div className="flex justify-between mt-[17px]">
               <Link href={`/shows/${slugToUrl}/${showDateForUrl}`}>
                 <span>
@@ -55,11 +55,11 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
                 )
               )}
             </ul>
-            <hr className="border-black w-[719px] " />
-          </>
+            <hr className="border-black sm:w-[719px] w-full  " />
+          </article>
         )
       )}
-    </article>
+    </section>
   );
 };
 

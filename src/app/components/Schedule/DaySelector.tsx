@@ -14,6 +14,9 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
   const { actualDay } = findActualDaySchedule(scheduledShows);
   const [shownSchedule, setShownSchedule] = useState(actualDay);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
+  const mobileBreakPoint = 640;
+  const isMobile =
+    typeof window !== "undefined" && window.innerWidth < mobileBreakPoint;
 
   useEffect(() => {
     setShownSchedule(actualDay);
@@ -42,9 +45,6 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
     [handleClick]
   );
 
-  const mobileBreakPoint = 640;
-  const isMobile = window.innerWidth < mobileBreakPoint;
-
   return (
     <>
       <ul className="flex flex-row  text-xl justify-between pt-14 pb-6 px-8 weekdays">
@@ -61,7 +61,7 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
                 : "opacity-40 active:opacity-100"
             }`}
           >
-            {isMobile ? day.dayName.slice(0, 3) : day.formattedDay}
+            {isMobile ? day.formattedDay : day.dayName.slice(0, 3)}
           </li>
         ))}
       </ul>

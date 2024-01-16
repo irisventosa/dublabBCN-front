@@ -22,7 +22,8 @@ const ScheduledShowsList = ({
 
   const mobileBreakPoint = 640;
 
-  const isMobile = window.innerWidth < mobileBreakPoint;
+  const isMobile =
+    typeof window !== "undefined" && window.innerWidth < mobileBreakPoint;
 
   return (
     <ul>

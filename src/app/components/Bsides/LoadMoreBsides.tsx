@@ -6,8 +6,13 @@ import ProfilesList from "../Profiles/ProfilesList";
 import { useInView } from "react-intersection-observer";
 import { useSpinner } from "@/app/contexts/useContexts";
 import Spinner from "../ui/Spinner";
+import ProfilesListMobile from "../Profiles/ProfilesListMobile";
 
-const LoadMoreBsides = () => {
+interface LoadMoreBsidesProps {
+  isMobile: boolean;
+}
+
+const LoadMoreBsides = ({ isMobile }: LoadMoreBsidesProps) => {
   const { getBsides } = useDublabApi();
   const [bsides, setBsides] = useState<Bside[]>([]);
 
@@ -44,7 +49,11 @@ const LoadMoreBsides = () => {
 
   return (
     <div className="mt-[61px] max-w-[100vw] ">
-      <ProfilesList firstPageOfProfiles={bsides} />
+      {isMobile ? (
+        <ProfilesListMobile seasonProfiles={bsides} />
+      ) : (
+        <ProfilesList firstPageOfProfiles={bsides} />
+      )}
       <div ref={ref}></div>
       {isLoading && <Spinner />}
     </div>

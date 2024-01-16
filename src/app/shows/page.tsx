@@ -1,11 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import ProfilesList from "../components/Profiles/ProfilesList";
+import ProfilesListMobile from "../components/Profiles/ProfilesListMobile";
 import getProfilesOrBsides from "../lib/getShowsOrBsides";
 import useDublabApi from "../lib/hooks/useDublabApi";
 
 const ShowProfiles = () => {
   const { getProfiles } = useDublabApi();
+  const mobileBreakPoint = 640;
+  const isMobile =
+    typeof window !== "undefined" && window.innerWidth < mobileBreakPoint;
 
   const onAirProfiles = getProfilesOrBsides(getProfiles);
 
@@ -25,9 +29,19 @@ const ShowProfiles = () => {
         <h2>SHOWS</h2>
       </div>
       <section>
-        {onAirProfiles.map((profiles, index) => (
-          <ProfilesList key={index} firstPageOfProfiles={profiles!.results} />
-        ))}
+        {isMobile
+          ? onAirProfiles.map((profiles, index) => (
+              <ProfilesListMobile
+                key={index}
+                seasonProfiles={profiles!.results}
+              />
+            ))
+          : onAirProfiles.map((profiles, index) => (
+              <ProfilesList
+                key={index}
+                firstPageOfProfiles={profiles!.results}
+              />
+            ))}
       </section>
     </main>
   );

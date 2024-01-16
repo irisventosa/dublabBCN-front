@@ -88,15 +88,13 @@ const ScheduledShowDesktop = ({
           alt={""}
           width={263}
           height={150}
-          className="py-[31px] pl-8 object-cover w-40"
+          className="py-[31px] pl-8 object-cover"
         />
-        <ul className="flex flex-col pl-[50px] sm:pl-[101px]">
-          <li className=" text-sm sm:text-[32px] h-[47px] mt-[21px]">
+        <ul className="flex flex-col pl-[101px]">
+          <li className="text-[32px] h-[47px] mt-[21px]">
             {he.decode(airtimeShow.name)}
           </li>
-          <li className=" text-[11px] sm:text-[22px] h-[28px]  ">
-            {profileData.host}
-          </li>
+          <li className="text-[22px] h-[28px] ">{profileData.host}</li>
           <li className="pt-[59px]">
             <ul className="flex flex-row gap-[10px] text-[11px]">
               {profileData.tags.map((tag, index) => (
@@ -107,7 +105,7 @@ const ScheduledShowDesktop = ({
             </ul>
           </li>
         </ul>
-        <ul className="flex flex-col gap-[117px] items-end absolute right-0 p-[30px] ">
+        <ul className="flex flex-col gap-[108px] items-end absolute right-0 p-[30px] ">
           <li>
             {listPosition < 1 ? (
               <Image
