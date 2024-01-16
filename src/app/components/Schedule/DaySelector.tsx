@@ -61,7 +61,7 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
                 : "opacity-40 active:opacity-100"
             }`}
           >
-            {isMobile ? day.formattedDay : day.dayName.slice(0, 3)}
+            {isMobile ? day.dayName.slice(0, 3) : day.formattedDay}
           </li>
         ))}
       </ul>

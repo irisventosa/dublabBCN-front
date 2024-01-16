@@ -36,7 +36,7 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
       />
       <section className="max-h-[700px] pl-4 sm:min-w-[720px] overflow-scroll scrollbar-hide sm:pr-[10rem]">
         <div className="flex justify-between items-end">
-          <ul className="flex gap-[10px] opacity-40">
+          <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-40">
             {profileData.tags.map((tag, index) => (
               <li
                 key={index}
@@ -51,13 +51,15 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
           <h2 className="text-5xl h-[58px] mt-[56px]">{profileShowName}</h2>
           <ul className="flex gap-9 sm:gap-[194px] text-[32px]  mt-[20px] sm:mt-[50px]">
             <li>With</li>
-            <li className="max-w-[230px] sm:max-w-none">{profileData.host} </li>
+            <li className="max-w-[304px] sm:max-w-none">{profileData.host} </li>
           </ul>
         </div>
         <section className="flex flex-col-reverse gap-[35px] sm:gap-[140px] max-w-fit">
           <ProfileLinks links={profileData.links}></ProfileLinks>
           <div className="w-fit sm:max-w-none mt-8 ">
-            <p className="text-sm sm:w-[445px] ">{profileData.description}</p>
+            <p className="text-sm sm:w-[445px] sm:pr-0 pr-4 ">
+              {profileData.description}
+            </p>
           </div>
         </section>
         <section className="flex-col items-end">

@@ -103,7 +103,7 @@ const ScheduledShowMobile = ({
             </span>
           </li>
           <li>
-            {listPosition < 1 ? (
+            {listPosition < 1 && currentDayOfWeek === dayOfAppCalendar ? (
               <div className="flex flex-row justify-start ">
                 <Image
                   className="animate-pulse animate-infinite animate-duration-[2000ms] animate-ease-in-out animate-normal mb-[5px]"

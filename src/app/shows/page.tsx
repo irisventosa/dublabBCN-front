@@ -24,7 +24,7 @@ const ShowProfiles = () => {
           <span className="h-[22px] px-8 ">COMING UP /// TODAY & TOMORROW</span>
         </li>
       </ul>
-      <div className="flex text-[72px] gap-[140px] pt-[62px] ml-8 ">
+      <div className="flex text-[32px] sm:text-[72px] gap-[35px] sm:gap-[140px] pt-[62px] ml-8 ">
         <span>AAA</span>
         <h2>SHOWS</h2>
       </div>

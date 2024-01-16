@@ -20,7 +20,8 @@ const DayOfTheMonth = () => {
   const year = currentDate.getFullYear();
 
   const mobileBreakPoint = 640;
-  const isMobile = window.innerWidth < mobileBreakPoint;
+  const isMobile =
+    typeof window !== "undefined" && window.innerWidth < mobileBreakPoint;
 
   return (
     <time
