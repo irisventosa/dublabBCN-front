@@ -19,17 +19,20 @@ const DayOfTheMonth = () => {
 
   const year = currentDate.getFullYear();
 
+  const mobileBreakPoint = 640;
+  const isMobile = window.innerWidth < mobileBreakPoint;
+
   return (
     <time
       dateTime={dateInCatalan}
       className="flex flex-row place-content-between text-7xl items-end pt-[62px] px-8 "
     >
-      <div>
+      <div className="text-[32px] sm:text-[72px] ">
         <span>{weekDay}</span>
         <br />
         <span>{dateInCatalan}</span>
       </div>
-      <span>{year}</span>
+      {!isMobile && <span>{year}</span>}
     </time>
   );
 };

@@ -2,7 +2,8 @@
 import { AirtimeShow } from "@/app/types";
 import React from "react";
 import ScheduledBsideShow from "./ScheduledBsideShow";
-import ScheduledShow from "./ScheduledShow";
+import ScheduledShow from "./ScheduledShowDesktop";
+import ScheduledShowMobile from "./ScheduledShowMobile";
 
 interface ScheduledShowsListProps {
   schedule: AirtimeShow[];
@@ -19,6 +20,10 @@ const ScheduledShowsList = ({
   //       parseInt(extractAndFormatShowDate(show.end_timestamp)) > currentHour
   //   );
 
+  const mobileBreakPoint = 640;
+
+  const isMobile = window.innerWidth < mobileBreakPoint;
+
   return (
     <ul>
       {schedule.map((show, listPosition) => (
@@ -26,6 +31,11 @@ const ScheduledShowsList = ({
           <li key={show.name} className="text">
             {show.name.startsWith("b-side") ? (
               <ScheduledBsideShow
+                airtimeShow={show}
+                listPosition={listPosition}
+              />
+            ) : isMobile ? (
+              <ScheduledShowMobile
                 airtimeShow={show}
                 listPosition={listPosition}
               />

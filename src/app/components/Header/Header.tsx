@@ -21,7 +21,7 @@ const Header = ({ backgroundColor }: HeaderProps): React.ReactElement => {
   return (
     <div className="flex justify-start bg-black ">
       <header
-        className={`flex justify-between sm:p-8 absolute w-${variableWidth} max-w-[100vw] h-[219px] z-10 p-4 pt-[42px] gap-[32px] bg-${backgroundColor} `}
+        className={`flex justify-between sm:p-8 absolute w-${variableWidth} max-w-[100vw] h-[219px] z-10 p-4 pt-[42px] gap-4 bg-${backgroundColor} `}
       >
         <Link onClick={handleLinkClick} href="/">
           <Image
@@ -29,7 +29,7 @@ const Header = ({ backgroundColor }: HeaderProps): React.ReactElement => {
             alt="dublab Barcelona logo"
             width={627.259}
             height={138.42}
-            className="relative z-50 w-[244px] h-[80px] "
+            className="relative z-50 w-[244px] h-[80px] sm:w-auto sm:h-auto "
           />
         </Link>
         <NavBar />

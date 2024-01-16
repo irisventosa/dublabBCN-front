@@ -78,7 +78,7 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
       {columns.map((column, columnIndex) => (
         <ul
           key={columnIndex}
-          className=""
+          className="flex flex-col items-center sm:px-8 sm:grid sm:grid-cols-4 w-auto sm:gap-y-14 px-4 gap-x-4 gap-8"
           style={{
             marginRight: columnIndex === 3 ? "16px" : undefined,
           }}

@@ -12,7 +12,10 @@ interface ScheduledShowProps {
   listPosition: number;
 }
 
-const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
+const ScheduledShowDesktop = ({
+  airtimeShow,
+  listPosition,
+}: ScheduledShowProps) => {
   const { getProfileData } = useDublabApi();
 
   const formatString = (airtimeShowName: string) => {
@@ -85,13 +88,15 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
           alt={""}
           width={263}
           height={150}
-          className="py-[31px] pl-8 object-cover"
+          className="py-[31px] pl-8 object-cover w-40"
         />
-        <ul className="flex flex-col pl-[101px]">
-          <li className="text-[32px] h-[47px] mt-[21px]">
+        <ul className="flex flex-col pl-[50px] sm:pl-[101px]">
+          <li className=" text-sm sm:text-[32px] h-[47px] mt-[21px]">
             {he.decode(airtimeShow.name)}
           </li>
-          <li className="text-[22px] h-[28px] ">{profileData.host}</li>
+          <li className=" text-[11px] sm:text-[22px] h-[28px]  ">
+            {profileData.host}
+          </li>
           <li className="pt-[59px]">
             <ul className="flex flex-row gap-[10px] text-[11px]">
               {profileData.tags.map((tag, index) => (
@@ -130,4 +135,4 @@ const ScheduledShow = ({ airtimeShow, listPosition }: ScheduledShowProps) => {
   );
 };
 
-export default ScheduledShow;
+export default ScheduledShowDesktop;
