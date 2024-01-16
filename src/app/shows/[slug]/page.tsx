@@ -51,7 +51,9 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
           <h2 className="text-5xl h-[58px] mt-[56px]">{profileShowName}</h2>
           <ul className="flex gap-9 sm:gap-[194px] text-[32px]  mt-[20px] sm:mt-[50px]">
             <li>With</li>
-            <li className="max-w-[304px] sm:max-w-none">{profileData.host} </li>
+            <li className="max-w-[304px] sm:max-w-[400px]">
+              {profileData.host}
+            </li>
           </ul>
         </div>
         <section className="flex flex-col-reverse gap-[35px] sm:gap-[140px] max-w-fit">

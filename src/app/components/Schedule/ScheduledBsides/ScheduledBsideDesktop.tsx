@@ -2,21 +2,22 @@
 import extractAndFormatShowDate from "@/app/lib/extractAndFormatShowDate";
 import { AirtimeShow } from "@/app/types";
 import Image from "next/image";
+import BroadcastTime from "../BroadcastTime";
 
-interface ScheduledBsideShow {
+interface ScheduledBsideDesktopProps {
   airtimeShow: AirtimeShow;
   listPosition: number;
 }
 
-const ScheduledBsideShow = ({
+const ScheduledBsideDesktop = ({
   airtimeShow,
   listPosition,
-}: ScheduledBsideShow) => {
-  const broadcastingTime = extractAndFormatShowDate(
+}: ScheduledBsideDesktopProps) => {
+  const firstLine = listPosition < 1;
+  const broadcastTime: string = extractAndFormatShowDate(
     airtimeShow.start_timestamp
   );
-
-  const firstLine = listPosition < 1;
+  const currentDayOfWeek = new Date().getDay();
 
   const onAir =
     listPosition < 1
@@ -28,11 +29,11 @@ const ScheduledBsideShow = ({
       {firstLine && <hr className="w-full border-black" />}
       <div className={onAir}>
         <Image
-          src={"/assets/b-sides.png"}
+          src={airtimeShow.description}
           alt={""}
           width={263}
           height={150}
-          className="py-[31px] pl-8"
+          className="py-[31px] pl-8 object-cover"
         />
         <ul className="flex flex-col pl-[101px]">
           <li className="text-[32px] h-[47px] mt-[21px]">{airtimeShow.name}</li>
@@ -40,23 +41,15 @@ const ScheduledBsideShow = ({
           <li className="pt-[59px]"></li>
         </ul>
         <ul className="flex flex-col gap-[117px] items-end absolute right-0 p-[30px] ">
-          <li>
-            {listPosition < 1 ? (
-              <Image
-                className="animate-pulse animate-infinite animate-duration-[2000ms] animate-ease-in-out animate-normal mb-[5px]"
-                src={"/assets/Ellipse.svg"}
-                alt={"Elipse"}
-                width={18}
-                height={18}
-              />
-            ) : (
-              broadcastingTime
-            )}
-          </li>
+          <BroadcastTime
+            broadcastTime={broadcastTime}
+            listPosition={listPosition}
+            currentDayOfWeek={currentDayOfWeek}
+          />
         </ul>
       </div>
     </>
   );
 };
 
-export default ScheduledBsideShow;
+export default ScheduledBsideDesktop;
