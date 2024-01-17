@@ -20,7 +20,7 @@ const findActualDaySchedule = (schedule: WeekInfo) => {
 
   const isSecondWeek = weekNumber > 1;
 
-  const actualDay: AirtimeShow[] = airtimeDays[actualDayIndex];
+  const actualDay: AirtimeShow[] = airtimeDays[actualDayIndex - 1];
 
   return { actualDay, isSecondWeek };
 };

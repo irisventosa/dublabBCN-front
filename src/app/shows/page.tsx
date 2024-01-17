@@ -1,21 +1,29 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
+import { useEffect, useState } from "react";
 import ProfilesList from "../components/Profiles/ProfilesList";
 import ProfilesListMobile from "../components/Profiles/ProfilesListMobile";
 import getProfilesOrBsides from "../lib/getShowsOrBsides";
 import useDublabApi from "../lib/hooks/useDublabApi";
+import Spinner from "../components/ui/Spinner";
 
 const ShowProfiles = () => {
   const { getProfiles } = useDublabApi();
-  const mobileBreakPoint = 640;
-  const isMobile =
-    typeof window !== "undefined" && window.innerWidth < mobileBreakPoint;
+  const [mobileComponent, setMobileComponent] = useState(false);
+
+  useEffect(() => {
+    const mobileBreakPoint = 640;
+    const isMobile =
+      typeof window !== "undefined" && window.innerWidth < mobileBreakPoint;
+
+    setMobileComponent(isMobile);
+  }, []);
 
   const onAirProfiles = getProfilesOrBsides(getProfiles);
 
   const isAllDataLoaded = onAirProfiles.every((apiProfiles) => apiProfiles);
 
-  if (!isAllDataLoaded) return <div>Loading...</div>;
+  if (!isAllDataLoaded) return <Spinner></Spinner>;
 
   return (
     <main className="flex flex-col mt-[219px]">
@@ -29,7 +37,7 @@ const ShowProfiles = () => {
         <h2>SHOWS</h2>
       </div>
       <section>
-        {isMobile
+        {mobileComponent
           ? onAirProfiles.map((profiles, index) => (
               <ProfilesListMobile
                 key={index}

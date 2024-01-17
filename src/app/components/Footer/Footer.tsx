@@ -32,7 +32,7 @@ const Footer = (): React.ReactElement => {
           <LegalLinks />
         </li>
         <li className="min-w-fit mt-[2px] mb-16 sm:hidden  ">
-          Ⓒ 2023 Dublab Barcelona
+          Ⓒ 2024 Dublab Barcelona
         </li>
       </ul>
       <Credits />

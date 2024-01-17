@@ -17,10 +17,15 @@ const ScheduledBsideMobile = ({
   const broadcastTime: string = extractAndFormatShowDate(
     airtimeShow.start_timestamp
   );
+
   const currentDayOfWeek = new Date().getDay();
+  const showStartHour = new Date(broadcastTime).getHours();
+  const currentHourOfDay = new Date().getHours();
+
+  const isShowHour = currentHourOfDay === showStartHour;
 
   const onAir =
-    listPosition < 1
+    listPosition < 1 && isShowHour
       ? "flex flex-row h-[212px] w-full bg-black text-white"
       : "flex flex-row h-[212px] w-full";
 
@@ -37,7 +42,7 @@ const ScheduledBsideMobile = ({
             className="object-cover h-[137px] max-w-[137px]"
           />
         </div>
-        <ul className="flex gap-[2.9rem] flex-col pl-6 mt-[16px] sm:pl-[101px]">
+        <ul className="flex gap-[2.9rem] flex-col pl46 mt-[16px] sm:pl-[101px]">
           <li className=" text-sm sm:text-[32px] flex max-w-[230px]  flex-col">
             {airtimeShow.name}
           </li>
