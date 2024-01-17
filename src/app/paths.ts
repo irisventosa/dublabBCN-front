@@ -12,6 +12,13 @@ export const lastNavLabels: DropdownItem[] = [
   { label: "Info", route: "/info" },
 ];
 
+export const legalLinks: DropdownItem[] = [
+  {
+    label: "Política de privacitat",
+    route: "/cookies",
+  },
+];
+
 export const programesDropDown: DropdownItem[] = [
   { label: "shows", route: "/shows" },
   { label: "b-sides", route: "/b-sides" },
