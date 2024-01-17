@@ -24,7 +24,7 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
     profileShowName = "macguffin 2.0";
   }
 
-  if (!profileData) return <Spinner></Spinner>;
+  if (!profileData) return <Spinner />;
 
   return (
     <main className="mt-[255px] gap-[50px] flex sm:flex-row flex-col justify-between">
@@ -33,15 +33,17 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
         alt={""}
         width={660}
         height={327}
-        className="sm:h-[727px] h-[358px] w-auto object-cover sm:p-0 p-4 "
+        className="sm:h-[727px] h-[358px] max-w-[660px] w-auto object-cover sm:p-0 p-4 "
       />
-      <section className="max-h-[700px] pl-4 sm:min-w-[720px] overflow-scroll scrollbar-hide sm:pr-[10rem]">
+      <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-scroll scrollbar-hide sm:pr-[10rem]">
         <div className="flex justify-between items-end">
           <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-40">
             {profileData.tags.map((tag, index) => (
               <li
                 key={index}
-                className=" text-[11px] border rounded-md pt-[5px] px-2 pb-[3px]"
+                className={`text-[11px] mr-[${
+                  index * 5
+                }px] border rounded-md pt-[5px]  px-2 pb-[3px]`}
               >
                 {tag}
               </li>
@@ -66,11 +68,11 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
           </div>
         </section>
         <section className="flex-col items-end">
-          <div className="text-2xl flex justify-between mt-[58px] w-full mb-[17px]">
+          <div className="text-2xl flex justify-between mt-[58px]  mb-[17px]">
             <h3 className="h-[29px]">Shows Relacionats</h3>
             <span>2024</span>
           </div>
-          <hr className="border-black sm:w-[719px] w-full " />
+          <hr className="border-black  w-full " />
           <RelatedShows shows={profileData.shows} />
         </section>
       </section>

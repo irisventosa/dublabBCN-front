@@ -27,7 +27,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
   if (!profileData) return <div>Loading...</div>;
 
   return (
-    <section className="pr-2">
+    <section className="pr-2 ">
       {formattedShows.map(
         ({
           showName,
@@ -59,7 +59,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
                 )
               )}
             </ul>
-            <hr className="border-black sm:w-[719px] w-full  " />
+            <hr className="border-black  w-full  " />
           </article>
         )
       )}

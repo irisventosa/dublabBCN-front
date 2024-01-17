@@ -97,7 +97,7 @@ const ScheduledShowMobile = ({
             View show
           </Link>
         </div>
-        <ul className="flex gap-[2.9rem] flex-col pl-6 mt-[16px] sm:pl-[101px]">
+        <ul className="flex gap-[2.9rem] flex-col pl-4 mt-[16px] sm:pl-[101px]">
           <li className=" text-sm sm:text-[32px] flex  flex-col">
             {he.decode(airtimeShow.name)}
             <span className=" text-[11px] sm:text-[22px] h-[28px]  ">
