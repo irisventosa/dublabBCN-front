@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
 import he from "he";
+import BroadcastTime from "../BroadcastTime";
 
 interface ScheduledShowProps {
   airtimeShow: AirtimeShow;
@@ -57,8 +58,6 @@ const ScheduledShowMobile = ({
   const isListPositionLessThanOne = listPosition < 1;
 
   const dayOfAppCalendar = new Date(airtimeShow.start_timestamp).getDay();
-
-  // Get the current day of the week (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
   const currentDayOfWeek = new Date().getDay();
 
   const {
@@ -98,26 +97,14 @@ const ScheduledShowMobile = ({
           <li className=" text-sm sm:text-[32px] flex  flex-col">
             {he.decode(airtimeShow.name)}
             <span className=" text-[11px] sm:text-[22px] h-[28px]  ">
-              {" "}
               {profileData.host}
             </span>
           </li>
-          <li>
-            {listPosition < 1 && currentDayOfWeek === dayOfAppCalendar ? (
-              <div className="flex flex-row justify-start ">
-                <Image
-                  className="animate-pulse animate-infinite animate-duration-[2000ms] animate-ease-in-out animate-normal mb-[5px]"
-                  src={"/assets/Ellipse.svg"}
-                  alt={"Elipse"}
-                  width={18}
-                  height={18}
-                />
-                <span className="">ON AIR</span>
-              </div>
-            ) : (
-              <span>{broadcastTime}</span>
-            )}
-          </li>
+          <BroadcastTime
+            broadcastTime={broadcastTime}
+            listPosition={listPosition}
+            currentDayOfWeek={currentDayOfWeek}
+          />
           <li className="">
             <ul className="flex flex-row gap-[10px]  text-[8px]">
               {profileData.tags.map((tag, index) => (

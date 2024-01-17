@@ -1,14 +1,9 @@
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import {
-  dublabSisters,
-  firstNavLabels,
-  lastNavLabels,
-  programesDropDown,
-} from "../paths";
+import { dublabSisters, firstNavLabels, programesDropDown } from "../paths";
 import DropdownClick from "./Header/MenuDropdownClick";
 import DigitalClock from "./RadioBar/DigitalClock";
-import { usePathname } from "next/navigation";
 
 const SlideOver = () => {
   const [isSlideOverVisible, setSlideOverVisible] = useState(false);
@@ -48,13 +43,11 @@ const SlideOver = () => {
                   <Link href={route}>{label}</Link>
                 </li>
               ))}
-              <DropdownClick title="Programes" items={programesDropDown} />
-              <DropdownClick title="Sisters" items={dublabSisters} />
-              {lastNavLabels.map(({ label, route }) => (
-                <li key={route} className="cursor-pointer">
-                  <Link href={route}>{label}</Link>
-                </li>
-              ))}
+              <DropdownClick
+                title="Programes"
+                nestedPaths={programesDropDown}
+              />
+              <DropdownClick title="Sisters" nestedPaths={dublabSisters} />
             </ul>
           </div>
           <div className="absolute bottom-0 p-4 flex flex-row max-w-[100vw]  justify-between w-[26rem] ">

@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
 import he from "he";
+import BroadcastTime from "../BroadcastTime";
 
 interface ScheduledShowProps {
   airtimeShow: AirtimeShow;
@@ -57,8 +58,6 @@ const ScheduledShowDesktop = ({
   const isListPositionLessThanOne = listPosition < 1;
 
   const dayOfAppCalendar = new Date(airtimeShow.start_timestamp).getDay();
-
-  // Get the current day of the week (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
   const currentDayOfWeek = new Date().getDay();
 
   const {
@@ -106,19 +105,11 @@ const ScheduledShowDesktop = ({
           </li>
         </ul>
         <ul className="flex flex-col gap-[108px] items-end absolute right-0 p-[30px] ">
-          <li>
-            {listPosition < 1 ? (
-              <Image
-                className="animate-pulse animate-infinite animate-duration-[2000ms] animate-ease-in-out animate-normal mb-[5px]"
-                src={"/assets/Ellipse.svg"}
-                alt={"Elipse"}
-                width={18}
-                height={18}
-              />
-            ) : (
-              broadcastTime
-            )}
-          </li>
+          <BroadcastTime
+            broadcastTime={broadcastTime}
+            listPosition={listPosition}
+            currentDayOfWeek={currentDayOfWeek}
+          />
           <li>
             <Link
               className="underline underline-offset-2"

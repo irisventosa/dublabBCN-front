@@ -4,10 +4,10 @@ import { useState } from "react";
 
 interface DropdownClickProps {
   title: string;
-  items: DropdownItem[];
+  nestedPaths: DropdownItem[];
 }
 
-const MenuDropdownClick = ({ title, items }: DropdownClickProps) => {
+const MenuDropdownClick = ({ title, nestedPaths }: DropdownClickProps) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const handleDropdownToggle = () => {
@@ -22,7 +22,7 @@ const MenuDropdownClick = ({ title, items }: DropdownClickProps) => {
       {isDropdownOpen && (
         <div className="mt-5  bg-[#ECECEC] rounded-b-lg pb-2">
           <ul className="flex flex-col gap-4 items-start">
-            {items.map(({ label, route }) => (
+            {nestedPaths.map(({ label, route }) => (
               <li key={route} className="h-6 py-3 flex items-center text-lg">
                 <Link className="mt-[1px]" href={route}>
                   {label}
