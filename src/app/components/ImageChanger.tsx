@@ -2,7 +2,10 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 const ImageChanger = () => {
-  const imageSources = ["/assets/b-sides.png", "/assets/collserola.jpeg"];
+  const imageSources = [
+    "/assets/sagrada-familia-barcelona.webp",
+    "/assets/collserola.jpeg",
+  ];
 
   const [currentImage, setCurrentImage] = useState(0);
 

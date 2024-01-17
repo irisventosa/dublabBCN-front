@@ -16,9 +16,13 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
   const formattedShows = formatAndSortRelatedShowsInfo(shows);
 
   const { data: profileData } = useSWR<ApiProfile>(
-    formattedShows[0].showName,
+    formattedShows[0]?.showName,
     getProfileData
   );
+
+  if (!formattedShows || formattedShows.length === 0) {
+    return <div></div>;
+  }
 
   if (!profileData) return <div>Loading...</div>;
 

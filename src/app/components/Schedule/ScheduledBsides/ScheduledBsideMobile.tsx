@@ -17,10 +17,15 @@ const ScheduledBsideMobile = ({
   const broadcastTime: string = extractAndFormatShowDate(
     airtimeShow.start_timestamp
   );
+
   const currentDayOfWeek = new Date().getDay();
+  const showStartHour = new Date(broadcastTime).getHours();
+  const currentHourOfDay = new Date().getHours();
+
+  const isShowHour = currentHourOfDay === showStartHour;
 
   const onAir =
-    listPosition < 1
+    listPosition < 1 && isShowHour
       ? "flex flex-row h-[212px] w-full bg-black text-white"
       : "flex flex-row h-[212px] w-full";
 

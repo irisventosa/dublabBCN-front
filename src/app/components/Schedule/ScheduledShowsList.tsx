@@ -2,7 +2,7 @@
 import extractAndFormatShowDate from "@/app/lib/extractAndFormatShowDate";
 import { currentHour } from "@/app/lib/getDateInCatalan";
 import { AirtimeShow } from "@/app/types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ScheduledBsideDesktop from "./ScheduledBsides/ScheduledBsideDesktop";
 import ScheduledBsideMobile from "./ScheduledBsides/ScheduledBsideMobile";
 import ScheduledShowDesktop from "./ScheduledShows/ScheduledShowDesktop";
@@ -17,6 +17,15 @@ const ScheduledShowsList = ({
   schedule,
 }: ScheduledShowsListProps): React.ReactElement => {
   const currentDayOfWeek = new Date().getDay();
+  const [mobileComponent, setMobileComponent] = useState(false);
+
+  useEffect(() => {
+    const mobileBreakPoint = 640;
+    const isMobile =
+      typeof window !== "undefined" && window.innerWidth < mobileBreakPoint;
+
+    setMobileComponent(isMobile);
+  }, []);
 
   const scheduleByHours: AirtimeShow[] =
     schedule &&
@@ -33,18 +42,13 @@ const ScheduledShowsList = ({
       return schedule;
     });
 
-  const mobileBreakPoint = 640;
-
-  const isMobile =
-    typeof window !== "undefined" && window.innerWidth < mobileBreakPoint;
-
   return (
     <ul>
       {scheduleByHours.map((show, listPosition) => (
         <>
           <li className="text">
             {show.name.startsWith("b-side") ? (
-              isMobile ? (
+              mobileComponent ? (
                 <ScheduledBsideMobile
                   airtimeShow={show}
                   listPosition={listPosition}
@@ -55,7 +59,7 @@ const ScheduledShowsList = ({
                   listPosition={listPosition}
                 />
               )
-            ) : isMobile ? (
+            ) : mobileComponent ? (
               <ScheduledShowMobile
                 airtimeShow={show}
                 listPosition={listPosition}

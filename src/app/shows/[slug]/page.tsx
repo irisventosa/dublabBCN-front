@@ -1,6 +1,7 @@
 "use client";
 import ProfileLinks from "@/app/components/Profiles/ProfileLinks";
 import RelatedShows from "@/app/components/Profiles/ProfileRelatedShows";
+import Spinner from "@/app/components/ui/Spinner";
 import useDublabApi from "@/app/lib/hooks/useDublabApi";
 import { ApiProfile } from "@/app/types";
 import Image from "next/image";
@@ -23,10 +24,10 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
     profileShowName = "macguffin 2.0";
   }
 
-  if (!profileData) return <div>Loading...</div>;
+  if (!profileData) return <Spinner></Spinner>;
 
   return (
-    <main className="mt-[155px] gap-[50px] flex sm:flex-row flex-col justify-between">
+    <main className="mt-[255px] gap-[50px] flex sm:flex-row flex-col justify-between">
       <Image
         src={profileData.picture}
         alt={""}

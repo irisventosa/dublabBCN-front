@@ -25,7 +25,7 @@ const Info = () => {
             <Collaborators />
             <ThanksTo />
           </div>
-          <span>Ⓒ 2023 dublab BCN - ALL RIGHTS RESERVED </span>
+          <span>Ⓒ 2024 dublab BCN - ALL RIGHTS RESERVED </span>
         </div>
       </div>
     </main>

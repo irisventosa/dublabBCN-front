@@ -20,8 +20,8 @@ const CurrentAndNextShow = ({ liveData }: CurrentAndNextShowProps) => {
           className="animate-pulse animate-infinite animate-duration-[2000ms] animate-ease-in-out animate-normal mb-[5px]"
           src={"/assets/Ellipse.svg"}
           alt={"Elipse"}
-          width={10}
-          height={10}
+          width={"10"}
+          height={"10"}
         />
         <span className="min-w-fit"></span>
         {currentShowName ? (
