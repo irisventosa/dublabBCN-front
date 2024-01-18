@@ -29,7 +29,7 @@ const Header = ({ backgroundColor }: HeaderProps): React.ReactElement => {
             alt="dublab Barcelona logo"
             width={627.259}
             height={138.42}
-            className="relative z-50 max-h-[138px] max-w-[625px]  w-auto h-auto "
+            className="relative z-50 sm:max-h-[138px] sm:max-w-[625px]  w-auto h-auto "
           />
         </Link>
         <NavBar />

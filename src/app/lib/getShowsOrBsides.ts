@@ -5,7 +5,7 @@ interface FetchCallback<T> {
 }
 
 const getProfilesOrBsides = <T>(fetchCallback: FetchCallback<T>) => {
-  const numberOfPages = fetchCallback.name === "getProfiles" ? 7 : 18;
+  const numberOfPages = fetchCallback.name === "getProfiles" ? 8 : 18;
 
   const apiRequestPages = Array.from(
     { length: numberOfPages },

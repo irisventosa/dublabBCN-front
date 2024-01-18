@@ -63,23 +63,19 @@ const ScheduledShowDesktop = ({
   );
 
   const currentDayOfWeek = new Date().getDay();
-  const showStartHour = new Date(broadcastTime).getHours();
-  const currentHourOfDay = new Date().getHours();
 
-  const isShowHour = currentHourOfDay === showStartHour;
-
-  const {
-    onAirStyles = isListPositionLessThanOne &&
-    currentDayOfWeek === dayOfAppCalendar &&
-    isShowHour
-      ? "flex flex-row h-[212px] w-full bg-black text-white"
-      : "flex flex-row h-[212px] w-full",
-    firstSeparatorLine = isListPositionLessThanOne,
-    borderColor = isListPositionLessThanOne &&
-    currentDayOfWeek === dayOfAppCalendar
-      ? "border border-white rounded-md pt-[5px] px-2 pb-[1px]"
-      : "border border-black rounded-md pt-[5px] px-2 pb-[1px]",
-  } = {};
+  const { onAirStyles, firstSeparatorLine, borderColor } =
+    isListPositionLessThanOne && currentDayOfWeek === dayOfAppCalendar
+      ? {
+          onAirStyles: "flex flex-row h-[212px] w-full bg-black text-white",
+          firstSeparatorLine: true,
+          borderColor: "border border-white rounded-md pt-[5px] px-2 pb-[1px]",
+        }
+      : {
+          onAirStyles: "flex flex-row h-[212px] w-full",
+          firstSeparatorLine: isListPositionLessThanOne,
+          borderColor: "border border-black rounded-md pt-[5px] px-2 pb-[1px]",
+        };
 
   if (!profileData) return <div>Informació del programa no disponible.</div>;
 
@@ -113,7 +109,6 @@ const ScheduledShowDesktop = ({
           <BroadcastTime
             broadcastTime={broadcastTime}
             listPosition={listPosition}
-            currentDayOfWeek={currentDayOfWeek}
           />
           <li>
             <Link
