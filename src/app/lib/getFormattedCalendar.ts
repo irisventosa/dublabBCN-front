@@ -1,11 +1,17 @@
-const createWeekDays = (): { dayName: string; formattedDay: string }[] => {
+interface weekDays {
+  dayName: string;
+  formattedDay: string;
+}
+
+const createWeekDays = (): weekDays[] => {
   const today = new Date();
   const startOfWeek = new Date(today);
 
   const mondayOffset = (today.getDay() + 6) % 7;
   startOfWeek.setDate(today.getDate() - mondayOffset);
 
-  const weekFormatted: { dayName: string; formattedDay: string }[] = [];
+  const weekFormatted: weekDays[] = [];
+  let nextPrefix = false;
 
   for (let i = 0; i < 17; i++) {
     const date = new Date(startOfWeek);
@@ -31,7 +37,15 @@ const createWeekDays = (): { dayName: string; formattedDay: string }[] => {
         .format(date)
         .toLowerCase();
 
-      weekFormatted.push({ dayName, formattedDay });
+      if (nextPrefix && dayName !== "sunday") {
+        weekFormatted.push({ dayName: "next" + dayName, formattedDay });
+      } else {
+        weekFormatted.push({ dayName, formattedDay });
+      }
+
+      if (dayName === "sunday") {
+        nextPrefix = true;
+      }
     }
   }
 
