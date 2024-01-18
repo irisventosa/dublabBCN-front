@@ -64,16 +64,18 @@ const removeDateAndHyphenFromSlug = (slug: string) => {
 };
 
 export const formatAndSortRelatedShowsInfo = (shows: RadioApiShow[]) => {
-  const formattedShows = shows.map(({ slug, tags, tracklist }) => {
+  const formattedShows = shows.map(({ slug, tags, tracklist, name }) => {
     const showName = formatSlugToGetShowName(slug);
     const showDateForShowList = extractDatesForShowList(slug);
     const showDateForUrl = extractDatesForUrl(slug);
     const showDateForList = extractDatesForCard(slug);
     const showTags = tags;
+    const showTitle = name;
     const showTracklist = tracklist;
     const slugToUrl = removeDateAndHyphenFromSlug(slug);
 
     return {
+      showTitle,
       slugToUrl,
       showTracklist,
       showName,

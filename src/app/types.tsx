@@ -12,6 +12,7 @@ export interface LiveRadioData {
 }
 
 export interface RadioApiShow {
+  name?: string;
   date: string | number | Date;
   host?: string;
   tags?: string[];
