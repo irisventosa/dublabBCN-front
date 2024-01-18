@@ -1,11 +1,9 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
 import extractUrlForEmbedPlayer from "@/app/lib/extractUrlForEmbedPlayer";
+import { formatDateFromShow } from "@/app/lib/formatDateFromShows";
 import useDublabApi from "@/app/lib/hooks/useDublabApi";
-import {
-  extractDatesForCard,
-  formatSlugToGetShowName,
-} from "@/app/lib/processSlug";
+import { formatSlugToGetShowName } from "@/app/lib/processSlug";
 import { ApiProfile, RadioApiShow } from "@/app/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,22 +21,24 @@ interface ShowCardProps {
 const dublabApi = "https://api.dublab.es";
 
 const ShowCard = ({
-  show: { slug, mixcloud_url, tags, host, profile_picture },
+  show: { slug, mixcloud_url, tags, host, profile_picture, date },
   height,
   onClickPlayback,
 }: ShowCardProps): React.ReactElement => {
   const { getProfileData } = useDublabApi();
+
   const showName = formatSlugToGetShowName(slug);
 
   const formatslugToGetPathName = (slug: string) => {
     const formattedSlug = slug.replace(/[0-9]/g, "").replace(/-+$/, "");
-
     return formattedSlug;
   };
 
   const showNamePath = formatslugToGetPathName(slug);
-  const showDateforCard = extractDatesForCard(slug);
+  const showDateforCard = formatDateFromShow(date);
+
   const { data: profile } = useSWR<ApiProfile>(showName, getProfileData);
+
   const showUrl = extractUrlForEmbedPlayer(mixcloud_url);
 
   const handleShowPlayback = () => {
@@ -47,6 +47,10 @@ const ShowCard = ({
 
   if (host === undefined || host === null) {
     host = profile?.host;
+  }
+
+  if (tags === undefined || tags === null) {
+    tags = profile?.tags;
   }
 
   const hostFontSize = host && host.length >= 25 ? "[11px]" : "sm";
@@ -100,7 +104,7 @@ const ShowCard = ({
         </li>
       </ul>
       <ul className="h-4 flex gap-[10px] text-[11px] flex-row py-4 absolute text">
-        {tags.map((tag, index, array) => (
+        {tags!.map((tag, index, array) => (
           <>
             <li>{tag}</li>
             {index !== array.length - 1 && <li>&nbsp;///&nbsp;</li>}

@@ -7,6 +7,7 @@ import Link from "next/link";
 import useSWR from "swr";
 import he from "he";
 import BroadcastTime from "../BroadcastTime";
+import Spinner from "../../ui/Spinner";
 
 interface ScheduledShowProps {
   airtimeShow: AirtimeShow;
@@ -50,7 +51,7 @@ const ScheduledShowMobile = ({
 
   const formattedShowName = formatString(airtimeShow.name);
 
-  const { data: profileData } = useSWR<ApiProfile>(
+  const { data: profileData, error } = useSWR<ApiProfile>(
     formattedShowName,
     getProfileData
   );
@@ -61,22 +62,22 @@ const ScheduledShowMobile = ({
   const broadcastTime: string = extractAndFormatShowDate(
     airtimeShow.start_timestamp
   );
+
   const currentDayOfWeek = new Date().getDay();
-  const showStartHour = new Date(broadcastTime).getHours();
-  const currentHourOfDay = new Date().getHours();
 
-  const isShowHour = currentHourOfDay === showStartHour;
+  const { onAirStyles, firstSeparatorLine } =
+    isListPositionLessThanOne && currentDayOfWeek === dayOfAppCalendar
+      ? {
+          onAirStyles: "flex flex-row h-[212px] w-full bg-black text-white",
+          firstSeparatorLine: true,
+        }
+      : {
+          onAirStyles: "flex flex-row h-[212px] w-full",
+          firstSeparatorLine: isListPositionLessThanOne,
+        };
 
-  const {
-    onAirStyles = isListPositionLessThanOne &&
-    currentDayOfWeek === dayOfAppCalendar &&
-    isShowHour
-      ? "flex flex-row h-[212px] w-full bg-black text-white"
-      : "flex flex-row h-[212px] w-full",
-    firstSeparatorLine = isListPositionLessThanOne,
-  } = {};
-
-  if (!profileData) return <div>Informació del programa no disponible.</div>;
+  if (!profileData) return <Spinner></Spinner>;
+  if (error) return <div>Informació del programa no disponible.</div>;
 
   return (
     <>
@@ -107,7 +108,6 @@ const ScheduledShowMobile = ({
           <BroadcastTime
             broadcastTime={broadcastTime}
             listPosition={listPosition}
-            currentDayOfWeek={currentDayOfWeek}
           />
           <li className="">
             <ul className="flex flex-row gap-[10px]  text-[8px]">

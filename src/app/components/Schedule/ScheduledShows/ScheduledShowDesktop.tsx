@@ -7,6 +7,7 @@ import Link from "next/link";
 import useSWR from "swr";
 import he from "he";
 import BroadcastTime from "../BroadcastTime";
+import Spinner from "../../ui/Spinner";
 
 interface ScheduledShowProps {
   airtimeShow: AirtimeShow;
@@ -50,7 +51,7 @@ const ScheduledShowDesktop = ({
 
   const formattedShowName = formatString(airtimeShow.name);
 
-  const { data: profileData } = useSWR<ApiProfile>(
+  const { data: profileData, error } = useSWR<ApiProfile>(
     formattedShowName,
     getProfileData
   );
@@ -63,25 +64,22 @@ const ScheduledShowDesktop = ({
   );
 
   const currentDayOfWeek = new Date().getDay();
-  const showStartHour = new Date(broadcastTime).getHours();
-  const currentHourOfDay = new Date().getHours();
 
-  const isShowHour = currentHourOfDay === showStartHour;
+  const { onAirStyles, firstSeparatorLine, borderColor } =
+    isListPositionLessThanOne && currentDayOfWeek === dayOfAppCalendar
+      ? {
+          onAirStyles: "flex flex-row h-[212px] w-full bg-black text-white",
+          firstSeparatorLine: true,
+          borderColor: "border border-white rounded-md pt-[5px] px-2 pb-[1px]",
+        }
+      : {
+          onAirStyles: "flex flex-row h-[212px] w-full",
+          firstSeparatorLine: isListPositionLessThanOne,
+          borderColor: "border border-black rounded-md pt-[5px] px-2 pb-[1px]",
+        };
 
-  const {
-    onAirStyles = isListPositionLessThanOne &&
-    currentDayOfWeek === dayOfAppCalendar &&
-    isShowHour
-      ? "flex flex-row h-[212px] w-full bg-black text-white"
-      : "flex flex-row h-[212px] w-full",
-    firstSeparatorLine = isListPositionLessThanOne,
-    borderColor = isListPositionLessThanOne &&
-    currentDayOfWeek === dayOfAppCalendar
-      ? "border border-white rounded-md pt-[5px] px-2 pb-[1px]"
-      : "border border-black rounded-md pt-[5px] px-2 pb-[1px]",
-  } = {};
-
-  if (!profileData) return <div>Informació del programa no disponible.</div>;
+  if (!profileData) return <Spinner></Spinner>;
+  if (error) return <div>Informació del programa no disponible.</div>;
 
   return (
     <>
@@ -113,7 +111,6 @@ const ScheduledShowDesktop = ({
           <BroadcastTime
             broadcastTime={broadcastTime}
             listPosition={listPosition}
-            currentDayOfWeek={currentDayOfWeek}
           />
           <li>
             <Link

@@ -13,25 +13,29 @@ const ScheduledBsideDesktop = ({
   airtimeShow,
   listPosition,
 }: ScheduledBsideDesktopProps) => {
-  const firstLine = listPosition < 1;
+  const isListPositionLessThanOne = listPosition < 1;
+
+  const currentDayOfWeek = new Date().getDay();
+  const dayOfAppCalendar = new Date(airtimeShow.start_timestamp).getDay();
   const broadcastTime: string = extractAndFormatShowDate(
     airtimeShow.start_timestamp
   );
-  const currentDayOfWeek = new Date().getDay();
-  const showStartHour = new Date(broadcastTime).getHours();
-  const currentHourOfDay = new Date().getHours();
 
-  const isShowHour = currentHourOfDay === showStartHour;
-
-  const onAir =
-    listPosition < 1 && isShowHour
-      ? "flex flex-row h-[212px] w-full bg-black text-white"
-      : "flex flex-row h-[212px] w-full";
+  const { onAirStyles, firstSeparatorLine } =
+    isListPositionLessThanOne && currentDayOfWeek === dayOfAppCalendar
+      ? {
+          onAirStyles: "flex flex-row h-[212px] w-full bg-black text-white",
+          firstSeparatorLine: true,
+        }
+      : {
+          onAirStyles: "flex flex-row h-[212px] w-full",
+          firstSeparatorLine: isListPositionLessThanOne,
+        };
 
   return (
     <>
-      {firstLine && <hr className="w-full border-black" />}
-      <div className={onAir}>
+      {firstSeparatorLine && <hr className="w-full border-black" />}
+      <div className={onAirStyles}>
         <Image
           src={airtimeShow.description}
           alt={""}
@@ -48,7 +52,6 @@ const ScheduledBsideDesktop = ({
           <BroadcastTime
             broadcastTime={broadcastTime}
             listPosition={listPosition}
-            currentDayOfWeek={currentDayOfWeek}
           />
         </ul>
       </div>

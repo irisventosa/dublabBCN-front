@@ -13,26 +13,28 @@ const ScheduledBsideMobile = ({
   airtimeShow,
   listPosition,
 }: ScheduledBsideMobileProps) => {
-  const firstLine = listPosition < 1;
   const broadcastTime: string = extractAndFormatShowDate(
     airtimeShow.start_timestamp
   );
 
   const currentDayOfWeek = new Date().getDay();
-  const showStartHour = new Date(broadcastTime).getHours();
-  const currentHourOfDay = new Date().getHours();
+  const isListPositionLessThanOne = listPosition < 1;
 
-  const isShowHour = currentHourOfDay === showStartHour;
-
-  const onAir =
-    listPosition < 1 && isShowHour
-      ? "flex flex-row h-[212px] w-full bg-black text-white"
-      : "flex flex-row h-[212px] w-full";
+  const { onAirStyles, firstSeparatorLine } =
+    isListPositionLessThanOne && currentDayOfWeek
+      ? {
+          onAirStyles: "flex flex-row h-[212px] w-full bg-black text-white",
+          firstSeparatorLine: true,
+        }
+      : {
+          onAirStyles: "flex flex-row h-[212px] w-full",
+          firstSeparatorLine: isListPositionLessThanOne,
+        };
 
   return (
     <>
-      {firstLine && <hr className="w-full border-black" />}
-      <div className={onAir}>
+      {firstSeparatorLine && <hr className="w-full border-black" />}
+      <div className={onAirStyles}>
         <div className="flex flex-col mt-4  items-start w-fit pl-8 ">
           <Image
             src={airtimeShow.description}
@@ -50,7 +52,6 @@ const ScheduledBsideMobile = ({
             <BroadcastTime
               broadcastTime={broadcastTime}
               listPosition={listPosition}
-              currentDayOfWeek={currentDayOfWeek}
             />
           </div>
           <li className="text-[22px] h-[28px] ">{airtimeShow.url}</li>

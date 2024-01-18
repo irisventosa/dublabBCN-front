@@ -1,5 +1,7 @@
+import { cookies } from "next/headers";
 import HeroSection from "./components/HeroSection";
 import LatestShowsFixedHeight from "./components/LatestShows/LatestShowsFixedHeight";
+import PrivacyDisclaimer from "./components/PrivacyDisclaimer";
 import useDublabApi from "./lib/hooks/useDublabApi";
 import mergeBsidesWithShows from "./lib/mergeBsidesWithShows";
 
@@ -12,11 +14,14 @@ const Home = async () => {
 
   const latestPodcasts = mergeBsidesWithShows(latestShows, bSides);
   const trimmedShows = latestPodcasts.slice(0, 8);
+  const cookiesStore = cookies();
+  const disclaimerClosed = cookiesStore.get("disclaimerClosed");
 
   return (
     <>
       <main className="flex flex-col">
         <HeroSection />
+        {!disclaimerClosed && <PrivacyDisclaimer />}
         <LatestShowsFixedHeight latestShows={trimmedShows} />
       </main>
     </>

@@ -10,7 +10,7 @@ const Credits = (): React.ReactElement => {
         <ul className="flex flex-row items-end mr-[54px] gap-[1.95rem] ">
           <li>
             <Image
-              className=""
+              className=" min-w-[67px] min-h-[27px]"
               src={"/assets/D-B_vector.svg"}
               alt="dublab Barcelona logo"
               width={67}

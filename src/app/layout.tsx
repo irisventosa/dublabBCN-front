@@ -34,10 +34,8 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <RadioDataProvider>
             <body className={`${favorit.variable} font-favorit antialiased`}>
               <RadioBar />
-              {backgroundColor === "black" ? (
+              {backgroundColor === "black" && (
                 <hr className="border-white w-full" />
-              ) : (
-                ""
               )}
               <SlideOverProvider>
                 <Header backgroundColor={backgroundColor} />

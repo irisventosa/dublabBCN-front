@@ -14,7 +14,7 @@ export interface LiveRadioData {
 export interface RadioApiShow {
   date: string | number | Date;
   host?: string;
-  tags: string[];
+  tags?: string[];
   slug: string;
   tracklist?: string;
   mixcloud_url: string;

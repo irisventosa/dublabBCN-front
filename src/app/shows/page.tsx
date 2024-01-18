@@ -6,10 +6,13 @@ import ProfilesListMobile from "../components/Profiles/ProfilesListMobile";
 import getProfilesOrBsides from "../lib/getShowsOrBsides";
 import useDublabApi from "../lib/hooks/useDublabApi";
 import Spinner from "../components/ui/Spinner";
+import { useSlideOver } from "../contexts/useContexts";
 
 const ShowProfiles = () => {
   const { getProfiles } = useDublabApi();
   const [mobileComponent, setMobileComponent] = useState(false);
+
+  const { isOpen } = useSlideOver();
 
   useEffect(() => {
     const mobileBreakPoint = 640;
@@ -36,21 +39,23 @@ const ShowProfiles = () => {
         <span>AAA</span>
         <h2>SHOWS</h2>
       </div>
-      <section>
-        {mobileComponent
-          ? onAirProfiles.map((profiles, index) => (
-              <ProfilesListMobile
-                key={index}
-                seasonProfiles={profiles!.results}
-              />
-            ))
-          : onAirProfiles.map((profiles, index) => (
-              <ProfilesList
-                key={index}
-                firstPageOfProfiles={profiles!.results}
-              />
-            ))}
-      </section>
+      {!isOpen && (
+        <section>
+          {mobileComponent
+            ? onAirProfiles.map((profiles, index) => (
+                <ProfilesListMobile
+                  key={index}
+                  seasonProfiles={profiles!.results}
+                />
+              ))
+            : onAirProfiles.map((profiles, index) => (
+                <ProfilesList
+                  key={index}
+                  firstPageOfProfiles={profiles!.results}
+                />
+              ))}
+        </section>
+      )}
     </main>
   );
 };
