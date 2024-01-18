@@ -28,8 +28,13 @@ const useDublabApi = () => {
       const trimmedName = showName.toLowerCase().replace(/\s+$/, "");
       const formatedShowName = trimmedName.replace(/\s+/g, "-");
 
+      const finalShowName =
+        showName === "When...Plants...Sing"
+          ? "whenplantssing"
+          : formatedShowName;
+
       const { data: profile } = await axios.get<ApiProfile>(
-        `${profileDataUrl}${formatedShowName}`
+        `${profileDataUrl}${finalShowName}`
       );
 
       return profile;

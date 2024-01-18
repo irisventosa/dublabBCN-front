@@ -7,6 +7,7 @@ import Link from "next/link";
 import useSWR from "swr";
 import he from "he";
 import BroadcastTime from "../BroadcastTime";
+import Spinner from "../../ui/Spinner";
 
 interface ScheduledShowProps {
   airtimeShow: AirtimeShow;
@@ -50,7 +51,7 @@ const ScheduledShowDesktop = ({
 
   const formattedShowName = formatString(airtimeShow.name);
 
-  const { data: profileData } = useSWR<ApiProfile>(
+  const { data: profileData, error } = useSWR<ApiProfile>(
     formattedShowName,
     getProfileData
   );
@@ -77,7 +78,8 @@ const ScheduledShowDesktop = ({
           borderColor: "border border-black rounded-md pt-[5px] px-2 pb-[1px]",
         };
 
-  if (!profileData) return <div>Informació del programa no disponible.</div>;
+  if (!profileData) return <Spinner></Spinner>;
+  if (error) return <div>Informació del programa no disponible.</div>;
 
   return (
     <>
