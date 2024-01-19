@@ -63,10 +63,16 @@ const ScheduledShowMobile = ({
     airtimeShow.start_timestamp
   );
 
+  const showStartHour = parseInt(broadcastTime);
+  const currentHourOfDay = new Date().getHours();
   const currentDayOfWeek = new Date().getDay();
 
+  const isShowHour = currentHourOfDay === showStartHour;
+
   const { onAirStyles, firstSeparatorLine } =
-    isListPositionLessThanOne && currentDayOfWeek === dayOfAppCalendar
+    isListPositionLessThanOne &&
+    currentDayOfWeek === dayOfAppCalendar &&
+    isShowHour
       ? {
           onAirStyles: "flex flex-row h-[212px] w-full bg-black text-white",
           firstSeparatorLine: true,
@@ -105,10 +111,7 @@ const ScheduledShowMobile = ({
               {profileData.host}
             </span>
           </li>
-          <BroadcastTime
-            broadcastTime={broadcastTime}
-            listPosition={listPosition}
-          />
+          <BroadcastTime broadcastTime={broadcastTime} />
           <li className="">
             <ul className="flex flex-row gap-[10px]  text-[8px]">
               {profileData.tags.map((tag, index) => (

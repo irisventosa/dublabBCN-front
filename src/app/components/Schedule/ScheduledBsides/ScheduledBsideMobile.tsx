@@ -19,9 +19,13 @@ const ScheduledBsideMobile = ({
 
   const currentDayOfWeek = new Date().getDay();
   const isListPositionLessThanOne = listPosition < 1;
+  const showStartHour = parseInt(broadcastTime);
+  const currentHourOfDay = new Date().getHours();
+
+  const isShowHour = currentHourOfDay === showStartHour;
 
   const { onAirStyles, firstSeparatorLine } =
-    isListPositionLessThanOne && currentDayOfWeek
+    isListPositionLessThanOne && currentDayOfWeek && isShowHour
       ? {
           onAirStyles: "flex flex-row h-[212px] w-full bg-black text-white",
           firstSeparatorLine: true,
@@ -49,10 +53,7 @@ const ScheduledBsideMobile = ({
             {airtimeShow.name}
           </li>
           <div className="">
-            <BroadcastTime
-              broadcastTime={broadcastTime}
-              listPosition={listPosition}
-            />
+            <BroadcastTime broadcastTime={broadcastTime} />
           </div>
           <li className="text-[22px] h-[28px] ">{airtimeShow.url}</li>
         </ul>

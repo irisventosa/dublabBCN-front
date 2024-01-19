@@ -11,13 +11,13 @@ interface DaySelectorProps {
 }
 
 const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
-  const { actualDay } = findActualDaySchedule(scheduledShows);
+  const { actualDay, isSecondWeek } = findActualDaySchedule(scheduledShows);
   const [shownSchedule, setShownSchedule] = useState(actualDay);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
   const [mobileComponent, setMobileComponent] = useState(false);
 
   useEffect(() => {
-    const mobileBreakPoint = 640;
+    const mobileBreakPoint = 740;
     const isMobile =
       typeof window !== "undefined" && window.innerWidth < mobileBreakPoint;
 
@@ -27,19 +27,19 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
   useEffect(() => {
     setShownSchedule(actualDay);
   }, [actualDay, scheduledShows]);
-
   const twoAirtimeWeeks = createWeekDays();
 
   const wholeWeekFormatted = twoAirtimeWeeks.slice(0, 7);
 
   const handleClick = useCallback(
     (dayName: string) => {
+      isSecondWeek ? `next${dayName}` : dayName;
       const weekSchedule = scheduledShows[dayName as keyof WeekInfo];
 
       setShownSchedule(weekSchedule);
       setSelectedDay(dayName);
     },
-    [scheduledShows]
+    [isSecondWeek, scheduledShows]
   );
 
   const handleKeyDown = useCallback(

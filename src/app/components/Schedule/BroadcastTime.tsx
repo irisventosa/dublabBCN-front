@@ -2,10 +2,9 @@ import Image from "next/image";
 
 interface BroadcastTimeProps {
   broadcastTime: string;
-  listPosition: number;
 }
 
-const BroadcastTime = ({ broadcastTime, listPosition }: BroadcastTimeProps) => {
+const BroadcastTime = ({ broadcastTime }: BroadcastTimeProps) => {
   const showStartHour = parseInt(broadcastTime);
   const currentHourOfDay = new Date().getHours();
 
@@ -13,8 +12,9 @@ const BroadcastTime = ({ broadcastTime, listPosition }: BroadcastTimeProps) => {
 
   return (
     <li>
-      {listPosition < 1 &&
-        (isShowHour ? (
+      {isShowHour ? (
+        <div>
+          <span>ON AIR</span>
           <Image
             className="animate-pulse animate-infinite animate-duration-[2000ms] animate-ease-in-out animate-normal mb-[5px]"
             src={"/assets/Ellipse.svg"}
@@ -22,9 +22,10 @@ const BroadcastTime = ({ broadcastTime, listPosition }: BroadcastTimeProps) => {
             width={18}
             height={18}
           />
-        ) : (
-          broadcastTime
-        ))}
+        </div>
+      ) : (
+        <span className="sm:text-2xl">{broadcastTime}</span>
+      )}
     </li>
   );
 };

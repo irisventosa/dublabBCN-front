@@ -64,9 +64,15 @@ const ScheduledShowDesktop = ({
   );
 
   const currentDayOfWeek = new Date().getDay();
+  const showStartHour = parseInt(broadcastTime);
+  const currentHourOfDay = new Date().getHours();
+
+  const isShowHour = currentHourOfDay === showStartHour;
 
   const { onAirStyles, firstSeparatorLine, borderColor } =
-    isListPositionLessThanOne && currentDayOfWeek === dayOfAppCalendar
+    isListPositionLessThanOne &&
+    currentDayOfWeek === dayOfAppCalendar &&
+    isShowHour
       ? {
           onAirStyles: "flex flex-row h-[212px] w-full bg-black text-white",
           firstSeparatorLine: true,
@@ -108,10 +114,7 @@ const ScheduledShowDesktop = ({
           </li>
         </ul>
         <ul className="flex flex-col gap-[108px] items-end absolute right-0 p-[30px] ">
-          <BroadcastTime
-            broadcastTime={broadcastTime}
-            listPosition={listPosition}
-          />
+          <BroadcastTime broadcastTime={broadcastTime} />
           <li>
             <Link
               className="underline underline-offset-2"
