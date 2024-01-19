@@ -28,4 +28,5 @@ export const dublabSisters: DropdownItem[] = [
   { label: "Dublab.com", route: "https://www.dublab.com/" },
   { label: "Dublab.jp", route: "https://dublab.jp/" },
   { label: "Dublab.br", route: "https://dublab.com.br/2022/" },
+  { label: "Dublab.de", route: "https://dublab.de/" },
 ];
