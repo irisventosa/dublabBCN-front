@@ -26,6 +26,11 @@ const ScheduledShowDesktop = ({
       return showIsPlants;
     }
 
+    if (airtimeShowName === "@cero.en.conducta") {
+      const showIsPlants = "cero-en-conducta";
+      return showIsPlants;
+    }
+
     if (airtimeShowName === "house-of-spunk-") {
       const showIsSpunk = "house-of-spunk";
       return showIsSpunk;

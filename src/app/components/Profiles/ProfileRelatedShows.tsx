@@ -38,7 +38,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
           showTitle,
         }) => (
           <article className="" key={showName}>
-            <div className="flex justify-between mt-[17px]">
+            <div className="flex gap-8 justify-between mt-[17px]">
               <Link href={`/shows/${slugToUrl}/${showDateForUrl}`}>
                 <span>
                   {showTitle !== ""

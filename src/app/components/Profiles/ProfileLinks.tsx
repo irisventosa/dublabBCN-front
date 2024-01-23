@@ -27,15 +27,14 @@ const ProfileLinks = ({ links }: ProfileLinksProps) => {
   return (
     <>
       {links.length > 0 && (
-        <ul className="mt-[20px] sm:mt-[50px] text-xs sm:text-base ">
+        <ul className="mt-[20px] text-xs sm:text-base ">
           {links.map((link, index) => {
             const formattedUrl = formatLinkText(link);
             return (
               <li key={link}>
-                <Link href={link}>{`${String(index + 1).padStart(
-                  3,
-                  "0"
-                )} ${formattedUrl}`}</Link>
+                <Link className=" block min-w-[271px]" href={link}>{`${String(
+                  index + 1
+                ).padStart(3, "0")} ${formattedUrl}`}</Link>
               </li>
             );
           })}

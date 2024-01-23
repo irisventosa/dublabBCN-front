@@ -1,9 +1,10 @@
 "use client";
 import extractAndFormatShowDate from "@/app/lib/extractAndFormatShowDate";
 import { currentHour } from "@/app/lib/getDateInCatalan";
+import useMobileComponent from "@/app/lib/hooks/useMobileComponent";
 import { AirtimeShow } from "@/app/types";
 import React from "react";
-import ShowComponent, { useMobileComponent } from "./ShownShow";
+import ShowComponent from "./ShownShow";
 
 interface ScheduledShowsListProps {
   schedule: AirtimeShow[];
