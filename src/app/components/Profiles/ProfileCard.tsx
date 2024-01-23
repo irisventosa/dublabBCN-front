@@ -69,7 +69,7 @@ const ProfileCard = ({
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 p-4 text-white opacity-100 group-hover:opacity-0 ">
+        <div className="absolute bottom-0 left-0 p-4 text-white opacity-100 group-hover:hidden ">
           <h1 className="text-[1.375rem]">{showName}</h1>
           {host && <span className="text-sm">Hosted by {host}</span>}
         </div>
