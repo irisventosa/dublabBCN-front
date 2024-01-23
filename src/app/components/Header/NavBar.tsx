@@ -11,7 +11,7 @@ const NavBar = (): React.ReactElement => {
     <>
       {!isOpen && (
         <div className="">
-          <nav className="hidden sm:visible bg-[#ECECEC] min-w-[719px] h-[42px] sm:flex justify-center rounded-md font-Favorit text-sm font-normal uppercase">
+          <nav className="hidden sm:visible bg-[#ECECEC] px-12 h-[42px] sm:flex justify-center rounded-md font-Favorit text-sm font-normal uppercase">
             <ul className="flex items-center flex-row justify-between gap-[80px]">
               {firstNavLabels.map(({ label, route }) => (
                 <li key={route} className="pt-[2px]">

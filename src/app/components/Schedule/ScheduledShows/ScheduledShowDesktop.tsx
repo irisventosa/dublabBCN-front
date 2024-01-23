@@ -102,7 +102,7 @@ const ScheduledShowDesktop = ({
           <li className="text-[32px] h-[47px] mt-[21px]">
             {he.decode(airtimeShow.name)}
           </li>
-          <li className="text-[22px] h-[28px] ">{profileData.host}</li>
+          <li className="text-[22px] h-[28px]">{profileData.host}</li>
           <li className="pt-[59px]">
             <ul className="flex flex-row gap-[10px] text-[11px]">
               {profileData.tags.map((tag, index) => (

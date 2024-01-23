@@ -2,6 +2,8 @@ import DayOfTheMonth from "../components/Date/DayOfTheMonth";
 import DaySelector from "../components/Schedule/DaySelector";
 import useAirtimeApi from "../lib/hooks/useAirtimeApi";
 
+export const revalidate = 1800;
+
 const Calendari = async () => {
   const { getWeekInfo } = useAirtimeApi();
 

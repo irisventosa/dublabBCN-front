@@ -21,7 +21,7 @@ const Footer = (): React.ReactElement => {
           ànim de lucre.
         </span>
       </div>
-      <ul className="flex flex-col sm:flex-row  px-4 sm:px-8 pt-[57px] text-sm font-normal gap-[74px]  ">
+      <ul className="flex flex-col sm:flex-row  px-4 sm:px-8 pt-[57px] text-sm font-normal gap-[181px]  ">
         <li className="w-[197px]">
           <SocialLinks />
         </li>
