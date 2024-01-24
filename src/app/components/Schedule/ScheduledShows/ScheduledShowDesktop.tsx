@@ -26,6 +26,11 @@ const ScheduledShowDesktop = ({
       return showIsPlants;
     }
 
+    if (airtimeShowName === "@cero.en.conducta") {
+      const showIsPlants = "cero-en-conducta";
+      return showIsPlants;
+    }
+
     if (airtimeShowName === "house-of-spunk-") {
       const showIsSpunk = "house-of-spunk";
       return showIsSpunk;
@@ -84,7 +89,7 @@ const ScheduledShowDesktop = ({
           borderColor: "border border-black rounded-md pt-[5px] px-2 pb-[1px]",
         };
 
-  if (!profileData) return <Spinner></Spinner>;
+  if (!profileData) return <Spinner />;
   if (error) return <div>Informació del programa no disponible.</div>;
 
   return (

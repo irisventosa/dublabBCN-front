@@ -1,6 +1,11 @@
+import { Metadata } from "next";
 import DayOfTheMonth from "../components/Date/DayOfTheMonth";
 import DaySelector from "../components/Schedule/DaySelector";
 import useAirtimeApi from "../lib/hooks/useAirtimeApi";
+
+export const metadata: Metadata = {
+  title: "Calendari | dublab BCN",
+};
 
 export const revalidate = 1800;
 

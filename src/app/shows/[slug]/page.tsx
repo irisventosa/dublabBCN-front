@@ -60,16 +60,18 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
           </ul>
         </div>
         <section className="flex flex-col-reverse gap-[35px] sm:gap-[140px] max-w-fit">
-          <ProfileLinks links={profileData.links}></ProfileLinks>
-          <div className="w-fit sm:max-w-none mt-8 ">
-            <p className="text-sm sm:w-[445px] sm:pr-0 pr-4 ">
-              {profileData.description}
-            </p>
+          <div className="w-fit sm:max-w-none mt-8 gap-[5.1rem] flex flex-row ">
+            <ProfileLinks links={profileData.links} />
+            <div className="flex items-start">
+              <p className="text-sm sm:w-fit sm:pr-0  ">
+                {profileData.description}
+              </p>
+            </div>
           </div>
         </section>
         <section className="flex-col items-end">
-          <div className="text-2xl flex justify-between mt-[58px]  mb-[17px]">
-            <h3 className="h-[29px]">Shows Relacionats</h3>
+          <div className="text-2xl flex items-end justify-between mt-[58px] gap-16 mb-[17px]">
+            <h3 className=" h-fit ">Shows Relacionats</h3>
             <span>2024</span>
           </div>
           <hr className="border-black  w-full " />

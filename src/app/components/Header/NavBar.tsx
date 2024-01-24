@@ -10,7 +10,7 @@ const NavBar = (): React.ReactElement => {
   return (
     <>
       {!isOpen && (
-        <div className="">
+        <div className="pl-8">
           <nav className="hidden sm:visible bg-[#ECECEC] px-12 h-[42px] sm:flex justify-center rounded-md font-Favorit text-sm font-normal uppercase">
             <ul className="flex items-center flex-row justify-between gap-[80px]">
               {firstNavLabels.map(({ label, route }) => (

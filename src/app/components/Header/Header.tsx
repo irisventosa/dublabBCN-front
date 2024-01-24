@@ -12,8 +12,7 @@ interface HeaderProps {
 const Header = ({ backgroundColor }: HeaderProps): React.ReactElement => {
   const { isOpen, setIsOpen } = useSlideOver();
 
-  const variableWidth = isOpen ? "2/4" : "";
-
+  const variableWidth = isOpen ? "2/4" : "full";
   const handleLinkClick = () => {
     setIsOpen(false);
   };
@@ -21,7 +20,7 @@ const Header = ({ backgroundColor }: HeaderProps): React.ReactElement => {
   return (
     <div className="flex justify-start bg-black ">
       <header
-        className={`flex justify-around sm:p-8 absolute w-${variableWidth} h-[119px] z-10 p-4 pt-[42px] gap-8 bg-${backgroundColor} w-[100vw] justify-evenly `}
+        className={`  w-fit flex justify-start sm:p-8 absolute w-${variableWidth} h-[220px] z-10 p-4 pt-[42px] gap-8 bg-${backgroundColor} `}
       >
         <Link onClick={handleLinkClick} href="/">
           <Image
@@ -29,7 +28,7 @@ const Header = ({ backgroundColor }: HeaderProps): React.ReactElement => {
             alt="dublab Barcelona logo"
             width={627.259}
             height={138.42}
-            className="relative z-50 sm:max-h-[138px] min-w-[150px] w-auto h-auto "
+            className="relative left-2; z-50 sm:max-h-[138px] min-w-[150px] w-auto h-auto "
           />
         </Link>
         <NavBar />

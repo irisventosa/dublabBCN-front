@@ -1,0 +1,18 @@
+User-agent: *
+Disallow: /private/
+Disallow: /restricted/
+
+User-agent: Googlebot
+Disallow: /no-googlebot/
+
+User-agent: Bingbot
+Disallow: /no-bingbot/
+
+User-agent: *
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /logs/
+Disallow: /temp/
+Disallow: /private/
+
+Sitemap: https://www.example.com/sitemap.xml

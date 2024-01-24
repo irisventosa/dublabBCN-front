@@ -73,6 +73,7 @@ const ShowCard = ({
           width={353}
           className={`overflow-hidden h-[${height}px] w-[353px] relative object-cover b`}
           onClick={handleShowPlayback}
+          priority={true}
         />
         {isHovered && (
           <Button

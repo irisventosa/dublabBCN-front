@@ -6,7 +6,7 @@ interface ProfileLinksProps {
 
 const ProfileLinks = ({ links }: ProfileLinksProps) => {
   if (links === null) {
-    return <div className="h-[68px] w-[133px]"></div>;
+    return <div className="h-[68px] w-[203px]"></div>;
   }
 
   const formatLinkText = (link: string): string => {
@@ -27,12 +27,15 @@ const ProfileLinks = ({ links }: ProfileLinksProps) => {
   return (
     <>
       {links.length > 0 && (
-        <ul className="mt-[20px] sm:mt-[50px] text-xs sm:text-base ">
+        <ul className="text-xs sm:text-base ">
           {links.map((link, index) => {
             const formattedUrl = formatLinkText(link);
             return (
-              <li key={link}>
-                <Link href={link}>{`${String(index + 1).padStart(
+              <li className="w-[193px]" key={link}>
+                <Link
+                  className=" block w-[193px] min-w-[193px]"
+                  href={link}
+                >{`${String(index + 1).padStart(
                   3,
                   "0"
                 )} ${formattedUrl}`}</Link>
