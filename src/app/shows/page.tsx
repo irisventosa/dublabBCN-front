@@ -1,32 +1,25 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-"use client";
-import { useEffect, useState } from "react";
-import ProfilesList from "../components/Profiles/ProfilesList";
-import ProfilesListMobile from "../components/Profiles/ProfilesListMobile";
+
+import { Metadata } from "next";
+import ResponsiveProfilesList from "../components/Bsides/ResponsiveProfileList";
+import Spinner from "../components/ui/Spinner";
 import getProfilesOrBsides from "../lib/getShowsOrBsides";
 import useDublabApi from "../lib/hooks/useDublabApi";
-import Spinner from "../components/ui/Spinner";
-import { useSlideOver } from "../contexts/useContexts";
 
-const ShowProfiles = () => {
+export const metadata: Metadata = {
+  title: "Programes | dublab BCN",
+  description:
+    "Programes que s'emeten regularment a aquesta temporada de dublab BNC",
+};
+
+const ShowProfiles = async () => {
   const { getProfiles } = useDublabApi();
-  const [mobileComponent, setMobileComponent] = useState(false);
 
-  const { isOpen } = useSlideOver();
-
-  useEffect(() => {
-    const mobileBreakPoint = 640;
-    const isMobile =
-      typeof window !== "undefined" && window.innerWidth < mobileBreakPoint;
-
-    setMobileComponent(isMobile);
-  }, []);
-
-  const onAirProfiles = getProfilesOrBsides(getProfiles);
+  const onAirProfiles = await getProfilesOrBsides(getProfiles);
 
   const isAllDataLoaded = onAirProfiles.every((apiProfiles) => apiProfiles);
 
-  if (!isAllDataLoaded) return <Spinner></Spinner>;
+  if (!isAllDataLoaded) return <Spinner />;
 
   return (
     <main className="flex flex-col mt-[219px]">
@@ -39,23 +32,11 @@ const ShowProfiles = () => {
         <span>AAA</span>
         <h2>SHOWS</h2>
       </div>
-      {!isOpen && (
-        <section>
-          {mobileComponent
-            ? onAirProfiles.map((profiles, index) => (
-                <ProfilesListMobile
-                  key={index}
-                  seasonProfiles={profiles!.results}
-                />
-              ))
-            : onAirProfiles.map((profiles, index) => (
-                <ProfilesList
-                  key={index}
-                  firstPageOfProfiles={profiles!.results}
-                />
-              ))}
-        </section>
-      )}
+      <section>
+        {onAirProfiles.map((profiles, index) => (
+          <ResponsiveProfilesList key={index} podcastsList={profiles} />
+        ))}
+      </section>
     </main>
   );
 };

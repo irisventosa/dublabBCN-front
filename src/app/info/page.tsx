@@ -1,9 +1,15 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
+import { Metadata } from "next";
 import About from "../components/Info/About";
 import Adress from "../components/Info/Adress";
 import Collaborators from "../components/Info/Collaborators";
 import ServicesAndClients from "../components/Info/ServicesAndClients";
 import ThanksTo from "../components/Info/ThanksTo";
+
+export const metadata: Metadata = {
+  title: "Info | dublab BCN",
+  description: "Informació d'interés sobre dublab BCN.",
+};
 
 const Info = () => {
   return (

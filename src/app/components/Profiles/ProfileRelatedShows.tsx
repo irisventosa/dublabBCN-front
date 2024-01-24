@@ -37,7 +37,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
           slugToUrl,
           showTitle,
         }) => (
-          <article className="" key={showName}>
+          <article className="" key={showDateForList}>
             <div className="flex gap-8 justify-between mt-[17px]">
               <Link href={`/shows/${slugToUrl}/${showDateForUrl}`}>
                 <span>
@@ -58,7 +58,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
               {(showTags || (profileData && profileData.tags)).map(
                 (tag, index, array) => (
                   <>
-                    <li>{tag}</li>
+                    <li key={tag}>{tag}</li>
                     {index !== array.length - 1 && <li>&nbsp;///&nbsp;</li>}
                   </>
                 )

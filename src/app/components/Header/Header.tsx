@@ -20,7 +20,7 @@ const Header = ({ backgroundColor }: HeaderProps): React.ReactElement => {
   return (
     <div className="flex justify-start bg-black ">
       <header
-        className={`  w-fit flex justify-start sm:p-8 absolute w-${variableWidth} h-[119px] z-10 p-4 pt-[42px] gap-8 bg-${backgroundColor} `}
+        className={`  w-fit flex justify-start sm:p-8 absolute w-${variableWidth} h-[220px] z-10 p-4 pt-[42px] gap-8 bg-${backgroundColor} `}
       >
         <Link onClick={handleLinkClick} href="/">
           <Image

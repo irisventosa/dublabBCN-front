@@ -4,6 +4,12 @@ import LatestShowsFixedHeight from "./components/LatestShows/LatestShowsFixedHei
 import PrivacyDisclaimer from "./components/PrivacyDisclaimer";
 import useDublabApi from "./lib/hooks/useDublabApi";
 import mergeBsidesWithShows from "./lib/mergeBsidesWithShows";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: { absolute: "", default: "dublab BCN" },
+  description: "Pagina web de la radio comunitaria dublab BCN",
+};
 
 const Home = async () => {
   const pageToGet = 1;

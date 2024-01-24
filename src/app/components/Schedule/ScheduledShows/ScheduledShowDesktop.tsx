@@ -89,7 +89,7 @@ const ScheduledShowDesktop = ({
           borderColor: "border border-black rounded-md pt-[5px] px-2 pb-[1px]",
         };
 
-  if (!profileData) return <Spinner></Spinner>;
+  if (!profileData) return <Spinner />;
   if (error) return <div>Informació del programa no disponible.</div>;
 
   return (

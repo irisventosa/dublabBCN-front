@@ -1,24 +1,18 @@
-"use client";
-import useSWR from "swr";
-import LoadMoreBsides from "../components/Bsides/LoadMoreBsides";
-import ProfilesList from "../components/Profiles/ProfilesList";
+import { Metadata } from "next";
+import ResponsiveProfilesList from "../components/Bsides/ResponsiveProfileList";
 import useDublabApi from "../lib/hooks/useDublabApi";
-import ProfilesListMobile from "../components/Profiles/ProfilesListMobile";
-import { useEffect, useState } from "react";
 
-const BsidesList = () => {
+export const metadata: Metadata = {
+  title: "b-sides | dublab BCN",
+  description:
+    "Pàgina on es poden veure els programes que diferents convidats han gravat a la ràdio.",
+};
+
+const BsidesList = async () => {
   const { getBsides } = useDublabApi();
-  const [mobileComponent, setMobileComponent] = useState(false);
+  const bsidePage = "1";
 
-  useEffect(() => {
-    const mobileBreakPoint = 640;
-    const isMobile =
-      typeof window !== "undefined" && window.innerWidth < mobileBreakPoint;
-
-    setMobileComponent(isMobile);
-  }, []);
-
-  const { data: bSidesList } = useSWR("1", getBsides);
+  const bSidesList = await getBsides(bsidePage);
 
   if (!bSidesList) return <div>Loading...</div>;
 
@@ -33,12 +27,7 @@ const BsidesList = () => {
         <span>bbb</span>
         <h2>sides</h2>
       </div>
-      {mobileComponent ? (
-        <ProfilesListMobile seasonProfiles={bSidesList!.results} />
-      ) : (
-        <ProfilesList firstPageOfProfiles={bSidesList!.results} />
-      )}
-      <LoadMoreBsides isMobile={mobileComponent} />
+      <ResponsiveProfilesList podcastsList={bSidesList} />
     </main>
   );
 };
