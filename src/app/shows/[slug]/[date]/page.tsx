@@ -34,6 +34,10 @@ const ShowByDate = ({ params }: ShowByDateProps) => {
     profileShowName = "macguffin 2.0";
   }
 
+  if (profileShowName === "cero en conducta") {
+    profileShowName = "@cero.en.conducta";
+  }
+
   const listenShow = (showLink: string) => {
     setIFrameShow(showLink);
   };
@@ -44,15 +48,15 @@ const ShowByDate = ({ params }: ShowByDateProps) => {
   const showUrl = extractUrlForEmbedPlayer(showData.mixcloud_url);
 
   return (
-    <main className="mt-[255px] gap-[50px] flex flex-col justify-between">
+    <main className="mt-[255px] gap-[50px] flex sm:flex-row flex-col justify-between">
       <Image
         src={profileData.picture}
         alt={""}
         width={660}
         height={327}
-        className="sm:h-[727px] h-[358px] w-auto object-cover sm:p-0 p-4 "
+        className="sm:h-[727px] h-[358px] max-w-[660px] w-auto object-cover sm:p-0 p-4 "
       />
-      <section className="max-h-[700px] pl-4 sm:min-w-[720px] overflow-scroll scrollbar-hide sm:pr-[10rem]">
+      <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-scroll scrollbar-hide sm:pr-[10rem]">
         <div className="flex sm:flex-row flex-col  justify-between items-start sm:items-end">
           <Button
             className="uppercase"

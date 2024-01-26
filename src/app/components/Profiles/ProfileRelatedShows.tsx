@@ -16,7 +16,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
   const formattedShows = formatAndSortRelatedShowsInfo(shows);
 
   const { data: profileData } = useSWR<ApiProfile>(
-    formattedShows[0]?.showName,
+    formattedShows[0]?.slugToUrl,
     getProfileData
   );
 
@@ -24,7 +24,19 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
     return <div></div>;
   }
 
-  if (!profileData) return <div>Loading...</div>;
+  if (!profileData) return <div>Carregant...</div>;
+
+  const getTitleToShow = (showName: string, showTitle: string | undefined) => {
+    if (showTitle !== "") {
+      return showTitle;
+    } else if (showName === "macGuffin-20") {
+      return "Macguffin 2.0";
+    } else if (showName === "cero en conducta") {
+      return "@cero.en.conducta";
+    } else {
+      return showName;
+    }
+  };
 
   return (
     <section className="pr-2 ">
@@ -36,37 +48,35 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
           showTags,
           slugToUrl,
           showTitle,
-        }) => (
-          <article className="" key={showDateForList}>
-            <div className="flex gap-8 justify-between mt-[17px]">
-              <Link href={`/shows/${slugToUrl}/${showDateForUrl}`}>
-                <span>
-                  {showTitle !== ""
-                    ? showTitle
-                    : showName === "macGuffin-20"
-                    ? "Macguffin 2.0"
-                    : showName}
-                </span>
-              </Link>
-              <time>
-                {showDateForList.length === 11
-                  ? showDateForList.substring(3)
-                  : showDateForList}
-              </time>
-            </div>
-            <ul className="flex text-xs pt-[3px] pb-[17px] ">
-              {(showTags || (profileData && profileData.tags)).map(
-                (tag, index, array) => (
-                  <>
-                    <li key={tag}>{tag}</li>
-                    {index !== array.length - 1 && <li>&nbsp;///&nbsp;</li>}
-                  </>
-                )
-              )}
-            </ul>
-            <hr className="border-black  w-full  " />
-          </article>
-        )
+        }) => {
+          const titleToShow = getTitleToShow(showName, showTitle);
+
+          return (
+            <article className="" key={showDateForList}>
+              <div className="flex gap-8 justify-between mt-[17px]">
+                <Link href={`/shows/${slugToUrl}/${showDateForUrl}`}>
+                  <span>{titleToShow}</span>
+                </Link>
+                <time>
+                  {showDateForList.length === 11
+                    ? showDateForList.substring(3)
+                    : showDateForList}
+                </time>
+              </div>
+              <ul className="flex text-xs pt-[3px] pb-[17px] ">
+                {(showTags || (profileData && profileData.tags)).map(
+                  (tag, index, array) => (
+                    <>
+                      <li key={tag}>{tag}</li>
+                      {index !== array.length - 1 && <li>&nbsp;///&nbsp;</li>}
+                    </>
+                  )
+                )}
+              </ul>
+              <hr className="border-black  w-full  " />
+            </article>
+          );
+        }
       )}
     </section>
   );
