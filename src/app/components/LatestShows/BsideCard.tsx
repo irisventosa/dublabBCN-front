@@ -67,7 +67,7 @@ const BsideCard = ({
         </li>
         <li>
           <Link href={`/b-sides/${slug}`}>
-            <h2 className={`text-${nameFontSize} h-5 max-w-[300px] `}>
+            <h2 className={`text-${nameFontSize} h-5 max-w-[300px] pb-[40px] `}>
               {name}
             </h2>
           </Link>
