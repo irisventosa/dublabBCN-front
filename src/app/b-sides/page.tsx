@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     "Pàgina on es poden veure els programes que diferents convidats han gravat a la ràdio.",
 };
 
+export const revalidate = 7200;
+
 const BsidesList = async () => {
   const { getBsides } = useDublabApi();
   const bsidePage = "1";

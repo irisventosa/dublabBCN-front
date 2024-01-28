@@ -10,6 +10,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import useSWR from "swr";
 import Button from "../Button";
+import formatslugToGetPathName from "@/app/lib/formatSlugToGetPathName";
 
 interface ShowCardProps {
   show: RadioApiShow;
@@ -28,12 +29,6 @@ const ShowCard = ({
   const { getProfileData } = useDublabApi();
 
   const showName = formatSlugToGetShowName(slug);
-
-  const formatslugToGetPathName = (slug: string) => {
-    const formattedSlug = slug.replace(/[0-9]/g, "").replace(/-+$/, "");
-    return formattedSlug;
-  };
-
   const showNamePath = formatslugToGetPathName(slug);
   const showDateforCard = formatDateFromShow(date);
 
@@ -104,7 +99,7 @@ const ShowCard = ({
           </span>
         </li>
       </ul>
-      <ul className="h-4 flex gap-[10px] text-[11px] flex-row py-4 absolute text">
+      <ul className="h-4 flex gap-[10px] text-[11px] flex-row py-4 px-4 absolute text">
         {tags!.map((tag, index, array) => (
           <>
             <li>{tag}</li>

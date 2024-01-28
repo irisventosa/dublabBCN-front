@@ -1,24 +1,19 @@
 import { RadioApiShow } from "../types";
 
 export const formatSlugToGetShowName = (slug: string): string => {
-  if (slug.substring(0, 4) === "6474") {
-    const showIsNumeric = "6474";
-    return showIsNumeric;
+  if (slug.substring(0, 12) === "macguffin-20") {
+    const showIsNeus = "MacGuffin 2.0";
+    return showIsNeus;
   }
 
-  if (slug.substring(0, 12) === "macguffin-20") {
-    const showIsNeus = "macGuffin-20";
-    return showIsNeus;
+  if (slug.substring(0, 16) === "cero-en-conducta") {
+    const showIsPlants = "@cero.en.conducta";
+    return showIsPlants;
   }
 
   if (slug.substring(0, 14) === "whenplantssing") {
     const showIsPlants = "When...Plants...Sing";
     return showIsPlants;
-  }
-
-  if (slug.substring(0, 8) === "5wuguan5") {
-    const showIs5wuguan5 = "5wuguan5";
-    return showIs5wuguan5;
   }
 
   const showName = slug
@@ -64,17 +59,19 @@ const removeDateAndHyphenFromSlug = (slug: string) => {
 };
 
 export const formatAndSortRelatedShowsInfo = (shows: RadioApiShow[]) => {
-  const formattedShows = shows.map(({ slug, tags, tracklist, name }) => {
+  const formattedShows = shows.map(({ slug, tags, tracklist, name, host }) => {
     const showName = formatSlugToGetShowName(slug);
     const showDateForShowList = extractDatesForShowList(slug);
     const showDateForUrl = extractDatesForUrl(slug);
     const showDateForList = extractDatesForCard(slug);
     const showTags = tags;
     const showTitle = name;
+    const showHost = host;
     const showTracklist = tracklist;
     const slugToUrl = removeDateAndHyphenFromSlug(slug);
 
     return {
+      showHost,
       showTitle,
       slugToUrl,
       showTracklist,

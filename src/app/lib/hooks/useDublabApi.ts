@@ -28,10 +28,17 @@ const useDublabApi = () => {
       const trimmedName = showName.toLowerCase().replace(/\s+$/, "");
       const formatedShowName = trimmedName.replace(/\s+/g, "-");
 
-      const finalShowName =
-        showName === "When...Plants...Sing"
-          ? "whenplantssing"
-          : formatedShowName;
+      let finalShowName = formatedShowName;
+
+      if (showName === "When...Plants...Sing") {
+        finalShowName = "whenplantssing";
+      }
+      if (showName === "@cero.en.conducta") {
+        finalShowName = "cero-en-conducta";
+      }
+      if (showName === "MacGuffin 2.0") {
+        finalShowName = "macguffin-20";
+      }
 
       const { data: profile } = await axios.get<ApiProfile>(
         `${profileDataUrl}${finalShowName}`

@@ -18,7 +18,7 @@ const Tracklist = ({ tracklist }: TracklistProps) => {
   const formattedTracklist: string[] = tracklist.split("\n");
 
   return (
-    <section className=" mt-7 sm:mt-14">
+    <section className=" w-fit lg:min-w-[1000px] mt-7 sm:mt-14">
       <h2>Tracklist</h2>
       <hr className="border-black sm:w-[719px] w-[98%] pr-4 p-1 " />
       <ul className="text-[14px] sm:pt-4 mb-4 ">

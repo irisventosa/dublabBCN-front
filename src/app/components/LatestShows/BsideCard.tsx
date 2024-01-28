@@ -73,7 +73,7 @@ const BsideCard = ({
           </Link>
         </li>
       </ul>
-      <ul className="h-4 flex gap-[10px] text-[11px] flex-row py-4 absolute text">
+      <ul className="h-4 flex gap-[10px] text-[11px] flex-row py-4 px-4 absolute text">
         {tags.map((tag, index, array) => (
           <>
             <li>{tag}</li>

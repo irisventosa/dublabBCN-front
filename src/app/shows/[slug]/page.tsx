@@ -24,6 +24,10 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
     profileShowName = "macguffin 2.0";
   }
 
+  if (profileShowName === "cero en conducta") {
+    profileShowName = "@cero.en.conducta";
+  }
+
   if (!profileData) return <Spinner />;
 
   return (
