@@ -36,6 +36,9 @@ const useDublabApi = () => {
       if (showName === "@cero.en.conducta") {
         finalShowName = "cero-en-conducta";
       }
+      if (showName === "MacGuffin 2.0") {
+        finalShowName = "macguffin-20";
+      }
 
       const { data: profile } = await axios.get<ApiProfile>(
         `${profileDataUrl}${finalShowName}`

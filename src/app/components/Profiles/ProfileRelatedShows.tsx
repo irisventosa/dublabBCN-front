@@ -48,6 +48,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
           showTags,
           slugToUrl,
           showTitle,
+          showHost,
         }) => {
           const titleToShow = getTitleToShow(showName, showTitle);
 
@@ -56,6 +57,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
               <div className="flex gap-8 justify-between mt-[17px]">
                 <Link href={`/shows/${slugToUrl}/${showDateForUrl}`}>
                   <span>{titleToShow}</span>
+                  {showHost !== null && <span> w/ {showHost}</span>}
                 </Link>
                 <time>
                   {showDateForList.length === 11
