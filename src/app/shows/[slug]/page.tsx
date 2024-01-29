@@ -82,7 +82,11 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
           <div className="w-fit sm:max-w-none mt-8 gap-[5.1rem] flex flex-row ">
             <ProfileLinks links={profileData.links} />
             <div className="flex items-start">
-              <p className="text-sm sm:w-fit sm:pr-0  ">
+              <p
+                className={`text-sm sm:w-fit sm:pr-0 ${
+                  profileData.links ? "" : "pl-[138px]"
+                }`}
+              >
                 {profileData.description}
               </p>
             </div>
