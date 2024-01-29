@@ -1,5 +1,3 @@
-// ResponsiveProfilesList.js
-
 "use client";
 import useMobileComponent from "@/app/lib/hooks/useMobileComponent";
 import { ApiBsidesList, ApiProfilesList } from "@/app/types";

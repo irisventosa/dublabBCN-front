@@ -4,23 +4,30 @@ import Image from "next/image";
 import Link from "next/link";
 import SlideOverMenu from "../SlideOverMenu";
 import NavBar from "./NavBar";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
-interface HeaderProps {
-  backgroundColor: string;
-}
-
-const Header = ({ backgroundColor }: HeaderProps): React.ReactElement => {
+const Header = (): React.ReactElement => {
   const { isOpen, setIsOpen } = useSlideOver();
-
   const variableWidth = isOpen ? "2/4" : "full";
   const handleLinkClick = () => {
     setIsOpen(false);
   };
 
+  const pathname = usePathname();
+  const [backgroundColor, setBackgroundColor] = useState("white");
+  const changeBackgroundPath = "/b-sides";
+
+  useEffect(() => {
+    setBackgroundColor(
+      pathname.includes(changeBackgroundPath) ? "black" : "transparent"
+    );
+  }, [pathname]);
+
   return (
     <div className="flex justify-start bg-black ">
       <header
-        className={`  w-fit flex justify-start sm:p-8 absolute w-${variableWidth} h-[220px] z-10 p-4 pt-[42px] gap-8 bg-${backgroundColor} `}
+        className={`  w-fit flex justify-start sm:p-8 absolute w-${variableWidth} h-[219px] z-10 p-4 pt-[42px] gap-8 2xl:gap-[300px] bg-${backgroundColor} `}
       >
         <Link onClick={handleLinkClick} href="/">
           <Image

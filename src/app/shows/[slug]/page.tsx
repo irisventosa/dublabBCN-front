@@ -1,22 +1,39 @@
-"use client";
 import ProfileLinks from "@/app/components/Profiles/ProfileLinks";
 import RelatedShows from "@/app/components/Profiles/ProfileRelatedShows";
 import Spinner from "@/app/components/ui/Spinner";
 import useDublabApi from "@/app/lib/hooks/useDublabApi";
-import { ApiProfile } from "@/app/types";
+import { Metadata } from "next";
 import Image from "next/image";
-import useSWR from "swr";
 
 interface ProfileDetailsProps {
   params: {
     slug: string;
+    searchParams: { [slug: string]: string | string[] };
   };
 }
 
-const ProfileDetails = ({ params }: ProfileDetailsProps) => {
+export const generateMetadata = ({ params }: ProfileDetailsProps): Metadata => {
+  const transformFirstLetter = (firstLetter: string) => {
+    return firstLetter.toUpperCase();
+  };
+  const capitalizeWords = (showName: string) => {
+    const formatedShowName = showName.replace(/\b\w/g, transformFirstLetter);
+
+    return formatedShowName;
+  };
+
+  const slug = capitalizeWords(params.slug.replace("-", " "));
+
+  return {
+    title: `dublab | ${slug}`,
+    description: `Escolta l'arxiu de les retransmisions en directe del programa ${slug}`,
+  };
+};
+
+const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
   const { getProfileData } = useDublabApi();
 
-  const { data: profileData } = useSWR<ApiProfile>(params.slug, getProfileData);
+  const profileData = await getProfileData(params.slug);
 
   let profileShowName = params.slug.replace(/-/g, " ");
 
@@ -39,15 +56,13 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
         height={327}
         className="sm:h-[727px] h-[358px] max-w-[660px] w-auto object-cover sm:p-0 p-4 "
       />
-      <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-scroll scrollbar-hide sm:pr-[10rem]">
+      <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-y-scroll  scrollbar-hide sm:pr-[10rem]">
         <div className="flex justify-between items-end">
           <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-40">
             {profileData.tags.map((tag, index) => (
               <li
                 key={index}
-                className={`text-[11px] mr-[${
-                  index * 5
-                }px] border rounded-md pt-[5px]  px-2 pb-[3px]`}
+                className={`text-[11px] border rounded-md pt-[5px]  px-2 pb-[3px]`}
               >
                 {tag}
               </li>
@@ -67,7 +82,11 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
           <div className="w-fit sm:max-w-none mt-8 gap-[5.1rem] flex flex-row ">
             <ProfileLinks links={profileData.links} />
             <div className="flex items-start">
-              <p className="text-sm sm:w-fit sm:pr-0  ">
+              <p
+                className={`text-sm sm:w-fit sm:pr-0 ${
+                  profileData.links ? "" : "pl-[138px]"
+                }`}
+              >
                 {profileData.description}
               </p>
             </div>

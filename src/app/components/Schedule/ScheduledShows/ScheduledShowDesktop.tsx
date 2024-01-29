@@ -20,7 +20,7 @@ const ScheduledShowDesktop = ({
 }: ScheduledShowProps) => {
   const { getProfileData } = useDublabApi();
 
-  const formatString = (airtimeShowName: string) => {
+  const formatAirtimeShowName = (airtimeShowName: string) => {
     if (airtimeShowName === "When...Plants...Sing") {
       const showIsPlants = "whenplantssing";
       return showIsPlants;
@@ -54,8 +54,7 @@ const ScheduledShowDesktop = ({
     return decodeAndFixShowName;
   };
 
-  const formattedShowName = formatString(airtimeShow.name);
-
+  const formattedShowName = formatAirtimeShowName(airtimeShow.name);
   const { data: profileData, error } = useSWR<ApiProfile>(
     formattedShowName,
     getProfileData
@@ -67,11 +66,9 @@ const ScheduledShowDesktop = ({
   const broadcastTime: string = extractAndFormatShowDate(
     airtimeShow.start_timestamp
   );
-
   const currentDayOfWeek = new Date().getDay();
   const showStartHour = parseInt(broadcastTime);
   const currentHourOfDay = new Date().getHours();
-
   const isShowHour = currentHourOfDay === showStartHour;
 
   const { onAirStyles, firstSeparatorLine, borderColor } =

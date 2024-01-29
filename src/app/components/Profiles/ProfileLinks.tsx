@@ -33,6 +33,7 @@ const ProfileLinks = ({ links }: ProfileLinksProps) => {
             return (
               <li className="w-[193px]" key={link}>
                 <Link
+                  target="blank"
                   className=" block w-[193px] min-w-[193px]"
                   href={link}
                 >{`${String(index + 1).padStart(
