@@ -1,22 +1,39 @@
-"use client";
 import ProfileLinks from "@/app/components/Profiles/ProfileLinks";
 import RelatedShows from "@/app/components/Profiles/ProfileRelatedShows";
 import Spinner from "@/app/components/ui/Spinner";
 import useDublabApi from "@/app/lib/hooks/useDublabApi";
-import { ApiProfile } from "@/app/types";
+import { Metadata } from "next";
 import Image from "next/image";
-import useSWR from "swr";
 
 interface ProfileDetailsProps {
   params: {
     slug: string;
+    searchParams: { [slug: string]: string | string[] };
   };
 }
 
-const ProfileDetails = ({ params }: ProfileDetailsProps) => {
+export const generateMetadata = ({ params }: ProfileDetailsProps): Metadata => {
+  const transformFirstLetter = (firstLetter: string) => {
+    return firstLetter.toUpperCase();
+  };
+  const capitalizeWords = (showName: string) => {
+    const formatedShowName = showName.replace(/\b\w/g, transformFirstLetter);
+
+    return formatedShowName;
+  };
+
+  const slug = capitalizeWords(params.slug.replace("-", " "));
+
+  return {
+    title: `dublab | ${slug}`,
+    description: `Escolta l'arxiu de les retransmisions en directe del programa ${slug}`,
+  };
+};
+
+const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
   const { getProfileData } = useDublabApi();
 
-  const { data: profileData } = useSWR<ApiProfile>(params.slug, getProfileData);
+  const profileData = await getProfileData(params.slug);
 
   let profileShowName = params.slug.replace(/-/g, " ");
 
@@ -45,9 +62,7 @@ const ProfileDetails = ({ params }: ProfileDetailsProps) => {
             {profileData.tags.map((tag, index) => (
               <li
                 key={index}
-                className={`text-[11px] mr-[${
-                  index * 5
-                }px] border rounded-md pt-[5px]  px-2 pb-[3px]`}
+                className={`text-[11px] border rounded-md pt-[5px]  px-2 pb-[3px]`}
               >
                 {tag}
               </li>
