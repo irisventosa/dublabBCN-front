@@ -15,7 +15,7 @@ export const lastNavLabels: DropdownItem[] = [
 export const legalLinks: DropdownItem[] = [
   {
     label: "Política de privacitat",
-    route: "/cookies",
+    route: "/politica-privacitat",
   },
 ];
 

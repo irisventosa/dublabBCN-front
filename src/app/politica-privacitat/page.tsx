@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-const Cookies = () => {
+const PrivacyDisclaimer = () => {
   return (
     <main>
       <h2>POLÍTICA DE PRIVACITAT</h2>
@@ -25,7 +25,7 @@ const Cookies = () => {
         Ús de la informació recollida:El nostre lloc web empra la informació amb
         la finalitat de proporcionar el millor servei possible, principalment
         per a mantenir un registre d'usuaris i millorar els nostres serveis. És
-        possible que siguin enviats correus electrònics de manera periòdica a
+        possible que siguin enviatscl correus electrònics de manera periòdica a
         través del nostre lloc amb informació que considerem rellevant per a tu
         o que pugui brindar-te algun benefici; aquests correus electrònics seran
         enviats a l'adreça que tu proporcions i podran ser cancellats en
@@ -40,4 +40,4 @@ const Cookies = () => {
   );
 };
 
-export default Cookies;
+export default PrivacyDisclaimer;

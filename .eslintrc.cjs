@@ -16,10 +16,6 @@ module.exports = {
   parserOptions: { ecmaVersion: "2020", sourceType: "module" },
   plugins: ["react-refresh", "react-hooks"],
   rules: {
-    "react-refresh/only-export-components": [
-      "warn",
-      { allowConstantExport: true },
-    ],
     "no-console": "error",
   },
 };

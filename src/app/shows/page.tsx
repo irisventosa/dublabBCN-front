@@ -7,7 +7,7 @@ import getProfilesOrBsides from "../lib/getShowsOrBsides";
 import useDublabApi from "../lib/hooks/useDublabApi";
 
 export const metadata: Metadata = {
-  title: "Programes | dublab BCN",
+  title: "Programes",
   description:
     "Programes que s'emeten regularment a aquesta temporada de dublab BNC",
 };
