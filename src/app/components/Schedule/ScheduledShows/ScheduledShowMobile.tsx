@@ -86,27 +86,30 @@ const ScheduledShowMobile = ({
   if (!profileData) return <Spinner></Spinner>;
   if (error) return <div>Informació del programa no disponible.</div>;
 
+  const showFontSize =
+    airtimeShow.name && airtimeShow.name.length >= 20 ? "[12px]" : "sm";
+
   return (
     <>
       {firstSeparatorLine && <hr className="w-full border-black" />}
       <div className={onAirStyles}>
-        <div className="flex flex-col justify-center items-start w-fit pl-8 ">
+        <div className="flex flex-col pt-[15px] items-start w-fit pl-8 ">
           <Image
             src={profileData.picture}
             alt={""}
             width={160}
             height={150}
-            className="object-cover h-[137px] max-w-[137px]"
+            className="object-cover h-[120px] max-w-[137px]"
           />
           <Link
-            className="underline underline-offset-2 text-[8px] mt-6 "
+            className="underline underline-offset-2 text-[8px] mt-14 "
             href={`/shows/${formattedShowName}`}
           >
             View show
           </Link>
         </div>
-        <ul className="flex gap-[2.9rem] flex-col pl-4 mt-[16px] sm:pl-[101px]">
-          <li className=" text-sm sm:text-[32px] flex  flex-col">
+        <ul className="flex gap-[3.8rem] flex-col pl-4 mt-[12px] sm:pl-[101px]">
+          <li className={`text-${showFontSize} sm:text-[32px] flex  flex-col`}>
             {he.decode(airtimeShow.name)}
             <span className=" text-[11px] sm:text-[22px] h-[28px]  ">
               {profileData.host}
@@ -114,11 +117,11 @@ const ScheduledShowMobile = ({
           </li>
           <BroadcastTime broadcastTime={broadcastTime} />
           <li className="">
-            <ul className="flex flex-row gap-[10px]  text-[8px]">
+            <ul className="flex flex-row gap-[3px] mt-[-13px] text-[8px]">
               {profileData.tags.map((tag, index, array) => (
                 <>
                   <li key={tag}>{tag}</li>
-                  {index !== array.length - 1 && <li>///</li>}
+                  {index !== array.length - 1 && <li>//</li>}
                 </>
               ))}
             </ul>

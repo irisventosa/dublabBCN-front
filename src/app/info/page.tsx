@@ -7,7 +7,7 @@ import ServicesAndClients from "../components/Info/ServicesAndClients";
 import ThanksTo from "../components/Info/ThanksTo";
 
 export const metadata: Metadata = {
-  title: "Info | dublab BCN",
+  title: "Info",
   description: "Informació d'interés sobre dublab BCN.",
 };
 
