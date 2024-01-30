@@ -19,7 +19,7 @@ const LatestShowsFixedHeight = ({
 
   return (
     <section className="pt-[44px] pb-16 ">
-      <ul className="flex flex-col items-center sm:px-8 sm:grid sm:grid-cols-4 w-auto sm:gap-y-14 px-4 gap-x-4 gap-8 sm:place-items-center">
+      <ul className="flex flex-col items-center sm:px-8 sm:grid sm:grid-cols-4 w-auto sm:gap-y-14 px-4 gap-x-4 gap-12 sm:place-items-center">
         {latestShows.map((show) => (
           <li
             key={show.slug}

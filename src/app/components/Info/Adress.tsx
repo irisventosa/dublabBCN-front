@@ -5,12 +5,15 @@ const Adress = () => {
   return (
     <div>
       <div className="w-[1045px] h-auto flex gap-8 pt-[75px]">
-        <Image
-          src={"/assets/collserola.jpeg"}
-          alt="Antena del collserola"
-          width={447}
-          height={588}
-        />
+        <div className="h-[600px]">
+          <Image
+            src={"/assets/hangar_outside.jpg"}
+            alt="Antena del collserola"
+            width={447}
+            height={588}
+            className="h-full object-cover w-full"
+          />
+        </div>
         <div className="flex flex-col justify-between">
           <p className="text-[22px]">
             Ens&nbsp;&nbsp;&nbsp; pots&nbsp;&nbsp;&nbsp; trobar&nbsp;&nbsp; a

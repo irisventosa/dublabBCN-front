@@ -11,7 +11,7 @@ const Collaborators = () => {
         height={26}
       ></Image>
       <Image
-        src={"/assets/agraiments/gracia t.sonor.png"}
+        src={"/assets/agraiments/gracia-tsonor.png"}
         alt="gracia territori sonor logo"
         width={48}
         height={48}
