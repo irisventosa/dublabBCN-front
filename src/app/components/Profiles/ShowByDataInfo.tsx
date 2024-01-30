@@ -51,7 +51,7 @@ const ShowByDataInfo = ({
           </ul>
         </div>
         <div className="w-fit">
-          <h2 className="text-5xl h-[58px] mt-[56px]">{profileName}</h2>
+          <h2 className="text-5xl sm:h-[58px] mt-[56px]">{profileName}</h2>
           <ul className="flex gap-9 sm:gap-[194px] text-[32px]  mt-[20px] sm:mt-[50px]">
             <li>With</li>
             <li className="max-w-[304px] sm:max-w-none">{host} </li>

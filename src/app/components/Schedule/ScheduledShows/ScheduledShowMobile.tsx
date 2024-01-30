@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
 import extractAndFormatShowDate from "@/app/lib/extractAndFormatShowDate";
 import useDublabApi from "@/app/lib/hooks/useDublabApi";
@@ -114,8 +115,11 @@ const ScheduledShowMobile = ({
           <BroadcastTime broadcastTime={broadcastTime} />
           <li className="">
             <ul className="flex flex-row gap-[10px]  text-[8px]">
-              {profileData.tags.map((tag, index) => (
-                <li key={index}>{tag}</li>
+              {profileData.tags.map((tag, index, array) => (
+                <>
+                  <li key={tag}>{tag}</li>
+                  {index !== array.length - 1 && <li>///</li>}
+                </>
               ))}
             </ul>
           </li>

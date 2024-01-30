@@ -56,7 +56,7 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
         height={327}
         className="sm:h-[727px] h-[358px] max-w-[660px] w-auto object-cover sm:p-0 p-4 "
       />
-      <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-y-scroll  scrollbar-hide sm:pr-[10rem]">
+      <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-y-scroll scrollbar-hide sm:pr-[10rem]">
         <div className="flex justify-between items-end">
           <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-40">
             {profileData.tags.map((tag, index) => (
@@ -70,7 +70,7 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
           </ul>
         </div>
         <div className="w-fit">
-          <h2 className="text-5xl h-[58px] mt-[56px]">{profileShowName}</h2>
+          <h2 className="text-5xl sm:h-[58px] mt-[56px]">{profileShowName}</h2>
           <ul className="flex gap-9 sm:gap-[194px] text-[32px]  mt-[20px] sm:mt-[50px]">
             <li>With</li>
             <li className="max-w-[304px] sm:max-w-[400px]">
@@ -79,7 +79,7 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
           </ul>
         </div>
         <section className="flex flex-col-reverse gap-[35px] sm:gap-[140px] max-w-fit">
-          <div className="w-fit sm:max-w-none mt-8 gap-[5.1rem] flex flex-row ">
+          <div className="w-fit sm:max-w-none mt-8 sm:gap-[5.1rem] flex flex-row ">
             <ProfileLinks links={profileData.links} />
             <div className="flex items-start">
               <p

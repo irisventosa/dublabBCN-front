@@ -27,6 +27,7 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
   useEffect(() => {
     setShownSchedule(actualDay);
   }, [actualDay, scheduledShows]);
+
   const twoAirtimeWeeks = createWeekDays();
 
   const wholeWeekFormatted = twoAirtimeWeeks.slice(0, 7);
@@ -51,6 +52,13 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
     [handleClick]
   );
 
+  const removeNextFromWeekday = (day: string) => {
+    const chekckedDay = day.startsWith("next")
+      ? day.substring(4, 7)
+      : day.slice(0, 3);
+    return chekckedDay;
+  };
+
   return (
     <>
       <ul className="flex flex-row  text-xl justify-between pt-14 pb-6 px-8 weekdays">
@@ -67,7 +75,9 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
                 : "opacity-40 active:opacity-100"
             }`}
           >
-            {mobileComponent ? day.dayName.slice(0, 3) : day.formattedDay}
+            {mobileComponent
+              ? removeNextFromWeekday(day.dayName)
+              : day.formattedDay}
           </li>
         ))}
       </ul>
