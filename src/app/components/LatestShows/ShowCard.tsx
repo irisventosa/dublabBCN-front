@@ -48,7 +48,9 @@ const ShowCard = ({
     tags = profile?.tags;
   }
 
-  const hostFontSize = host && host.length >= 25 ? "[11px]" : "sm";
+  const hostFontSize = host && host.length >= 25 ? "text-[11px]" : "text-sm";
+  const showFontSize =
+    showName.length >= 18 ? "lg:text-[1.2rem]" : "lg:text-[1.375rem]";
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -90,11 +92,13 @@ const ShowCard = ({
         </li>
         <li>
           <Link href={`/shows/${showNamePath}`}>
-            <h2 className="text-[1.375rem] h-5 max-w-[300px]">{showName}</h2>
+            <h2 className={`text-base ${showFontSize} h-5 max-w-[300px]`}>
+              {showName}
+            </h2>
           </Link>
         </li>
         <li className="h-[17px]">
-          <span className={`text-${hostFontSize} leading-5`}>
+          <span className={`text-[8px] ${hostFontSize} leading-5`}>
             Hosted by {host}
           </span>
         </li>
