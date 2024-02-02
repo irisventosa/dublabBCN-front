@@ -59,9 +59,9 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
       <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-y-scroll scrollbar-hide sm:pr-[10rem]">
         <div className="flex justify-between items-end">
           <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-40">
-            {profileData.tags.map((tag, index) => (
+            {profileData.tags.map((tag) => (
               <li
-                key={index}
+                key={tag}
                 className={`text-[11px] border rounded-md pt-[5px]  px-2 pb-[3px]`}
               >
                 {tag}

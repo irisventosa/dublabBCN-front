@@ -53,7 +53,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
           const titleToShow = getTitleToShow(showName, showTitle);
 
           return (
-            <article className="" key={showDateForList}>
+            <article key={showDateForList}>
               <div className="flex gap-8 justify-between mt-[17px]">
                 <Link href={`/shows/${slugToUrl}/${showDateForUrl}`}>
                   <span>{titleToShow}</span>
