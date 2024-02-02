@@ -48,8 +48,6 @@ const ShowCard = ({
     tags = profile?.tags;
   }
 
-  const hostFontSize = host && host.length >= 25 ? "[11px]" : "sm";
-
   const [isHovered, setIsHovered] = useState(false);
 
   const transformedHeight = parseInt(height, 10);
@@ -84,25 +82,29 @@ const ShowCard = ({
           </Button>
         )}
       </div>
-      <ul className="flex flex-col absolute p-4 bottom-1 text-white ">
+      <ul className="flex flex-col absolute p-4 bottom-1 gap-[3px] text-white ">
         <li className="mb-3 h-[14px]">
           <time className="text-[12px]">{showDateforCard}</time>
         </li>
         <li>
           <Link href={`/shows/${showNamePath}`}>
-            <h2 className="text-[1.375rem] h-5 max-w-[300px]">{showName}</h2>
+            <h2
+              className={`text-[1rem] leading-6 lg:text-[1.375rem] h-fit max-w-[300px]`}
+            >
+              {showName}
+            </h2>
           </Link>
         </li>
-        <li className="h-[17px]">
-          <span className={`text-${hostFontSize} leading-5`}>
+        <li>
+          <span className={`text-[8px] sm:text-sm leading-5`}>
             Hosted by {host}
           </span>
         </li>
       </ul>
-      <ul className="h-4 flex gap-[10px] text-[11px] flex-row py-4 px-4 absolute text">
+      <ul className="h-fit flex gap-0  text-[11px] flex-row py-4 px-4 absolute text">
         {tags!.map((tag, index, array) => (
           <>
-            <li>{tag}</li>
+            <li className="w-fit">{tag}</li>
             {index !== array.length - 1 && <li>&nbsp;///&nbsp;</li>}
           </>
         ))}

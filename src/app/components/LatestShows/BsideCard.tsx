@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import Button from "../Button";
 import Link from "next/link";
 
-interface ShowCardProps {
+interface BsideCardProps {
   bside: Bside;
   listPosition?: number;
   height: string;
@@ -19,7 +19,7 @@ const BsideCard = ({
   bside: { name, mixcloud_url, tags, picture, date, slug },
   height,
   onClickPlayback,
-}: ShowCardProps): React.ReactElement => {
+}: BsideCardProps): React.ReactElement => {
   const showDateforCard = formatBsideDate(date);
   const showUrl = extractUrlForEmbedPlayer(mixcloud_url);
 

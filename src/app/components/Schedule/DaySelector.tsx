@@ -23,13 +23,11 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
 
     setMobileComponent(isMobile);
   }, []);
-
   useEffect(() => {
     setShownSchedule(actualDay);
   }, [actualDay, scheduledShows]);
 
   const twoAirtimeWeeks = createWeekDays();
-
   const wholeWeekFormatted = twoAirtimeWeeks.slice(0, 7);
 
   const handleClick = useCallback(
@@ -42,7 +40,6 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
     },
     [isSecondWeek, scheduledShows]
   );
-
   const handleKeyDown = useCallback(
     (event: KeyboardEvent, dayName: string) => {
       if (event.key === "Enter" || event.key === " ") {
@@ -51,7 +48,6 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
     },
     [handleClick]
   );
-
   const removeNextFromWeekday = (day: string) => {
     const chekckedDay = day.startsWith("next")
       ? day.substring(4, 7)
