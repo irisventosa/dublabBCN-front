@@ -30,6 +30,10 @@ const useDublabApi = () => {
 
       let finalShowName = formatedShowName;
 
+      if (showName === "br") {
+        finalShowName = "please-come-to-brasil";
+      }
+
       if (showName === "When...Plants...Sing") {
         finalShowName = "whenplantssing";
       }
