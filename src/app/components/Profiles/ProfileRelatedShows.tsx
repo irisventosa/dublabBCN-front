@@ -33,6 +33,8 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
       return "Macguffin 2.0";
     } else if (showName === "cero en conducta") {
       return "@cero.en.conducta";
+    } else if (showName === "br") {
+      return "please come to brasil";
     } else {
       return showName;
     }

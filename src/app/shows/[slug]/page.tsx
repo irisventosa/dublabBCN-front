@@ -78,15 +78,15 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
             </li>
           </ul>
         </div>
-        <section className="flex flex-col-reverse gap-[35px] sm:gap-[140px] max-w-fit">
-          <div className="w-fit sm:max-w-none mt-8 sm:gap-[5.1rem] flex flex-row ">
+        <section className="flex flex-col-reverse gap-[35px] sm:gap-[140px] max-w-[700px]">
+          <div
+            className={`w-fit sm:max-w-none mt-8 ${
+              profileData.links ? "sm:gap-[5.1rem]" : "sm:gap-[11.6rem]"
+            }  flex flex-row `}
+          >
             <ProfileLinks links={profileData.links} />
             <div className="flex items-start">
-              <p
-                className={`text-sm sm:w-fit sm:pr-0 ${
-                  profileData.links ? "" : "pl-[138px]"
-                }`}
-              >
+              <p className="text-sm sm:w-fit sm:pr-0">
                 {profileData.description}
               </p>
             </div>
