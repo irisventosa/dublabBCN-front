@@ -1,13 +1,15 @@
 "use client";
 import extractAndFormatShowDate from "@/app/lib/extractAndFormatShowDate";
+import formatAirtimeShowName from "@/app/lib/formatAirtimeShowName";
 import useDublabApi from "@/app/lib/hooks/useDublabApi";
 import { AirtimeShow, ApiProfile } from "@/app/types";
+import he from "he";
 import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
-import he from "he";
-import BroadcastTime from "../BroadcastTime";
 import Spinner from "../../ui/Spinner";
+import BroadcastTime from "../BroadcastTime";
+import calculateShowStyles from "@/app/lib/calculateShowStyles";
 
 interface ScheduledShowProps {
   airtimeShow: AirtimeShow;
@@ -20,40 +22,6 @@ const ScheduledShowDesktop = ({
 }: ScheduledShowProps) => {
   const { getProfileData } = useDublabApi();
 
-  const formatAirtimeShowName = (airtimeShowName: string) => {
-    if (airtimeShowName === "When...Plants...Sing") {
-      const showIsPlants = "whenplantssing";
-      return showIsPlants;
-    }
-
-    if (airtimeShowName === "@cero.en.conducta") {
-      const showIsPlants = "cero-en-conducta";
-      return showIsPlants;
-    }
-
-    if (airtimeShowName === "house-of-spunk-") {
-      const showIsSpunk = "house-of-spunk";
-      return showIsSpunk;
-    }
-
-    if (airtimeShowName === "SoWhat") {
-      const showIsJazz = "so-what";
-      return showIsJazz;
-    }
-
-    const decodedName = he.decode(airtimeShowName);
-
-    const decodeAndFixShowName = decodedName
-      .toLowerCase()
-      .normalize("NFD") // Decompose characters (remove diacritical marks)
-      .replace(/\s+/g, "-")
-      .replace(/[^a-z0-9\s-]/g, "") // Remove non-alphanumeric characters except spaces and hyphens
-      .replace(/\./g, "") // Remove periods
-      .normalize(); // Compose characters back
-
-    return decodeAndFixShowName;
-  };
-
   const formattedShowName = formatAirtimeShowName(airtimeShow.name);
   const { data: profileData, error } = useSWR<ApiProfile>(
     formattedShowName,
@@ -62,39 +30,36 @@ const ScheduledShowDesktop = ({
 
   const isListPositionLessThanOne = listPosition < 1;
 
-  const dayOfAppCalendar = new Date(airtimeShow.start_timestamp).getDay();
   const broadcastTime: string = extractAndFormatShowDate(
     airtimeShow.start_timestamp
   );
-  const currentDayOfWeek = new Date().getDay();
-  const showStartHour = parseInt(broadcastTime);
-  const currentHourOfDay = new Date().getHours();
-  const isShowHour = currentHourOfDay === showStartHour;
+  const { onAirStyles, firstSeparatorLine, borderColor } = calculateShowStyles(
+    airtimeShow.start_timestamp,
+    isListPositionLessThanOne
+  );
 
-  const { onAirStyles, firstSeparatorLine, borderColor } =
-    isListPositionLessThanOne &&
-    currentDayOfWeek === dayOfAppCalendar &&
-    isShowHour
-      ? {
-          onAirStyles: "flex flex-row h-[212px] w-full bg-black text-white",
-          firstSeparatorLine: true,
-          borderColor: "border border-white rounded-md pt-[5px] px-2 pb-[1px]",
-        }
-      : {
-          onAirStyles: "flex flex-row h-[212px] w-full",
-          firstSeparatorLine: isListPositionLessThanOne,
-          borderColor: "border border-black rounded-md pt-[5px] px-2 pb-[1px]",
-        };
+  if (!profileData && !error) {
+    return <Spinner />;
+  }
 
-  if (!profileData) return <Spinner />;
-  if (error) return <div>Informació del programa no disponible.</div>;
+  if (error || !profileData) {
+    return (
+      <div className="text-center flex p-8">
+        <p className="text-black">Informació horària disponible.</p>
+      </div>
+    );
+  }
+
+  const defaultImage = profileData.picture
+    ? profileData.picture
+    : "/assets/Logo_dublabBCN2024.png";
 
   return (
     <>
       {firstSeparatorLine && <hr className="w-full border-black" />}
       <div className={onAirStyles}>
         <Image
-          src={profileData.picture}
+          src={defaultImage}
           alt={""}
           width={263}
           height={150}

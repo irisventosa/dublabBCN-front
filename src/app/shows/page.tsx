@@ -12,6 +12,8 @@ export const metadata: Metadata = {
     "Programes que s'emeten regularment a aquesta temporada de dublab BNC",
 };
 
+export const revalidate = 1800;
+
 const ShowProfiles = async () => {
   const { getProfiles } = useDublabApi();
 

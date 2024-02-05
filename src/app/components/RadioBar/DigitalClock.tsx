@@ -17,9 +17,9 @@ const DigitalClock = (): React.ReactElement => {
   const seconds = time.getSeconds().toString().padStart(2, "0");
 
   return (
-    <div className="min-w-[145px]">
+    <time className="min-w-[145px]" suppressHydrationWarning>
       Barcelona {hours}:{minutes}:{seconds}
-    </div>
+    </time>
   );
 };
 
