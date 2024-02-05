@@ -83,8 +83,21 @@ const ScheduledShowMobile = ({
           firstSeparatorLine: isListPositionLessThanOne,
         };
 
-  if (!profileData) return <Spinner></Spinner>;
-  if (error) return <div>Informació del programa no disponible.</div>;
+  if (!profileData && !error) {
+    return <Spinner />;
+  }
+
+  if (error || !profileData) {
+    return (
+      <div className="text-center flex p-8">
+        <p className="text-black">Informació horària disponible.</p>
+      </div>
+    );
+  }
+
+  const defaultImage = profileData.picture
+    ? profileData.picture
+    : "/assets/Logo_dublabBCN2024.png";
 
   const showFontSize =
     airtimeShow.name && airtimeShow.name.length >= 20 ? "[12px]" : "sm";
@@ -95,7 +108,7 @@ const ScheduledShowMobile = ({
       <div className={onAirStyles}>
         <div className="flex flex-col pt-[15px] items-start w-fit pl-8 ">
           <Image
-            src={profileData.picture}
+            src={defaultImage}
             alt={""}
             width={160}
             height={150}

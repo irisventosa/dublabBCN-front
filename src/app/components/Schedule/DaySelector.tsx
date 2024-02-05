@@ -35,8 +35,15 @@ const DaySelector = ({ scheduledShows }: DaySelectorProps) => {
       isSecondWeek ? `next${dayName}` : dayName;
       const weekSchedule = scheduledShows[dayName as keyof WeekInfo];
 
-      setShownSchedule(weekSchedule);
-      setSelectedDay(dayName);
+      if (weekSchedule !== undefined) {
+        setShownSchedule(weekSchedule);
+        setSelectedDay(dayName);
+      } else {
+        // Handle the case where weekSchedule is undefined (empty)
+        // You can set shownSchedule to an empty array or another default value
+        setShownSchedule([]);
+        setSelectedDay(dayName);
+      }
     },
     [isSecondWeek, scheduledShows]
   );

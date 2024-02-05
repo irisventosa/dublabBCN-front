@@ -37,11 +37,15 @@ const ScheduledShowsList = ({
       {scheduleByHours.map((show, listPosition) => (
         <>
           <li className="text">
-            <ShowComponent
-              show={show}
-              listPosition={listPosition}
-              isMobile={mobileComponent}
-            />
+            {show ? (
+              <ShowComponent
+                show={show}
+                listPosition={listPosition}
+                isMobile={mobileComponent}
+              />
+            ) : (
+              <div>Informació no disponible</div>
+            )}
           </li>
           <hr className="w-full border-black" />
         </>
