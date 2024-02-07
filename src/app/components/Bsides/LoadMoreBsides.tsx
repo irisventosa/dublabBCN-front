@@ -48,7 +48,7 @@ const LoadMoreBsides = ({ isMobile }: LoadMoreBsidesProps) => {
   }, [inView, isLoading, loadMoreBsides]);
 
   return (
-    <div className="mt-[61px] max-w-[100vw] ">
+    <div className=" max-w-[100vw] ">
       {isMobile ? (
         <ProfilesListMobile seasonProfiles={bsides} />
       ) : (

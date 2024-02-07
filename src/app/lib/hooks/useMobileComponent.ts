@@ -4,7 +4,7 @@ const useMobileComponent = () => {
   const [mobileComponent, setMobileComponent] = useState(false);
 
   useEffect(() => {
-    const mobileBreakPoint = 640;
+    const mobileBreakPoint = 740;
     const isMobile =
       typeof window !== "undefined" && window.innerWidth < mobileBreakPoint;
 

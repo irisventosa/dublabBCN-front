@@ -8,8 +8,8 @@ interface ProfileListMobileProps {
 
 const ProfileListMobile = ({ seasonProfiles }: ProfileListMobileProps) => {
   return (
-    <section className=" py-[22px] ">
-      <ul className="flex flex-col items-center sm:px-8 sm:grid sm:grid-cols-4 w-auto sm:gap-y-14 px-4 gap-x-4 gap-2  sm:place-items-center">
+    <section className=" py-[6px] ">
+      <ul className="flex flex-col items-center sm:px-8 sm:grid lg:grid-cols-2 xl:grid-cols-4 w-auto sm:gap-y-14 px-4 gap-x-4 gap-2  sm:place-items-center">
         {seasonProfiles.map((profile) => (
           <li
             key={profile.slug}
