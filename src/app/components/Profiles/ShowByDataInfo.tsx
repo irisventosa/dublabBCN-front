@@ -39,6 +39,11 @@ const ShowByDataInfo = ({
           >
             Listen
           </Button>
+          <ul>
+            <li className=""></li>
+            <li></li>
+            <li></li>
+          </ul>
           <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-40">
             {tags.map((tag, index) => (
               <li

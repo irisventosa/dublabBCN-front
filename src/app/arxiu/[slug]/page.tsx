@@ -30,20 +30,12 @@ export const generateMetadata = ({ params }: ProfileDetailsProps): Metadata => {
   };
 };
 
-const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
-  const { getProfileData } = useDublabApi();
+const ArchivedProfileDetails = async ({ params }: ProfileDetailsProps) => {
+  const { getArchivedProfileData } = useDublabApi();
 
-  const profileData = await getProfileData(params.slug);
+  const profileData = await getArchivedProfileData(params.slug);
 
-  let profileShowName = params.slug.replace(/-/g, " ");
-
-  if (profileShowName === "macguffin 20") {
-    profileShowName = "macguffin 2.0";
-  }
-
-  if (profileShowName === "cero en conducta") {
-    profileShowName = "@cero.en.conducta";
-  }
+  const profileShowName = params.slug.replace(/-/g, " ");
 
   if (!profileData) return <Spinner />;
 
@@ -94,7 +86,7 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
         </section>
         <section className="flex-col items-end">
           <div className="text-2xl flex items-end justify-between mt-[58px] gap-16 mb-[17px]">
-            <h3 className="h-fit">Shows Relacionats</h3>
+            <h3 className=" h-fit ">Shows Relacionats</h3>
             <span>2024</span>
           </div>
           <hr className="border-black  w-full " />
@@ -105,4 +97,4 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
   );
 };
 
-export default ProfileDetails;
+export default ArchivedProfileDetails;
