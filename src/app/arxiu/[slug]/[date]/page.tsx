@@ -32,7 +32,7 @@ export const generateMetadata = ({ params }: ShowByDateProps): Metadata => {
 
 const ShowByDate = async ({ params }: ShowByDateProps) => {
   const { getArchivedProfileData, getSingleShowData } = useDublabApi();
-  debugger;
+
   const showDataEndpoint = `${params.slug}-${params.date} `;
 
   const profileData = await getArchivedProfileData(params.slug);
