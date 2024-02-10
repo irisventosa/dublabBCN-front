@@ -19,14 +19,9 @@ const ArchivedProfiles = async () => {
   if (!isAllDataLoaded) return <Spinner />;
 
   return (
-    <main className="flex flex-col mt-[219px] ">
-      <ul className="flex flex-row gap-[376px]">
-        <li>
-          <span className="h-[22px] px-8 ">COMING UP /// TODAY & TOMORROW</span>
-        </li>
-      </ul>
+    <main className="flex flex-col mt-[219px] bg-black text-white ">
       <div className="flex text-[32px] sm:text-[72px] gap-[35px] sm:gap-[140px] pt-[62px] ml-8 ">
-        <span>AAA</span>
+        <span>2016 - 2023</span>
         <h2>Arxiu</h2>
       </div>
       <section>

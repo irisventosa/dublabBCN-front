@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import Button from "../Button";
-import ProfileLinks from "./ProfileLinks";
 import Tracklist from "../Tracklist";
+import ProfileLinks from "./ProfileLinks";
 
 interface ShowByDataInfoProps {
   showUrl: string;
@@ -39,11 +39,6 @@ const ShowByDataInfo = ({
           >
             Listen
           </Button>
-          <ul>
-            <li className=""></li>
-            <li></li>
-            <li></li>
-          </ul>
           <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-40">
             {tags &&
               tags.map((tag, index) => (

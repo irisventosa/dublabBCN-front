@@ -6,6 +6,7 @@ import SlideOverMenu from "../SlideOverMenu";
 import NavBar from "./NavBar";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import checkPathName from "@/app/lib/checkPathName";
 
 const Header = (): React.ReactElement => {
   const { isOpen, setIsOpen } = useSlideOver();
@@ -14,18 +15,13 @@ const Header = (): React.ReactElement => {
     setIsOpen(false);
   };
 
-  const pathname = usePathname();
   const [backgroundColor, setBackgroundColor] = useState("white");
   const [displayedLogo, setDisplayedLogo] = useState(
     "/assets/Logo_dublabBCN2024.png"
   );
 
-  const backgroundColorForBSides = "/b-sides";
-  const backgroundColorForArxiu = "/arxiu";
-
-  const pageIsBlack =
-    pathname.includes(backgroundColorForBSides) ||
-    pathname.includes(backgroundColorForArxiu);
+  const pathname = usePathname();
+  const pageIsBlack = checkPathName(pathname);
 
   useEffect(() => {
     setBackgroundColor(pageIsBlack ? "black" : "transparent");

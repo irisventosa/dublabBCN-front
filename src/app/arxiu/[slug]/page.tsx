@@ -40,7 +40,7 @@ const ArchivedProfileDetails = async ({ params }: ProfileDetailsProps) => {
   if (!profileData) return <Spinner />;
 
   return (
-    <main className="mt-[255px] gap-[50px] flex sm:flex-row flex-col justify-between">
+    <main className="mt-[219px] gap-[50px] flex sm:flex-row flex-col justify-between  bg-black text-white">
       <Image
         src={profileData.picture}
         alt={""}
@@ -50,11 +50,11 @@ const ArchivedProfileDetails = async ({ params }: ProfileDetailsProps) => {
       />
       <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-y-scroll scrollbar-hide sm:pr-[10rem]">
         <div className="flex justify-between items-end">
-          <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-40">
+          <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-70">
             {profileData.tags.map((tag) => (
               <li
                 key={tag}
-                className={`text-[11px] border rounded-md pt-[5px]  px-2 pb-[3px]`}
+                className={`text-[11px] border rounded-md pt-[6px]  px-2 pb-[3px] text-white `}
               >
                 {tag}
               </li>
@@ -89,7 +89,7 @@ const ArchivedProfileDetails = async ({ params }: ProfileDetailsProps) => {
             <h3 className=" h-fit ">Shows Relacionats</h3>
             <span>2024</span>
           </div>
-          <hr className="border-black  w-full " />
+          <hr className="border-white  w-full " />
           <RelatedShows shows={profileData.shows} />
         </section>
       </section>

@@ -88,7 +88,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
                   )
                 )}
               </ul>
-              <hr className="border-black  w-full  " />
+              <hr className="border-white  w-full  " />
             </article>
           );
         }

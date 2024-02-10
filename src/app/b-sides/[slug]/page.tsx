@@ -43,7 +43,7 @@ const BsideDetails = async ({ params }: BSideDetailsProps) => {
   };
 
   return (
-    <main className="mt-[219px]  gap-[50px] flex  bg-black text-white ">
+    <main className="mt-[219px]  gap-[50px] flex  bg-black text-white">
       <Image
         src={bside.picture}
         alt={""}
