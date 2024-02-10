@@ -20,9 +20,13 @@ const ArchivedProfiles = async () => {
 
   return (
     <main className="flex flex-col mt-[219px] bg-black text-white ">
+      <ul className="flex flex-row gap-[376px]">
+        <li>
+          <span className="h-[22px] px-8">2016 - 2023</span>
+        </li>
+      </ul>
       <div className="flex text-[32px] sm:text-[72px] gap-[35px] sm:gap-[140px] pt-[62px] ml-8 ">
-        <span>2016 - 2023</span>
-        <h2>Arxiu</h2>
+        <h2 className="pl-20">Arxiu</h2>
       </div>
       <section>
         {onAirProfiles.map((profiles, index) => (
