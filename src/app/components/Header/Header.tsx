@@ -6,6 +6,7 @@ import SlideOverMenu from "../SlideOverMenu";
 import NavBar from "./NavBar";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import checkPathName from "@/app/lib/checkPathName";
 
 const Header = (): React.ReactElement => {
   const { isOpen, setIsOpen } = useSlideOver();
@@ -14,24 +15,31 @@ const Header = (): React.ReactElement => {
     setIsOpen(false);
   };
 
-  const pathname = usePathname();
   const [backgroundColor, setBackgroundColor] = useState("white");
-  const changeBackgroundPath = "/b-sides";
+  const [displayedLogo, setDisplayedLogo] = useState(
+    "/assets/Logo_dublabBCN2024.png"
+  );
+
+  const pathname = usePathname();
+  const pageIsBlack = checkPathName(pathname);
 
   useEffect(() => {
-    setBackgroundColor(
-      pathname.includes(changeBackgroundPath) ? "black" : "transparent"
+    setBackgroundColor(pageIsBlack ? "black" : "transparent");
+    setDisplayedLogo(
+      pageIsBlack
+        ? "/assets/logo-dublabBCN2024-negative.png"
+        : "/assets/Logo_dublabBCN2024.png"
     );
-  }, [pathname]);
+  }, [pageIsBlack, pathname]);
 
   return (
     <div className="flex justify-start bg-black ">
       <header
-        className={`  w-fit flex justify-start sm:p-8 absolute w-${variableWidth} h-[219px] z-10 p-4 pt-[42px] gap-8 2xl:gap-[300px] bg-${backgroundColor} `}
+        className={`w-fit flex justify-start sm:p-8 absolute w-${variableWidth} h-[219px] z-10 p-4 pt-[42px] gap-8 2xl:gap-[300px] bg-${backgroundColor} `}
       >
         <Link onClick={handleLinkClick} href="/">
           <Image
-            src="/assets/Logo_dublabBCN2024.png"
+            src={displayedLogo}
             alt="dublab Barcelona logo"
             width={627.259}
             height={138.42}

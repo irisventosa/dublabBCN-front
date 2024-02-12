@@ -27,7 +27,16 @@ const ProfileCard = ({
   height,
 }: ProfileCardProps): React.ReactElement => {
   const pathname = usePathname();
-  const dynamicPath = pathname === "/b-sides" ? "b-sides" : "shows";
+  let dynamicPath;
+
+  if (pathname === "/b-sides") {
+    dynamicPath = "b-sides";
+  } else if (pathname === "/shows") {
+    dynamicPath = "shows";
+  } else {
+    dynamicPath = "arxiu";
+  }
+
   const isShows = dynamicPath === "shows";
 
   const showName = formatSlugToGetShowName(slug);
@@ -40,23 +49,23 @@ const ProfileCard = ({
     setBackgroundColor(pathname === changeBackgroundPath ? "black" : "white");
   }, [pathname]);
 
+  const defaultImage = picture ? picture : "/assets/default-arxiu.jpg";
+
   return (
     <article className={`w-[353px] h-[${height}] relative leading-[120%]`}>
       <div className="block group relative">
         <div className="group relative brightness-75 hover:brightness-100  ">
-          {picture && (
-            <Image
-              src={picture}
-              alt={`Imatge del programa ${slug}`}
-              height={300}
-              width={253}
-              className="overflow-hidden sm:h-auto h-[280px] w-[353px] relative transition duration-300 ease-in-out group-hover:opacity-0 object-cover"
-              placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMM971fDwAEigIECrXFHQAAAABJRU5ErkJggg=="
-            />
-          )}
+          <Image
+            src={defaultImage}
+            alt={`Imatge del programa ${slug}`}
+            height={300}
+            width={253}
+            className="overflow-hidden sm:h-auto h-[280px] w-[353px] relative transition duration-300 ease-in-out group-hover:opacity-0 object-cover"
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMM971fDwAEigIECrXFHQAAAABJRU5ErkJggg=="
+          />
           <div
-            className={`absolute inset-0 bg-${backgroundColor} bg-opacity-80 transition duration-300 ease-in-out opacity-0  group-hover:opacity-100`}
+            className={`absolute inset-0 bg-${backgroundColor} bg-opacity-80 transition duration-300 ease-in-out opacity-0 px-4 group-hover:opacity-100`}
           >
             <div className="flex flex-col justify-center items-start gap-6 max-w-[320px] ">
               <p className="text-base mt-2">{formatedDescription}</p>

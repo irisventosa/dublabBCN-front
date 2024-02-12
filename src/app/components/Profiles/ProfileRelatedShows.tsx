@@ -4,6 +4,7 @@ import { formatAndSortRelatedShowsInfo } from "@/app/lib/processSlug";
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { ApiProfile, RadioApiShow } from "@/app/types";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import useSWR from "swr";
 
 interface RelatedShowsProps {
@@ -11,13 +12,23 @@ interface RelatedShowsProps {
 }
 
 const RelatedShows = ({ shows }: RelatedShowsProps) => {
-  const { getProfileData } = useDublabApi();
+  const { getArchivedProfileData } = useDublabApi();
 
+  const pathname = usePathname();
+  let dynamicPath: string;
+
+  if (pathname === "/b-sides") {
+    dynamicPath = "b-sides";
+  } else if (pathname === "/shows") {
+    dynamicPath = "shows";
+  } else {
+    dynamicPath = "arxiu";
+  }
   const formattedShows = formatAndSortRelatedShowsInfo(shows);
 
   const { data: profileData } = useSWR<ApiProfile>(
     formattedShows[0]?.slugToUrl,
-    getProfileData
+    getArchivedProfileData
   );
 
   if (!formattedShows || formattedShows.length === 0) {
@@ -57,7 +68,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
           return (
             <article key={showDateForList}>
               <div className="flex gap-8 justify-between mt-[17px]">
-                <Link href={`/shows/${slugToUrl}/${showDateForUrl}`}>
+                <Link href={`/${dynamicPath}/${slugToUrl}/${showDateForUrl}`}>
                   <span>{titleToShow}</span>
                   {showHost !== null && <span> w/ {showHost}</span>}
                 </Link>
@@ -77,7 +88,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
                   )
                 )}
               </ul>
-              <hr className="border-black  w-full  " />
+              <hr className="border-white  w-full  " />
             </article>
           );
         }

@@ -1,5 +1,5 @@
 const descriptionFormatting = (description: string) => {
-  if (description.length > 500) {
+  if (description.length > 400) {
     return description.slice(0, 150) + "...";
   } else if (description.length > 60) {
     const halfDescription = Math.ceil(description.length / 2);

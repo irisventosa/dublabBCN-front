@@ -10,10 +10,12 @@ import axios from "axios";
 
 const profileDataUrl = "https://api.dublab.es/api/profiles/";
 const bsideDataUrl = "https://api.dublab.es/api/b-sides/";
+const archivedProfileData = "https://api.dublab.es/api/archived/";
 const profileListUrl = "https://api.dublab.es/api/profiles/?page=";
 const bsidesListUrl = "https://api.dublab.es/api/b-sides/?page=";
 const latestShowsData = "https://api.dublab.es/api/shows/?page=";
 const showData = "https://api.dublab.es/api/shows/";
+const archivedProfilesList = "https://api.dublab.es/api/archived/?page=";
 
 const useDublabApi = () => {
   const getProfiles = async (page: string | number) => {
@@ -21,6 +23,13 @@ const useDublabApi = () => {
       `${profileListUrl}${page}`
     );
     return profiles;
+  };
+
+  const getArchivedProfiles = async (page: string | number) => {
+    const { data: archivedProfiles } = await axios.get<ApiProfilesList>(
+      `${archivedProfilesList}${page}`
+    );
+    return archivedProfiles;
   };
 
   const getProfileData = async (showName: string) => {
@@ -46,6 +55,22 @@ const useDublabApi = () => {
 
       const { data: profile } = await axios.get<ApiProfile>(
         `${profileDataUrl}${finalShowName}`
+      );
+
+      return profile;
+    } catch (error: unknown) {
+      const message = "profile is not currently online";
+      throw new Error(message);
+    }
+  };
+
+  const getArchivedProfileData = async (showName: string) => {
+    try {
+      const trimmedName = showName.toLowerCase().replace(/\s+$/, "");
+      const formatedShowName = trimmedName.replace(/\s+/g, "-");
+
+      const { data: profile } = await axios.get<ApiProfile>(
+        `${archivedProfileData}${formatedShowName}`
       );
 
       return profile;
@@ -83,6 +108,8 @@ const useDublabApi = () => {
   };
 
   return {
+    getArchivedProfileData,
+    getArchivedProfiles,
     getSingleShowData,
     getLatestsShowsData,
     getProfileData,

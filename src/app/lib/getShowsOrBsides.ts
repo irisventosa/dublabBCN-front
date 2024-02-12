@@ -3,7 +3,15 @@ interface FetchCallback<T> {
 }
 
 const getProfilesOrBsides = async <T>(fetchCallback: FetchCallback<T>) => {
-  const numberOfPages = fetchCallback.name === "getProfiles" ? 8 : 18;
+  let numberOfPages;
+
+  if (fetchCallback.name === "getArchivedProfiles") {
+    numberOfPages = 16;
+  } else if (fetchCallback.name === "getProfiles") {
+    numberOfPages = 8;
+  } else {
+    numberOfPages = 18;
+  }
 
   const apiRequestPages = Array.from(
     { length: numberOfPages },

@@ -30,25 +30,17 @@ export const generateMetadata = ({ params }: ProfileDetailsProps): Metadata => {
   };
 };
 
-const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
-  const { getProfileData } = useDublabApi();
+const ArchivedProfileDetails = async ({ params }: ProfileDetailsProps) => {
+  const { getArchivedProfileData } = useDublabApi();
 
-  const profileData = await getProfileData(params.slug);
+  const profileData = await getArchivedProfileData(params.slug);
 
-  let profileShowName = params.slug.replace(/-/g, " ");
-
-  if (profileShowName === "macguffin 20") {
-    profileShowName = "macguffin 2.0";
-  }
-
-  if (profileShowName === "cero en conducta") {
-    profileShowName = "@cero.en.conducta";
-  }
+  const profileShowName = params.slug.replace(/-/g, " ");
 
   if (!profileData) return <Spinner />;
 
   return (
-    <main className="mt-[255px] gap-[50px] flex sm:flex-row flex-col justify-between">
+    <main className="mt-[219px] gap-[50px] flex sm:flex-row flex-col justify-between  bg-black text-white">
       <Image
         src={profileData.picture}
         alt={""}
@@ -58,11 +50,11 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
       />
       <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-y-scroll scrollbar-hide sm:pr-[10rem]">
         <div className="flex justify-between items-end">
-          <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-40">
+          <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-70">
             {profileData.tags.map((tag) => (
               <li
                 key={tag}
-                className={`text-[11px] border rounded-md pt-[5px]  px-2 pb-[3px]`}
+                className={`text-[11px] border rounded-md pt-[6px]  px-2 pb-[3px] text-white `}
               >
                 {tag}
               </li>
@@ -94,10 +86,10 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
         </section>
         <section className="flex-col items-end">
           <div className="text-2xl flex items-end justify-between mt-[58px] gap-16 mb-[17px]">
-            <h3 className="h-fit">Shows Relacionats</h3>
+            <h3 className=" h-fit ">Shows Relacionats</h3>
             <span>2024</span>
           </div>
-          <hr className="border-black  w-full " />
+          <hr className="border-white  w-full " />
           <RelatedShows shows={profileData.shows} />
         </section>
       </section>
@@ -105,4 +97,4 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
   );
 };
 
-export default ProfileDetails;
+export default ArchivedProfileDetails;

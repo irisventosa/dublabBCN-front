@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import Button from "../Button";
-import ProfileLinks from "./ProfileLinks";
 import Tracklist from "../Tracklist";
+import ProfileLinks from "./ProfileLinks";
 
 interface ShowByDataInfoProps {
   showUrl: string;
@@ -40,14 +40,15 @@ const ShowByDataInfo = ({
             Listen
           </Button>
           <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-40">
-            {tags.map((tag, index) => (
-              <li
-                key={index}
-                className=" text-black text-[11px] sm:border rounded-md pt-[5px] sm:px-2 pb-[3px]"
-              >
-                {tag}
-              </li>
-            ))}
+            {tags &&
+              tags.map((tag, index) => (
+                <li
+                  key={index}
+                  className=" text-black text-[11px] sm:border rounded-md pt-[5px] sm:px-2 pb-[3px]"
+                >
+                  {tag}
+                </li>
+              ))}
           </ul>
         </div>
         <div className="w-fit">

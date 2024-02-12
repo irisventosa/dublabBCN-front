@@ -60,11 +60,11 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
   //   return `translateY(${itemTranslate}px)`; // Apply individual item's vertical movement offset
   // };
 
-  /*  const randomizePosition = () => {
-    const randomOffset =
-      Math.random() > 1.5 ? Math.random() * 15 + 10 : -Math.random() * 15 - 2;
-    return `${randomOffset}px`;
-  }; */
+  // const randomizePosition = () => {
+  //   const randomOffset =
+  //     Math.random() > 1.5 ? Math.random() * 15 + 10 : -Math.random() * 15 - 2;
+  //   return `${randomOffset}px`;
+  // };
 
   const getRandomHeight = () => {
     const heights = [150, 200, 300];
