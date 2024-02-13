@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "../Button";
 import Tracklist from "../Tracklist";
 import ProfileLinks from "./ProfileLinks";
+import { usePathname } from "next/navigation";
 
 interface ShowByDataInfoProps {
   showUrl: string;
@@ -29,6 +30,14 @@ const ShowByDataInfo = ({
     setIFrameShow(mixcloudLink);
   };
 
+  const pathname = usePathname();
+
+  const lineColor: string = pathname.includes("/shows") ? "black" : "white";
+
+  const showDateFromUrl = /(\d{2}-\d{2}-\d{2})/;
+  const showDate = pathname.match(showDateFromUrl);
+  const firstDateElement = showDate![0].replace(/-/g, "/");
+
   return (
     <>
       <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-scroll scrollbar-hide sm:pr-[10rem]">
@@ -39,12 +48,12 @@ const ShowByDataInfo = ({
           >
             Listen
           </Button>
-          <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-40">
+          <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-80">
             {tags &&
               tags.map((tag, index) => (
                 <li
                   key={index}
-                  className=" text-black text-[11px] sm:border rounded-md pt-[5px] sm:px-2 pb-[3px]"
+                  className={`text-${lineColor} text-[11px] sm:border rounded-md pt-[5px] sm:px-2 pb-[2px]`}
                 >
                   {tag}
                 </li>
@@ -52,7 +61,9 @@ const ShowByDataInfo = ({
           </ul>
         </div>
         <div className="w-fit">
-          <h2 className="text-5xl sm:h-[58px] mt-[56px]">{profileName}</h2>
+          <h2 className="text-5xl sm:h-[58px] mt-[56px]">
+            {profileName + " " + firstDateElement}
+          </h2>
           <ul className="flex gap-9 sm:gap-[194px] text-[32px]  mt-[20px] sm:mt-[50px]">
             <li>With</li>
             <li className="max-w-[304px] sm:max-w-none">{host} </li>
@@ -63,7 +74,7 @@ const ShowByDataInfo = ({
             <ProfileLinks links={links} />
             <div className="flex items-start">
               <p
-                className={`text-sm sm:w-fit sm:pr-0 ${
+                className={`text-sm sm:w-fit sm:max-w-[480px] sm:pr-0 ${
                   links ? "" : "pl-[138px]"
                 }`}
               >

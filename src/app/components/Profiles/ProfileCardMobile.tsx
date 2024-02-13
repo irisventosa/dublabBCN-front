@@ -26,9 +26,17 @@ const ProfileCardMobile = ({
   height,
 }: ProfileCardMobileProps): React.ReactElement => {
   const pathname = usePathname();
-  const dynamicPath = pathname === "/b-sides" ? "b-sides" : "shows";
-  const isShows = dynamicPath === "shows";
 
+  let dynamicPath;
+  if (pathname === "/b-sides") {
+    dynamicPath = "b-sides";
+  } else if (pathname === "/shows") {
+    dynamicPath = "shows";
+  } else {
+    dynamicPath = "arxiu";
+  }
+
+  const isShows = dynamicPath === "shows";
   const showName = formatSlugToGetShowName(slug);
 
   return (

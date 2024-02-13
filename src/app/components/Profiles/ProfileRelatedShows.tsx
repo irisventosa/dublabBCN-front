@@ -12,23 +12,20 @@ interface RelatedShowsProps {
 }
 
 const RelatedShows = ({ shows }: RelatedShowsProps) => {
-  const { getArchivedProfileData } = useDublabApi();
-
+  const { getArchivedProfileData, getProfileData } = useDublabApi();
   const pathname = usePathname();
-  let dynamicPath: string;
 
-  if (pathname === "/b-sides") {
-    dynamicPath = "b-sides";
-  } else if (pathname === "/shows") {
-    dynamicPath = "shows";
-  } else {
-    dynamicPath = "arxiu";
-  }
+  const dynamicPath: string = pathname.includes("/shows") ? "shows" : "arxiu";
+  const lineColor: string = pathname.includes("/shows") ? "black" : "white";
+  const getterFunctionToPass = pathname.includes("/shows")
+    ? getProfileData
+    : getArchivedProfileData;
+
   const formattedShows = formatAndSortRelatedShowsInfo(shows);
 
   const { data: profileData } = useSWR<ApiProfile>(
     formattedShows[0]?.slugToUrl,
-    getArchivedProfileData
+    getterFunctionToPass
   );
 
   if (!formattedShows || formattedShows.length === 0) {
@@ -88,7 +85,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
                   )
                 )}
               </ul>
-              <hr className="border-white  w-full  " />
+              <hr className={`border-${lineColor}  w-full  `} />
             </article>
           );
         }
