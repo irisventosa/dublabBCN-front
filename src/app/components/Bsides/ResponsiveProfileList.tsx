@@ -15,7 +15,7 @@ const ResponsiveProfilesList = ({
   podcastsList,
 }: ResponsiveMobileProfileList) => {
   const pathname = usePathname();
-  const isBsides = pathname === "/b-sides";
+  const isShows = pathname === "/shows";
   const mobileComponent = useMobileComponent();
   const { isOpen } = useSlideOver();
 
@@ -28,7 +28,7 @@ const ResponsiveProfilesList = ({
           ) : (
             <ProfilesList firstPageOfProfiles={podcastsList!.results} />
           )}
-          {isBsides && <LoadMoreBsides isMobile={mobileComponent} />}
+          {!isShows && <LoadMoreBsides isMobile={mobileComponent} />}
         </>
       )}
     </section>

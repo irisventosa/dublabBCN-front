@@ -29,7 +29,7 @@ const Tracklist = ({ tracklist }: TracklistProps) => {
     <section className=" w-fit lg:min-w-[1000px] mt-7 sm:mt-14">
       <h2>Tracklist</h2>
       <hr className={`border-${lineColor} sm:w-[719px] w-[98%] pr-4 p-1 `} />
-      <ul className="text-[14px] sm:pt-4 mb-4 ">
+      <ul className="text-[14px]  mb-4 ">
         {formattedTracklist.map((track, index) => (
           <li key={index}>{`${(index + 1)
             .toString()
