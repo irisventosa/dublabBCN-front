@@ -1,8 +1,7 @@
 import { Metadata } from "next";
-import useDublabApi from "../lib/hooks/useDublabApi";
-import getProfilesOrBsides from "../lib/getShowsOrBsides";
-import Spinner from "../components/ui/Spinner";
 import ResponsiveProfilesList from "../components/Bsides/ResponsiveProfileList";
+import Spinner from "../components/ui/Spinner";
+import useDublabApi from "../lib/hooks/useDublabApi";
 
 export const metadata: Metadata = {
   title: "Arxiu",
@@ -11,12 +10,11 @@ export const metadata: Metadata = {
 
 const ArchivedProfiles = async () => {
   const { getArchivedProfiles } = useDublabApi();
+  const archivePage = "1";
 
-  const onAirProfiles = await getProfilesOrBsides(getArchivedProfiles);
+  const archivedProfiles = await getArchivedProfiles(archivePage);
 
-  const isAllDataLoaded = onAirProfiles.every((apiProfiles) => apiProfiles);
-
-  if (!isAllDataLoaded) return <Spinner />;
+  if (!archivedProfiles) return <Spinner />;
 
   return (
     <main className="flex flex-col mt-[219px] bg-black text-white ">
@@ -29,9 +27,7 @@ const ArchivedProfiles = async () => {
         <h2 className="pl-20">Arxiu</h2>
       </div>
       <section>
-        {onAirProfiles.map((profiles, index) => (
-          <ResponsiveProfilesList key={index} podcastsList={profiles} />
-        ))}
+        <ResponsiveProfilesList podcastsList={archivedProfiles} />
       </section>
     </main>
   );

@@ -8,7 +8,7 @@ import SocialLinks from "./SocialLinks";
 
 const Footer = (): React.ReactElement => {
   return (
-    <footer className=" h-fit  sm:h-[484px] w-full bg-black text-white ">
+    <footer className=" h-fit  sm:h-[484px] w-full bg-black text-white border-t border-white ">
       <Image
         src={"/assets/D-B_vector.svg"}
         width={68.48}

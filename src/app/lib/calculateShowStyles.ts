@@ -22,7 +22,7 @@ const calculateShowStyles = (
       : {
           onAirStyles: "flex flex-row h-[212px] w-full",
           firstSeparatorLine: isListPositionLessThanOne,
-          borderColor: "border border-black rounded-md pt-[5px] px-2 pb-[1px]",
+          borderColor: "border border-black rounded-md pt-[2px] px-2 ",
         };
 
   return { onAirStyles, firstSeparatorLine, borderColor };

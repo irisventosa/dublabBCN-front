@@ -25,7 +25,7 @@ export const generateMetadata = ({ params }: ProfileDetailsProps): Metadata => {
   const slug = capitalizeWords(params.slug.replace("-", " "));
 
   return {
-    title: `dublab | ${slug}`,
+    title: `${slug}`,
     description: `Escolta l'arxiu de les retransmisions en directe del programa ${slug}`,
   };
 };
@@ -39,10 +39,14 @@ const ArchivedProfileDetails = async ({ params }: ProfileDetailsProps) => {
 
   if (!profileData) return <Spinner />;
 
+  const defaultImage = profileData.picture
+    ? profileData.picture
+    : "/assets/arxiu-default-page.jpg";
+
   return (
     <main className="mt-[219px] gap-[50px] flex sm:flex-row flex-col justify-between  bg-black text-white">
       <Image
-        src={profileData.picture}
+        src={defaultImage}
         alt={""}
         width={660}
         height={327}
