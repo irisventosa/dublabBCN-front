@@ -26,7 +26,7 @@ const BsideInfo = ({
 
   return (
     <>
-      <section className="max-h-[750px] min-w-[720px] overflow-y-scroll  scrollbar-hide  bg-black">
+      <section className="max-h-[750px]  scrollbar-hide  bg-black">
         <div className="flex justify-between items-end">
           <ul className="flex">
             <li>

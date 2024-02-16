@@ -87,7 +87,6 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
               key={profile.slug}
               style={{
                 marginBottom: "200px",
-
                 position: "relative",
                 zIndex: profileIndex % 2 === 0 ? 1 : 0,
               }}

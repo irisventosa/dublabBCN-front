@@ -7,16 +7,18 @@ interface TracklistProps {
 
 const Tracklist = ({ tracklist }: TracklistProps) => {
   const pathname = usePathname();
-  const pageIsBlack = checkPathName(pathname);
 
+  const pageIsBlack = checkPathName(pathname);
   const lineColor = pageIsBlack ? "white" : "black";
 
   if (tracklist.trim() === "") {
     return (
       <section className="mt-14">
         <h2>Tracklist</h2>
-        <hr className="border-black w-[719px] " />
-        <span className="text-[14px] pt-7">
+        <hr
+          className={`border-${lineColor} sm:w-[719px] w-[98%] pr-4 p-[2px] `}
+        />
+        <span className="text-[14px]">
           El tracklist no esta disponible en aquest moment
         </span>
       </section>
