@@ -12,13 +12,19 @@ const DigitalClock = (): React.ReactElement => {
     return () => clearInterval(interval);
   }, []);
 
-  const hours = time.getHours().toString().padStart(2, "0");
-  const minutes = time.getMinutes().toString().padStart(2, "0");
-  const seconds = time.getSeconds().toString().padStart(2, "0");
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+    timeZone: "Europe/Madrid",
+  });
+
+  const formattedTime = formatter.format(time);
 
   return (
     <time className="min-w-[145px]" suppressHydrationWarning>
-      Barcelona {hours}:{minutes}:{seconds}
+      Barcelona {formattedTime}
     </time>
   );
 };
