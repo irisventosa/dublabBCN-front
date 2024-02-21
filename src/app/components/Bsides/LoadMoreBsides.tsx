@@ -15,6 +15,7 @@ interface LoadMoreBsidesProps {
 
 const LoadMoreBsides = ({ isMobile }: LoadMoreBsidesProps) => {
   const pathname = usePathname();
+  const { isLoading, setIsLoading } = useSpinner();
   const { getBsides, getArchivedProfiles } = useDublabApi();
   const [page, setPage] = useState(1);
   const [profilesLoaded, setLoadedProfiles] = useState(false);
@@ -29,8 +30,6 @@ const LoadMoreBsides = ({ isMobile }: LoadMoreBsidesProps) => {
   const getterFunctionToPass = pathname.includes("/b-sides")
     ? getBsides
     : getArchivedProfiles;
-
-  const { isLoading, setIsLoading } = useSpinner();
 
   const loadMoreBsides = useCallback(async () => {
     try {
