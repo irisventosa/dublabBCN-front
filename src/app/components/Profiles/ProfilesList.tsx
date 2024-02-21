@@ -3,26 +3,38 @@ import { ApiProfile, Bside } from "../../types";
 import ProfileCard from "./ProfileCard";
 
 interface ProfilesListProps {
-  firstPageOfProfiles: ApiProfile[] | Bside[];
+  profilesOrBsides: ApiProfile[] | Bside[];
 }
 
-const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
+const ProfilesList = ({ profilesOrBsides }: ProfilesListProps) => {
   // const mousePosition = useMousePosition();
 
-  const columnsCount = 4;
-  const profilesPerColumn = Math.ceil(
-    firstPageOfProfiles.length / columnsCount
-  );
+  const splitProfilesIntoColumns = (
+    profilesOrBsides: ApiProfile[] | Bside[],
+    numColumns: number,
+    profilesPerColumn: number
+  ) => {
+    const columns = [];
 
-  const columns: (ApiProfile[] | Bside[])[] = [];
-  for (let i = 0; i < columnsCount; i++) {
-    columns.push(
-      firstPageOfProfiles.slice(
-        i * profilesPerColumn,
-        (i + 1) * profilesPerColumn
-      )
-    );
-  }
+    for (let i = 0; i < numColumns; i++) {
+      const columnStartIndex = i * profilesPerColumn;
+      const columnEndIndex = (i + 1) * profilesPerColumn;
+      const columnProfiles = profilesOrBsides.slice(
+        columnStartIndex,
+        columnEndIndex
+      );
+      columns.push(columnProfiles);
+    }
+    return columns;
+  };
+
+  const numOfColumns = 4;
+  const profilesPerColumn = Math.ceil(profilesOrBsides.length / numOfColumns);
+  const columns = splitProfilesIntoColumns(
+    profilesOrBsides,
+    numOfColumns,
+    profilesPerColumn
+  );
 
   // // Calculate the offset based on mouse position for horizontal movement
   // const calculateHorizontalOffset = (index: number) => {
@@ -74,7 +86,7 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
   };
 
   return (
-    <div className="grid grid-cols-4 px-[31px] gap-x-3 gap-y-14 mt-16 max-w-[100vw] sm:place-items-center ">
+    <div className="grid grid-cols-4 px-[31px] gap-x-3 gap-y-14 mt-8 max-w-[100vw] sm:place-items-center ">
       {columns.map((column, columnIndex) => (
         <ul
           key={columnIndex}
@@ -82,19 +94,23 @@ const ProfilesList = ({ firstPageOfProfiles }: ProfilesListProps) => {
             marginRight: columnIndex === 3 ? "16px" : undefined,
           }}
         >
-          {column.map((profile, profileIndex) => (
-            <li
-              key={profile.slug}
-              style={{
-                marginBottom: "200px",
-                position: "relative",
-                zIndex: profileIndex % 2 === 0 ? 1 : 0,
-              }}
-              className="px-4"
-            >
-              <ProfileCard profile={profile} height={getRandomHeight()} />
-            </li>
-          ))}
+          {column.map((profile, profileIndex, array) => {
+            const marginBottom =
+              profileIndex === array.length - 1 ? "136px" : "200px";
+            return (
+              <li
+                key={profile.slug}
+                style={{
+                  position: "relative",
+                  zIndex: profileIndex % 2 === 0 ? 1 : 0,
+                  marginBottom: marginBottom,
+                }}
+                className="px-4"
+              >
+                <ProfileCard profile={profile} height={getRandomHeight()} />
+              </li>
+            );
+          })}
         </ul>
       ))}
     </div>
