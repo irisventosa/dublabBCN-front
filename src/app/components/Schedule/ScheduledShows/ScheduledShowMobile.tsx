@@ -32,6 +32,11 @@ const ScheduledShowMobile = ({
       return showIsSpunk;
     }
 
+    if (airtimeShowName === "@cero.en.conducta") {
+      const showIsSpunk = "cero-en-conducta";
+      return showIsSpunk;
+    }
+
     if (airtimeShowName === "SoWhat") {
       const showIsJazz = "so-what";
       return showIsJazz;

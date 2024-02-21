@@ -48,7 +48,7 @@ const ScheduledBsideMobile = ({
             className="object-cover h-[137px] max-w-[137px]"
           />
         </div>
-        <ul className="flex gap-[2.9rem] flex-col pl46 mt-[16px] sm:pl-[101px]">
+        <ul className="flex gap-[2.9rem] flex-col pl-4 mt-[16px] sm:pl-[101px]">
           <li className=" text-sm sm:text-[32px] flex max-w-[230px]  flex-col">
             {airtimeShow.name}
           </li>

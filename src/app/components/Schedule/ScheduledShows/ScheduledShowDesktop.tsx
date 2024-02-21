@@ -23,6 +23,7 @@ const ScheduledShowDesktop = ({
   const { getProfileData } = useDublabApi();
 
   const formattedShowName = formatAirtimeShowName(airtimeShow.name);
+
   const { data: profileData, error } = useSWR<ApiProfile>(
     formattedShowName,
     getProfileData

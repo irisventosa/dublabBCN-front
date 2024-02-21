@@ -61,8 +61,6 @@ const ProfileCard = ({
             height={300}
             width={253}
             className="overflow-hidden sm:h-auto h-[280px] w-[353px] relative transition duration-300 ease-in-out group-hover:opacity-0 object-cover"
-            placeholder="blur"
-            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMM971fDwAEigIECrXFHQAAAABJRU5ErkJggg=="
           />
           <div
             className={`absolute inset-0 bg-${backgroundColor} bg-opacity-80 transition duration-300 ease-in-out opacity-0 px-4 group-hover:opacity-100`}
