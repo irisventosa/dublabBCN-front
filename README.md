@@ -1,4 +1,4 @@
-![image](https://github.com/JRaulPC/dublabBCN-front/assets/132898593/1d354c18-1e3e-42fb-a56b-bc01c43eb5cd)![Alt Text](https://cdn.discordapp.com/attachments/392765397910421507/1154170200569167922/title.png)
+
 
 # Description 📖
 
@@ -18,6 +18,7 @@ Airtime is a CMS used to manage online radios. In summary, this application is r
 
 ### Live Radio
 
+![image](https://cdn.discordapp.com/attachments/392765397910421507/1154170200569167922/title.png)
 
 
 ### Check week scheduled shows
