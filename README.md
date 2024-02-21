@@ -1,4 +1,4 @@
-![Alt Text](https://cdn.discordapp.com/attachments/392765397910421507/1154170200569167922/title.png)
+![image](https://github.com/JRaulPC/dublabBCN-front/assets/132898593/1d354c18-1e3e-42fb-a56b-bc01c43eb5cd)![Alt Text](https://cdn.discordapp.com/attachments/392765397910421507/1154170200569167922/title.png)
 
 # Description 📖
 
@@ -18,11 +18,11 @@ Airtime is a CMS used to manage online radios. In summary, this application is r
 
 ### Live Radio
 
-![Watch the video](https://cdn.discordapp.com/attachments/392765397910421507/1209892611473805312/Screen_Recording_2024-02-21_at_17.00.56.mov?ex=65e8934d&is=65d61e4d&hm=523af337b1faf3bf1858341035cc1bd474ee343aee5b26769c2ed7254b63f961&)
+
 
 ### Check week scheduled shows
 
-![Alt Text](https://cdn.discordapp.com/attachments/392765397910421507/1206012367239127133/list-2_1.png?ex=65da758a&is=65c8008a&hm=fc16feb48075c6a07a03766eb6570b380131b41a10fe7149d813bc76c0f99bb9&)
+![Alt Text]([https://cdn.discordapp.com/attachments/392765397910421507/1206012367239127133/list-2_1.png?ex=65da758a&is=65c8008a&hm=fc16feb48075c6a07a03766eb6570b380131b41a10fe7149d813bc76c0f99bb9&](https://media.discordapp.net/attachments/392765397910421507/1209892995822915704/Screenshot_2024-02-21_at_16.18.52.png?ex=65e893a8&is=65d61ea8&hm=a57ea3ba397b1df38c55ed8f9f3a14df18a78b94f3c0c405e25410fe54de74fc&=&format=webp&quality=lossless&width=895&height=468))
 
 
 # Getting Started 💫
