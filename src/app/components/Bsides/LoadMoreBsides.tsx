@@ -14,13 +14,17 @@ interface LoadMoreBsidesProps {
 }
 
 const LoadMoreBsides = ({ isMobile }: LoadMoreBsidesProps) => {
+  const pathname = usePathname();
   const { getBsides, getArchivedProfiles } = useDublabApi();
+  const [page, setPage] = useState(1);
+  const [profilesLoaded, setLoadedProfiles] = useState(false);
+  const [allPagesLoaded, setAllPagesLoaded] = useState(false);
   const [bsidesOrArchive, setBsidesOrArchive] = useState<
     Bside[] | ApiProfile[]
   >([]);
-  const pathname = usePathname();
-  const [page, setPage] = useState(1);
-  const { ref, inView } = useInView();
+
+  const threshold = 1;
+  const { ref, inView } = useInView({ threshold });
 
   const getterFunctionToPass = pathname.includes("/b-sides")
     ? getBsides
@@ -34,10 +38,16 @@ const LoadMoreBsides = ({ isMobile }: LoadMoreBsidesProps) => {
 
       const nextPage = page + 1;
 
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 500));
 
       const { results: firstResults } =
         (await getterFunctionToPass(nextPage)) ?? [];
+
+      const hasMore = nextPage < 17;
+
+      if (!hasMore) {
+        setAllPagesLoaded(true);
+      }
 
       const updatedBsidesOrArchive = [...bsidesOrArchive, ...firstResults] as
         | Bside[]
@@ -47,26 +57,29 @@ const LoadMoreBsides = ({ isMobile }: LoadMoreBsidesProps) => {
 
       setPage(nextPage);
       setIsLoading(false);
+      setLoadedProfiles(true);
     } catch (error: unknown) {
       throw new Error();
     }
   }, [bsidesOrArchive, getterFunctionToPass, page, setIsLoading]);
 
   useEffect(() => {
-    if (inView && !isLoading) {
+    if (inView && !isLoading && !profilesLoaded && !allPagesLoaded) {
       loadMoreBsides();
+      setTimeout(() => {
+        setLoadedProfiles(false);
+      }, 1000);
     }
-  }, [inView, isLoading, loadMoreBsides, page]);
+  }, [allPagesLoaded, profilesLoaded, inView, isLoading, loadMoreBsides, page]);
 
   return (
     <div className="max-w-[100vw] ">
       {isMobile ? (
         <ProfilesListMobile seasonProfiles={bsidesOrArchive} />
       ) : (
-        <ProfilesList firstPageOfProfiles={bsidesOrArchive} />
+        <ProfilesList profilesOrBsides={bsidesOrArchive} />
       )}
-      <div ref={ref}></div>
-      {isLoading && <Spinner />}
+      <div ref={ref}> {isLoading && <Spinner />}</div>
     </div>
   );
 };

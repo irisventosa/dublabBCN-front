@@ -26,7 +26,7 @@ const ResponsiveProfilesList = ({
           {mobileComponent ? (
             <ProfilesListMobile seasonProfiles={podcastsList!.results} />
           ) : (
-            <ProfilesList firstPageOfProfiles={podcastsList!.results} />
+            <ProfilesList profilesOrBsides={podcastsList!.results} />
           )}
           {!isShows && <LoadMoreBsides isMobile={mobileComponent} />}
         </>
