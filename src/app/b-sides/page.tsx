@@ -1,9 +1,9 @@
 import { Metadata } from "next";
-import ResponsiveProfilesList from "../components/Bsides/ResponsiveProfileList";
+import ArchivedResponsiveProfilesList from "../components/Archive/ArchiveResponsiveComponent";
 import useDublabApi from "../lib/hooks/useDublabApi";
 
 export const metadata: Metadata = {
-  title: "b-sides | dublab BCN",
+  title: "b-sides",
   description:
     "Pàgina on es poden veure els programes que diferents convidats han gravat a la ràdio.",
 };
@@ -29,7 +29,7 @@ const BsidesList = async () => {
         <span>bbb</span>
         <h2>sides</h2>
       </div>
-      <ResponsiveProfilesList podcastsList={bSidesList} />
+      <ArchivedResponsiveProfilesList podcastsList={bSidesList} />
     </main>
   );
 };

@@ -25,7 +25,7 @@ export const generateMetadata = ({ params }: ProfileDetailsProps): Metadata => {
   const slug = capitalizeWords(params.slug.replace("-", " "));
 
   return {
-    title: `dublab | ${slug}`,
+    title: `${slug}`,
     description: `Escolta l'arxiu de les retransmisions en directe del programa ${slug}`,
   };
 };
