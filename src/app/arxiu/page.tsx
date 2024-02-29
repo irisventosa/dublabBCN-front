@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import ResponsiveProfilesList from "../components/Bsides/ResponsiveProfileList";
+import ArchivedResponsiveProfilesList from "../components/Archive/ArchiveResponsiveComponent";
 import Spinner from "../components/ui/Spinner";
 import useDublabApi from "../lib/hooks/useDublabApi";
 
@@ -27,7 +27,7 @@ const ArchivedProfiles = async () => {
         <h2 className="pl-20">Arxiu</h2>
       </div>
       <section>
-        <ResponsiveProfilesList podcastsList={archivedProfiles} />
+        <ArchivedResponsiveProfilesList podcastsList={archivedProfiles} />
       </section>
     </main>
   );
