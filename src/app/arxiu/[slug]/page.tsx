@@ -90,7 +90,7 @@ const ArchivedProfileDetails = async ({ params }: ProfileDetailsProps) => {
         </section>
         <section className="flex-col items-end">
           <div className="text-2xl flex items-end justify-between mt-[58px] gap-16 mb-[17px]">
-            <h3 className=" h-fit ">Shows Relacionats</h3>
+            <h3 className="h-fit">Shows Relacionats</h3>
           </div>
           <hr className="border-white  w-full " />
           <RelatedShows shows={profileData.shows} />

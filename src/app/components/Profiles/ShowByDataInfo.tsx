@@ -74,8 +74,8 @@ const ShowByDataInfo = ({
             <ProfileLinks links={links} />
             <div className="flex items-start">
               <p
-                className={`text-sm sm:w-fit sm:max-w-[480px] sm:pr-0 ${
-                  links ? "" : "pl-[138px]"
+                className={`text-sm sm:w-fit sm:pr-0 ${
+                  links ? "" : "pl-[178px]"
                 }`}
               >
                 {description.__html}

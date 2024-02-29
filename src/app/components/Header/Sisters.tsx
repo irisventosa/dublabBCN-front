@@ -10,7 +10,7 @@ const Sisters = () => {
           {dublabSisters.map(({ label, route }) => (
             <li
               key={route}
-              className="h-6 px-3 py-3 flex items-center self-center "
+              className="h-6 px-3 py-3 flex items-center self-center hover:opacity-50"
             >
               <Link className="py-4 mt-[1px]" target="_blank" href={route}>
                 {label}
