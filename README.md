@@ -15,13 +15,21 @@ The application is fully responsive and all it's dessigns are adapted to diferen
 
 ## Features ✅
 
-### Live Radio
+### Landing Page
 
-![image](https://media.discordapp.net/attachments/392765397910421507/1209897946666246295/Screenshot_2024-02-21_at_16.18.52_1.png?ex=65e89845&is=65d62345&hm=aa847a73407829214abd8ba879c5b62ce0217fc5a067ca46352880a1bfdbb366&=&format=webp&quality=lossless)
+![image](https://cdn.discordapp.com/attachments/392765397910421507/1209892995822915704/Screenshot_2024-02-21_at_16.18.52.png?ex=660d7da8&is=65fb08a8&hm=093950403d725c5ce0be53f1866918eca031a95237a58338b1226b83293a56e7&)
 
-### Check week scheduled shows
+### Calendar
 
-![Alt Text](<[https://cdn.discordapp.com/attachments/392765397910421507/1206012367239127133/list-2_1.png?ex=65da758a&is=65c8008a&hm=fc16feb48075c6a07a03766eb6570b380131b41a10fe7149d813bc76c0f99bb9&](https://media.discordapp.net/attachments/392765397910421507/1209892995822915704/Screenshot_2024-02-21_at_16.18.52.png?ex=65e893a8&is=65d61ea8&hm=a57ea3ba397b1df38c55ed8f9f3a14df18a78b94f3c0c405e25410fe54de74fc&=&format=webp&quality=lossless&width=895&height=468)>)
+![image](https://cdn.discordapp.com/attachments/392765397910421507/1209900690584117248/Screenshot_2024-02-21_at_17.32.17_1.png?ex=660d84d3&is=65fb0fd3&hm=9e05caf5f45f26dab3f2596450d081bd4b12b2066d7ebc07d0bad1df6e625d1c&)
+
+### Program detail
+
+![image](https://cdn.discordapp.com/attachments/392765397910421507/1209900767318900756/Screenshot_2024-02-21_at_17.30.44_2.png?ex=660d84e5&is=65fb0fe5&hm=f2ee5140e8b6c809a6414a59efabb0dae7077537c890d5528e657d717aab81af&)
+
+### Shows list
+
+![image](https://cdn.discordapp.com/attachments/392765397910421507/1209901132038545469/Screenshot_2024-02-21_at_17.34.43_1.png?ex=660d853c&is=65fb103c&hm=bdf75cea7a8ffb71c5e6e43b21578d0d5c77a3d57eca807b29964f79b12c858a&)
 
 # Getting Started 💫
 
