@@ -84,20 +84,17 @@ export const formatAndSortRelatedShowsInfo = (shows: RadioApiShow[]) => {
   });
 
   formattedShows.sort((a, b) => {
-    const dateA = new Date(
-      `20${a.showDateForList.slice(-2)}-${a.showDateForList.slice(
-        3,
-        5
-      )}-${a.showDateForList.slice(0, 2)}`
-    ).getTime();
-    const dateB = new Date(
-      `20${b.showDateForList.slice(-2)}-${b.showDateForList.slice(
-        3,
-        5
-      )}-${b.showDateForList.slice(0, 2)}`
-    ).getTime();
+    const dateA = `20${a.showDateForList.slice(-2)}-${a.showDateForList.slice(
+      3,
+      5
+    )}-${a.showDateForList.slice(0, 2)}`;
 
-    return dateB - dateA;
+    const dateB = `20${b.showDateForList.slice(-2)}-${b.showDateForList.slice(
+      3,
+      5
+    )}-${b.showDateForList.slice(0, 2)}`;
+
+    return dateB.localeCompare(dateA);
   });
 
   return formattedShows;

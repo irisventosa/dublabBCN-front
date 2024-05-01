@@ -43,11 +43,17 @@ const ShowByDataInfo = ({
       <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-scroll scrollbar-hide sm:pr-[10rem]">
         <div className="flex sm:flex-row flex-col  justify-between items-start sm:items-end">
           <Button
-            className="uppercase"
+            className="uppercase flex flex-row gap-2"
             actionOnClick={() => listenShow(showUrl)}
           >
             Listen
+            <div className="flex flex-row gap-1 pb-2">
+              <div className="h-3 w-[2px] bg-black animate-moveLines"></div>
+              <div className="h-3 w-[2px] bg-black animate-moveLines delay-500"></div>
+              <div className="h-3 w-[2px] bg-black animate-moveLines delay-1000"></div>
+            </div>
           </Button>
+
           <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-80">
             {tags &&
               tags.map((tag, index) => (
@@ -75,7 +81,7 @@ const ShowByDataInfo = ({
             <div className="flex items-start">
               <p
                 className={`text-sm sm:w-fit sm:pr-0 ${
-                  links ? "" : "pl-[178px]"
+                  links ? "" : "pl-[138px]"
                 }`}
               >
                 {description.__html}

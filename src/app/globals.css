@@ -67,3 +67,30 @@ body {
   animation: growDown 300ms ease-in-out forwards;
   transform-origin: top center;
 }
+
+@keyframes moveLines {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-moveLines {
+  animation-name: moveLines;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+/* Define animation delays */
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.delay-1000 {
+  animation-delay: 1s;
+}

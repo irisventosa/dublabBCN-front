@@ -47,6 +47,8 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
 
   if (!profileData) return <Spinner />;
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <main className="mt-[255px] gap-[50px] flex sm:flex-row flex-col justify-between">
       <Image
@@ -81,7 +83,7 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
         <section className="flex flex-col-reverse gap-[35px] sm:gap-[140px] max-w-[700px]">
           <div
             className={`w-fit sm:max-w-none mt-8 ${
-              profileData.links ? "sm:gap-[5.1rem]" : "sm:gap-[11.6rem]"
+              profileData.links ? "sm:gap-[5.1rem]" : "sm:gap-[5.8rem]"
             }  flex flex-row `}
           >
             <ProfileLinks links={profileData.links} />
@@ -95,9 +97,9 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
         <section className="flex-col items-end">
           <div className="text-2xl flex items-end justify-between mt-[58px] gap-16 mb-[17px]">
             <h3 className="h-fit">Shows Relacionats</h3>
-            <span>2024</span>
+            <span className="pr-2">{currentYear}</span>
           </div>
-          <hr className="border-black  w-full " />
+          <hr className="border-black w-[99%] " />
           <RelatedShows shows={profileData.shows} />
         </section>
       </section>
