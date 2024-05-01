@@ -85,7 +85,7 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
                   )
                 )}
               </ul>
-              <hr className={`border-${lineColor}  w-full  `} />
+              <hr className={`border-${lineColor}  w-full `} />
             </article>
           );
         }
