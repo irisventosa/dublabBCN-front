@@ -26,21 +26,26 @@ const BsideInfo = ({
 
   return (
     <>
-      <section className="max-h-[750px]  scrollbar-hide  bg-black">
-        <div className="flex justify-between items-end">
+      <section className="sm:max-h-[750px] max-h-fit  scrollbar-hide  bg-black">
+        <div className="flex justify-between items-end p-5 ">
           <ul className="flex">
-            <li>
+            <li className="flex gap-2 leading-normal">
               <Button
                 className="uppercase"
                 actionOnClick={() => listenToBside(showUrl)}
               >
                 Listen
               </Button>
+              <div className="flex flex-row gap-1 pb-2">
+                <div className="h-3 w-[2px] bg-white animate-moveLines"></div>
+                <div className="h-3 w-[2px] bg-white animate-moveLines delay-500"></div>
+                <div className="h-3 w-[2px] bg-white animate-moveLines delay-1000"></div>
+              </div>
             </li>
             <span className="loader"></span>
           </ul>
           {tags && (
-            <ul className="flex gap-[10px] opacity-40 mr-8">
+            <ul className="flex gap-[10px] opacity-40 mr-4 sm:mr-8">
               {tags.map((tag, index) => (
                 <li
                   key={index}
@@ -52,11 +57,11 @@ const BsideInfo = ({
             </ul>
           )}
         </div>
-        <h2 className="text-5xl h-[58px] mt-[56px]">{name}</h2>
-        <section className="flex gap-[140px]">
+        <section className=" p-5 pt-1 gap-[140px]">
+          <h2 className="text-5xl h-[58px]">{name}</h2>
           <div
             dangerouslySetInnerHTML={description}
-            className="text-sm w-[445px] mt-[140px]"
+            className=" text-xs sm:text-sm sm:max-w-[750px] mt-3   "
           />
         </section>
         <section className="flex-col items-end">
