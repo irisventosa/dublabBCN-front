@@ -6,16 +6,16 @@ const getProfilesOrBsides = async <T>(fetchCallback: FetchCallback<T>) => {
   let numberOfPages;
 
   if (fetchCallback.name === "getArchivedProfiles") {
-    numberOfPages = 16;
-  } else if (fetchCallback.name === "getProfiles") {
-    numberOfPages = 8;
-  } else {
     numberOfPages = 18;
+  } else if (fetchCallback.name === "getProfiles") {
+    numberOfPages = 7;
+  } else {
+    numberOfPages = 20;
   }
 
   const apiRequestPages = Array.from(
     { length: numberOfPages },
-    (_, index) => `${index + 1}`
+    (_, index) => `${index + 1}`,
   );
 
   const apiProfilesOrBsides = await Promise.all(
@@ -26,7 +26,7 @@ const getProfilesOrBsides = async <T>(fetchCallback: FetchCallback<T>) => {
       } catch (error) {
         throw new Error(`Error fetching data for page ${page}:`);
       }
-    })
+    }),
   );
 
   return apiProfilesOrBsides;
