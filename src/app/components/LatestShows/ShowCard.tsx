@@ -32,7 +32,7 @@ const ShowCard = ({
   const showNamePath = formatslugToGetPathName(slug);
   const showDateforCard = formatDateFromShow(date);
 
-  const { data: profile } = useSWR<ApiProfile>(showName, getProfileData);
+  const { data: profile } = useSWR<ApiProfile | null>(showName, getProfileData);
 
   const showUrl = extractUrlForEmbedPlayer(mixcloud_url);
 

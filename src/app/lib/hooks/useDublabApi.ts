@@ -42,7 +42,6 @@ const useDublabApi = () => {
       if (showName === "br") {
         finalShowName = "please-come-to-brasil";
       }
-
       if (showName === "When...Plants...Sing") {
         finalShowName = "whenplantssing";
       }

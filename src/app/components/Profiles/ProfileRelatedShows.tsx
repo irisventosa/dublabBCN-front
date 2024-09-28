@@ -23,9 +23,9 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
 
   const formattedShows = formatAndSortRelatedShowsInfo(shows);
 
-  const { data: profileData } = useSWR<ApiProfile>(
+  const { data: profileData } = useSWR<ApiProfile | null>(
     formattedShows[0]?.slugToUrl,
-    getterFunctionToPass
+    getterFunctionToPass,
   );
 
   if (!formattedShows || formattedShows.length === 0) {
@@ -82,13 +82,13 @@ const RelatedShows = ({ shows }: RelatedShowsProps) => {
                       <li key={tag}>{tag}</li>
                       {index !== array.length - 1 && <li>&nbsp;///&nbsp;</li>}
                     </>
-                  )
+                  ),
                 )}
               </ul>
               <hr className={`border-${lineColor}  w-full `} />
             </article>
           );
-        }
+        },
       )}
     </section>
   );

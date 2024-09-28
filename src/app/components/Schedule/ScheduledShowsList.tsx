@@ -49,7 +49,7 @@ const ScheduledShowsList = ({
           </li>
           {listPosition < scheduleByHours.length - 1 && (
             <hr className="w-full border-black" />
-          )}{" "}
+          )}
         </>
       ))}
     </ul>
