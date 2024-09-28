@@ -20,23 +20,34 @@ const ScheduledShowDesktop = ({
   airtimeShow,
   listPosition,
 }: ScheduledShowProps) => {
-  const { getProfileData } = useDublabApi();
+  const { getProfileData, getArchivedProfileData } = useDublabApi();
 
   const formattedShowName = formatAirtimeShowName(airtimeShow.name);
 
+  // Custom fetcher function to check both profile and archived profile
+  const fetchProfileData = async (showName: string) => {
+    let profile = await getProfileData(showName);
+
+    if (profile === null || profile === undefined) {
+      profile = await getArchivedProfileData(showName);
+    }
+    return profile;
+  };
+
+  // Using SWR with custom fetcher
   const { data: profileData, error } = useSWR<ApiProfile>(
     formattedShowName,
-    getProfileData
+    fetchProfileData,
   );
 
   const isListPositionLessThanOne = listPosition < 1;
 
   const broadcastTime: string = extractAndFormatShowDate(
-    airtimeShow.start_timestamp
+    airtimeShow.start_timestamp,
   );
   const { onAirStyles, firstSeparatorLine, borderColor } = calculateShowStyles(
     airtimeShow.start_timestamp,
-    isListPositionLessThanOne
+    isListPositionLessThanOne,
   );
 
   if (!profileData && !error) {
@@ -46,7 +57,7 @@ const ScheduledShowDesktop = ({
   if (error || !profileData) {
     return (
       <div className="text-center flex p-8">
-        <p className="text-black">Informació horària disponible.</p>
+        <p className="text-black">Informació horària no disponible.</p>
       </div>
     );
   }
@@ -81,7 +92,7 @@ const ScheduledShowDesktop = ({
             </ul>
           </li>
         </ul>
-        <ul className="flex flex-col gap-[108px] items-end absolute right-0 p-[30px] ">
+        <ul className="flex flex-col gap-[108px] items-end absolute right-0 p-[30px]">
           <BroadcastTime broadcastTime={broadcastTime} />
           <li>
             <Link

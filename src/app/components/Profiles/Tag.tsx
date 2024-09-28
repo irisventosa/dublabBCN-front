@@ -4,7 +4,7 @@ interface TagProps {
 }
 
 const Tags = ({ tags, isShows }: TagProps) => {
-  const backgroundColor = isShows ? "gray-600" : "black";
+  const backgroundColor = isShows ? "white" : "black";
 
   return (
     <>
@@ -15,7 +15,7 @@ const Tags = ({ tags, isShows }: TagProps) => {
           {tags.map((tag) => (
             <>
               <li
-                className={`bg-${backgroundColor}] border-solid border-[1px] border-slate-600 rounded-md h-6 min-w-fit flex items-center pt-[2px] px-3`}
+                className={`bg-${backgroundColor} border-solid border-[1px] z-50 border-slate-600 rounded-md h-6 min-w-fit flex items-center pt-[3px] px-3`}
                 key={tag}
               >
                 {tag}

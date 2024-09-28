@@ -1,14 +1,20 @@
 import he from "he";
 
 const formatAirtimeShowName = (airtimeShowName: string) => {
+  airtimeShowName = airtimeShowName.replace(/\(R\)$/i, "").trim();
   if (airtimeShowName === "When...Plants...Sing") {
     const showIsPlants = "whenplantssing";
     return showIsPlants;
   }
 
   if (airtimeShowName === "@cero.en.conducta") {
-    const showIsPlants = "cero-en-conducta";
-    return showIsPlants;
+    const showIsCero = "cero-en-conducta";
+    return showIsCero;
+  }
+
+  if (airtimeShowName === "MacGuffin 2.0") {
+    const showIsNeus = "macguffin-20";
+    return showIsNeus;
   }
 
   if (airtimeShowName === "house-of-spunk-") {

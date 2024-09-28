@@ -20,14 +20,14 @@ const archivedProfilesList = "https://api.dublab.es/api/archived/?page=";
 const useDublabApi = () => {
   const getProfiles = async (page: string | number) => {
     const { data: profiles } = await axios.get<ApiProfilesList>(
-      `${profileListUrl}${page}`
+      `${profileListUrl}${page}`,
     );
     return profiles;
   };
 
   const getArchivedProfiles = async (page: string | number) => {
     const { data: archivedProfiles } = await axios.get<ApiProfilesList>(
-      `${archivedProfilesList}${page}`
+      `${archivedProfilesList}${page}`,
     );
     return archivedProfiles;
   };
@@ -54,23 +54,29 @@ const useDublabApi = () => {
       }
 
       const { data: profile } = await axios.get<ApiProfile>(
-        `${profileDataUrl}${finalShowName}`
+        `${profileDataUrl}${finalShowName}`,
       );
 
       return profile;
     } catch (error: unknown) {
-      const message = "profile is not currently online";
-      throw new Error(message);
+      // eslint-disable-next-line no-console
+      console.error(`Error fetching profile for show "${showName}":`, error);
+
+      return null;
     }
   };
 
   const getArchivedProfileData = async (showName: string) => {
     try {
       const trimmedName = showName.toLowerCase().replace(/\s+$/, "");
-      const formatedShowName = trimmedName.replace(/\s+/g, "-");
+      let formatedShowName = trimmedName.replace(/\s+/g, "-");
+
+      if (formatedShowName === "MacGuffin 2.0") {
+        formatedShowName = "macguffin-20";
+      }
 
       const { data: profile } = await axios.get<ApiProfile>(
-        `${archivedProfileData}${formatedShowName}`
+        `${archivedProfileData}${formatedShowName}`,
       );
 
       return profile;
@@ -88,21 +94,21 @@ const useDublabApi = () => {
 
   const getLatestsShowsData = async (page: number) => {
     const { data: latestShows } = await axios.get<LatestShowsData>(
-      `${latestShowsData}${page}`
+      `${latestShowsData}${page}`,
     );
     return latestShows;
   };
 
   const getBsides = async (page: string | number) => {
     const { data: bSides } = await axios.get<ApiBsidesList>(
-      `${bsidesListUrl}${page}`
+      `${bsidesListUrl}${page}`,
     );
     return bSides;
   };
 
   const getBsideData = async (bSideSlug: string) => {
     const { data: bSide } = await axios.get<Bside>(
-      `${bsideDataUrl}${bSideSlug}`
+      `${bsideDataUrl}${bSideSlug}`,
     );
     return bSide;
   };

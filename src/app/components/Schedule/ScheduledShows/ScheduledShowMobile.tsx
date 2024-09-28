@@ -9,6 +9,7 @@ import useSWR from "swr";
 import he from "he";
 import BroadcastTime from "../BroadcastTime";
 import Spinner from "../../ui/Spinner";
+import formatAirtimeShowName from "@/app/lib/formatAirtimeShowName";
 
 interface ScheduledShowProps {
   airtimeShow: AirtimeShow;
@@ -19,54 +20,29 @@ const ScheduledShowMobile = ({
   airtimeShow,
   listPosition,
 }: ScheduledShowProps) => {
-  const { getProfileData } = useDublabApi();
+  const { getProfileData, getArchivedProfileData } = useDublabApi();
 
-  const formatString = (airtimeShowName: string) => {
-    if (airtimeShowName === "When...Plants...Sing") {
-      const showIsPlants = "whenplantssing";
-      return showIsPlants;
+  const formattedShowName = formatAirtimeShowName(airtimeShow.name);
+
+  const fetchProfileData = async (showName: string) => {
+    let profile = await getProfileData(showName);
+
+    if (profile === null || profile === undefined) {
+      profile = await getArchivedProfileData(showName);
     }
-
-    if (airtimeShowName === "house-of-spunk-") {
-      const showIsSpunk = "house-of-spunk";
-      return showIsSpunk;
-    }
-
-    if (airtimeShowName === "@cero.en.conducta") {
-      const showIsSpunk = "cero-en-conducta";
-      return showIsSpunk;
-    }
-
-    if (airtimeShowName === "SoWhat") {
-      const showIsJazz = "so-what";
-      return showIsJazz;
-    }
-
-    const decodedName = he.decode(airtimeShowName);
-
-    const decodeAndFixShowName = decodedName
-      .toLowerCase()
-      .normalize("NFD") // Decompose characters (remove diacritical marks)
-      .replace(/\s+/g, "-")
-      .replace(/[^a-z0-9\s-]/g, "") // Remove non-alphanumeric characters except spaces and hyphens
-      .replace(/\./g, "") // Remove periods
-      .normalize(); // Compose characters back
-
-    return decodeAndFixShowName;
+    return profile;
   };
 
-  const formattedShowName = formatString(airtimeShow.name);
-
+  // Using SWR with custom fetcher
   const { data: profileData, error } = useSWR<ApiProfile>(
     formattedShowName,
-    getProfileData
+    fetchProfileData,
   );
-
   const isListPositionLessThanOne = listPosition < 1;
 
   const dayOfAppCalendar = new Date(airtimeShow.start_timestamp).getDay();
   const broadcastTime: string = extractAndFormatShowDate(
-    airtimeShow.start_timestamp
+    airtimeShow.start_timestamp,
   );
 
   const showStartHour = parseInt(broadcastTime);
@@ -95,7 +71,7 @@ const ScheduledShowMobile = ({
   if (error || !profileData) {
     return (
       <div className="text-center flex p-8">
-        <p className="text-black">Informació horària disponible.</p>
+        <p className="text-black">Informació horària no disponible.</p>
       </div>
     );
   }

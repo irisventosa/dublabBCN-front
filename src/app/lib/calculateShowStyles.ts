@@ -2,7 +2,7 @@ import extractAndFormatShowDate from "./extractAndFormatShowDate";
 
 const calculateShowStyles = (
   startTimestamp: string,
-  isListPositionLessThanOne: boolean
+  isListPositionLessThanOne: boolean,
 ) => {
   const dayOfAppCalendar = new Date(startTimestamp).getDay();
   const broadcastTime: string = extractAndFormatShowDate(startTimestamp);
@@ -22,7 +22,7 @@ const calculateShowStyles = (
       : {
           onAirStyles: "flex flex-row h-[212px] w-full",
           firstSeparatorLine: isListPositionLessThanOne,
-          borderColor: "border border-black rounded-md pt-[2px] px-2 ",
+          borderColor: "border border-black rounded-md pt-[3px] px-2 ",
         };
 
   return { onAirStyles, firstSeparatorLine, borderColor };
