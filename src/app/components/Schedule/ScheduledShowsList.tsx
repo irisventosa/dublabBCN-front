@@ -21,7 +21,7 @@ const ScheduledShowsList = ({
     schedule &&
     schedule.filter((show) => {
       const endTimestamp = parseInt(
-        extractAndFormatShowDate(show.end_timestamp)
+        extractAndFormatShowDate(show.end_timestamp),
       );
       const showDayOfWeek = new Date(show.end_timestamp).getDay();
 
@@ -47,7 +47,9 @@ const ScheduledShowsList = ({
               <div>Informació no disponible</div>
             )}
           </li>
-          <hr className="w-full border-black" />
+          {listPosition < scheduleByHours.length - 1 && (
+            <hr className="w-full border-black" />
+          )}{" "}
         </>
       ))}
     </ul>
