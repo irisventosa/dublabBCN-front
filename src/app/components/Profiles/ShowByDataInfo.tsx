@@ -42,7 +42,7 @@ const ShowByDataInfo = ({
 
   return (
     <>
-      <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-scroll scrollbar-hide sm:pr-[10rem]">
+      <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-scroll scrollbar-hide sm:pr-[2rem]">
         <div className="flex sm:flex-row flex-col  justify-between items-start sm:items-end">
           <Button
             className="uppercase flex flex-row gap-2"
