@@ -25,9 +25,11 @@ const ShowByDataInfo = ({
   links,
 }: ShowByDataInfoProps) => {
   const [iFrameShow, setIFrameShow] = useState("");
+  const [isPlaying, setIsPLaying] = useState(false);
 
   const listenShow = (mixcloudLink: string) => {
     setIFrameShow(mixcloudLink);
+    setIsPLaying(!isPlaying);
   };
 
   const pathname = usePathname();
@@ -46,12 +48,15 @@ const ShowByDataInfo = ({
             className="uppercase flex flex-row gap-2"
             actionOnClick={() => listenShow(showUrl)}
           >
-            Listen
-            <div className="flex flex-row gap-1 pb-2">
-              <div className="h-3 w-[2px] bg-black animate-moveLines"></div>
-              <div className="h-3 w-[2px] bg-black animate-moveLines delay-500"></div>
-              <div className="h-3 w-[2px] bg-black animate-moveLines delay-1000"></div>
-            </div>
+            {isPlaying ? (
+              <div className="flex flex-row gap-1 pb-2">
+                <div className="h-3 w-[2px] bg-black animate-moveLines" />
+                <div className="h-3 w-[2px] bg-black animate-moveLines delay-500" />
+                <div className="h-3 w-[2px] bg-black animate-moveLines delay-1000" />
+              </div>
+            ) : (
+              <span>►</span>
+            )}
           </Button>
 
           <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-80">

@@ -5,10 +5,15 @@ import Contact from "./Contact";
 import Credits from "./Credits";
 import LegalLinks from "./LegalLinks";
 import SocialLinks from "./SocialLinks";
+import { usePathname } from "next/navigation";
 
 const Footer = (): React.ReactElement => {
+  const pathname = usePathname();
+
   return (
-    <footer className=" h-fit  sm:h-[484px] w-full bg-black text-white border-t border-white ">
+    <footer
+      className={`h-fit  sm:h-[484px] w-full bg-black text-white  ${pathname.includes("arxiu") ? "border-t border-white" : ""}  `}
+    >
       <Image
         src={"/assets/D-B_vector.svg"}
         width={68.48}
