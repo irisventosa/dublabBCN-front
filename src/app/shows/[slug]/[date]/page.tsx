@@ -57,7 +57,7 @@ const ShowByDate = async ({ params }: ShowByDateProps) => {
   };
 
   return (
-    <main className="mt-[255px] gap-[50px] flex sm:flex-row flex-col justify-between">
+    <main className="mt-[155px] md:mt-[255px] gap-[50px] flex sm:flex-row flex-col justify-between">
       <Image
         src={profileData.picture}
         alt={""}

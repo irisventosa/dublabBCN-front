@@ -12,7 +12,7 @@ const Footer = (): React.ReactElement => {
 
   return (
     <footer
-      className={`h-fit  sm:h-[484px] w-full bg-black text-white  ${pathname.includes("arxiu") ? "border-t border-white" : ""}  `}
+      className={`h-fit  sm:h-[484px] w-full bg-black text-white  ${pathname.includes("arxiu") ? "border-t border-white" : ""} ${pathname.includes("b-sides") ? "border-t border-white" : ""}  `}
     >
       <Image
         src={"/assets/D-B_vector.svg"}

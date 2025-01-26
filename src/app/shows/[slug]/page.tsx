@@ -50,7 +50,7 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <main className="mt-[255px] gap-[50px] flex sm:flex-row flex-col justify-between">
+    <main className="mt-[155px] md:mt-[255px] gap-[50px] flex sm:flex-row flex-col justify-between p-4 md:p-0 ">
       <Image
         src={profileData.picture}
         alt={""}
@@ -58,7 +58,7 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
         height={327}
         className="sm:h-[727px] h-[358px] max-w-[660px] w-auto object-cover sm:p-0 p-4 "
       />
-      <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-y-scroll scrollbar-hide sm:pr-[2rem]">
+      <section className="lg:max-h-[700px] sm:w-[100vw] md:overflow-y-scroll scrollbar-hide sm:pr-[2rem]">
         <div className="flex justify-between items-end">
           <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-40">
             {profileData.tags.map((tag) => (
@@ -80,15 +80,15 @@ const ProfileDetails = async ({ params }: ProfileDetailsProps) => {
             </li>
           </ul>
         </div>
-        <section className="flex flex-col-reverse gap-[35px] sm:gap-[140px] max-w-[700px]">
+        <section className="flex flex-col-reverse gap-[35px] sm:gap-[140px] ">
           <div
             className={`w-fit sm:max-w-none mt-8 ${
-              profileData.links ? "sm:gap-[5.1rem]" : "sm:gap-[5.8rem]"
+              profileData.links ? "md:gap-[5.1rem]" : "sm:gap-[5.8rem]"
             }  flex flex-row `}
           >
             <ProfileLinks links={profileData.links} />
             <div className="flex items-start">
-              <p className="text-sm sm:w-fit sm:max-w-[480px] sm:pr-0">
+              <p className="text-sm sm:w-fit  sm:pr-0">
                 {profileData.description}
               </p>
             </div>

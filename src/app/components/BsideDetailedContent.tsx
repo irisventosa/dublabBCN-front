@@ -19,9 +19,11 @@ const BsideInfo = ({
   tracklist,
 }: BsideInfoProps) => {
   const [iFrameShow, setIFrameShow] = useState("");
+  const [isPlaying, setIsPLaying] = useState(false);
 
   const listenToBside = (mixcloudLink: string) => {
     setIFrameShow(mixcloudLink);
+    setIsPLaying(!isPlaying);
   };
 
   return (
@@ -31,16 +33,19 @@ const BsideInfo = ({
           <ul className="flex">
             <li className="flex gap-2 leading-normal">
               <Button
-                className="uppercase"
+                className="uppercase flex flex-row gap-2"
                 actionOnClick={() => listenToBside(showUrl)}
               >
-                Listen
+                {isPlaying ? (
+                  <div className="flex flex-row gap-1 pb-2">
+                    <div className="h-3 w-[2px] bg-white animate-moveLines" />
+                    <div className="h-3 w-[2px] bg-white animate-moveLines delay-500" />
+                    <div className="h-3 w-[2px] bg-white animate-moveLines delay-1000" />
+                  </div>
+                ) : (
+                  <span>►</span>
+                )}
               </Button>
-              <div className="flex flex-row gap-1 pb-2">
-                <div className="h-3 w-[2px] bg-white animate-moveLines"></div>
-                <div className="h-3 w-[2px] bg-white animate-moveLines delay-500"></div>
-                <div className="h-3 w-[2px] bg-white animate-moveLines delay-1000"></div>
-              </div>
             </li>
             <span className="loader"></span>
           </ul>

@@ -6,7 +6,7 @@ interface ProfileLinksProps {
 
 const ProfileLinks = ({ links }: ProfileLinksProps) => {
   if (links === null) {
-    return <div className="h-[68px] w-[203px]"></div>;
+    return <div className="h-[68px] md:w-[203px]"></div>;
   }
 
   const formatLinkText = (link: string): string => {
@@ -38,7 +38,7 @@ const ProfileLinks = ({ links }: ProfileLinksProps) => {
                   href={link}
                 >{`${String(index + 1).padStart(
                   3,
-                  "0"
+                  "0",
                 )} ${formattedUrl}`}</Link>
               </li>
             );

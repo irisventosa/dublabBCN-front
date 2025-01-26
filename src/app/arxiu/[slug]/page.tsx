@@ -52,7 +52,7 @@ const ArchivedProfileDetails = async ({ params }: ProfileDetailsProps) => {
         height={327}
         className="sm:h-[727px] h-[358px] max-w-[660px] w-auto object-cover sm:p-0 p-4 "
       />
-      <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-y-scroll scrollbar-hide sm:pr-[10rem]">
+      <section className="md:max-h-[700px] px-4 sm:w-[100vw] md:overflow-y-scroll scrollbar-hide sm:pr-[2rem]">
         <div className="flex justify-between items-end">
           <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-70">
             {profileData.tags.map((tag) => (
@@ -77,7 +77,7 @@ const ArchivedProfileDetails = async ({ params }: ProfileDetailsProps) => {
         <section className="flex flex-col-reverse gap-[35px] sm:gap-[140px] max-w-[700px]">
           <div
             className={`w-fit sm:max-w-none mt-8 ${
-              profileData.links ? "sm:gap-[5.1rem]" : "sm:gap-[16rem]"
+              profileData.links ? "md:gap-[5.1rem]" : "sm:gap-[16rem]"
             }  flex flex-row `}
           >
             <ProfileLinks links={profileData.links} />

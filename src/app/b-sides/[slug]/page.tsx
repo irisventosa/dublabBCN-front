@@ -49,7 +49,7 @@ const BsideDetails = async ({ params }: BSideDetailsProps) => {
         alt={""}
         width={660}
         height={327}
-        className="h-[727px] object-cover"
+        className="md:h-[727px] object-cover"
       />
       <BsideInfo
         showUrl={showUrl}

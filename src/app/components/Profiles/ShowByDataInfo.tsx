@@ -42,7 +42,7 @@ const ShowByDataInfo = ({
 
   return (
     <>
-      <section className="max-h-[700px] pl-4 sm:w-[100vw] overflow-scroll scrollbar-hide sm:pr-[2rem]">
+      <section className="md:max-h-[700px] px-4 sm:w-[100vw] overflow-scroll scrollbar-hide sm:pr-[2rem]">
         <div className="flex sm:flex-row flex-col  justify-between items-start sm:items-end">
           <Button
             className="uppercase flex flex-row gap-2"
@@ -50,15 +50,20 @@ const ShowByDataInfo = ({
           >
             {isPlaying ? (
               <div className="flex flex-row gap-1 pb-2">
-                <div className="h-3 w-[2px] bg-black animate-moveLines" />
-                <div className="h-3 w-[2px] bg-black animate-moveLines delay-500" />
-                <div className="h-3 w-[2px] bg-black animate-moveLines delay-1000" />
+                <div
+                  className={`h-3 w-[2px] bg-${lineColor} animate-moveLines`}
+                />
+                <div
+                  className={`h-3 w-[2px] bg-${lineColor} animate-moveLines delay-500`}
+                />
+                <div
+                  className={`h-3 w-[2px] bg-${lineColor} animate-moveLines delay-1000`}
+                />
               </div>
             ) : (
               <span>►</span>
             )}
           </Button>
-
           <ul className="flex gap-[10px] pr-4 opacity-100 sm:opacity-80">
             {tags &&
               tags.map((tag, index) => (
@@ -81,12 +86,12 @@ const ShowByDataInfo = ({
           </ul>
         </div>
         <section className="flex flex-col-reverse gap-[35px] sm:gap-[140px] max-w-fit">
-          <div className="w-fit sm:max-w-none mt-8 gap-[5.1rem] flex flex-row ">
+          <div className="w-fit sm:max-w-none mt-8 md:gap-[5.1rem] flex flex-row ">
             <ProfileLinks links={links} />
             <div className="flex items-start">
               <p
                 className={`text-sm sm:w-fit sm:pr-0 ${
-                  links ? "" : "pl-[138px]"
+                  links ? "" : "md:pl-[138px]"
                 }`}
               >
                 {description.__html}
