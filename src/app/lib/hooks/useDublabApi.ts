@@ -8,14 +8,14 @@ import {
 } from "@/app/types";
 import axios from "axios";
 
-const profileDataUrl = "https://api.dublab.es/api/profiles/";
-const bsideDataUrl = "https://api.dublab.es/api/b-sides/";
-const archivedProfileData = "https://api.dublab.es/api/archived/";
-const profileListUrl = "https://api.dublab.es/api/profiles/?page=";
-const bsidesListUrl = "https://api.dublab.es/api/b-sides/?page=";
-const latestShowsData = "https://api.dublab.es/api/shows/?page=";
-const showData = "https://api.dublab.es/api/shows/";
-const archivedProfilesList = "https://api.dublab.es/api/archived/?page=";
+const profileDataUrl = "http://109.69.8.21:8000/api/profiles/";
+const bsideDataUrl = "http://109.69.8.21:8000/api/b-sides/";
+const archivedProfileData = "http://109.69.8.21:8000/api/archived/";
+const profileListUrl = "http://109.69.8.21:8000/api/profiles/?page=";
+const bsidesListUrl = "http://109.69.8.21:8000/api/b-sides/?page=";
+const latestShowsData = "http://109.69.8.21:8000/api/shows/?page=";
+const showData = "http://109.69.8.21:8000/api/shows/";
+const archivedProfilesList = "http://109.69.8.21:8000/api/archived/?page=";
 
 const useDublabApi = () => {
   const getProfiles = async (page: string | number) => {
