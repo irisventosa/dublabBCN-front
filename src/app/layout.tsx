@@ -3,6 +3,7 @@ import localfont from "next/font/local";
 import AppProvider from "./contexts/providers/Index";
 import "./globals.css";
 import { Metadata } from "next";
+import Link from "next/link";
 
 const favorit = localfont({
   src: "./fonts/Favorit_Regular_Mono.ttf",
@@ -20,6 +21,13 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body className={`${favorit.variable} font-favorit antialiased`}>
         <AppProvider>{children}</AppProvider>
         <Analytics />
+        <Link
+          target="_blank"
+          href="https://www.mixcloud.com/dublabes/subscribe/"
+          className="fixed bottom-2 left-2 p-2  bg-white border border-black rounded hover:bg-gray-200 text-sm md:text-base"
+        >
+          Donate
+        </Link>
       </body>
     </html>
   );

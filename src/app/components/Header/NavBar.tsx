@@ -25,6 +25,9 @@ const NavBar = (): React.ReactElement => {
                   <Link href={route}>{label}</Link>
                 </li>
               ))}
+              <li className="pt-[2px] hover:opacity-50">
+                <Link href="https://dublabbcn.bigcartel.com/">merch</Link>
+              </li>
             </ul>
           </nav>
         </div>
