@@ -23,6 +23,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <Analytics />
         <Link
           target="_blank"
+          rel="noopener noreferrer"
           href="https://www.mixcloud.com/dublabes/subscribe/"
           className="fixed bottom-2 left-2 p-2  bg-white border border-black rounded hover:bg-gray-200 text-sm md:text-base"
         >
