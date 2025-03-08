@@ -19,7 +19,7 @@ interface ShowCardProps {
   onClickPlayback: (show: string) => void;
 }
 
-const dublabApi = "http://109.69.8.21:8000";
+const dublabApi = "https://api.dublab.cat";
 
 const ShowCard = ({
   show: { slug, mixcloud_url, tags, host, profile_picture, date },
