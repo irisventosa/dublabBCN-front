@@ -97,7 +97,7 @@ const ShowCard = ({
         </li>
         <li>
           <span className={`text-[8px] sm:text-sm leading-5`}>
-            Hosted by {host}
+            {host && `Hosted by ${host}`}
           </span>
         </li>
       </ul>

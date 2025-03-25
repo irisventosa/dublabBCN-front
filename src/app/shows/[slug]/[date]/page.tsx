@@ -55,7 +55,7 @@ const ShowByDate = async ({ params }: ShowByDateProps) => {
   const description = {
     __html: profileData.description,
   };
-
+  //console.log(profileData.picture);
   return (
     <main className="mt-[155px] md:mt-[255px] gap-[50px] flex sm:flex-row flex-col justify-between">
       <Image
