@@ -2,6 +2,7 @@ import ShowByDataInfo from "@/app/components/Profiles/ShowByDataInfo";
 import extractUrlForEmbedPlayer from "@/app/lib/extractUrlForEmbedPlayer";
 import useDublabApi from "@/app/lib/hooks/useDublabApi";
 import { Metadata } from "next";
+import Image from "next/image";
 
 interface ShowByDateProps {
   params: {
@@ -57,7 +58,7 @@ const ShowByDate = async ({ params }: ShowByDateProps) => {
 
   return (
     <main className="mt-[155px] md:mt-[255px] gap-[50px] flex sm:flex-row flex-col justify-between">
-      <img
+      <Image
         src={profileData.picture}
         alt={""}
         width={660}

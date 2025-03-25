@@ -2,7 +2,7 @@
 "use client";
 import descriptionFormatting from "@/app/lib/descriptionFormatting";
 import { formatSlugToGetShowName } from "@/app/lib/processSlug";
-import Image from "next/image";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -55,11 +55,9 @@ const ProfileCard = ({
     <article className={`w-[353px] h-[${height}] relative leading-[120%]`}>
       <div className="block group relative">
         <div className="group relative brightness-75 hover:brightness-100  ">
-          <Image
+          <img
             src={defaultImage}
             alt={`Imatge del programa ${slug}`}
-            height={300}
-            width={253}
             className="overflow-hidden sm:h-auto h-[280px] w-[353px] relative transition duration-300 ease-in-out group-hover:opacity-0 object-cover"
           />
           <div
