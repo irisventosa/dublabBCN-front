@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && npx @cloudflare/next-on-pages",
     "start": "next start",
     "lint": "next lint"
   },
@@ -12,11 +12,12 @@
     "@headlessui/react": "^1.7.17",
     "@types/he": "^1.2.3",
     "@vercel/analytics": "^1.2.2",
-    "next": "^14.0.1",
+    "next": "15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.16",
     "@gsap/react": "^2.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
