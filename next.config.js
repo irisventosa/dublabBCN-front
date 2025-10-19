@@ -23,4 +23,10 @@ const nextConfig = {
   },
 };
 
+// Prevent recursive OpenNext build
+if (process.env.OPENNEXT_BUILD) {
+  console.log("Skipping nested OpenNext build...");
+  process.exit(0);
+}
+
 module.exports = nextConfig;
