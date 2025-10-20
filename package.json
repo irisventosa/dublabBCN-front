@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build-test": "next build && cross-env OPENNEXT_BUILD=1 opennextjs-cloudflare build",
+    "build-test": "next build && cross-env OPENNEXT_BUILD=1 opennextjs-cloudflare build --outDir .vercel/output",
     "start": "next start",
     "lint": "next lint"
   },
