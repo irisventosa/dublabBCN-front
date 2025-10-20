@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build-test": "next build && cross-env OPENNEXT_BUILD=1 opennextjs-cloudflare build --outDir .vercel/output",
+    "build-worker": "cross-env OPENNEXT_BUILD=1 opennextjs-cloudflare build",
+    "deploy-worker": "npm run build-worker && npx wrangler deploy",
     "start": "next start",
     "lint": "next lint"
   },
