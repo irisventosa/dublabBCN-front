@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
+  experimental: {
+    // Optional, but helps when using App Router + Edge
+    outputFileTracingRoot: __dirname,
+  },
   reactStrictMode: true,
   images: {
     remotePatterns: [
