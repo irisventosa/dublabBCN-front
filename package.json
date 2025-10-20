@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build-worker": "cross-env OPENNEXT_BUILD=1 opennextjs-cloudflare build",
-    "deploy-worker": "npm run build-worker && npx wrangler deploy",
+    "build-test": "next build && cross-env OPENNEXT_BUILD=1 opennextjs-cloudflare build",
     "start": "next start",
     "lint": "next lint"
   },
