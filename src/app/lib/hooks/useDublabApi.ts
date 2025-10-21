@@ -18,110 +18,91 @@ const showData = "https://api.dublab.cat/api/shows/";
 const archivedProfilesList = "https://api.dublab.cat/api/archived/?page=";
 
 const useDublabApi = () => {
-  const getProfiles = async (page: string | number) => {
-    const { data: profiles } = await axios.get<ApiProfilesList>(
-      `${profileListUrl}${page}`,
-    );
-    return profiles;
+  const getProfiles = async (page: string | number): Promise<ApiProfilesList> => {
+    const res = await fetch(`${profileListUrl}${page}`);
+    if (!res.ok) throw new Error(`Failed to fetch profiles: ${res.statusText}`);
+    return res.json();
   };
 
-  const getArchivedProfiles = async (page: string | number) => {
-    const { data: archivedProfiles } = await axios.get<ApiProfilesList>(
-      `${archivedProfilesList}${page}`,
-    );
-    return archivedProfiles;
+  const getArchivedProfiles = async (page: string | number): Promise<ApiProfilesList> => {
+    const res = await fetch(`${archivedProfilesList}${page}`);
+    if (!res.ok) throw new Error(`Failed to fetch archived profiles: ${res.statusText}`);
+    return res.json();
   };
 
-  const getProfileData = async (showName: string) => {
+  const getProfileData = async (showName: string): Promise<ApiProfile | null> => {
     try {
       const trimmedName = showName.toLowerCase().replace(/\s+$/, "");
-      const formatedShowName = trimmedName.replace(/\s+/g, "-");
+      let formattedShowName = trimmedName.replace(/\s+/g, "-");
 
-      let finalShowName = formatedShowName;
+      if (showName === "br") formattedShowName = "please-come-to-brasil";
+      if (showName === "When...Plants...Sing") formattedShowName = "whenplantssing";
+      if (showName === "@cero.en.conducta") formattedShowName = "cero-en-conducta";
+      if (showName === "MacGuffin 2.0") formattedShowName = "macguffin-20";
 
-      if (showName === "br") {
-        finalShowName = "please-come-to-brasil";
-      }
-      if (showName === "When...Plants...Sing") {
-        finalShowName = "whenplantssing";
-      }
-      if (showName === "@cero.en.conducta") {
-        finalShowName = "cero-en-conducta";
-      }
-      if (showName === "MacGuffin 2.0") {
-        finalShowName = "macguffin-20";
-      }
+      const res = await fetch(`${profileDataUrl}${formattedShowName}`);
+      if (!res.ok) throw new Error(`Profile not found: ${res.statusText}`);
 
-      const { data: profile } = await axios.get<ApiProfile>(
-        `${profileDataUrl}${finalShowName}`,
-      );
-
-      return profile;
-    } catch (error: unknown) {
-      // eslint-disable-next-line no-console
+      return res.json();
+    } catch (error) {
       console.error(`Error fetching profile for show "${showName}":`, error);
-
       return null;
     }
   };
 
-  const getArchivedProfileData = async (showName: string) => {
+  const getArchivedProfileData = async (showName: string): Promise<ApiProfile> => {
     try {
       const trimmedName = showName.toLowerCase().replace(/\s+$/, "");
-      let formatedShowName = trimmedName.replace(/\s+/g, "-");
+      let formattedShowName = trimmedName.replace(/\s+/g, "-");
 
-      if (formatedShowName === "MacGuffin 2.0") {
-        formatedShowName = "macguffin-20";
+      if (formattedShowName === "MacGuffin 2.0") {
+        formattedShowName = "macguffin-20";
       }
 
-      const { data: profile } = await axios.get<ApiProfile>(
-        `${archivedProfileData}${formatedShowName}`,
-      );
+      const res = await fetch(`${archivedProfileData}${formattedShowName}`);
+      if (!res.ok) throw new Error(`Archived profile not found: ${res.statusText}`);
 
-      return profile;
-    } catch (error: unknown) {
-      const message = "profile is not currently online";
-      throw new Error(message);
+      return res.json();
+    } catch {
+      throw new Error("Profile is not currently online");
     }
   };
 
-  const getSingleShowData = async (slug: string) => {
-    const { data: show } = await axios.get<RadioShow>(`${showData}${slug}`);
-
-    return show;
+  const getSingleShowData = async (slug: string): Promise<RadioShow> => {
+    const res = await fetch(`${showData}${slug}`);
+    if (!res.ok) throw new Error(`Failed to fetch show: ${res.statusText}`);
+    return res.json();
   };
 
-  const getLatestsShowsData = async (page: number) => {
-    const { data: latestShows } = await axios.get<LatestShowsData>(
-      `${latestShowsData}${page}`,
-    );
-    return latestShows;
+  const getLatestsShowsData = async (page: number): Promise<LatestShowsData> => {
+    const res = await fetch(`${latestShowsData}${page}`);
+    if (!res.ok) throw new Error(`Failed to fetch latest shows: ${res.statusText}`);
+    return res.json();
   };
 
-  const getBsides = async (page: string | number) => {
-    const { data: bSides } = await axios.get<ApiBsidesList>(
-      `${bsidesListUrl}${page}`,
-    );
-    return bSides;
+  const getBsides = async (page: string | number): Promise<ApiBsidesList> => {
+    const res = await fetch(`${bsidesListUrl}${page}`);
+    if (!res.ok) throw new Error(`Failed to fetch B-sides: ${res.statusText}`);
+    return res.json();
   };
 
-  const getBsideData = async (bSideSlug: string) => {
-    const { data: bSide } = await axios.get<Bside>(
-      `${bsideDataUrl}${bSideSlug}`,
-    );
-    return bSide;
+  const getBsideData = async (bSideSlug: string): Promise<Bside> => {
+    const res = await fetch(`${bsideDataUrl}${bSideSlug}`);
+    if (!res.ok) throw new Error(`Failed to fetch B-side: ${res.statusText}`);
+    return res.json();
   };
 
   return {
-    getArchivedProfileData,
+    getProfiles,
     getArchivedProfiles,
+    getProfileData,
+    getArchivedProfileData,
     getSingleShowData,
     getLatestsShowsData,
-    getProfileData,
-    getProfiles,
     getBsides,
     getBsideData,
   };
 };
+
 
 export default useDublabApi;

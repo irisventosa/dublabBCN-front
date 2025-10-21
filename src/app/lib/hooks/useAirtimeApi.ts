@@ -5,20 +5,23 @@ const streamingData = "https://dublabbcn.airtime.pro/api/live-info";
 const weekInfo = "https://dublabbcn.airtime.pro/api/week-info";
 
 const useAirtimeApi = () => {
-  const getWeekInfo = async () => {
-    const { data: schedule } = await axios.get<WeekInfo>(weekInfo);
-    return schedule;
+  const getWeekInfo = async (): Promise<WeekInfo> => {
+    const res = await fetch(weekInfo);
+    if (!res.ok) {
+      throw new Error(`Failed to fetch week info: ${res.statusText}`);
+    }
+    return res.json();
   };
 
-  const getLiveRadioData = async () => {
+  const getLiveRadioData = async (): Promise<LiveRadioData> => {
     try {
-      const { data: onAirRadio } = await axios.get<LiveRadioData>(
-        streamingData
-      );
-      return onAirRadio;
-    } catch (error: unknown) {
-      const message = "show not programmed";
-      throw new Error(message);
+      const res = await fetch(streamingData);
+      if (!res.ok) {
+        throw new Error("Failed to fetch live radio data");
+      }
+      return res.json();
+    } catch {
+      throw new Error("Show not programmed");
     }
   };
 
