@@ -6,7 +6,6 @@ import {
   LatestShowsData,
   RadioShow,
 } from "@/app/types";
-import axios from "axios";
 
 const profileDataUrl = "https://api.dublab.cat/api/profiles/";
 const bsideDataUrl = "https://api.dublab.cat/api/b-sides/";
@@ -45,7 +44,6 @@ const useDublabApi = () => {
 
       return res.json();
     } catch (error) {
-      console.error(`Error fetching profile for show "${showName}":`, error);
       return null;
     }
   };
